@@ -4,8 +4,10 @@
 
 #include <crtdbg.h>
 
+#include <Engine\CEngine.h>
+
 #ifdef _DEBUG
-#pragma comment(lib, "Engine\\Engine.lib")
+#pragma comment(lib, "Engine\\Engine_d.lib")
 #else
 #pragma comment(lib, "Engine\\Engine.lib")
 #endif
@@ -40,8 +42,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
 
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_CLIENT));
-
     MSG msg;
+
+    // CEngine 초기화 실패 -> 프로그램 종료
+    if (FAILED(CEngine::GetInst()->init(hWnd, Vec2(1280.f, 760.f))))
+    {
+        MessageBox(nullptr, L"CEngine 초기화 실패", L"초기화 실패", MB_OK);
+        return 0;
+    }
 
     while (true)
     {
@@ -58,6 +66,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
         else
         {
+            // Engine Update
+            CEngine::GetInst()->progress();
         }
     }
 
