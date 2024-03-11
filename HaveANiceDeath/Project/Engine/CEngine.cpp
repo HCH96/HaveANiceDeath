@@ -2,6 +2,8 @@
 #include "CEngine.h"
 
 
+#include "CPathMgr.h"
+
 CEngine::CEngine()
 	: m_MainWindow(nullptr)
 	, m_Resolution()
@@ -27,6 +29,8 @@ int CEngine::init(HWND _HWND, Vec2 _Resolution)
 
 
 	// Manager √ ±‚»≠
+	CPathMgr::init();
+
 
 
 	return S_OK;
