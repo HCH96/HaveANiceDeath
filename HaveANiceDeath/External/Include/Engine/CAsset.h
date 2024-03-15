@@ -7,10 +7,11 @@ class CAsset :
     public CEntity
 {
 private:
+    const ASSET_TYPE    m_Type;
     wstring             m_Key;
     wstring             m_RelativePath;
     int                 m_RefCount;
-    const ASSET_TYPE    m_Type;
+
     const bool          m_EngineAsset;
 
 public:

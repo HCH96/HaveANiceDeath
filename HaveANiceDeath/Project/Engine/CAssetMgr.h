@@ -5,6 +5,16 @@
 
 
 #include "CTexture.h"
+#include "CMesh.h"
+#include "CGraphicsShader.h"
+#include "CMaterial.h"
+
+
+template<typename T>
+void SaveAssetRef(Ptr<T> _Asset, FILE* _File);
+
+template<typename T>
+void LoadAssetRef(Ptr<T>& _Asset, FILE* _File);
 
 class CAssetMgr :
     public CSingleton<CAssetMgr>
@@ -32,7 +42,7 @@ public:
 
     // _Flag : D3D11_BIND_FLAG
     Ptr<CTexture> CreateTexture(const wstring& _strKey, UINT _Width, UINT _Height, DXGI_FORMAT _Format, UINT _Flag, D3D11_USAGE _Usage = D3D11_USAGE_DEFAULT);
-    Ptr<CTexture> CreateTexture(const wstring& _strKey, ComPtr<ID3D11Texture2D> _tex2D);
+    Ptr<CTexture> CreateTexture(const wstring& _strKey, ComPtr<ID3D11Texture2D> _Tex2D);
 
     // 지정된 타입의 모든 에셋의 이름을 받아온다
     void GetAssetName(ASSET_TYPE _Type, vector<string>& _Out);
@@ -66,18 +76,18 @@ ASSET_TYPE GetAssetType()
         Type = ASSET_TYPE::MESH;
     if constexpr (std::is_same_v<CTexture, T>)
         Type = ASSET_TYPE::TEXTURE;
-    if constexpr (MyBool<CGraphicsShader, T>)
+    if constexpr (std::is_same_v<CGraphicsShader, T>)
         Type = ASSET_TYPE::GRAPHICS_SHADER;
-    if constexpr (std::is_same_v<CComputeShader, T>)
-        Type = ASSET_TYPE::COMPUTE_SHADER;
+    //if constexpr (std::is_same_v<CComputeShader, T>)
+    //    Type = ASSET_TYPE::COMPUTE_SHADER;
     if constexpr (std::is_same_v<CMaterial, T>)
         Type = ASSET_TYPE::MATERIAL;
-    if constexpr (std::is_same_v<CPrefab, T>)
-        Type = ASSET_TYPE::PREFAB;
-    if constexpr (std::is_same_v<CSound, T>)
-        Type = ASSET_TYPE::SOUND;
-    if constexpr (std::is_same_v<CFSM, T>)
-        Type = ASSET_TYPE::FSM;
+    //if constexpr (std::is_same_v<CPrefab, T>)
+    //    Type = ASSET_TYPE::PREFAB;
+    //if constexpr (std::is_same_v<CSound, T>)
+    //    Type = ASSET_TYPE::SOUND;
+    //if constexpr (std::is_same_v<CFSM, T>)
+    //    Type = ASSET_TYPE::FSM;
 
     return Type;
 }
@@ -158,4 +168,42 @@ inline void CAssetMgr::DeleteAsset(const wstring& _strKey)
     assert(!(iter == m_mapAsset[(UINT)AssetType].end()));
 
     m_mapAsset[(UINT)AssetType].erase(iter);
+}
+
+
+// ========================
+// Asset Save Load Function
+// ========================
+
+
+template<typename T>
+void SaveAssetRef(Ptr<T> _Asset, FILE* _File)
+{
+    bool bAssetExist = false;
+    _Asset == nullptr ? bAssetExist = false : bAssetExist = true;
+
+    fwrite(&bAssetExist, sizeof(bool), 1, _File);
+
+    if (bAssetExist)
+    {
+        SaveWString(_Asset->GetKey(), _File);
+        SaveWString(_Asset->GetRelativePath(), _File);
+    }
+}
+
+template<typename T>
+void LoadAssetRef(Ptr<T>& _Asset, FILE* _File)
+{
+    bool bAssetExist = false;
+    fread(&bAssetExist, sizeof(bool), 1, _File);
+
+    if (bAssetExist)
+    {
+        wstring strKey, strRelativePath;
+
+        LoadWString(strKey, _File);
+        LoadWString(strRelativePath, _File);
+
+        _Asset = CAssetMgr::GetInst()->Load<T>(strKey, strRelativePath);
+    }
 }

@@ -5,6 +5,7 @@
 #include <crtdbg.h>
 
 #include <Engine\CEngine.h>
+#include <Engine\CDevice.h>
 
 #ifdef _DEBUG
 #pragma comment(lib, "Engine\\Engine_d.lib")
@@ -68,6 +69,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         {
             // Engine Update
             CEngine::GetInst()->progress();
+
+            
+            // 출력
+            CDevice::GetInst()->Present();
         }
     }
 

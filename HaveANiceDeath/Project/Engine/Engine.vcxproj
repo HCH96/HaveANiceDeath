@@ -134,6 +134,12 @@
       <Command>cd $(SolutionDir)
 call EngineCopy.bat</Command>
     </PreBuildEvent>
+    <FxCompile>
+      <ShaderType>Effect</ShaderType>
+    </FxCompile>
+    <FxCompile>
+      <ShaderModel>5.0</ShaderModel>
+    </FxCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -158,6 +164,12 @@ call EngineCopy.bat</Command>
       <Command>cd $(SolutionDir)
 call EngineCopy.bat</Command>
     </PreBuildEvent>
+    <FxCompile>
+      <ShaderType>Effect</ShaderType>
+    </FxCompile>
+    <FxCompile>
+      <ShaderModel>5.0</ShaderModel>
+    </FxCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CAsset.h" />
@@ -166,8 +178,19 @@ call EngineCopy.bat</Command>
     <ClInclude Include="CDevice.h" />
     <ClInclude Include="CEngine.h" />
     <ClInclude Include="CEntity.h" />
+    <ClInclude Include="CFontMgr.h" />
+    <ClInclude Include="CGC.h" />
+    <ClInclude Include="CGraphicsShader.h" />
+    <ClInclude Include="CKeyMgr.h" />
+    <ClInclude Include="CLevelMgr.h" />
+    <ClInclude Include="CMaterial.h" />
+    <ClInclude Include="CMesh.h" />
+    <ClInclude Include="components.h" />
     <ClInclude Include="CPathMgr.h" />
+    <ClInclude Include="CShader.h" />
+    <ClInclude Include="CTaskMgr.h" />
     <ClInclude Include="CTexture.h" />
+    <ClInclude Include="CTimeMgr.h" />
     <ClInclude Include="define.h" />
     <ClInclude Include="enum.h" />
     <ClInclude Include="framework.h" />
@@ -187,9 +210,20 @@ call EngineCopy.bat</Command>
     <ClCompile Include="CDevice.cpp" />
     <ClCompile Include="CEngine.cpp" />
     <ClCompile Include="CEntity.cpp" />
+    <ClCompile Include="CFontMgr.cpp" />
+    <ClCompile Include="CGC.cpp" />
+    <ClCompile Include="CGraphicsShader.cpp" />
+    <ClCompile Include="CKeyMgr.cpp" />
+    <ClCompile Include="CLevelMgr.cpp" />
+    <ClCompile Include="CMaterial.cpp" />
+    <ClCompile Include="CMesh.cpp" />
     <ClCompile Include="CPathMgr.cpp" />
+    <ClCompile Include="CShader.cpp" />
+    <ClCompile Include="CTaskMgr.cpp" />
     <ClCompile Include="CTexture.cpp" />
+    <ClCompile Include="CTimeMgr.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="extern.cpp" />
     <ClCompile Include="func.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -200,6 +234,16 @@ call EngineCopy.bat</Command>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="debug.fx" />
+    <FxCompile Include="func.fx" />
+    <FxCompile Include="particle.fx" />
+    <FxCompile Include="postprocess.fx" />
+    <FxCompile Include="register.fx" />
+    <FxCompile Include="std2d.fx" />
+    <FxCompile Include="struct.fx" />
+    <FxCompile Include="tilemap.fx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

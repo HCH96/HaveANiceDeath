@@ -1,8 +1,15 @@
 #include "pch.h"
 #include "CEngine.h"
 
+#include "CDevice.h"
 
 #include "CPathMgr.h"
+#include "CTimeMgr.h"
+#include "CKeyMgr.h"
+#include "CAssetMgr.h"
+#include "CFontMgr.h"
+
+#include "CGC.h"
 
 CEngine::CEngine()
 	: m_MainWindow(nullptr)
@@ -26,17 +33,39 @@ int CEngine::init(HWND _HWND, Vec2 _Resolution)
 	SetWindowPos(m_MainWindow, nullptr, 10, 10, rt.right - rt.left, rt.bottom - rt.top, 0);
 
 	// Device 초기화
-
+	if (FAILED(CDevice::GetInst()->init(m_MainWindow, m_Resolution)))
+	{
+		MessageBox(nullptr, L"Device 초기화 실패", L"초기화 실패", MB_OK);
+		return E_FAIL;
+	}
 
 	// Manager 초기화
 	CPathMgr::init();
+	CTimeMgr::GetInst()->init();
+	CKeyMgr::GetInst()->init();
+	CAssetMgr::GetInst()->init();
+
+
+	CFontMgr::GetInst()->init();
 
 
 
 	return S_OK;
 }
 
+
+
 void CEngine::progress()
 {
+	float clearcolor[4] = { 0.3,0.3,0.3,1.f };
+	CDevice::GetInst()->ClearRenderTarget(clearcolor);
 
+	// Manager Update
+	CTimeMgr::GetInst()->tick();
+	CKeyMgr::GetInst()->tick();
+
+	CTimeMgr::GetInst()->render();
+
+	// GC
+	CGC::GetInst()->tick();
 }
