@@ -7,6 +7,8 @@
 #include "CTimeMgr.h"
 #include "CKeyMgr.h"
 #include "CAssetMgr.h"
+#include "CLevelMgr.h"
+#include "CTaskMgr.h"
 #include "CFontMgr.h"
 
 #include "CGC.h"
@@ -64,8 +66,21 @@ void CEngine::progress()
 	CTimeMgr::GetInst()->tick();
 	CKeyMgr::GetInst()->tick();
 
+	// Level Update	
+	CLevelMgr::GetInst()->tick();
+
+	// 충돌 처리
+	//CCollisionMgr::GetInst()->tick();
+
+	// Render
+	//CRenderMgr::GetInst()->tick();
+
+	// FPS render
 	CTimeMgr::GetInst()->render();
 
 	// GC
 	CGC::GetInst()->tick();
+
+	// Task
+	CTaskMgr::GetInst()->tick();
 }

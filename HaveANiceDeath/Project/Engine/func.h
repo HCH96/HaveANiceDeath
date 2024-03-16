@@ -1,14 +1,10 @@
 #pragma once
 
-
 string ToString(const wstring& _str);
 wstring ToWString(const string& _str);
 
 void SaveWString(const wstring& _str, FILE* _File);
 void LoadWString(wstring& _str, FILE* _FILE);
-
-
-
 
 // ===============
 // Delete Function

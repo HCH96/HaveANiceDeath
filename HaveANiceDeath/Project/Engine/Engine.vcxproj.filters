@@ -88,6 +88,33 @@
     <ClInclude Include="CTaskMgr.h">
       <Filter>04. Manager\TaskMgr</Filter>
     </ClInclude>
+    <ClInclude Include="CGameObject.h">
+      <Filter>07. GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="CLevel.h">
+      <Filter>05. Level</Filter>
+    </ClInclude>
+    <ClInclude Include="CLayer.h">
+      <Filter>05. Level</Filter>
+    </ClInclude>
+    <ClInclude Include="CComponent.h">
+      <Filter>08. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="CTransform.h">
+      <Filter>08. Component\01. Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="CMeshRender.h">
+      <Filter>08. Component\RenderComponent\01. MeshRender</Filter>
+    </ClInclude>
+    <ClInclude Include="CRenderComponent.h">
+      <Filter>08. Component\RenderComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="CCamera.h">
+      <Filter>08. Component\08. Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="CRenderMgr.h">
+      <Filter>04. Manager\RenderMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -159,6 +186,36 @@
     <ClCompile Include="CTaskMgr.cpp">
       <Filter>04. Manager\TaskMgr</Filter>
     </ClCompile>
+    <ClCompile Include="CGameObject.cpp">
+      <Filter>07. GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="CLevel.cpp">
+      <Filter>05. Level</Filter>
+    </ClCompile>
+    <ClCompile Include="CLayer.cpp">
+      <Filter>05. Level</Filter>
+    </ClCompile>
+    <ClCompile Include="CComponent.cpp">
+      <Filter>08. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="CTransform.cpp">
+      <Filter>08. Component\01. Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="CMeshRender.cpp">
+      <Filter>08. Component\RenderComponent\01. MeshRender</Filter>
+    </ClCompile>
+    <ClCompile Include="CRenderComponent.cpp">
+      <Filter>08. Component\RenderComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="CCamera.cpp">
+      <Filter>08. Component\08. Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="CRenderMgr.cpp">
+      <Filter>04. Manager\RenderMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CRenderMgr_init.cpp">
+      <Filter>04. Manager\RenderMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="01. Header">
@@ -190,9 +247,6 @@
     </Filter>
     <Filter Include="Module">
       <UniqueIdentifier>{fb54634b-6aab-4446-8772-9acd764109ce}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Script">
-      <UniqueIdentifier>{e855e6fd-8dd2-4430-8128-9e5611b47f07}</UniqueIdentifier>
     </Filter>
     <Filter Include="ShaderCode">
       <UniqueIdentifier>{df7e84ec-6751-4294-9f7b-41c9699d0b8d}</UniqueIdentifier>
@@ -262,6 +316,33 @@
     </Filter>
     <Filter Include="04. Manager\TimeMgr">
       <UniqueIdentifier>{2c7f5a46-7b92-4d44-916d-ea516e199be7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08. Component\01. Transform">
+      <UniqueIdentifier>{b6534d0a-199a-4cee-947c-829e9a6ab8af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08. Component\02. Collider2D">
+      <UniqueIdentifier>{64ea0212-78e6-41bd-bcb0-912ed538de50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08. Component\04. Animator2D">
+      <UniqueIdentifier>{5567f26b-8448-4605-b8e8-66f8ede3a80a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08. Component\06. Light2D">
+      <UniqueIdentifier>{008d4fbe-e40d-4502-9936-a2f9f6b7836b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08. Component\08. Camera">
+      <UniqueIdentifier>{5cf318c8-6ede-412a-8dd4-ac0cd61ef81a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08. Component\09. StateMachine">
+      <UniqueIdentifier>{fcb0c76f-bf16-49c4-a7a9-96d708d74ffe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08. Component\RenderComponent">
+      <UniqueIdentifier>{0e415325-cf84-4edc-8720-3c814314fd08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08. Component\Script">
+      <UniqueIdentifier>{ca425043-c33f-4d07-ae81-0f3d01b65d7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08. Component\RenderComponent\01. MeshRender">
+      <UniqueIdentifier>{ef337398-cec8-40f3-8c29-e8bc5d69aeec}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
