@@ -32,7 +32,7 @@ enum class COMPONENT_TYPE
 	//ANIMATOR2D,	// 스프라이트 Animation
 	//ANIMATOR3D,	// Bone Skinning Animation
 
-	//LIGHT2D,	// 2차원 광원
+	LIGHT2D,	// 2차원 광원
 	//LIGHT3D,	// 3차원 광원
 
 	CAMERA,		// 카메라 기능
@@ -49,7 +49,7 @@ enum class COMPONENT_TYPE
 
 	END,
 
-	//SCRIPT,
+	SCRIPT,
 };
 
 // 상수버퍼 종류

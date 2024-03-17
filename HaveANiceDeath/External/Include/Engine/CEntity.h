@@ -16,8 +16,8 @@ public:
 	void SetName(const wstring& _strName) { m_Name = _strName; }
 
 
-	virtual CEntity* Clone() = 0;
 public:
+	virtual CEntity* Clone() = 0;
 	CEntity();
 	CEntity(const CEntity& _Origin);
 	virtual ~CEntity();

@@ -1,5 +1,26 @@
 #pragma once
 
+class CGameObject;
+class CAsset;
+
+namespace GamePlayStatic
+{
+	void SpawnGameObject(CGameObject* _Target, int _LayerIdx);
+	void DestroyGameObject(CGameObject* _Target);
+
+	void AddAsset(CAsset* _Asset);
+
+	// Debug Func
+	void DrawDebugRect(const Matrix& _WorldMat, Vec3 _Color, bool _bDepthTest, float _Duration = 0.f);
+	void DrawDebugRect(Vec3 _vWorldPos, Vec3 _vWorldScale, Vec3 _vWorldRot, Vec3 _Color, bool _bDepthTest, float _Duration = 0.f);
+	void DrawDebugCircle(Vec3 _vWorldPos, float _fRadius, Vec3 _Color, bool _bDepthTest, float _Duration = 0.f);
+	void DrawDebugCross(Vec3 _vWorldPos, float _fScale, Vec3 _Color, bool _bDepthTest, float _Duration = 0.f);
+
+	void Play2DSound(const wstring& _SoundPath, int _Loop, float _Volume, bool _Overlap = true);
+	void Play2DBGM(const wstring& _SoundPath, float _Volume);
+}
+
+
 string ToString(const wstring& _str);
 wstring ToWString(const string& _str);
 

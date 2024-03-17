@@ -15,7 +15,7 @@ class CGameObject :
     public CEntity
 {
 private:
-    CGameObject* m_Parent;
+    CGameObject*            m_Parent;
     vector<CGameObject*>    m_vecChild;
     int                     m_LayerIdx;
     bool                    m_bDead;
@@ -37,12 +37,12 @@ public:
 
 
     GET_COMPONENT(Transform, TRANSFORM);
-    //GET_COMPONENT(MeshRender, MESHRENDER);
-    //GET_COMPONENT(Camera, CAMERA);
+    GET_COMPONENT(MeshRender, MESHRENDER);
+    GET_COMPONENT(Camera, CAMERA);
     //GET_COMPONENT(StateMachine, STATEMACHINE);
     //GET_COMPONENT(Collider2D, COLLIDER2D);
     //GET_COMPONENT(Animator2D, ANIMATOR2D);
-    //GET_COMPONENT(Light2D, LIGHT2D);
+    GET_COMPONENT(Light2D, LIGHT2D);
     //GET_COMPONENT(TileMap, TILEMAP);
 
     template<typename T>

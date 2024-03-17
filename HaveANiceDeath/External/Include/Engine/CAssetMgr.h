@@ -3,11 +3,11 @@
 
 #include "CPathMgr.h"
 
-
 #include "CTexture.h"
 #include "CMesh.h"
 #include "CGraphicsShader.h"
 #include "CMaterial.h"
+#include "CPrefab.h"
 
 
 template<typename T>
@@ -82,8 +82,8 @@ ASSET_TYPE GetAssetType()
     //    Type = ASSET_TYPE::COMPUTE_SHADER;
     if constexpr (std::is_same_v<CMaterial, T>)
         Type = ASSET_TYPE::MATERIAL;
-    //if constexpr (std::is_same_v<CPrefab, T>)
-    //    Type = ASSET_TYPE::PREFAB;
+    if constexpr (std::is_same_v<CPrefab, T>)
+        Type = ASSET_TYPE::PREFAB;
     //if constexpr (std::is_same_v<CSound, T>)
     //    Type = ASSET_TYPE::SOUND;
     //if constexpr (std::is_same_v<CFSM, T>)

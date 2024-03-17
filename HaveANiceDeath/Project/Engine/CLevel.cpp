@@ -2,7 +2,7 @@
 #include "CLevel.h"
 
 #include "CTimeMgr.h"
-//#include "CRenderMgr.h"
+#include "CRenderMgr.h"
 
 #include "CLayer.h"
 #include "CGameObject.h"

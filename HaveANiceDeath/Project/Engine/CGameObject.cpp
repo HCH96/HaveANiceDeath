@@ -2,9 +2,9 @@
 #include "CGameObject.h"
 
 #include "CComponent.h"
-//#include "CRenderComponent.h"
-//
-//#include "CScript.h"
+#include "CRenderComponent.h"
+
+#include "CScript.h"
 
 #include "CLevelMgr.h"
 #include "CLevel.h"
@@ -29,13 +29,13 @@ CGameObject::CGameObject(const CGameObject& _OriginObject)
 	, m_LayerIdx(-1)
 	, m_bDead(false)
 {
-	//for (UINT i = 0; i < (UINT)COMPONENT_TYPE::END; ++i)
-	//{
-	//	if (nullptr == _OriginObject.m_arrCom[i])
-	//		continue;
+	for (UINT i = 0; i < (UINT)COMPONENT_TYPE::END; ++i)
+	{
+		if (nullptr == _OriginObject.m_arrCom[i])
+			continue;
 
-	//	AddComponent(_OriginObject.m_arrCom[i]->Clone());
-	//}
+		AddComponent(_OriginObject.m_arrCom[i]->Clone());
+	}
 
 	//for (size_t i = 0; i < _OriginObject.m_vecScript.size(); ++i)
 	//{
@@ -43,22 +43,22 @@ CGameObject::CGameObject(const CGameObject& _OriginObject)
 	//}
 
 
-	//// 복사되는 GameObject 는 부모만 레이어소속을 -1 로 하고, 
-	//// 자식들은 원본객체랑 동일한 레이어소속을 유지한다.
-	//for (size_t i = 0; i < _OriginObject.m_vecChild.size(); ++i)
-	//{
-	//	CGameObject* ChildClone = _OriginObject.m_vecChild[i]->Clone();
-	//	AddChild(ChildClone);
-	//	ChildClone->m_iLayerIdx = _OriginObject.m_vecChild[i]->m_iLayerIdx;
-	//}
+	// 복사되는 GameObject 는 부모만 레이어소속을 -1 로 하고, 
+	// 자식들은 원본객체랑 동일한 레이어소속을 유지한다.
+	for (size_t i = 0; i < _OriginObject.m_vecChild.size(); ++i)
+	{
+		CGameObject* ChildClone = _OriginObject.m_vecChild[i]->Clone();
+		AddChild(ChildClone);
+		ChildClone->m_LayerIdx = _OriginObject.m_vecChild[i]->m_LayerIdx;
+	}
 }
 
 
 CGameObject::~CGameObject()
 {
+	Delete_Vec(m_vecChild);
 	Delete_Array(m_arrCom);
 	Delete_Vec(m_vecScript);
-	Delete_Vec(m_vecChild);
 }
 
 void CGameObject::AddComponent(CComponent* _Comonent)

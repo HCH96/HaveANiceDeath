@@ -9,6 +9,40 @@ struct Vtx
 	Vec2 vUV;		 // UV 좌표계 or Texture Coodinate
 };
 
+// Debug ShapeInfo
+struct tDebugShapeInfo
+{
+	DEBUG_SHAPE	eShape;
+
+	Vec3		vWorldPos;
+	Vec3		vWorldScale;
+	Vec3		vWorldRot;
+	Matrix		matWorld;
+
+	Vec3		vColor;
+	float		fLifeTime;
+	float		fDuration;
+	bool		bDepthTest;
+};
+
+// Light 구조체
+struct tLightInfo
+{
+	Vec4	vColor;		// 빛의 색상	- 광원의 순수 색상
+	Vec4	vSpecular;	// 반사광	- 광원이 물체 표면에 반사된 색상
+	Vec4	vAmbient;	// 환경광(주변광) - 광원에 의해서 보장되는 최소한의 빛
+
+	Vec3	vWorldPos;	// 광원의 위치
+	Vec3	vWorldDir;	// 광원이 향하는 방향
+	float	fRadius;	// 광원의 영향 반경, 거리 정보
+	float	fAngle;		// 광원의 범위 각도
+
+	int		LightType;	// 광원 타입
+
+	Vec3	vPadding;
+};
+
+
 
 // ==================
 // 상수버퍼 대응 구조체

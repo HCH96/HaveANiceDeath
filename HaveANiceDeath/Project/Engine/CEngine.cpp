@@ -10,6 +10,7 @@
 #include "CLevelMgr.h"
 #include "CTaskMgr.h"
 #include "CFontMgr.h"
+#include "CRenderMgr.h"
 
 #include "CGC.h"
 
@@ -46,11 +47,9 @@ int CEngine::init(HWND _HWND, Vec2 _Resolution)
 	CTimeMgr::GetInst()->init();
 	CKeyMgr::GetInst()->init();
 	CAssetMgr::GetInst()->init();
-
-
+	CRenderMgr::GetInst()->init();
+	CLevelMgr::GetInst()->init();
 	CFontMgr::GetInst()->init();
-
-
 
 	return S_OK;
 }
@@ -59,8 +58,6 @@ int CEngine::init(HWND _HWND, Vec2 _Resolution)
 
 void CEngine::progress()
 {
-	float clearcolor[4] = { 0.3,0.3,0.3,1.f };
-	CDevice::GetInst()->ClearRenderTarget(clearcolor);
 
 	// Manager Update
 	CTimeMgr::GetInst()->tick();
@@ -73,7 +70,7 @@ void CEngine::progress()
 	//CCollisionMgr::GetInst()->tick();
 
 	// Render
-	//CRenderMgr::GetInst()->tick();
+	CRenderMgr::GetInst()->tick();
 
 	// FPS render
 	CTimeMgr::GetInst()->render();

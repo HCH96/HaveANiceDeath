@@ -1,22 +1,32 @@
 #pragma once
 #include "singleton.h"
 
+#include "CAssetMgr.h"
+
+class CGameObject;
+class CCamera;
+class CLight2D;
+class CStructuredBuffer;
 
 class CRenderMgr :
     public CSingleton<CRenderMgr>
 {
     SINGLE(CRenderMgr);
 private:
+    // renderCamera
     vector<CCamera*>        m_vecCam;
-    CCamera* m_EditorCam;
+    CCamera*                m_EditorCam;
 
+    // PostProcess
     Ptr<CTexture>           m_PostProcessTex;
 
+    // ±¤¿ø
     CStructuredBuffer*      m_Light2DBuffer;
     vector<CLight2D*>       m_vecLight2D;
 
+    // Debug
     list<tDebugShapeInfo>   m_DbgShapeInfo;
-    CGameObject* m_pDebugObj;
+    CGameObject*            m_pDebugObj;
     bool                    m_DebugPosition;
 
     // NoiseTexture
