@@ -21,6 +21,8 @@ enum class ASSET_TYPE
 	END,
 };
 
+extern const char* ASSET_TYPE_STRING[(UINT)ASSET_TYPE::END];
+
 
 enum class COMPONENT_TYPE
 {
@@ -42,7 +44,7 @@ enum class COMPONENT_TYPE
 	// Render Component
 	MESHRENDER,
 	TILEMAP,
-	//PARTICLESYSTEM,
+	PARTICLESYSTEM,
 	//SKYBOX,
 	//DECAL,
 	//LANDSCAPE,

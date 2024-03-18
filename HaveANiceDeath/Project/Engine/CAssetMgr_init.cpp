@@ -366,8 +366,15 @@ void CAssetMgr::CreateDefaultMaterial()
 }
 
 
+#include "CParticleUpdate.h"
+
 void CAssetMgr::CreateDefaultComputeShader()
 {
+	Ptr<CComputeShader> pShader = nullptr;
+
+	// ParticleUpdateShader
+	pShader = new CParticleUpdate;
+	AddAsset(L"ParticleUpdateShader", pShader.Get());
 }
 
 

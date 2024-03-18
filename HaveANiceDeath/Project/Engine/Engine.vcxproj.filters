@@ -145,6 +145,15 @@
     <ClInclude Include="CCollisionMgr.h">
       <Filter>04. Manager\CollisionMgr</Filter>
     </ClInclude>
+    <ClInclude Include="CParticleSystem.h">
+      <Filter>07. Component\RenderComponent\03. ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="CComputeShader.h">
+      <Filter>08. Asset\Shader\ComputeShader</Filter>
+    </ClInclude>
+    <ClInclude Include="CParticleUpdate.h">
+      <Filter>ShaderCode\Compute\ParticleUpdate</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -275,6 +284,15 @@
     </ClCompile>
     <ClCompile Include="CCollisionMgr.cpp">
       <Filter>04. Manager\CollisionMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CParticleSystem.cpp">
+      <Filter>07. Component\RenderComponent\03. ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="CComputeShader.cpp">
+      <Filter>08. Asset\Shader\ComputeShader</Filter>
+    </ClCompile>
+    <ClCompile Include="CParticleUpdate.cpp">
+      <Filter>ShaderCode\Compute\ParticleUpdate</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -428,6 +446,9 @@
     <Filter Include="Script">
       <UniqueIdentifier>{ad1e69c8-05e3-4443-a812-466de506daf9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ShaderCode\Compute\ParticleUpdate">
+      <UniqueIdentifier>{623a66b8-6b7c-46ee-b681-f65b3f6e8125}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">
@@ -458,6 +479,9 @@
     </FxCompile>
     <FxCompile Include="postprocess.fx">
       <Filter>ShaderCode\Render\Standard</Filter>
+    </FxCompile>
+    <FxCompile Include="particle_update.fx">
+      <Filter>ShaderCode\Compute\ParticleUpdate</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

@@ -17,6 +17,7 @@
 #include "CPlayerScript.h"
 #include "CAnimator2D.h"
 #include "CCollider2D.h"
+#include "CParticleSystem.h"
 
 
 CLevelMgr::CLevelMgr()
@@ -50,7 +51,7 @@ void CLevelMgr::init()
 	pCamObj->AddComponent(new CTransform);
 	pCamObj->AddComponent(new CCamera);
 
-	pCamObj->Transform()->SetRelativePos(Vec3(0.5f, 0.f, 0.f));
+	pCamObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 0.f));
 	pCamObj->Transform()->SetRelativeRotation(Vec3(0.f, 0.f, 0.f));
 
 	pCamObj->Camera()->SetProjType(PROJ_TYPE::PERSPECTIVE);
@@ -127,6 +128,18 @@ void CLevelMgr::init()
 
 	pTempLevel->AddObject(pObj, L"Player", false);
 
+	// Particle Object
+	CGameObject* pParticleObj = new CGameObject;
+	pParticleObj->SetName(L"Particle");
+
+	pParticleObj->AddComponent(new CTransform);
+	pParticleObj->AddComponent(new CParticleSystem);
+
+	pParticleObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 200.f));
+
+	pTempLevel->AddObject(pParticleObj, L"Player", false);
+
+
 	// Monst Object »ý¼º
 	pObj = new CGameObject;
 	pObj->SetName(L"Monster");
@@ -138,8 +151,8 @@ void CLevelMgr::init()
 	pObj->Transform()->SetRelativePos(Vec3(300.f, 0.f, 500.f));
 	pObj->Transform()->SetRelativeScale(Vec3(200.f, 200.f, 1.f));
 
-	//pObj->Collider2D()->SetOffset(Vec3(0.f, 0.f, 0.f));
-	//pObj->Collider2D()->SetScale(Vec3(100.f, 100.f, 1.f));
+	pObj->Collider2D()->SetOffset(Vec3(0.f, 0.f, 0.f));
+	pObj->Collider2D()->SetScale(Vec3(100.f, 100.f, 1.f));
 
 	pObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
 	pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"Std2DMtrl"));

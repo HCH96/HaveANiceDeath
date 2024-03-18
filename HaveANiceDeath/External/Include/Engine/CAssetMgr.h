@@ -5,6 +5,7 @@
 
 #include "CMesh.h"
 #include "CGraphicsShader.h"
+#include "CComputeShader.h"
 #include "CMaterial.h"
 #include "CTexture.h"
 #include "CPrefab.h"
@@ -73,8 +74,8 @@ ASSET_TYPE GetAssetType()
         Type = ASSET_TYPE::TEXTURE;
     if constexpr (std::is_same_v<CGraphicsShader, T>)
         Type = ASSET_TYPE::GRAPHICS_SHADER;
-    //if constexpr (std::is_same_v<CComputeShader, T>)
-    //    Type = ASSET_TYPE::COMPUTE_SHADER;
+    if constexpr (std::is_same_v<CComputeShader, T>)
+        Type = ASSET_TYPE::COMPUTE_SHADER;
     if constexpr (std::is_same_v<CMaterial, T>)
         Type = ASSET_TYPE::MATERIAL;
     if constexpr (std::is_same_v<CPrefab, T>)
@@ -164,8 +165,3 @@ inline void CAssetMgr::DeleteAsset(const wstring& _strKey)
 
     m_mapAsset[(UINT)AssetType].erase(iter);
 }
-
-
-// ========================
-// Asset Save Load Function
-// ========================
