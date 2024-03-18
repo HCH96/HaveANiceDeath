@@ -81,6 +81,7 @@ void CPlayerScript::tick()
 	if (KEY_PRESSED(KEY::Z))
 	{
 		vRot.z += DT * XM_PI;
+		GamePlayStatic::Play2DBGM(L"sound\\DM.wav", 0.5f);
 	}
 
 	Transform()->SetRelativePos(vPos);

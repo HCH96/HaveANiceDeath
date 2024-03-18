@@ -154,6 +154,21 @@
     <ClInclude Include="CParticleUpdate.h">
       <Filter>ShaderCode\Compute\ParticleUpdate</Filter>
     </ClInclude>
+    <ClInclude Include="CStateMachine.h">
+      <Filter>07. Component\09. StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="CBlackboard.h">
+      <Filter>Module\BlackBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="CFSM.h">
+      <Filter>08. Asset\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="CState.h">
+      <Filter>08. Asset\FSM\State</Filter>
+    </ClInclude>
+    <ClInclude Include="CSound.h">
+      <Filter>08. Asset\Sound</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -293,6 +308,21 @@
     </ClCompile>
     <ClCompile Include="CParticleUpdate.cpp">
       <Filter>ShaderCode\Compute\ParticleUpdate</Filter>
+    </ClCompile>
+    <ClCompile Include="CStateMachine.cpp">
+      <Filter>07. Component\09. StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="CBlackboard.cpp">
+      <Filter>Module\BlackBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="CFSM.cpp">
+      <Filter>08. Asset\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="CState.cpp">
+      <Filter>08. Asset\FSM\State</Filter>
+    </ClCompile>
+    <ClCompile Include="CSound.cpp">
+      <Filter>08. Asset\Sound</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -448,6 +478,12 @@
     </Filter>
     <Filter Include="ShaderCode\Compute\ParticleUpdate">
       <UniqueIdentifier>{623a66b8-6b7c-46ee-b681-f65b3f6e8125}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Module\BlackBoard">
+      <UniqueIdentifier>{4831c3d9-e009-4ea1-aaa3-c13557e0a73d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08. Asset\FSM\State">
+      <UniqueIdentifier>{becfff4b-2d7c-475d-87b5-434958bd9959}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

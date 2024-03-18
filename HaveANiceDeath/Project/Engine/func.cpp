@@ -105,6 +105,36 @@ void GamePlayStatic::DrawDebugCross(Vec3 _vWorldPos, float _fScale, Vec3 _Color,
 	CRenderMgr::GetInst()->AddDebugShapeInfo(info);
 }
 
+void GamePlayStatic::Play2DSound(const wstring& _SoundPath, int _Loop, float _Volume, bool _Overlap)
+{
+	Ptr<CSound> pSound = CAssetMgr::GetInst()->Load<CSound>(_SoundPath, _SoundPath);
+
+	if (nullptr != pSound)
+	{
+		pSound->Play(_Loop, _Volume, _Overlap);
+	}
+}
+
+void GamePlayStatic::Play2DBGM(const wstring& _SoundPath, float _Volume)
+{
+	static Ptr<CSound> CurBGM = nullptr;
+
+	Ptr<CSound> pSound = CAssetMgr::GetInst()->Load<CSound>(_SoundPath, _SoundPath);
+
+	if (nullptr != pSound)
+	{
+		if (nullptr != CurBGM)
+		{
+			CurBGM->Stop();
+		}
+
+		pSound->Play(0, _Volume);
+		CurBGM = pSound;
+	}
+}
+
+
+
 void Vector3::ToDegree()
 {
 	x = (x / XM_PI) * 180.f;

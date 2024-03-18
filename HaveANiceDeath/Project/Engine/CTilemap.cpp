@@ -135,6 +135,8 @@ void CTileMap::SetTileIndex(UINT _Row, UINT _Col, UINT _ImgIdx)
 
 void CTileMap::SaveToFile(FILE* _File)
 {
+	CRenderComponent::SaveToFile(_File);
+
 	// TileMap 정보 저장
 	fwrite(&m_FaceX, sizeof(UINT), 1, _File);
 	fwrite(&m_FaceY, sizeof(UINT), 1, _File);
@@ -156,6 +158,8 @@ void CTileMap::SaveToFile(FILE* _File)
 
 void CTileMap::LoadFromFile(FILE* _File)
 {
+	CRenderComponent::LoadFromFile(_File);
+
 	// TileMap 정보 저장
 	fread(&m_FaceX, sizeof(UINT), 1, _File);
 	fread(&m_FaceY, sizeof(UINT), 1, _File);

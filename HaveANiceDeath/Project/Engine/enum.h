@@ -39,7 +39,7 @@ enum class COMPONENT_TYPE
 
 	CAMERA,		// 카메라 기능
 
-	//STATEMACHINE, // 상태머신
+	STATEMACHINE, // 상태머신
 
 	// Render Component
 	MESHRENDER,

@@ -9,6 +9,8 @@
 #include "CMaterial.h"
 #include "CTexture.h"
 #include "CPrefab.h"
+#include "CSound.h"
+#include "CFSM.h"
 
 
 
@@ -80,10 +82,10 @@ ASSET_TYPE GetAssetType()
         Type = ASSET_TYPE::MATERIAL;
     if constexpr (std::is_same_v<CPrefab, T>)
         Type = ASSET_TYPE::PREFAB;
-    //if constexpr (std::is_same_v<CSound, T>)
-    //    Type = ASSET_TYPE::SOUND;
-    //if constexpr (std::is_same_v<CFSM, T>)
-    //    Type = ASSET_TYPE::FSM;
+    if constexpr (std::is_same_v<CSound, T>)
+        Type = ASSET_TYPE::SOUND;
+    if constexpr (std::is_same_v<CFSM, T>)
+        Type = ASSET_TYPE::FSM;
 
     return Type;
 }
