@@ -110,6 +110,18 @@ enum class BS_TYPE
 	END,
 };
 
+// ScriptParam
+enum class SCRIPT_PARAM
+{
+	INT,
+	FLOAT,
+	VEC2,
+	VEC3,
+	VEC4,
+	OBJECT,
+};
+
+
 
 // ScalarParam
 enum class SCALAR_PARAM
@@ -198,7 +210,6 @@ enum class PARTICLE_MODULE
 
 	END,
 };
-
 
 enum class LEVEL_STATE
 {

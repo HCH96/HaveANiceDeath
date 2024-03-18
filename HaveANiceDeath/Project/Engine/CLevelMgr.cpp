@@ -14,7 +14,6 @@
 #include "CGameObject.h"
 #include "components.h"
 #include "CRenderMgr.h"
-#include "CPlayerScript.h"
 #include "CAnimator2D.h"
 #include "CCollider2D.h"
 #include "CParticleSystem.h"
@@ -114,7 +113,6 @@ void CLevelMgr::init()
 	pObj->AddComponent(new CCollider2D);
 	pObj->AddComponent(new CAnimator2D);
 	pObj->AddComponent(new CMeshRender);
-	pObj->AddComponent(new CPlayerScript);
 
 	pObj->Transform()->SetRelativePos(Vec3(300.f, 0.f, 500.f));
 	pObj->Transform()->SetRelativeScale(Vec3(200.f, 200.f, 1.f));

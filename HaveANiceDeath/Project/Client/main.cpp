@@ -2,17 +2,8 @@
 #include "framework.h"
 #include "Client.h"
 
-#include <crtdbg.h>
-
 #include <Engine\CEngine.h>
 #include <Engine\CDevice.h>
-
-#ifdef _DEBUG
-#pragma comment(lib, "Engine\\Engine_d.lib")
-#else
-#pragma comment(lib, "Engine\\Engine.lib")
-#endif
-
 
 #define MAX_LOADSTRING 100
 
@@ -32,10 +23,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     // Memory Leak Check
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     //_CrtSetBreakAlloc(1387);
-
-
+    
     MyRegisterClass(hInstance);
-
+    
     // 애플리케이션 초기화를 수행합니다:
     if (!InitInstance (hInstance, nCmdShow))
     {

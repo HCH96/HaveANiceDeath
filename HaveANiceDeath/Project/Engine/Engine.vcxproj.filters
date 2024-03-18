@@ -136,9 +136,6 @@
     <ClInclude Include="CTilemap.h">
       <Filter>07. Component\RenderComponent\02. TileMap</Filter>
     </ClInclude>
-    <ClInclude Include="CPlayerScript.h">
-      <Filter>Script</Filter>
-    </ClInclude>
     <ClInclude Include="CCollider2D.h">
       <Filter>07. Component\02. Collider2D</Filter>
     </ClInclude>
@@ -290,9 +287,6 @@
     </ClCompile>
     <ClCompile Include="CTilemap.cpp">
       <Filter>07. Component\RenderComponent\02. TileMap</Filter>
-    </ClCompile>
-    <ClCompile Include="CPlayerScript.cpp">
-      <Filter>Script</Filter>
     </ClCompile>
     <ClCompile Include="CCollider2D.cpp">
       <Filter>07. Component\02. Collider2D</Filter>
@@ -472,9 +466,6 @@
     </Filter>
     <Filter Include="07. Component\04. Animator2D\Anim">
       <UniqueIdentifier>{43cec703-24e8-4c06-97fb-c03a86d94ed6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Script">
-      <UniqueIdentifier>{ad1e69c8-05e3-4443-a812-466de506daf9}</UniqueIdentifier>
     </Filter>
     <Filter Include="ShaderCode\Compute\ParticleUpdate">
       <UniqueIdentifier>{623a66b8-6b7c-46ee-b681-f65b3f6e8125}</UniqueIdentifier>
