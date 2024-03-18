@@ -27,6 +27,41 @@ wstring ToWString(const string& _str);
 void SaveWString(const wstring& _str, FILE* _File);
 void LoadWString(wstring& _str, FILE* _FILE);
 
+#include "CAssetMgr.h"
+
+template<typename T>
+void SaveAssetRef(Ptr<T> _Asset, FILE* _File)
+{
+	bool bAssetExist = false;
+	_Asset == nullptr ? bAssetExist = false : bAssetExist = true;
+
+	fwrite(&bAssetExist, sizeof(bool), 1, _File);
+
+	if (bAssetExist)
+	{
+		SaveWString(_Asset->GetKey(), _File);
+		SaveWString(_Asset->GetRelativePath(), _File);
+	}
+}
+
+template<typename T>
+void LoadAssetRef(Ptr<T>& _Asset, FILE* _File)
+{
+	bool bAssetExist = false;
+	fread(&bAssetExist, sizeof(bool), 1, _File);
+
+	if (bAssetExist)
+	{
+		wstring strKey, strRelativePath;
+
+		LoadWString(strKey, _File);
+		LoadWString(strRelativePath, _File);
+
+		_Asset = CAssetMgr::GetInst()->Load<T>(strKey, strRelativePath);
+	}
+}
+
+
 // ===============
 // Delete Function
 // ===============

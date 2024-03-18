@@ -40,8 +40,8 @@ private:
 
 public:
     virtual CAsset* Clone() = 0;
-
     CAsset(ASSET_TYPE _Type, bool _bEngineAsset);
+    CAsset(const CAsset& _Origin);
     ~CAsset();
 
     friend class CAssetMgr;

@@ -5,6 +5,7 @@
 
 #include "CAssetMgr.h"
 #include "CTaskMgr.h"
+#include "CCollisionMgr.h"
 
 #include "CLevel.h"
 #include "CLayer.h"
@@ -13,6 +14,10 @@
 #include "CGameObject.h"
 #include "components.h"
 #include "CRenderMgr.h"
+#include "CPlayerScript.h"
+#include "CAnimator2D.h"
+#include "CCollider2D.h"
+
 
 CLevelMgr::CLevelMgr()
 	: m_CurLevel(nullptr)
@@ -105,16 +110,44 @@ void CLevelMgr::init()
 	pObj->SetName(L"Player");
 
 	pObj->AddComponent(new CTransform);
+	pObj->AddComponent(new CCollider2D);
+	pObj->AddComponent(new CAnimator2D);
 	pObj->AddComponent(new CMeshRender);
+	pObj->AddComponent(new CPlayerScript);
 
 	pObj->Transform()->SetRelativePos(Vec3(300.f, 0.f, 500.f));
 	pObj->Transform()->SetRelativeScale(Vec3(200.f, 200.f, 1.f));
+
+	pObj->Collider2D()->SetOffset(Vec3(0.f, 0.f, 0.f));
+	pObj->Collider2D()->SetScale(Vec3(100.f, 100.f, 1.f));
 
 	pObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
 	pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"Std2DMtrl"));
 	pObj->MeshRender()->GetMaterial()->SetTexParam(TEX_PARAM::TEX_0, CAssetMgr::GetInst()->Load<CTexture>(L"texture\\Character.png", L"texture\\Character.png"));
 
 	pTempLevel->AddObject(pObj, L"Player", false);
+
+	// Monst Object 积己
+	pObj = new CGameObject;
+	pObj->SetName(L"Monster");
+
+	pObj->AddComponent(new CTransform);
+	pObj->AddComponent(new CCollider2D);
+	pObj->AddComponent(new CMeshRender);
+
+	pObj->Transform()->SetRelativePos(Vec3(300.f, 0.f, 500.f));
+	pObj->Transform()->SetRelativeScale(Vec3(200.f, 200.f, 1.f));
+
+	//pObj->Collider2D()->SetOffset(Vec3(0.f, 0.f, 0.f));
+	//pObj->Collider2D()->SetScale(Vec3(100.f, 100.f, 1.f));
+
+	pObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
+	pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"Std2DMtrl"));
+	pObj->MeshRender()->GetMaterial()->SetTexParam(TEX_PARAM::TEX_0, CAssetMgr::GetInst()->Load<CTexture>(L"texture\\Character.png", L"texture\\Character.png"));
+
+	pTempLevel->AddObject(pObj, L"Monster", false);
+
+	CCollisionMgr::GetInst()->LayerCheck(3, 4);
 
 	CLevelMgr::GetInst()->ChangeLevel(pTempLevel, LEVEL_STATE::PLAY);
 }
@@ -170,4 +203,7 @@ void CLevelMgr::tick()
 	}
 
 	m_CurLevel->finaltick();
+
+	// 面倒 贸府
+	CCollisionMgr::GetInst()->tick();
 }

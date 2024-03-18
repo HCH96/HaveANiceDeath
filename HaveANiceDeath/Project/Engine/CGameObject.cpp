@@ -37,10 +37,10 @@ CGameObject::CGameObject(const CGameObject& _OriginObject)
 		AddComponent(_OriginObject.m_arrCom[i]->Clone());
 	}
 
-	//for (size_t i = 0; i < _OriginObject.m_vecScript.size(); ++i)
-	//{
-	//	AddComponent(_OriginObject.m_vecScript[i]->Clone());
-	//}
+	for (size_t i = 0; i < _OriginObject.m_vecScript.size(); ++i)
+	{
+		AddComponent(_OriginObject.m_vecScript[i]->Clone());
+	}
 
 
 	// 복사되는 GameObject 는 부모만 레이어소속을 -1 로 하고, 

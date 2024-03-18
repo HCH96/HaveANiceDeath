@@ -10,6 +10,7 @@
 #include "CRenderMgr.h"
 
 #include "CGameObject.h"
+#include "CAnimator2D.h"
 
 #include "CTransform.h"
 
@@ -46,14 +47,14 @@ void CMeshRender::render()
 	if (nullptr == GetMesh() || nullptr == GetMaterial())
 		return;
 
-	//if (Animator2D())
-	//{
-	//	Animator2D()->UpdateData();
-	//}
-	//else
-	//{
-	//	Animator2D()->Clear();
-	//}
+	if (Animator2D())
+	{
+		Animator2D()->UpdateData();
+	}
+	else
+	{
+		Animator2D()->Clear();
+	}
 
 	UpdateData();
 

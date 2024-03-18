@@ -127,6 +127,24 @@
     <ClInclude Include="CPrefab.h">
       <Filter>08. Asset\Prefab</Filter>
     </ClInclude>
+    <ClInclude Include="CAnim.h">
+      <Filter>07. Component\04. Animator2D\Anim</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnimator2D.h">
+      <Filter>07. Component\04. Animator2D</Filter>
+    </ClInclude>
+    <ClInclude Include="CTilemap.h">
+      <Filter>07. Component\RenderComponent\02. TileMap</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayerScript.h">
+      <Filter>Script</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollider2D.h">
+      <Filter>07. Component\02. Collider2D</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollisionMgr.h">
+      <Filter>04. Manager\CollisionMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -239,6 +257,24 @@
     </ClCompile>
     <ClCompile Include="CPrefab.cpp">
       <Filter>08. Asset\Prefab</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnim.cpp">
+      <Filter>07. Component\04. Animator2D\Anim</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimator2D.cpp">
+      <Filter>07. Component\04. Animator2D</Filter>
+    </ClCompile>
+    <ClCompile Include="CTilemap.cpp">
+      <Filter>07. Component\RenderComponent\02. TileMap</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayerScript.cpp">
+      <Filter>Script</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollider2D.cpp">
+      <Filter>07. Component\02. Collider2D</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollisionMgr.cpp">
+      <Filter>04. Manager\CollisionMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -379,6 +415,18 @@
     </Filter>
     <Filter Include="08. Asset\Sound">
       <UniqueIdentifier>{298c044b-fd9a-466d-922b-ccd5a96dfc97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07. Component\RenderComponent\02. TileMap">
+      <UniqueIdentifier>{411aae68-d8a1-4414-8967-e2cc8effbef1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07. Component\RenderComponent\03. ParticleSystem">
+      <UniqueIdentifier>{8c157af7-2bb9-4dd1-bc4b-535b5f2a0391}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07. Component\04. Animator2D\Anim">
+      <UniqueIdentifier>{43cec703-24e8-4c06-97fb-c03a86d94ed6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script">
+      <UniqueIdentifier>{ad1e69c8-05e3-4443-a812-466de506daf9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

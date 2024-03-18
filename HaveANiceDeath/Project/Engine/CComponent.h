@@ -18,12 +18,12 @@ public:
     CRenderComponent* GetRenderComponent() { return m_Owner->GetRenderComponent(); }
 
     GET_OTHER_COMPONENT(Transform);
-    //GET_OTHER_COMPONENT(MeshRender);
-    //GET_OTHER_COMPONENT(Camera);
-    //GET_OTHER_COMPONENT(Collider2D);
-    //GET_OTHER_COMPONENT(Animator2D);
-    //GET_OTHER_COMPONENT(Light2D);
-    //GET_OTHER_COMPONENT(TileMap);
+    GET_OTHER_COMPONENT(MeshRender);
+    GET_OTHER_COMPONENT(Camera);
+    GET_OTHER_COMPONENT(Collider2D);
+    GET_OTHER_COMPONENT(Animator2D);
+    GET_OTHER_COMPONENT(Light2D);
+    GET_OTHER_COMPONENT(TileMap);
     //GET_OTHER_COMPONENT(StateMachine);
 
     virtual void SaveToFile(FILE* _File) = 0;

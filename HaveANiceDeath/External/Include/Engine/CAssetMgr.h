@@ -3,18 +3,13 @@
 
 #include "CPathMgr.h"
 
-#include "CTexture.h"
 #include "CMesh.h"
 #include "CGraphicsShader.h"
 #include "CMaterial.h"
+#include "CTexture.h"
 #include "CPrefab.h"
 
 
-template<typename T>
-void SaveAssetRef(Ptr<T> _Asset, FILE* _File);
-
-template<typename T>
-void LoadAssetRef(Ptr<T>& _Asset, FILE* _File);
 
 class CAssetMgr :
     public CSingleton<CAssetMgr>
@@ -174,36 +169,3 @@ inline void CAssetMgr::DeleteAsset(const wstring& _strKey)
 // ========================
 // Asset Save Load Function
 // ========================
-
-
-template<typename T>
-void SaveAssetRef(Ptr<T> _Asset, FILE* _File)
-{
-    bool bAssetExist = false;
-    _Asset == nullptr ? bAssetExist = false : bAssetExist = true;
-
-    fwrite(&bAssetExist, sizeof(bool), 1, _File);
-
-    if (bAssetExist)
-    {
-        SaveWString(_Asset->GetKey(), _File);
-        SaveWString(_Asset->GetRelativePath(), _File);
-    }
-}
-
-template<typename T>
-void LoadAssetRef(Ptr<T>& _Asset, FILE* _File)
-{
-    bool bAssetExist = false;
-    fread(&bAssetExist, sizeof(bool), 1, _File);
-
-    if (bAssetExist)
-    {
-        wstring strKey, strRelativePath;
-
-        LoadWString(strKey, _File);
-        LoadWString(strRelativePath, _File);
-
-        _Asset = CAssetMgr::GetInst()->Load<T>(strKey, strRelativePath);
-    }
-}

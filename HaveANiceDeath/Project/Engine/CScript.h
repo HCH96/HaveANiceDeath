@@ -31,7 +31,6 @@ public:
 
     virtual void SaveToFile(FILE* _File) = 0;
     virtual void LoadFromFile(FILE* _File) = 0;
-
 public:
     CScript(UINT _ScriptType);
     ~CScript();

@@ -66,9 +66,6 @@ void CEngine::progress()
 	// Level Update	
 	CLevelMgr::GetInst()->tick();
 
-	// 충돌 처리
-	//CCollisionMgr::GetInst()->tick();
-
 	// Render
 	CRenderMgr::GetInst()->tick();
 

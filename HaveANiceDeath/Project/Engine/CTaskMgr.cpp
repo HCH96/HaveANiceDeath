@@ -10,6 +10,7 @@
 #include "CLayer.h"
 
 #include "CGameObject.h"
+#include "CCollider2D.h"
 
 #include "CAsset.h"
 
@@ -118,6 +119,21 @@ void CTaskMgr::tick()
 
 			break;
 		}
+		case TASK_TYPE::COLLIDER2D_SEMI_DEACTIVE:
+		{
+			CCollider2D* pCollider = (CCollider2D*)m_vecTask[i].Param_1;
+			pCollider->m_SemiDeactive = true;
+		}
+		break;
+
+		case TASK_TYPE::COLLIDER2D_DEACTIVE:
+		{
+			CCollider2D* pCollider = (CCollider2D*)m_vecTask[i].Param_1;
+			pCollider->m_SemiDeactive = false;
+			pCollider->m_Active = false;
+		}
+		break;
+
 		case TASK_TYPE::ADD_CHILD:
 
 			break;
@@ -126,6 +142,8 @@ void CTaskMgr::tick()
 
 			break;
 		}
+
+
 	}
 
 	m_vecTask.clear();

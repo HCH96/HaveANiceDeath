@@ -15,6 +15,5 @@ public:
 public:
     int init(HWND _HWND, Vec2 _Resolution);
     void progress();
-
 };
 

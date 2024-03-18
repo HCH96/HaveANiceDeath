@@ -26,6 +26,12 @@ enum class TASK_TYPE
 
 	// Param1 : Parent Object, Param2 : Child Object
 	DISCONNECT_PARENT,
+
+	// Param1 : Collider Adress
+	COLLIDER2D_SEMI_DEACTIVE,
+
+	// Param1 : Collider Adress
+	COLLIDER2D_DEACTIVE
 };
 
 struct tTask
