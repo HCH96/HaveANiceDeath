@@ -8,7 +8,7 @@ private:
     CStructuredBuffer* m_ParticleBuffer;
     CStructuredBuffer* m_ParticleModuleBuffer;
     CStructuredBuffer* m_SpawnCountBuffer;
-    Vec3                m_vParticleWorldPos;
+    Vec3               m_vParticleWorldPos;
 
 public:
     void SetParticleBuffer(CStructuredBuffer* _ParticleBuffer) { m_ParticleBuffer = _ParticleBuffer; }
