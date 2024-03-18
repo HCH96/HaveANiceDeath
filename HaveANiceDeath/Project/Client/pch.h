@@ -4,8 +4,12 @@
 //#define _RELEASE_GAME
 
 // Engine global Çì´õ
-#include <Engine/global.h>
+#include <Engine\global.h>
+#include <Engine\CEngine.h>
+#include <Engine\CDevice.h>
+#include <Engine/CPrefab.h>
 
+#include "CLevelSaveLoad.h"
 
 // Engine lib
 #ifdef _DEBUG
@@ -33,6 +37,6 @@ using std::wstring;
 #include "imgui_impl_win32.h"
 #include "imgui_impl_dx11.h"
 
-//#include "CImGuiMgr.h"
-//#include "CEditorObjMgr.h"
-//#include "CCreateTempLevel.h"
+#include "CImGuiMgr.h"
+#include "CEditorObjMgr.h"
+#include "CCreateTempLevel.h"
