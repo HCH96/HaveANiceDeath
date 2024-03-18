@@ -8,6 +8,18 @@
     <Filter Include="Default">
       <UniqueIdentifier>{99899384-b09c-4d4d-aa8c-4b2065464fa2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Default\ImGui">
+      <UniqueIdentifier>{27ddba51-bd7e-4500-80bc-200ab1525710}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Manager">
+      <UniqueIdentifier>{8ea0da38-52fc-4326-9ab8-297578d64b6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. UI">
+      <UniqueIdentifier>{2b661b2d-4284-460e-b0af-39ecdfbb97a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Scripts">
+      <UniqueIdentifier>{2099a64f-c36a-416e-99d3-3b29b347e0f5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -24,6 +36,30 @@
     </ClInclude>
     <ClInclude Include="pch.h">
       <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="imconfig.h">
+      <Filter>Default\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui.h">
+      <Filter>Default\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_impl_dx11.h">
+      <Filter>Default\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_impl_win32.h">
+      <Filter>Default\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_internal.h">
+      <Filter>Default\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imstb_rectpack.h">
+      <Filter>Default\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imstb_textedit.h">
+      <Filter>Default\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imstb_truetype.h">
+      <Filter>Default\ImGui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -43,6 +79,27 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pch.cpp">
       <Filter>Default</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui.cpp">
+      <Filter>Default\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_demo.cpp">
+      <Filter>Default\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_draw.cpp">
+      <Filter>Default\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_impl_dx11.cpp">
+      <Filter>Default\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_impl_win32.cpp">
+      <Filter>Default\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_tables.cpp">
+      <Filter>Default\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_widgets.cpp">
+      <Filter>Default\ImGui</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

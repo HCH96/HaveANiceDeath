@@ -1,12 +1,24 @@
 #pragma once
 
+#define IMGUI_DEFINE_MATH_OPERATORS
+//#define _RELEASE_GAME
+
 // Engine global 헤더
 #include <Engine/global.h>
 
+
+// Engine lib
 #ifdef _DEBUG
 #pragma comment(lib, "Engine\\Engine_d.lib")
 #else
 #pragma comment(lib, "Engine\\Engine.lib")
+#endif
+
+// Scripts lib
+#ifdef _DEBUG
+#pragma comment(lib, "Scripts\\Scripts_d.lib")
+#else
+#pragma comment(lib, "Scripts\\Scripts.lib")
 #endif
 
 // std 표준 라일브러리
@@ -15,3 +27,12 @@ using std::string;
 using std::wstring;
 
 #include <crtdbg.h>
+
+// imgui
+#include "imgui.h"
+#include "imgui_impl_win32.h"
+#include "imgui_impl_dx11.h"
+
+//#include "CImGuiMgr.h"
+//#include "CEditorObjMgr.h"
+//#include "CCreateTempLevel.h"

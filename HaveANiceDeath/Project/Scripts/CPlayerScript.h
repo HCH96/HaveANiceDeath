@@ -20,8 +20,9 @@ public:
 
     virtual void SaveToFile(FILE* _File) override;
     virtual void LoadFromFile(FILE* _File) override;
-    CLONE(CPlayerScript);
+    
 public:
+    CLONE(CPlayerScript);
     CPlayerScript();
     ~CPlayerScript();
 };
