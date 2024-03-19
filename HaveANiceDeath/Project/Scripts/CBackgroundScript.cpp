@@ -2,6 +2,7 @@
 #include "CBackgroundScript.h"
 
 #include <Engine/CKeyMgr.h>
+#include <Engine\CAssetMgr.h>
 
 void CBackgroundScript::SaveToFile(FILE* _File)
 {
@@ -18,6 +19,12 @@ CBackgroundScript::CBackgroundScript()
 
 CBackgroundScript::~CBackgroundScript()
 {
+}
+
+void CBackgroundScript::begin()
+{
+	MeshRender()->GetDynamicMaterial();
+	MeshRender()->GetMaterial()->SetTexParam(TEX_PARAM::TEX_0, CAssetMgr::GetInst()->Load<CTexture>(L"texture\\Background.jpg", L"texture\\Background.jpg"));
 }
 
 void CBackgroundScript::tick()
