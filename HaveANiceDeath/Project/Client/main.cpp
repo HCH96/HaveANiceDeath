@@ -50,6 +50,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     CCreateTempLevel::Init();
     CCreateTempLevel::CreateTempLevel();
 
+    const map<wstring, Ptr<CAsset>> test = CAssetMgr::GetInst()->GetAssets<CTexture>();
+
     // EditorObjectManager 초기화
     CEditorObjMgr::GetInst()->init();
 
@@ -74,6 +76,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         {
             // Engine Update
             CEngine::GetInst()->progress();
+
+
 
 #ifndef _RELEASE_GAME
             // EditorObj

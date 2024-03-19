@@ -21,6 +21,7 @@ public:
             return m_FSM_Inst;
         else
             return m_FSM;
+        
     };
 
     void AddBlackboardData(const wstring& _strKey, BB_DATA _Type, void* _pData);
