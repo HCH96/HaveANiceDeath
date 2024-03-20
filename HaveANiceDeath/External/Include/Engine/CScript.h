@@ -21,7 +21,7 @@ class CScript :
     public CComponent
 {
 private:
-    const UINT m_ScriptType;
+    const UINT              m_ScriptType;
     vector<tScriptParam>    m_ScriptParam;
 
 public:

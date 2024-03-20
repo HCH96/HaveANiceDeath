@@ -24,6 +24,8 @@ private:
     float               m_AccTime;
     bool                m_bPrevActive;
 
+    float               m_ZoomFactor;
+
 public:
     virtual void tick() override;
     virtual void begin() override;
@@ -35,6 +37,9 @@ public:
     void SetAtlas(Ptr<CTexture> _atlas) { m_AtlasTex = _atlas; }
     void SetFrmSize(int _FrmSize) { m_FrmSize = _FrmSize; }
     void Init(tAnimFrm& _Frm) { m_CurFrm = &_Frm; m_CurFrmIdx = 0; m_AccTime = 0; }
+
+private:
+    void DrawCrosshair(const ImVec2& center, float size, ImDrawList* drawList);
 
 public:
     UIAnimPreview();

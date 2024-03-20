@@ -5,12 +5,15 @@
 
 #include <Engine/CTimeMgr.h>
 #include <Engine/CAnim.h>
+#include <Engine\CKeyMgr.h>
+#include <Engine\CTimeMgr.h>
 
 UIAnimPreview::UIAnimPreview()
 	: UI("Preview", "##Animation Tool_Preview")
 	, m_FrmSize(0)
 	, m_CurFrmIdx(-1)
 	, m_AccTime(0)
+	, m_ZoomFactor(1.f)
 {
 	Deactivate();
 }
@@ -51,6 +54,20 @@ void UIAnimPreview::tick()
 		m_MainPannel->Deactivate();
 	}
 	m_bPrevActive = IsActivate();
+
+
+	// Zoom Factor 조절
+
+	if (KEY_PRESSED(KEY::LEFT))
+	{
+		m_ZoomFactor -= 1.f * DT_ENGINE;
+	}
+
+	if (KEY_PRESSED(KEY::RIGHT))
+	{
+		m_ZoomFactor += 1.f * DT_ENGINE;
+	}
+
 }
 
 void UIAnimPreview::render_update()
@@ -61,36 +78,32 @@ void UIAnimPreview::render_update()
 	// draw img
 	ImGui::BeginChild("##Prevew Image");
 
-	ImVec2 Size = ImGui::GetWindowContentRegionMax();
-	ImVec2 calcSize;
+	// size: grid
+	static float previewScaling = 800.f;
+	ImVec2 Size = ImVec2(m_CurFrm->vSlice.x, m_CurFrm->vSlice.y);
+	ImGuiIO& io = ImGui::GetIO();
 
-
-	if (m_MainPannel->GetGridSize() != ImVec2(0, 0))
+	if (io.MouseWheel != 0.0f && ImGui::IsWindowHovered())
 	{
-		ImVec2 GridSize = m_MainPannel->GetGridSize();
-		float ratio = GridSize.x / GridSize.y;
-		calcSize = Size;
-		calcSize.x = 1 / ratio * calcSize.y;
+		float zoomSpeed = 50.f;
+		float zoomDelta = io.MouseWheel * zoomSpeed;
+		previewScaling += zoomDelta;
 	}
-	else
-	{
-		m_CurFrm->vLeftTop;
-		calcSize.x = m_CurFrm->vBackground.x * m_AtlasTex->GetWidth();
-		calcSize.y = m_CurFrm->vBackground.y * m_AtlasTex->GetHeight();
-	}
+	Size *= previewScaling;
 
-	if (calcSize.y > Size.y)
-	{
-		float ratio = Size.y / calcSize.y;
-		calcSize.y = Size.y;
-		calcSize.x *= ratio;
-	}
+	// 그리는 좌표: offset 계산 (y축 좌표 반대로)
+	ImVec2 CenterPos = ImGui::GetWindowContentRegionMax() * 0.5f;
+	ImVec2 ImgPos = CenterPos - (Size * 0.5) + ImVec2(m_CurFrm->vOffset.x, m_CurFrm->vOffset.y) * previewScaling;
+	ImGui::SetCursorPos(ImgPos);
+	ImVec2 LeftTopUV = ImVec2(m_CurFrm->vLeftTop.x, m_CurFrm->vLeftTop.y);
+	ImVec2 RightBottomUV = LeftTopUV + ImVec2(m_CurFrm->vSlice.x, m_CurFrm->vSlice.y);
 
-	ImVec2 LeftTopUV = ImVec2(m_CurFrm->vLeftTop.x, m_CurFrm->vLeftTop.y) + ImVec2(m_CurFrm->vOffset.x, m_CurFrm->vOffset.y);
-	ImVec2 RightBottomUV = LeftTopUV + ImVec2(m_CurFrm->vSlice.x, m_CurFrm->vSlice.y) + ImVec2(m_CurFrm->vOffset.x, m_CurFrm->vOffset.y);
+	ImGui::Image(m_AtlasTex->GetSRV().Get(), Size, LeftTopUV, RightBottomUV);
 
-	ImGui::Image(m_AtlasTex->GetSRV().Get(), calcSize, LeftTopUV, RightBottomUV);
-	
+	// cross hair
+	ImDrawList* drawList = ImGui::GetWindowDrawList();
+	DrawCrosshair(ImGui::GetWindowPos() + CenterPos, 30.f, drawList);
+
 	ImGui::EndChild();
 }
 
@@ -101,4 +114,17 @@ void UIAnimPreview::Clear()
 	m_CurFrmIdx = -1;
 	m_FrmSize = 0;
 	m_AccTime = 0;
+}
+
+
+void UIAnimPreview::DrawCrosshair(const ImVec2& center, float size, ImDrawList* drawList) 
+{
+	float halfSize = size * 0.5f;
+	ImVec2 topLeft = ImVec2(center.x - halfSize, center.y - halfSize);
+	ImVec2 bottomRight = ImVec2(center.x + halfSize, center.y + halfSize);
+
+	drawList->AddLine(ImVec2(topLeft.x, center.y), ImVec2(bottomRight.x, center.y), IM_COL32(0, 0, 0, 255), 6);
+	drawList->AddLine(ImVec2(center.x, topLeft.y), ImVec2(center.x, bottomRight.y), IM_COL32(0, 0, 0, 255), 6);
+	drawList->AddLine(ImVec2(topLeft.x, center.y), ImVec2(bottomRight.x, center.y), IM_COL32(255, 255, 255, 255), 3);
+	drawList->AddLine(ImVec2(center.x, topLeft.y), ImVec2(center.x, bottomRight.y), IM_COL32(255, 255, 255, 255), 3);
 }

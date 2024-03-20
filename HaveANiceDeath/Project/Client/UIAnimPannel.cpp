@@ -475,6 +475,21 @@ void openFileDialog(vector<wstring>& _FilesName)
 		hr = pFileDialog->SetOptions(dwOptions | FOS_ALLOWMULTISELECT);
 	}
 
+	if (SUCCEEDED(hr)) {
+		// 원하는 초기 디렉토리 경로를 여기에 설정
+		wstring MetaPath = CPathMgr::GetContentPath();
+		MetaPath += L"meta";
+
+		PWSTR initialDir = (PWSTR)(MetaPath.c_str());
+
+		IShellItem* pInitialDirItem;
+
+		hr = SHCreateItemFromParsingName(initialDir, NULL, IID_IShellItem, reinterpret_cast<void**>(&pInitialDirItem));
+
+		// 파일 대화 상자 인터페이스에 초기 디렉토리 설정
+		hr = pFileDialog->SetFolder(pInitialDirItem);
+	}
+
 	// 파일 필터 설정
 	COMDLG_FILTERSPEC fileTypes[] = { { L"All Files", L"*.*" }, { L"Text Files", L"*.txt" }, { L"FBX Files", L"*.fbx" } };
 	hr = pFileDialog->SetFileTypes(ARRAYSIZE(fileTypes), fileTypes);
