@@ -49,8 +49,8 @@ public:
 
     void SaveToFile(FILE* _File);
     void LoadFromFile(FILE* _File);
-    CLONE(CAnim);
 public:
+    CLONE(CAnim);
     CAnim();
     CAnim(const CAnim& _OriginAnim);
     ~CAnim();

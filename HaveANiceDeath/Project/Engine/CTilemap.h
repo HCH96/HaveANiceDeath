@@ -27,7 +27,7 @@ private:
     UINT                m_MaxRow;
 
     vector<tTileInfo>   m_vecTileInfo;
-    CStructuredBuffer* m_TileInfoBuffer;
+    CStructuredBuffer*  m_TileInfoBuffer;
 
 public:
     void SetTileAtlas(Ptr<CTexture> _Atlas, Vec2 _TilePixelSize);

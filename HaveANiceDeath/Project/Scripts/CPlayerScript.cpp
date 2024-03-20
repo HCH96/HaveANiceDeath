@@ -25,28 +25,33 @@ CPlayerScript::~CPlayerScript()
 void CPlayerScript::begin()
 {
 	Ptr<CTexture> pAltasTex = CAssetMgr::GetInst()->Load<CTexture>(L"texture\\link.png", L"texture\\link.png");
-	Animator2D()->Create(L"IDLE_UP", pAltasTex, Vec2(0.f, 260.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 1, 10);
-	Animator2D()->Create(L"IDLE_DOWN", pAltasTex, Vec2(0.f, 0.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 3, 10);
-	Animator2D()->Create(L"IDLE_LEFT", pAltasTex, Vec2(0.f, 130.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 3, 10);
-	Animator2D()->Create(L"IDLE_RIGHT", pAltasTex, Vec2(0.f, 390.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 3, 10);
+	//Animator2D()->Create(L"IDLE_UP", pAltasTex, Vec2(0.f, 260.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 1, 10);
+	//Animator2D()->Create(L"IDLE_DOWN", pAltasTex, Vec2(0.f, 0.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 3, 10);
+	//Animator2D()->Create(L"IDLE_LEFT", pAltasTex, Vec2(0.f, 130.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 3, 10);
+	//Animator2D()->Create(L"IDLE_RIGHT", pAltasTex, Vec2(0.f, 390.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 3, 10);
 
-	Animator2D()->Create(L"MOVE_UP", pAltasTex, Vec2(0.f, 780.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 10, 20);
-	Animator2D()->Create(L"MOVE_DOWN", pAltasTex, Vec2(0.f, 520.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 10, 20);
-	Animator2D()->Create(L"MOVE_LEFT", pAltasTex, Vec2(0.f, 650.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 10, 20);
-	Animator2D()->Create(L"MOVE_RIGHT", pAltasTex, Vec2(0.f, 910.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 10, 20);
 
-	wstring contentPath = CPathMgr::GetContentPath();
-	contentPath += L"animation\\Untitled.anim";
+	pAltasTex = CAssetMgr::GetInst()->Load<CTexture>(L"texture\\test1.png", L"texture\\test1.png");
+	Animator2D()->Create(L"MOVE_UP", pAltasTex, Vec2(0.f, 0.f), Vec2(80.f, 64.f), Vec2(0.f, 0.f), Vec2(80.f, 64.f), 11, 20);
 
-	FILE* pFile = nullptr;
-	_wfopen_s(&pFile, contentPath.c_str(), L"rb");
+	pAltasTex = CAssetMgr::GetInst()->Load<CTexture>(L"texture\\test2.png", L"texture\\test2.png");
+	Animator2D()->Create(L"MOVE_DOWN", pAltasTex, Vec2(0.f, 0.f), Vec2(32.f, 32.f), Vec2(0.f, 0.f), Vec2(32.f, 32.f), 3, 20);
+	//Animator2D()->Create(L"MOVE_LEFT", pAltasTex, Vec2(0.f, 650.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 10, 20);
+	//Animator2D()->Create(L"MOVE_RIGHT", pAltasTex, Vec2(0.f, 910.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 10, 20);
 
-	CAnim* pAnim = new CAnim;
-	pAnim->LoadFromFile(pFile);
+	// Animation Loading
+	//wstring contentPath = CPathMgr::GetContentPath();
+	//contentPath += L"animation\\Untitled.anim";
+
+	//FILE* pFile = nullptr;
+	//_wfopen_s(&pFile, contentPath.c_str(), L"rb");
+
+	//CAnim* pAnim = new CAnim;
+	//pAnim->LoadFromFile(pFile);
 
 
 	//Animator2D()->LoadFromFile(pFile);
-	fclose(pFile);
+	//fclose(pFile);
 
 	GetRenderComponent()->GetDynamicMaterial();
 
