@@ -71,7 +71,6 @@ void UI::render()
 
 				ImGui::EndPopup();
 			}
-
 			else
 			{
 				// 활성화, 비활성화 전환이 발생한 경우에는 Activate or Deactivate 를 호출시킨다.

@@ -17,6 +17,11 @@
 #include "MenuUI.h"
 #include "ListUI.h"
 
+#include "UIAnimPannel.h"
+#include "UIAnimDetail.h"
+#include "UIAnimPreview.h"
+
+
 #include "ParamUI.h"
 
 CImGuiMgr::CImGuiMgr()
@@ -99,6 +104,14 @@ void CImGuiMgr::init(HWND _hMainWnd, ComPtr<ID3D11Device> _Device
     m_hNotify = FindFirstChangeNotification(strContentPath.c_str(), true
         , FILE_NOTIFY_CHANGE_FILE_NAME | FILE_NOTIFY_CHANGE_DIR_NAME
         | FILE_ACTION_ADDED | FILE_ACTION_REMOVED);
+}
+
+void CImGuiMgr::begin()
+{
+    for (const auto& pair : m_mapUI)
+    {
+        pair.second->begin();
+    }
 }
 
 void CImGuiMgr::progress()
@@ -191,6 +204,17 @@ void CImGuiMgr::create_ui()
     // List
     pUI = new ListUI;
     AddUI(pUI->GetID(), pUI);
+
+    // Animation Tool
+    pUI = new UIAnimPannel;
+    AddUI(pUI->GetID(), pUI);
+
+    pUI = new UIAnimDetail;
+    AddUI(pUI->GetID(), pUI);
+
+    pUI = new UIAnimPreview;
+    AddUI(pUI->GetID(), pUI);
+
 }
 
 void CImGuiMgr::observe_content()

@@ -8,6 +8,7 @@
 #include <Engine/CMaterial.h>
 #include <Engine/CRenderComponent.h>
 
+#include <Engine/CAnim.h>
 
 CPlayerScript::CPlayerScript()
 	: CScript(PLAYERSCRIPT)
@@ -33,6 +34,19 @@ void CPlayerScript::begin()
 	Animator2D()->Create(L"MOVE_DOWN", pAltasTex, Vec2(0.f, 520.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 10, 20);
 	Animator2D()->Create(L"MOVE_LEFT", pAltasTex, Vec2(0.f, 650.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 10, 20);
 	Animator2D()->Create(L"MOVE_RIGHT", pAltasTex, Vec2(0.f, 910.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 10, 20);
+
+	wstring contentPath = CPathMgr::GetContentPath();
+	contentPath += L"animation\\Untitled.anim";
+
+	FILE* pFile = nullptr;
+	_wfopen_s(&pFile, contentPath.c_str(), L"rb");
+
+	CAnim* pAnim = new CAnim;
+	pAnim->LoadFromFile(pFile);
+
+
+	//Animator2D()->LoadFromFile(pFile);
+	fclose(pFile);
 
 	GetRenderComponent()->GetDynamicMaterial();
 
@@ -85,7 +99,9 @@ void CPlayerScript::tick()
 
 	if (KEY_PRESSED(KEY::Z))
 	{
-		vRot.z += DT * XM_PI;
+		
+		//vRot.z += DT * XM_PI;
+		Animator2D()->Play(L"Untitled");
 	}
 	
 	Transform()->SetRelativePos(vPos);

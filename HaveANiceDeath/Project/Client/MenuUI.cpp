@@ -19,6 +19,7 @@
 #include "Inspector.h"
 #include "CLevelSaveLoad.h"
 
+#include "UIAnimPannel.h"
 
 
 MenuUI::MenuUI()
@@ -247,6 +248,20 @@ void MenuUI::Asset()
             pMtrl->SetName(szPath);
             pMtrl->Save(szPath);
             GamePlayStatic::AddAsset(pMtrl);
+        }
+
+        ImGui::EndMenu();
+    }
+}
+
+void MenuUI::Tool()
+{
+    if (ImGui::BeginMenu("Tool"))
+    {
+        if (ImGui::MenuItem("Create Animation"))
+        {
+            UIAnimPannel* pAnimToolMain = (UIAnimPannel*)CImGuiMgr::GetInst()->FindUI("##Animation Tool_Main");
+            pAnimToolMain->Activate();  // UIAnimPannel가 관련된 창 모두 같이 끄고 닫음 처리
         }
 
         ImGui::EndMenu();

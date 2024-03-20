@@ -12,7 +12,7 @@ class CAnimator2D :
 {
 private:
     map<wstring, CAnim*>    m_mapAnim;
-    CAnim* m_CurAnim;
+    CAnim*                  m_CurAnim;
     bool                    m_bRepeat;
 
 public:

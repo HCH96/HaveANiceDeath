@@ -36,7 +36,10 @@ public:
     Ptr<T> FindAsset(const wstring& _strKey);
 
     template<typename T>
-    Ptr<T> Load(const wstring& _strKey, const wstring& _strRelativePath);
+    Ptr<T> Load(const wstring& _strKey, const wstring& _strRelativePath, bool _bAbsol = false);
+
+    template<typename T>
+    Ptr<T> Load(const wstring& _strRelativePath);
 
     // _Flag : D3D11_BIND_FLAG
     Ptr<CTexture> CreateTexture(const wstring& _strKey, UINT _Width, UINT _Height, DXGI_FORMAT _Format, UINT _Flag, D3D11_USAGE _Usage = D3D11_USAGE_DEFAULT);
@@ -127,7 +130,7 @@ Ptr<T> CAssetMgr::FindAsset(const wstring& _strKey)
 
 
 template<typename T>
-Ptr<T> CAssetMgr::Load(const wstring& _strKey, const wstring& _strRelativePath)
+Ptr<T> CAssetMgr::Load(const wstring& _strKey, const wstring& _strRelativePath, bool _bAbsol)
 {
     Ptr<T> pAsset = FindAsset<T>(_strKey);
 
@@ -137,8 +140,11 @@ Ptr<T> CAssetMgr::Load(const wstring& _strKey, const wstring& _strRelativePath)
         return (T*)pAsset.Get();
     }
 
-    wstring strFilePath = CPathMgr::GetContentPath();
-    strFilePath += _strRelativePath;
+    wstring strFilePath;
+    if (_bAbsol)
+        strFilePath = _strRelativePath;
+    else
+        strFilePath = CPathMgr::GetContentPath() + _strRelativePath;
 
     pAsset = new T;
     if (FAILED(pAsset->Load(strFilePath)))
@@ -152,6 +158,35 @@ Ptr<T> CAssetMgr::Load(const wstring& _strKey, const wstring& _strRelativePath)
     pAsset->SetRelativePath(_strRelativePath);
 
     AddAsset<T>(_strKey, (T*)pAsset.Get());
+
+    return (T*)pAsset.Get();
+}
+
+template<typename T>
+inline Ptr<T> CAssetMgr::Load(const wstring& _strRelativePath)
+{
+    Ptr<T> pAsset = FindAsset<T>(_strRelativePath);
+
+    // 로딩할 때 사용할 키로 이미 다른 에셋이 있다면
+    if (nullptr != pAsset)
+    {
+        return (T*)pAsset.Get();
+    }
+
+    wstring strFilePath = CPathMgr::GetContentPath() + _strRelativePath;
+
+    pAsset = new T;
+    if (FAILED(pAsset->Load(strFilePath)))
+    {
+        MessageBox(nullptr, L"에셋 로딩 실패", L"에셋 로딩 실패", MB_OK);
+        pAsset = nullptr;
+        return nullptr;
+    }
+
+    pAsset->SetKey(_strRelativePath);
+    pAsset->SetRelativePath(_strRelativePath);
+
+    AddAsset<T>(_strRelativePath, (T*)pAsset.Get());
 
     return (T*)pAsset.Get();
 }

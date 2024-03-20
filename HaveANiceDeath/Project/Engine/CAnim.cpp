@@ -96,6 +96,32 @@ void CAnim::Create(CAnimator2D* _Animator, Ptr<CTexture> _Atlas, Vec2 _vLeftTop,
 	}
 }
 
+void CAnim::Create(CAnimator2D* _Animator, Ptr<CTexture> _Atlas, const vector<tAnimFrm> _vecFrm, bool aleardyUV)
+{
+	m_Animator = _Animator;
+	m_AtlasTex = _Atlas;
+
+	if (not aleardyUV)
+	{
+		for (int i = 0; i < _vecFrm.size(); ++i)
+		{
+			tAnimFrm frm = {};
+			frm.vSlice = Vec2(_vecFrm[i].vSlice.x / (float)_Atlas->GetWidth(), _vecFrm[i].vSlice.y / (float)_Atlas->GetHeight());
+			frm.vLeftTop = Vec2(_vecFrm[i].vLeftTop.x / (float)_Atlas->GetWidth(), _vecFrm[i].vLeftTop.y / (float)_Atlas->GetHeight());
+			frm.vOffset = Vec2(_vecFrm[i].vOffset.x / (float)_Atlas->GetWidth(), _vecFrm[i].vOffset.y / (float)_Atlas->GetHeight());
+			frm.Duration = _vecFrm[i].Duration;
+			frm.vBackground = Vec2(_vecFrm[i].vBackground.x / (float)_Atlas->GetWidth(), _vecFrm[i].vBackground.y / (float)_Atlas->GetHeight());
+
+			m_vecFrm.push_back(frm);
+		}
+	}
+	else
+	{
+		m_vecFrm = _vecFrm;
+	}
+
+}
+
 void CAnim::SaveToFile(FILE* _File)
 {
 	// 애니메이션 이름 저장

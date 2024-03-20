@@ -65,6 +65,7 @@ void CAnimator2D::Create(const wstring& _strKey, Ptr<CTexture> _AtlasTex, Vec2 _
 	CAnim* pAnim = FindAnim(_strKey);
 	assert(!pAnim);
 
+
 	if (_AtlasTex == nullptr)
 	{
 		MessageBox(nullptr, L"애니메이션의 아틀라스가 존재하지 않습니다.", L"Animation Create Failed", MB_OK);
@@ -73,6 +74,7 @@ void CAnimator2D::Create(const wstring& _strKey, Ptr<CTexture> _AtlasTex, Vec2 _
 
 	pAnim = new CAnim;
 	pAnim->Create(this, _AtlasTex, _LeftTop, _vSliceSize, _OffsetSize, _Background, _FrmCount, _FPS);
+	pAnim->SetName(_strKey);
 	m_mapAnim.insert(make_pair(_strKey, pAnim));
 }
 

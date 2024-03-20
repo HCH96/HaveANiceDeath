@@ -29,6 +29,9 @@ private:
     float               m_AccTime;
 
 public:
+    Ptr<CTexture> GetAtlas() { return m_AtlasTex; }
+
+public:
     void finaltick();
     void UpdateData();
 
@@ -41,9 +44,8 @@ public:
     }
 
     static void Clear();
-    void Create(CAnimator2D* _Animator, Ptr<CTexture> _Atlas, Vec2 _vLeftTop
-        , Vec2 _vSliceSize, Vec2 _vOffset, Vec2 _vBackground, int _FrmCount, float _FPS);
-
+    void Create(CAnimator2D* _Animator, Ptr<CTexture> _Atlas, Vec2 _vLeftTop, Vec2 _vSliceSize, Vec2 _vOffset, Vec2 _vBackground, int _FrmCount, float _FPS);
+    void Create(CAnimator2D* _Animator, Ptr<CTexture> _Atlas, const vector<tAnimFrm> _vecFrm, bool aleardyUV);
 
     void SaveToFile(FILE* _File);
     void LoadFromFile(FILE* _File);
@@ -53,5 +55,7 @@ public:
     CAnim(const CAnim& _OriginAnim);
     ~CAnim();
 
+    
+    friend class UIAnimPannel;
     friend class CAnimator2D;
 };

@@ -9,6 +9,9 @@ public:
     virtual void render() override;
     virtual void render_update() override;
 
+public:
+    void Tool();
+
 private:
     void File();
     void Level();

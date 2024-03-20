@@ -193,6 +193,9 @@
     <ClInclude Include="TransformUI.h" />
     <ClInclude Include="TreeUI.h" />
     <ClInclude Include="UI.h" />
+    <ClInclude Include="UIAnimDetail.h" />
+    <ClInclude Include="UIAnimPannel.h" />
+    <ClInclude Include="UIAnimPreview.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animator2DUI.cpp" />
@@ -237,6 +240,9 @@
     <ClCompile Include="TransformUI.cpp" />
     <ClCompile Include="TreeUI.cpp" />
     <ClCompile Include="UI.cpp" />
+    <ClCompile Include="UIAnimDetail.cpp" />
+    <ClCompile Include="UIAnimPannel.cpp" />
+    <ClCompile Include="UIAnimPreview.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc" />
