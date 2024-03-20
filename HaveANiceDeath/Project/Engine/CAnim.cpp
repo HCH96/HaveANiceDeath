@@ -55,6 +55,7 @@ void CAnim::UpdateData()
 	data.vOffset = m_vecFrm[m_CurFrmIdx].vOffset;
 	data.vSlizeSize = m_vecFrm[m_CurFrmIdx].vSlice;
 	data.vBackGround = m_vecFrm[m_CurFrmIdx].vBackground;
+	data.vAtlasSize = Vec2(m_AtlasTex->GetWidth(), m_AtlasTex->GetHeight());
 
 	pCB->SetData(&data);
 	pCB->UpdateData();

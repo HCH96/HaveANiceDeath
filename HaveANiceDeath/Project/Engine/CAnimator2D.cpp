@@ -106,7 +106,6 @@ void CAnimator2D::Play(const wstring& _strAnimName, bool _bRepeat)
 	FrmSize.y = FrmSize.y * m_CurAnim->m_AtlasTex->GetHeight();
 
 	Transform()->SetRelativeScale(Vec3(FrmSize.x, FrmSize.y, 1));
-	Transform()->UpdateData();
 }
 
 void CAnimator2D::SaveToFile(FILE* _File)

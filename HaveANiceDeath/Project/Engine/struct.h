@@ -154,7 +154,9 @@ struct tAnimData2D
 	Vec2 vBackGround;
 	Vec2 vOffset;
 	int  UseAnim2D;
-	Vec3 vPadding;
+	Vec2 vAtlasSize;
+
+	int vPadding;
 };
 
 struct tGlobalData

@@ -6,8 +6,8 @@
 
 struct VS_IN
 {
-    float4 vColor : COLOR;
     float3 vPos : POSITION; // Sementic
+    float4 vColor : COLOR;
     float2 vUV : TEXCOORD;
 };
 
@@ -23,12 +23,23 @@ struct VS_OUT
 VS_OUT VS_Std2D(VS_IN _in)
 {   
     VS_OUT output = (VS_OUT) 0.f;
+
+    // World로 이동
+    output.vPosition = mul(float4(_in.vPos, 1.f), g_matWorld);
     
-    output.vPosition = mul(float4(_in.vPos, 1.f), g_matWVP);
+    // Offset 가져오기
+    float2 vOffset = { g_vOffset.x * g_vAtlasSize.x, g_vOffset.y * g_vAtlasSize.y };
+    output.vPosition += float4(vOffset.x, vOffset.y, 0.f, 0.f);
+    
+    // World 저장
+    output.vWorldPos = output.vPosition;
+    
+    // View, Proj 행렬 
+    output.vPosition = mul(output.vPosition, g_matView);
+    output.vPosition = mul(output.vPosition, g_matProj);
+    
     output.vColor = _in.vColor;
     output.vUV = _in.vUV;
-    
-    output.vWorldPos = mul(float4(_in.vPos, 1.f), g_matWorld);
     
     return output;
 }
@@ -42,20 +53,18 @@ float4 PS_Std2D(VS_OUT _in) : SV_Target
     
     if (g_UseAnim2D)
     {
+        // Background
         float2 vBackgroundLeftTop = g_vLeftTop + (g_vSlizeSize / 2.f) - (g_vBackground / 2.f);
-        vBackgroundLeftTop -= g_vOffset;
-        float2 vUV = vBackgroundLeftTop + (g_vBackground * _in.vUV);
+        // vBackgroundLeftTop -= g_vOffset;
+        float2 vUV = vBackgroundLeftTop + (_in.vUV * g_vBackground); //UV는 한 프레임의 크기를 대상으로 함
         
-        if (vUV.x < g_vLeftTop.x || (g_vLeftTop.x + g_vSlizeSize.x) < vUV.x
-            || vUV.y < g_vLeftTop.y || (g_vLeftTop.y + g_vSlizeSize.y) < vUV.y)
-        {
-            //vColor = float4(1.f, 1.f, 0.f, 1.f);
+        // 가져오려는 이미지를 벗어나면 그리지 않음
+        // 즉, 부족한 부분에 대해서만 더 그림
+        if (vUV.x < g_vLeftTop.x || vUV.x > g_vLeftTop.x + g_vSlizeSize.x
+            || vUV.y < g_vLeftTop.y || vUV.y > g_vLeftTop.y + g_vSlizeSize.y)
             discard;
-        }
         else
-        {
             vColor = g_anim2d_tex.Sample(g_sam_1, vUV);
-        }
     }
     else
     {

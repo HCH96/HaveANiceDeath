@@ -32,10 +32,10 @@ void CPlayerScript::begin()
 
 
 	pAltasTex = CAssetMgr::GetInst()->Load<CTexture>(L"texture\\test1.png", L"texture\\test1.png");
-	Animator2D()->Create(L"MOVE_UP", pAltasTex, Vec2(0.f, 0.f), Vec2(80.f, 64.f), Vec2(0.f, 0.f), Vec2(80.f, 64.f), 11, 20);
+	Animator2D()->Create(L"MOVE_UP", pAltasTex, Vec2(0.f, 0.f), Vec2(80.f, 64.f), Vec2(100.f, 100.f), Vec2(80.f, 64.f), 11, 20);
 
 	pAltasTex = CAssetMgr::GetInst()->Load<CTexture>(L"texture\\test2.png", L"texture\\test2.png");
-	Animator2D()->Create(L"MOVE_DOWN", pAltasTex, Vec2(0.f, 0.f), Vec2(32.f, 32.f), Vec2(0.f, 0.f), Vec2(32.f, 32.f), 3, 20);
+	Animator2D()->Create(L"MOVE_DOWN", pAltasTex, Vec2(0.f, 0.f), Vec2(32.f, 32.f), Vec2(100.f, 100.f), Vec2(32.f, 32.f), 3, 20);
 	//Animator2D()->Create(L"MOVE_LEFT", pAltasTex, Vec2(0.f, 650.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 10, 20);
 	//Animator2D()->Create(L"MOVE_RIGHT", pAltasTex, Vec2(0.f, 910.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 10, 20);
 
