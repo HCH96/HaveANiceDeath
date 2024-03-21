@@ -27,14 +27,7 @@ void Animator2DUI::render_update()
 	if (ImGui::Button("Create Animation"))
 	{
 
-		UIAnimDetail* pUIAnimDetail = (UIAnimDetail*)CImGuiMgr::GetInst()->FindUI("##Animation Tool_Detail");
-		pUIAnimDetail->Activate();
 
-		UIAnimPannel* pUIAnimPannel = (UIAnimPannel*)CImGuiMgr::GetInst()->FindUI("##Animation Tool_Main");
-		pUIAnimPannel->Activate();
-
-		UIAnimPreview* pUIAnimPreview = (UIAnimPreview*)CImGuiMgr::GetInst()->FindUI("##Animation Tool_Preview");
-		pUIAnimPreview->Activate();
 	}
 
 

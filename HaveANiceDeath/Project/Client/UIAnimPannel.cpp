@@ -573,7 +573,6 @@ Vec2 LoadMeta(const wstring& _strMetaRelativePath)
 				if (!wcscmp(szRead, L"{x:"))
 				{
 					fwscanf_s(pFile, L"%f", &retVec.x);
-					retVec.x *= -1;
 				}
 				if (!wcscmp(szRead, L"y:"))
 				{

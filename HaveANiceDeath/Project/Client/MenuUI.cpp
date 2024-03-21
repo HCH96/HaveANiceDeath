@@ -47,6 +47,8 @@ void MenuUI::render_update()
 
     Level();
 
+    Tool();
+
     GameObject();
     
     Asset();
@@ -261,7 +263,7 @@ void MenuUI::Tool()
         if (ImGui::MenuItem("Create Animation"))
         {
             UIAnimPannel* pAnimToolMain = (UIAnimPannel*)CImGuiMgr::GetInst()->FindUI("##Animation Tool_Main");
-            pAnimToolMain->Activate();  // UIAnimPannel가 관련된 창 모두 같이 끄고 닫음 처리
+            pAnimToolMain->Activate();
         }
 
         ImGui::EndMenu();
