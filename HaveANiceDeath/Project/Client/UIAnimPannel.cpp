@@ -89,7 +89,7 @@ void UIAnimPannel::render_update()
 
 		for (size_t i = 0; i < FilesName.size(); ++i)
 		{
-			Vec2 CurFrmOffset = LoadMeta(FilesName[FilesName.size() - i - 1]);
+			Vec2 CurFrmOffset = LoadMeta(FilesName[i]);
 			m_vecOffset.push_back(CurFrmOffset);
 		}
 	}
@@ -541,10 +541,9 @@ void openFileDialog(vector<wstring>& _FilesName)
 Vec2 LoadMeta(const wstring& _strMetaRelativePath)
 {
 	Vec2 retVec = { -1,-1 };
-
 	FILE* pFile = nullptr;
 
-	_wfopen_s(&pFile, _strMetaRelativePath.c_str(), L"r");
+	_wfopen_s(&pFile, (_strMetaRelativePath).c_str(), L"r");
 
 	if (nullptr == pFile)
 	{
@@ -574,7 +573,7 @@ Vec2 LoadMeta(const wstring& _strMetaRelativePath)
 				if (!wcscmp(szRead, L"{x:"))
 				{
 					fwscanf_s(pFile, L"%f", &retVec.x);
-
+					retVec.x *= -1;
 				}
 				if (!wcscmp(szRead, L"y:"))
 				{
@@ -591,7 +590,7 @@ Vec2 LoadMeta(const wstring& _strMetaRelativePath)
 					float tmp = wcstof(szRead, &end);
 
 					if (*end == L'\0') {
-						retVec.y = -tmp;
+						retVec.y = tmp;
 					}
 
 					return retVec;
