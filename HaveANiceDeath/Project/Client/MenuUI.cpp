@@ -197,7 +197,7 @@ void MenuUI::GameObject()
 
         if (ImGui::BeginMenu("Component", ""))
         {
-            if (ImGui::MenuItem("Cut", "CTRL+X")) {}
+            if (ImGui::MenuItem(u8"메이플스토리", "CTRL+X")) {}
             if (ImGui::MenuItem("Copy", "CTRL+C")) {}
             if (ImGui::MenuItem("Paste", "CTRL+V")) {}
 

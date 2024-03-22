@@ -29,6 +29,7 @@ public:
     void progress();
 
 private:
+    void thema();
     void tick();
     void render();
     void create_ui();
