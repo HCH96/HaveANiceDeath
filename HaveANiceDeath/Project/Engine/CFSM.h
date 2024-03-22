@@ -10,7 +10,7 @@ class CFSM :
 {
 private:
     CFSM* m_Master;
-    CStateMachine* m_StateMachie; // FSM 을 사용하는 StateMachine;
+    CStateMachine* m_StateMachine; // FSM 을 사용하는 StateMachine;
 
     map<wstring, CState*>   m_mapState;
     CBlackboard* m_Blackboard;
@@ -25,14 +25,17 @@ public:
     {
         if (m_Master)
         {
-            m_StateMachie = _SM;
+            m_StateMachine = _SM;
         }
     }
     CFSM* GetFSMIstance();
 
-    CStateMachine* GetStateMachine() { return m_StateMachie; }
+    CStateMachine* GetStateMachine() { return m_StateMachine; }
     void ChangeState(const wstring& _strStateName);
 
+
+    virtual int Save(const wstring& _strRelativePath);
+    virtual int Load(const wstring& _strFilePath);
 
 public:
     void finaltick();

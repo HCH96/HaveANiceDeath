@@ -18,6 +18,13 @@
 #pragma comment(lib, "Engine\\Engine.lib")
 #endif
 
+// State lib
+#ifdef _DEBUG
+#pragma comment(lib, "States\\States_d.lib")
+#else
+#pragma comment(lib, "States\\States.lib")
+#endif
+
 // Scripts lib
 #ifdef _DEBUG
 #pragma comment(lib, "Scripts\\Scripts_d.lib")

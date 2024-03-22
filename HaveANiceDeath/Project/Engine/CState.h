@@ -8,7 +8,12 @@ class CState :
     public CEntity
 {
 private:
-    CFSM* m_FSM;
+
+    const UINT              m_StateType;
+    CFSM*                   m_FSM;
+
+public:
+    UINT GetStateType() { return m_StateType; }
 
 public:
     virtual void finaltick() = 0;
@@ -21,11 +26,13 @@ protected:
 
     void ChangeState(const wstring& _strStateName);
 
+    virtual void SaveToFile(FILE* _File) {}
+    virtual void LoadFromFile(FILE* _File) {}
 
 public:
     CLONE_DISABLE(CState);
 
-    CState();
+    CState(UINT StateType);
     ~CState();
 
     friend class CFSM;

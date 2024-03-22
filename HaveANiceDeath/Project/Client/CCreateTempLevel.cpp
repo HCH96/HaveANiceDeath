@@ -25,6 +25,7 @@
 #include <Engine/CPrefab.h>
 #include <Engine/CFSM.h>
 
+#include <States\CIdleState.h>
 
 
 void CCreateTempLevel::Init()
@@ -51,12 +52,22 @@ void CCreateTempLevel::Init()
 	*/
 
 	// 임시 FSM 객체 에셋 하나 생성하기
-	//Ptr<CFSM>	pFSM = new CFSM(true);
+	//CFSM* pFSM = new CFSM(true);
 
 	//pFSM->AddState(L"IdleState", new CIdleState);
-	//pFSM->AddState(L"TraceState", new CTraceState);
+	////pFSM->AddState(L"TraceState", new CTraceState);
 
-	//CAssetMgr::GetInst()->AddAsset<CFSM>(L"NormalMonsterFSM", pFSM.Get());
+	//wchar_t szPath[255] = {};
+	//wstring FilePath = CPathMgr::GetContentPath();
+
+	//swprintf_s(szPath, L"FSM//TestFSM.fsm");
+
+	//pFSM->SetName(szPath);
+	//pFSM->Save(szPath);
+
+	//CAssetMgr::GetInst()->AddAsset<CFSM>(szPath, pFSM);
+
+
 }
 
 void CCreateTempLevel::CreateTempLevel()
@@ -154,6 +165,7 @@ void CCreateTempLevel::CreateTempLevel()
 	pObj->AddComponent(new CMeshRender);
 	pObj->AddComponent(new CCollider2D);
 	pObj->AddComponent(new CAnimator2D);
+	pObj->AddComponent(new CStateMachine);
 	pObj->AddComponent(new CPlayerScript);
 
 	pObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 500.f));
@@ -166,6 +178,15 @@ void CCreateTempLevel::CreateTempLevel()
 	pObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
 	pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"Std2DMtrl"));
 	pObj->MeshRender()->GetMaterial()->SetTexParam(TEX_PARAM::TEX_0, CAssetMgr::GetInst()->Load<CTexture>(L"texture\\Fighter.bmp", L"texture\\Fighter.bmp"));
+
+	wchar_t szPath[255] = {};
+	wstring FilePath = CPathMgr::GetContentPath();
+
+	swprintf_s(szPath, L"FSM//TestFSM.fsm");
+
+	pObj->StateMachine()->SetFSM(CAssetMgr::GetInst()->FindAsset<CFSM>(szPath));
+
+
 
 	pTempLevel->AddObject(pObj, L"Player", false);
 

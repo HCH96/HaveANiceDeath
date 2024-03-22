@@ -56,8 +56,5 @@
     <Filter Include="ScriptMgr">
       <UniqueIdentifier>{b42de7fc-e585-40cf-9c65-79e91e2b59d4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="State">
-      <UniqueIdentifier>{e4bd093e-ab22-479c-b840-0254715b9203}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
 </Project>

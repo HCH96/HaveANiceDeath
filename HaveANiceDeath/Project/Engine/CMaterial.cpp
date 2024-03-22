@@ -131,7 +131,7 @@ int CMaterial::Save(const wstring& _strRelativePath)
 
 	fclose(pFile);
 
-	return 0;
+	return S_OK;
 }
 
 int CMaterial::Load(const wstring& _strFilePath)
@@ -142,7 +142,7 @@ int CMaterial::Load(const wstring& _strFilePath)
 	if (nullptr == pFile)
 		return E_FAIL;
 
-	// 재질 상수값 저장
+	// 재질 상수값 로드
 	fread(&m_Const, sizeof(tMtrlConst), 1, pFile);
 
 
@@ -152,12 +152,12 @@ int CMaterial::Load(const wstring& _strFilePath)
 		LoadAssetRef<CTexture>(m_arrTex[i], pFile);
 	}
 
-	// 재질이 참조하는 쉐이더 정보를 저장
+	// 재질이 참조하는 쉐이더 정보를 로드
 	LoadAssetRef<CGraphicsShader>(m_pShader, pFile);
 
 	fclose(pFile);
 
-	return 0;
+	return S_OK;
 }
 
 void CMaterial::operator=(const CMaterial& _OtherMtrl)
