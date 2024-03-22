@@ -19,6 +19,7 @@ void CStateMachine::begin()
 		m_FSM_Inst = m_FSM->GetFSMIstance();
 		m_FSM_Inst->SetStateMachine(this);
 	}
+
 }
 
 void CStateMachine::finaltick()
@@ -31,6 +32,20 @@ void CStateMachine::SetFSM(Ptr<CFSM> _FSM)
 {
 	m_FSM = _FSM;
 	m_FSM_Inst = nullptr;
+}
+
+Ptr<CFSM> CStateMachine::GetFSM()
+{
+	if (nullptr == m_FSM)
+		return nullptr;
+
+	if (!m_FSM_Inst.Get())
+	{
+		//return m_FSM_Origin;  // @TODO: Instance 안만들고?
+		m_FSM_Inst = m_FSM->GetFSMIstance();
+	}
+
+	return m_FSM_Inst;
 }
 
 void CStateMachine::AddBlackboardData(const wstring& _strKey, BB_DATA _Type, void* _pData)

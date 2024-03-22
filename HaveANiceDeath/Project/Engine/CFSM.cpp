@@ -3,30 +3,38 @@
 
 #include <States\CStateMgr.h>
 
+#include "CTaskMgr.h"
+#include "CStateMachine.h"
+
 #include "CBlackboard.h"
 
 #include "CState.h"
 
 
-CFSM::CFSM(bool _bEngine)
+CFSM::CFSM(CFSM* _Origin, bool _bEngine)
 	: CAsset(ASSET_TYPE::FSM, _bEngine)
-	, m_Master(nullptr)
+	, m_Master(_Origin)
+	, m_Blackboard(nullptr)
 	, m_StateMachine(nullptr)
+	, m_CurState(nullptr)
 {
-	m_Blackboard = new CBlackboard;
-
+	// case: original FSM
+	if (!m_Master)
+		m_Blackboard = new CBlackboard();
 }
 
 CFSM::~CFSM()
 {
+	// case: original FSM
 	if (!m_Master)
 	{
 		Delete_Map(m_mapState);
-
-		delete m_Blackboard;
+		if (m_Blackboard)
+		{
+			delete m_Blackboard;
+		}
 	}
 }
-
 void CFSM::finaltick()
 {
 	if (m_CurState)
@@ -54,14 +62,9 @@ CState* CFSM::FindState(const wstring& _StateName)
 	return iter->second;
 }
 
-void CFSM::SetState(const wstring& _strState)
-{
-	m_CurState = FindState(_strState);
-}
-
 CFSM* CFSM::GetFSMIstance()
 {
-	CFSM* pFSMInst = new CFSM;
+	CFSM* pFSMInst = new CFSM(this, true);
 
 	pFSMInst->m_mapState = m_mapState;
 	pFSMInst->m_Master = this;
@@ -73,13 +76,32 @@ CFSM* CFSM::GetFSMIstance()
 
 void CFSM::ChangeState(const wstring& _strStateName)
 {
-	if (nullptr != m_CurState)
+
+	// 1. next state check
+	CState* pNextState = FindState(_strStateName);
+	assert(pNextState);
+
+	// 현재 스테이트와 같다면 리턴
+	if (pNextState == m_CurState)
+		return;
+
+	// 2. adjust task to taskMgr
+	// Param1: Parent Object    |   Param2: Next State
+	tTask pTask = {};
+	pTask.Type = TASK_TYPE::CHANGE_STATE;
+	pTask.Param_1 = (UINT_PTR)m_StateMachine->GetOwner();
+	pTask.Param_2 = (UINT_PTR)pNextState;
+
+	CTaskMgr::GetInst()->AddTask(pTask);
+}
+
+void CFSM::ChangeState_proc(CState* _pNextState)
+{
+	if (m_CurState)
 		m_CurState->Exit();
 
-	m_CurState = FindState(_strStateName);
-
-	assert(m_CurState);
-
+	//m_CurState = FindState(_strStateName); assert(m_CurState);
+	m_CurState = _pNextState;
 	m_CurState->Enter();
 }
 

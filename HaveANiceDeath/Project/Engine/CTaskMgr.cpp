@@ -11,6 +11,8 @@
 
 #include "CGameObject.h"
 #include "CCollider2D.h"
+#include "CStateMachine.h"
+
 
 #include "CAsset.h"
 
@@ -134,6 +136,16 @@ void CTaskMgr::tick()
 		}
 		break;
 
+		case TASK_TYPE::CHANGE_STATE:
+		{
+			// Param1: Parent Object    |   Param2: Next State
+			CGameObject* pObj = (CGameObject*)m_vecTask[i].Param_1;
+			CState* pNextState = (CState*)m_vecTask[i].Param_2;
+			pObj->StateMachine()->GetFSM()->ChangeState_proc(pNextState);
+
+			break;
+		}
+
 		case TASK_TYPE::ADD_CHILD:
 
 			break;
@@ -141,7 +153,11 @@ void CTaskMgr::tick()
 		case TASK_TYPE::DISCONNECT_PARENT:
 
 			break;
+
+
 		}
+
+
 
 
 	}

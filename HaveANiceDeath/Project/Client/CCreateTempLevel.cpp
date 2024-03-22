@@ -68,6 +68,14 @@ void CCreateTempLevel::Init()
 	//CAssetMgr::GetInst()->AddAsset<CFSM>(szPath, pFSM);
 
 
+	// 임시 FSM 객체 에셋 하나 생성하기
+	//Ptr<CFSM>	pFSM = new CFSM(nullptr, true);
+
+	//pFSM->AddState(L"IdleState", new CIdleState);
+
+	//CAssetMgr::GetInst()->AddAsset<CFSM>(L"NormalMonsterFSM", pFSM.Get());
+
+
 }
 
 void CCreateTempLevel::CreateTempLevel()
@@ -182,9 +190,9 @@ void CCreateTempLevel::CreateTempLevel()
 	wchar_t szPath[255] = {};
 	wstring FilePath = CPathMgr::GetContentPath();
 
-	swprintf_s(szPath, L"FSM//TestFSM.fsm");
+	swprintf_s(szPath, L"FSM\\TestFSM.fsm");
 
-	pObj->StateMachine()->SetFSM(CAssetMgr::GetInst()->FindAsset<CFSM>(szPath));
+	pObj->StateMachine()->SetFSM(CAssetMgr::GetInst()->Load<CFSM>(szPath));
 
 
 

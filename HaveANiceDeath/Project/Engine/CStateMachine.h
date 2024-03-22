@@ -15,13 +15,9 @@ private:
 
 public:
     void SetFSM(Ptr<CFSM> _FSM);
-    Ptr<CFSM> GetFSM()
-    {
-        if (m_FSM_Inst.Get())
-            return m_FSM_Inst;
-        else
-            return m_FSM;
-    };
+    Ptr<CFSM> GetFSM();
+    Ptr<CFSM> GetOriginFSM() { return m_FSM; }
+
 
     void AddBlackboardData(const wstring& _strKey, BB_DATA _Type, void* _pData);
     void* GetBlackboardData(const wstring& _strKey);

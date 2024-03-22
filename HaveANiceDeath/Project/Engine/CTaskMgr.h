@@ -31,8 +31,15 @@ enum class TASK_TYPE
 	COLLIDER2D_SEMI_DEACTIVE,
 
 	// Param1 : Collider Adress
-	COLLIDER2D_DEACTIVE
+	COLLIDER2D_DEACTIVE,
+
+	// Param1: Parent Object    |   Param2: Next State
+	CHANGE_STATE,
+
+
 };
+
+
 
 struct tTask
 {
