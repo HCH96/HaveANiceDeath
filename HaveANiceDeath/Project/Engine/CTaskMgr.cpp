@@ -141,7 +141,7 @@ void CTaskMgr::tick()
 			// Param1: Parent Object    |   Param2: Next State
 			CGameObject* pObj = (CGameObject*)m_vecTask[i].Param_1;
 			CState* pNextState = (CState*)m_vecTask[i].Param_2;
-			pObj->StateMachine()->GetFSM()->ChangeState_proc(pNextState);
+			pObj->StateMachine()->GetDynamicFSM()->ChangeState_proc(pNextState);
 
 			break;
 		}

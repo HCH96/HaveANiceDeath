@@ -34,7 +34,7 @@ void CStateMachine::SetFSM(Ptr<CFSM> _FSM)
 	m_FSM_Inst = nullptr;
 }
 
-Ptr<CFSM> CStateMachine::GetFSM()
+Ptr<CFSM> CStateMachine::GetDynamicFSM()
 {
 	if (nullptr == m_FSM)
 		return nullptr;

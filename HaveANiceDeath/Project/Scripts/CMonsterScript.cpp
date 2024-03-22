@@ -31,7 +31,7 @@ void CMonsterScript::begin()
 
 		if (nullptr != StateMachine()->GetFSM())
 		{
-			StateMachine()->GetFSM()->SetState(L"IdleState");
+			StateMachine()->GetDynamicFSM()->SetState(L"IdleState");
 		}
 	}
 }

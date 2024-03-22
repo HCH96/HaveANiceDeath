@@ -15,8 +15,8 @@ private:
 
 public:
     void SetFSM(Ptr<CFSM> _FSM);
-    Ptr<CFSM> GetFSM();
-    Ptr<CFSM> GetOriginFSM() { return m_FSM; }
+    Ptr<CFSM> GetFSM() { return m_FSM; }
+    Ptr<CFSM> GetDynamicFSM();
 
 
     void AddBlackboardData(const wstring& _strKey, BB_DATA _Type, void* _pData);

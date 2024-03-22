@@ -52,20 +52,20 @@ void CCreateTempLevel::Init()
 	*/
 
 	// 임시 FSM 객체 에셋 하나 생성하기
-	//CFSM* pFSM = new CFSM(true);
+	CFSM* pFSM = new CFSM(nullptr,false);
 
-	//pFSM->AddState(L"IdleState", new CIdleState);
-	////pFSM->AddState(L"TraceState", new CTraceState);
+	pFSM->AddState(L"IdleState", new CIdleState);
+	//pFSM->AddState(L"TraceState", new CTraceState);
 
-	//wchar_t szPath[255] = {};
-	//wstring FilePath = CPathMgr::GetContentPath();
+	wchar_t szPath[255] = {};
+	wstring FilePath = CPathMgr::GetContentPath();
 
-	//swprintf_s(szPath, L"FSM//TestFSM.fsm");
+	swprintf_s(szPath, L"FSM\\TestFSM.fsm");
 
-	//pFSM->SetName(szPath);
-	//pFSM->Save(szPath);
+	pFSM->SetName(szPath);
+	pFSM->Save(szPath);
 
-	//CAssetMgr::GetInst()->AddAsset<CFSM>(szPath, pFSM);
+	CAssetMgr::GetInst()->AddAsset<CFSM>(szPath, pFSM);
 
 
 	// 임시 FSM 객체 에셋 하나 생성하기
