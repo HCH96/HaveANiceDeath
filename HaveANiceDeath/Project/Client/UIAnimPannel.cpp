@@ -98,6 +98,8 @@ void UIAnimPannel::render_update()
 	if (ImGui::Button("Offset Reset", ImVec2(150.f, 30.f)))
 		ClearOffset();
 
+	
+
 
 
 	// UI button
@@ -119,9 +121,12 @@ void UIAnimPannel::render_update()
 	ImGui::PopStyleColor(3);
 	ImGui::PopID();
 
+	ImGui::Text("Frame Count : %d", m_vecOffset.size());
+
 	// atlas
 	if (m_Atlas.Get())
 	{
+		
 		ImGui::Text("size : %d x %d", m_Atlas.Get()->GetWidth(), m_Atlas.Get()->GetHeight());
 
 		// draw atlas
@@ -394,7 +399,6 @@ void UIAnimPannel::ClearOffset()
 
 	m_vecOffset.clear();
 
-	m_DetailPannel->UpdateFrm(m_vecAnim);
 }
 
 bool UIAnimPannel::SelectionRect(ImVec2* start_pos, ImVec2* end_pos, ImGuiMouseButton mouse_button)
