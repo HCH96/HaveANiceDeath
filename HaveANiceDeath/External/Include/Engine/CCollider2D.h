@@ -24,6 +24,8 @@ public:
     Vec3 GetOffset() { return m_Offset; }
     Vec3 GetScale() { return m_Scale; }
     Vec3 GetFinalPos() { return m_FinalPos; }
+    Vec3 GetRotation() { return m_Rotation; }
+    int GetOverlapCount() { return m_OverlapCount; }
     float GetRotationZ() { return m_Rotation.z; }
 
     void SetOffset(Vec3 _Offset) { m_Offset = _Offset; }

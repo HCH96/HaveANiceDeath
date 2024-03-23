@@ -10,6 +10,7 @@ CCollider2D::CCollider2D()
 	, m_Absolute(true)
 	, m_Active(true)
 	, m_SemiDeactive(false)
+	, m_OverlapCount(0)
 {
 
 }

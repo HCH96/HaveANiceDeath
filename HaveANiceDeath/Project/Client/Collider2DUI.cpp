@@ -6,7 +6,7 @@
 Collider2DUI::Collider2DUI()
 	: ComponentUI("Collider2D", "##Collider2D", COMPONENT_TYPE::COLLIDER2D)
 {
-	SetSize(ImVec2(0.f, 120.f));
+	SetSize(ImVec2(0.f, 145.f));
 	SetComopnentTitle("Collider2D");
 }
 
@@ -21,22 +21,33 @@ void Collider2DUI::render_update()
 
 	ComponentUI::render_update();
 
-	//CCollider2D* pCol = GetTargetObject()->Collider2D();
+	CCollider2D* pCol = GetTargetObject()->Collider2D();
+	
+	Vec3 vOffset = pCol->GetOffset();
+	Vec3 vScale = pCol->GetScale();
+	Vec3 vRot = pCol->GetRotation();
+	vRot.ToDegree();
 
+	float startPosX = 100.0f;
 
-	//Vec3 ColPos = pCol->GetOffset();
-	//float fColPos[2] = {ColPos.x,ColPos.y};
+	ImGui::Text("Offset"); ImGui::SameLine(startPosX);  ImGui::DragFloat3("##Relative Position", vOffset);
+	ImGui::Text("Scale"); ImGui::SameLine(startPosX); ImGui::DragFloat3("##Relative Scale", vScale);
+	ImGui::Text("Rotation"); ImGui::SameLine(startPosX); ImGui::DragFloat3("##Relative Rotation", vRot);
 
-	//Vec3 ColScale = pCol->GetOffset();
-	//float fColScale[2] = { ColScale.x,ColScale.y };
+	vRot.ToRadian();
+	pCol->SetOffset(vOffset);
+	pCol->SetScale(vScale);
+	pCol->SetRotationZ(vRot.z);
 
-	//ImGui::Text("Pos"); ImGui::SameLine();  ImGui::DragFloat2("##Collider Pos", fColPos);
-	//ImGui::Text("Scale"); ImGui::SameLine();  ImGui::DragFloat2("##Collider Sclae", fColScale);
+	// Absolute 값 
+	bool bAbsolute = pCol->IsAbsolute();
+	ImGui::Text("Scale Absolute"); ImGui::SameLine(); ImGui::Checkbox("##Collider2DAbsolute", &bAbsolute);
+	pCol->SetAbsolute(bAbsolute);
 
-	//
-	//GetTargetObject()->Collider2D()->SetOffset(Vec3(fColPos[0], fColPos[1],0.f));
-	//GetTargetObject()->Collider2D()->SetScale(Vec3(fColScale[0], fColScale[1],1.f));
+	ImGui::SameLine(250);
 
-
+	// 충돌중인 충돌체 개수
+	int OverlapCount = pCol->GetOverlapCount();
+	ImGui::Text("OverlapCount : %d", OverlapCount);
 
 }

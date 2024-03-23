@@ -26,6 +26,10 @@ CMeshRender::~CMeshRender()
 
 void CMeshRender::finaltick()
 {
+	// UI는 크로스헤어 안그림
+	if (31 == GetOwner()->GetLayerIdx())
+		return;
+
 	if (CRenderMgr::GetInst()->IsDebugPosition())
 	{
 		GamePlayStatic::DrawDebugCross(Transform()->GetWorldPos(), 20.f, Vec3(0.f, 1.f, 0.f), true);
