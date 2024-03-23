@@ -27,6 +27,9 @@ private:
     float               m_ZoomFactor;
 
 public:
+    Vec2 GetAtalsSize() { return Vec2(m_AtlasTex->GetWidth(), m_AtlasTex->GetHeight()); }
+
+public:
     virtual void tick() override;
     virtual void begin() override;
     virtual void render_update() override;

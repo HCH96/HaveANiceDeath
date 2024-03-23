@@ -93,9 +93,14 @@ void UIAnimPreview::render_update()
 	}
 	Size *= previewScaling;
 
+	// Global Offset 가져오기
+	Vec2 GlobalOffset = m_DetailPannel->GetGlobalOffset();
+	GlobalOffset.x /= atlasSize.x;
+	GlobalOffset.y /= atlasSize.y;
+
 	// 그리는 좌표: offset 계산 (y축 좌표 반대로)
 	ImVec2 CenterPos = ImGui::GetWindowContentRegionMax() * 0.5f;
-	ImVec2 ImgPos = CenterPos - (Size * 0.5) - ImVec2(m_CurFrm->vOffset.x, -m_CurFrm->vOffset.y) * atlasSize * previewScaling;
+	ImVec2 ImgPos = CenterPos - (Size * 0.5) - ImVec2(m_CurFrm->vOffset.x + GlobalOffset.x, -(m_CurFrm->vOffset.y+ GlobalOffset.y)) * atlasSize * previewScaling;
 	ImGui::SetCursorPos(ImgPos);
 	ImVec2 LeftTopUV = ImVec2(m_CurFrm->vLeftTop.x, m_CurFrm->vLeftTop.y);
 	ImVec2 RightBottomUV = LeftTopUV + ImVec2(m_CurFrm->vSlice.x, m_CurFrm->vSlice.y);

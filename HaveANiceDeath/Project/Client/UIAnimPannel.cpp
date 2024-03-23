@@ -349,6 +349,24 @@ void UIAnimPannel::Save()
 {
 	// create anim
 	CAnim* pAnim = new CAnim;
+
+	// Global Offset 적용
+	Vec2 GlobalOffset = m_DetailPannel->GetGlobalOffset();
+	Vec2 AtlasSize = m_PreviewPannel->GetAtalsSize();
+	Vec2 GlobalOffsetUV = { GlobalOffset.x / AtlasSize.x,	GlobalOffset.y / AtlasSize.y };
+
+
+	// 저장된 Frame에 Global Offset 추가
+	vector<tAnimFrm>& AnimFrame = m_DetailPannel->GetFrms();
+
+	// 저장하고 나면 원본 값이 바뀌기 때문에 프리뷰가 이상해짐, 복사본 떠 놓고 저장후 다시 복구
+	vector<tAnimFrm> Copy = AnimFrame;
+	for (size_t i = 0; i < AnimFrame.size(); ++i)
+	{
+		AnimFrame[i].vOffset += GlobalOffsetUV;
+	}
+
+
 	pAnim->Create(nullptr, m_Atlas, m_DetailPannel->GetFrms(), true);
 	pAnim->SetName(ToWString(m_DetailPannel->GetAniName()));
 
@@ -359,6 +377,8 @@ void UIAnimPannel::Save()
 
 	// save
 	pAnim->SaveToFile(pFile);
+
+	AnimFrame = Copy;
 
 	// close save file
 	fclose(pFile);

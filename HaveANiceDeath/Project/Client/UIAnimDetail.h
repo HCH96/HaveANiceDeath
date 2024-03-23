@@ -27,6 +27,11 @@ private:
     char                buf3[10];        // FPS Input Buff
     bool                m_bPrevActive;
 
+    Vec2                m_GlobalOffset;
+
+public:
+    Vec2 GetGlobalOffset() { return m_GlobalOffset; }
+
 public:
     virtual void begin() override;
     virtual void tick() override;
