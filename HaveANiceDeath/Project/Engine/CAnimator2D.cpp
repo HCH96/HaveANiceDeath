@@ -59,6 +59,12 @@ int CAnimator2D::DeleteAnim(const wstring& _AnimationKey)
 	return S_OK;
 }
 
+void CAnimator2D::AddAnimation(CAnim* _Anim)
+{
+	_Anim->m_Animator = this;
+	m_mapAnim.insert(make_pair(_Anim->GetName(), _Anim));
+}
+
 void CAnimator2D::finaltick()
 {
 	if (nullptr == m_CurAnim)

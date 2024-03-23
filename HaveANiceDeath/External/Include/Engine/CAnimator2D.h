@@ -20,6 +20,8 @@ public:
 
 public:
     int DeleteAnim(const wstring& _AnimationKey);
+    void AddAnimation(CAnim* _Anim);
+
 
 
 public:
