@@ -68,6 +68,26 @@ void UIAnimPreview::tick()
 		m_ZoomFactor += 1.f * DT_ENGINE;
 	}
 
+	ImVec2 mousePosition = ImGui::GetMousePos();
+
+	// 마우스가 영역 안에 있다면
+	if (mousePosition.x >= m_WndStartPos.x && mousePosition.y >= m_WndStartPos.y
+		&& mousePosition.x <= m_WndStartPos.x + m_WndSize.x && mousePosition.y <= m_WndStartPos.y + m_WndSize.y)
+	{
+		// 마우스 드래그
+		if (KEY_PRESSED(KEY::LBTN) && CKeyMgr::GetInst()->GetMouseDrag() != Vec2(0.f, 0.f))
+		{
+			Vec2 DragScale = CKeyMgr::GetInst()->GetMouseDrag();
+			Vec2 GlobalOffset = m_DetailPannel->GetGlobalOffset();
+			DragScale.y *= -1;
+
+			GlobalOffset -= DragScale;
+			m_DetailPannel->SetGlobalOffset(GlobalOffset);
+		}
+	}
+	
+
+
 }
 
 void UIAnimPreview::render_update()
@@ -77,6 +97,7 @@ void UIAnimPreview::render_update()
 
 	// draw img
 	ImGui::BeginChild("##Prevew Image");
+	m_WndStartPos = ImGui::GetWindowPos();
 
 	// size: grid
 	static float previewScaling = 0.5f;
@@ -100,6 +121,8 @@ void UIAnimPreview::render_update()
 
 	// 그리는 좌표: offset 계산 (y축 좌표 반대로)
 	ImVec2 CenterPos = ImGui::GetWindowContentRegionMax() * 0.5f;
+	m_WndSize = ImGui::GetWindowContentRegionMax();
+
 	ImVec2 ImgPos = CenterPos - (Size * 0.5) - ImVec2(m_CurFrm->vOffset.x + GlobalOffset.x, -(m_CurFrm->vOffset.y+ GlobalOffset.y)) * atlasSize * previewScaling;
 	ImGui::SetCursorPos(ImgPos);
 	ImVec2 LeftTopUV = ImVec2(m_CurFrm->vLeftTop.x, m_CurFrm->vLeftTop.y);

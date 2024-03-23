@@ -31,6 +31,7 @@ private:
 
 public:
     Vec2 GetGlobalOffset() { return m_GlobalOffset; }
+    void SetGlobalOffset(Vec2 _GlobalOffset) { m_GlobalOffset = _GlobalOffset; }
 
 public:
     virtual void begin() override;

@@ -26,6 +26,9 @@ private:
 
     float               m_ZoomFactor;
 
+    ImVec2              m_WndStartPos;
+    ImVec2              m_WndSize;
+
 public:
     Vec2 GetAtalsSize() { return Vec2(m_AtlasTex->GetWidth(), m_AtlasTex->GetHeight()); }
 
