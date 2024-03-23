@@ -86,10 +86,22 @@ void Inspector::ResizeScriptUI(UINT _Size)
 {
 	int AddSize = _Size - m_vecScriptUI.size();
 
-	for (int i = 0; i < AddSize; ++i)
+	// 스크립트가 더 많다면
+	if (_Size > m_vecScriptUI.size())
 	{
-		ScriptUI* pScriptUI = new ScriptUI;
-		AddChildUI(pScriptUI);
-		m_vecScriptUI.push_back(pScriptUI);
+		// 스크립트 UI를 추가
+		for (int i = 0; i < AddSize; ++i)
+		{
+			ScriptUI* pScriptUI = new ScriptUI;
+			AddChildUI(pScriptUI);
+			m_vecScriptUI.push_back(pScriptUI);
+		}
+	}
+	else
+	{
+		for (int i = m_vecScriptUI.size() + AddSize; i < m_vecScriptUI.size(); ++i)
+		{
+			m_vecScriptUI[i]->Deactivate();
+		}
 	}
 }

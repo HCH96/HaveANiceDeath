@@ -85,6 +85,25 @@ void Inspector::SetTargetObject(CGameObject* _Object)
 	{
 		m_arrAssetUI[i]->Deactivate();
 	}
+
+	if (nullptr == _Object)
+	{
+		for (size_t i = 0; i < m_vecScriptUI.size(); ++i)
+		{
+			m_vecScriptUI[i]->Deactivate();
+		}
+	}
+	else
+	{
+		const vector<CScript*>& vecScripts = _Object->GetScripts();
+		ResizeScriptUI((UINT)vecScripts.size());
+
+		for (size_t i = 0; i < vecScripts.size(); ++i)
+		{
+			m_vecScriptUI[i]->SetTargetObject(_Object);
+			m_vecScriptUI[i]->SetScript(vecScripts[i]);
+		}
+	}
 }
 
 void Inspector::SetTargetAsset(Ptr<CAsset> _Asset)
@@ -103,4 +122,6 @@ void Inspector::SetTargetAsset(Ptr<CAsset> _Asset)
 		m_arrAssetUI[(UINT)m_TargetAsset->GetType()]->Activate();
 		m_arrAssetUI[(UINT)m_TargetAsset->GetType()]->SetAsset(_Asset);
 	}	
+
+
 }
