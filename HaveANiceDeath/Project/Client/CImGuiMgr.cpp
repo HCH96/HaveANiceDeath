@@ -21,6 +21,8 @@
 #include "UIAnimDetail.h"
 #include "UIAnimPreview.h"
 
+#include "MtrlEditorUI.h"
+
 
 #include "ParamUI.h"
 
@@ -245,6 +247,9 @@ void CImGuiMgr::create_ui()
     pUI = new UIAnimPreview;
     AddUI(pUI->GetID(), pUI);
 
+    // Material Inspector
+    pUI = new MtrlEditorUI;
+    AddUI(pUI->GetID(), pUI);
 }
 
 void CImGuiMgr::observe_content()

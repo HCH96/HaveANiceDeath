@@ -55,6 +55,7 @@ void CCollider2D::finaltick()
 	Vec3 vObjPos = Transform()->GetRelativePos();
 	m_FinalPos = vObjPos + m_Offset;
 
+	// Absolute가 꺼져있다면 소유 오브젝트의 Scale의 영향을 받음
 	if (false == m_Absolute)
 	{
 		Matrix matScale = XMMatrixScaling(m_Scale.x, m_Scale.y, m_Scale.z);
@@ -64,12 +65,14 @@ void CCollider2D::finaltick()
 		m_matColWorld = matScale * matRot * matTrans;
 		m_matColWorld *= Transform()->GetWorldMat();
 	}
+	// Absolute가 켜져있다면 소유 오브젝트의 Scale의 영향을 안받음(콜라이더 크기 그대로 찍힘)
 	else
 	{
 		Matrix matScale = XMMatrixScaling(m_Scale.x, m_Scale.y, m_Scale.z);
 		Matrix matRot = XMMatrixRotationZ(m_Rotation.z);
 		Matrix matTrans = XMMatrixTranslation(m_Offset.x, m_Offset.y, m_Offset.z);
 
+		// 콜라이더 월드 행렬
 		m_matColWorld = matScale * matRot * matTrans;
 
 		Matrix matObjScaleInv = XMMatrixIdentity();

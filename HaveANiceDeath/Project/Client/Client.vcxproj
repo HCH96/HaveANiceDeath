@@ -181,6 +181,7 @@
     <ClInclude Include="MeshDataUI.h" />
     <ClInclude Include="MeshRenderUI.h" />
     <ClInclude Include="MeshUI.h" />
+    <ClInclude Include="MtrlEditorUI.h" />
     <ClInclude Include="Outliner.h" />
     <ClInclude Include="ParamUI.h" />
     <ClInclude Include="pch.h" />
@@ -228,6 +229,7 @@
     <ClCompile Include="MeshDataUI.cpp" />
     <ClCompile Include="MeshRenderUI.cpp" />
     <ClCompile Include="MeshUI.cpp" />
+    <ClCompile Include="MtrlEditorUI.cpp" />
     <ClCompile Include="Outliner.cpp" />
     <ClCompile Include="ParamUI.cpp" />
     <ClCompile Include="pch.cpp">

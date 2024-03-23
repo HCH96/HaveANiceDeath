@@ -116,6 +116,9 @@
     <Filter Include="02. UI\03. Inspector\ComponentUI\Animator2D\AnimationTool">
       <UniqueIdentifier>{6ebeba7b-3859-4474-ad2c-b4afb8f919e5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. UI\03. Inspector\AssetUI\MaterialUI\MtrlInspectorUI">
+      <UniqueIdentifier>{c4ea256a-6796-4980-89cd-c175ccc248b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -255,6 +258,9 @@
     </ClInclude>
     <ClInclude Include="UIAnimPreview.h">
       <Filter>02. UI\03. Inspector\ComponentUI\Animator2D\AnimationTool</Filter>
+    </ClInclude>
+    <ClInclude Include="MtrlEditorUI.h">
+      <Filter>02. UI\03. Inspector\AssetUI\MaterialUI\MtrlInspectorUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -397,6 +403,9 @@
     </ClCompile>
     <ClCompile Include="UIAnimPreview.cpp">
       <Filter>02. UI\03. Inspector\ComponentUI\Animator2D\AnimationTool</Filter>
+    </ClCompile>
+    <ClCompile Include="MtrlEditorUI.cpp">
+      <Filter>02. UI\03. Inspector\AssetUI\MaterialUI\MtrlInspectorUI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -20,6 +20,8 @@
 #include "CLevelSaveLoad.h"
 
 #include "UIAnimPannel.h"
+#include "MtrlEditorUI.h"
+
 
 
 MenuUI::MenuUI()
@@ -266,6 +268,12 @@ void MenuUI::Tool()
         {
             UIAnimPannel* pAnimToolMain = (UIAnimPannel*)CImGuiMgr::GetInst()->FindUI("##Animation Tool_Main");
             pAnimToolMain->Activate();
+        }
+
+        if (ImGui::MenuItem("Material Editor"))
+        {
+            MtrlEditorUI* pMtrlEditorUI = (MtrlEditorUI*)CImGuiMgr::GetInst()->FindUI("##MtrlInspector");
+            pMtrlEditorUI->Activate();
         }
 
         ImGui::EndMenu();

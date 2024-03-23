@@ -7,6 +7,8 @@
 
 #include "CTimeMgr.h"
 #include "CAssetMgr.h"
+#include "CLevelMgr.h"
+#include "CLevel.h"
 
 #include "components.h"
 
@@ -16,6 +18,7 @@ CRenderMgr::CRenderMgr()
 	, m_DebugPosition(true)
 	, m_EditorCam(nullptr)
 	, m_RenderFunc(nullptr)
+	, m_isEditorMode(true)
 {
 	m_RenderFunc = &CRenderMgr::render_play;
 }
@@ -70,15 +73,17 @@ void CRenderMgr::render_editor()
 
 void CRenderMgr::render_debug()
 {
+	// 카메라가 없다면 return
+	if (m_vecCam.empty() && m_EditorCam == nullptr)
+	{
+		return;
+	}
+
 	// 에디터 모드일 때는 에디터 카메라를 사용
-	if (nullptr != m_EditorCam)
+	if (m_isEditorMode)
 	{
 		g_Transform.matView = m_EditorCam->GetViewMat();
 		g_Transform.matProj = m_EditorCam->GetProjMat();
-	}
-	else if (m_vecCam.empty())
-	{
-		return;
 	}
 	else
 	{
