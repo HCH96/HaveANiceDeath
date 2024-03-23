@@ -10,9 +10,9 @@ private:
 
 public:
     const tLightInfo& GetLightInfo() { return m_Info; }
-    Vec4 GetLightColor(Vec3 _vColor) { return m_Info.vColor; }
-    Vec4 GetSpecular(Vec3 _vSpec) { return m_Info.vSpecular; }
-    Vec4 GetAmbient(Vec3 _vAmb) { return m_Info.vAmbient; }
+    Vec4 GetLightColor() { return m_Info.vColor; }
+    Vec4 GetSpecular() { return m_Info.vSpecular; }
+    Vec4 GetAmbient() { return m_Info.vAmbient; }
     LIGHT_TYPE GetLightType() { return (LIGHT_TYPE)m_Info.LightType; }
     float GetRadius() { return m_Info.fRadius; }
     float GetAngle() { return m_Info.fAngle; }

@@ -26,7 +26,6 @@ void Animator2DUI::render_update()
 {
 	ComponentUI::render_update();
 
-
 	// 애니메이션 목록 헤더
 	ImGui::Text("Animations:");
 

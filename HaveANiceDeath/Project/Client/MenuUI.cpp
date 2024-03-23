@@ -250,6 +250,8 @@ void MenuUI::Asset()
             pMtrl->SetName(szPath);
             pMtrl->Save(szPath);
             //GamePlayStatic::AddAsset(pMtrl);
+            delete pMtrl;
+
         }
 
         ImGui::EndMenu();

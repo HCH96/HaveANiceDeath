@@ -40,11 +40,9 @@ void MeshRenderUI::render_update()
 	{
 		mtrlname = ToString(pMtrl->GetKey()).c_str();
 	}
-	
-		
-	ImGui::Text("Mesh    ");
-	ImGui::SameLine(); 
-	ImGui::InputText("##MeshName", (char*)meshname.c_str(), meshname.length(), ImGuiInputTextFlags_ReadOnly);
+
+
+	ImGui::Text("Mesh"); ImGui::SameLine(100);	ImGui::InputText("##MeshName", (char*)meshname.c_str(), meshname.length(), ImGuiInputTextFlags_ReadOnly);
 
 	// Mesh Drop üũ
 	if (ImGui::BeginDragDropTarget())
@@ -80,10 +78,8 @@ void MeshRenderUI::render_update()
 	}
 
 
-
-
-	ImGui::Text("Material"); 
-	ImGui::SameLine(); 
+	ImGui::Text("Material");
+	ImGui::SameLine(100);
 	ImGui::InputText("##MtrlName", (char*)mtrlname.c_str(), mtrlname.length(), ImGuiInputTextFlags_ReadOnly);
 	ImGui::SameLine();
 
