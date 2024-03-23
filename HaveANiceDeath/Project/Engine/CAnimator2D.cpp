@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "CAnimator2D.h"
 
+#include "CLevelMgr.h"
+#include "CLevel.h"
+
 #include "CAnim.h"
 #include "CTransform.h"
 
@@ -33,6 +36,27 @@ CAnimator2D::CAnimator2D(const CAnimator2D& _OriginAnimator)
 CAnimator2D::~CAnimator2D()
 {
 	Delete_Map(m_mapAnim);
+}
+
+int CAnimator2D::DeleteAnim(const wstring& _AnimationKey)
+{
+	CLevel* CurLevel = CLevelMgr::GetInst()->GetCurrentLevel();
+	if (LEVEL_STATE::PLAY == CurLevel->GetState())
+	{
+		return E_FAIL;
+	}
+
+	CAnim* SelectedAnim = FindAnim(_AnimationKey);
+	if (nullptr == SelectedAnim)
+	{
+		MessageBox(nullptr, L"애니메이션이 존재하지 않습니다.", L"Animation Delete Failed", MB_OK);
+		return E_FAIL;
+	}
+
+	delete SelectedAnim;
+	m_mapAnim.erase(_AnimationKey);
+
+	return S_OK;
 }
 
 void CAnimator2D::finaltick()

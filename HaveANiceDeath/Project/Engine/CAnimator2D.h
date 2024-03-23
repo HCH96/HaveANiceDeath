@@ -16,6 +16,13 @@ private:
     bool                    m_bRepeat;
 
 public:
+    const map<wstring, CAnim*>& GetAnimations() { return m_mapAnim; }
+
+public:
+    int DeleteAnim(const wstring& _AnimationKey);
+
+
+public:
     virtual void finaltick() override;
 
     void UpdateData();
