@@ -70,11 +70,21 @@ void CRenderMgr::render_editor()
 
 void CRenderMgr::render_debug()
 {
-	if (m_vecCam.empty())
+	// 에디터 모드일 때는 에디터 카메라를 사용
+	if (nullptr != m_EditorCam)
+	{
+		g_Transform.matView = m_EditorCam->GetViewMat();
+		g_Transform.matProj = m_EditorCam->GetProjMat();
+	}
+	else if (m_vecCam.empty())
+	{
 		return;
-
-	g_Transform.matView = m_vecCam[0]->GetViewMat();
-	g_Transform.matProj = m_vecCam[0]->GetProjMat();
+	}
+	else
+	{
+		g_Transform.matView = m_vecCam[0]->GetViewMat();
+		g_Transform.matProj = m_vecCam[0]->GetProjMat();
+	}
 
 	list<tDebugShapeInfo>::iterator iter = m_DbgShapeInfo.begin();
 	for (; iter != m_DbgShapeInfo.end(); )

@@ -17,9 +17,6 @@
     <Filter Include="02. UI">
       <UniqueIdentifier>{2b661b2d-4284-460e-b0af-39ecdfbb97a4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03. Scripts">
-      <UniqueIdentifier>{2099a64f-c36a-416e-99d3-3b29b347e0f5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="01. Manager\01. UIMgr">
       <UniqueIdentifier>{431b1c9f-07d4-4afb-a5b5-1c5b15b9c3e9}</UniqueIdentifier>
     </Filter>

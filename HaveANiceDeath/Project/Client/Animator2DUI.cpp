@@ -24,12 +24,6 @@ void Animator2DUI::render_update()
 {
 	ComponentUI::render_update();
 
-	if (ImGui::Button("Create Animation"))
-	{
-
-
-	}
-
 
 
 }
