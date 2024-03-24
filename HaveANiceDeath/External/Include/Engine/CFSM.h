@@ -18,6 +18,7 @@ private:
     CState* m_CurState;
 
 public:
+    const map<wstring, CState*>& GetStates() { return m_mapState; }
     CFSM* GetFSMIstance();
     CStateMachine* GetStateMachine() { return m_StateMachine; }
     void SetState(const wstring& _strState) { m_CurState = FindState(_strState); }
@@ -26,6 +27,7 @@ public:
 public:
     CState* FindState(const wstring& _StateName);
     void AddState(const wstring& _StateName, CState* _State);
+    void DeleteState(const wstring& _StateKey);
     void ChangeState(const wstring& _strStateName);
 
     virtual int Save(const wstring& _strRelativePath);

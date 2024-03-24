@@ -7,8 +7,6 @@ class MeshRenderUI :
 public:
     virtual void render_update() override;
 
-
-
 public:
     void MeshSelect(DWORD_PTR _ptr);
     void MaterialSelect(DWORD_PTR _ptr);

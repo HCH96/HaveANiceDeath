@@ -702,6 +702,7 @@ void MtrlEditorUI::Reset()
 {
 	m_TargetMtrl = nullptr;
 	m_MtrlPath = "New Material";
+	m_ShaderName = "";
 
 	char Desc_Name[255] = {};
 
@@ -712,6 +713,7 @@ void MtrlEditorUI::Reset()
 		memset(Desc_Name, 0, sizeof(Desc_Name));
 		sprintf_s(Desc_Name, "INT_%d_DESC", i);
 		m_INT_Desc[i] = Desc_Name;
+		m_IntArr[i] = 0;
 	}
 
 	// FLOAT_DESC
@@ -721,6 +723,7 @@ void MtrlEditorUI::Reset()
 		memset(Desc_Name, 0, sizeof(Desc_Name));
 		sprintf_s(Desc_Name, "FLOAT_%d_DESC", i);
 		m_FLOAT_Desc[i] = Desc_Name;
+		m_FloatArr[0] = 0.f;
 	}
 
 	// Vec2_DESC
@@ -730,6 +733,7 @@ void MtrlEditorUI::Reset()
 		memset(Desc_Name, 0, sizeof(Desc_Name));
 		sprintf_s(Desc_Name, "VEC2_%d_DESC", i);
 		m_V2_Desc[i] = Desc_Name;
+		m_V2Arr[i] = Vec2(0.f, 0.f);
 	}
 
 	// Vec4_DESC
@@ -739,6 +743,11 @@ void MtrlEditorUI::Reset()
 		memset(Desc_Name, 0, sizeof(Desc_Name));
 		sprintf_s(Desc_Name, "VEC4_%d_DESC", i);
 		m_V4_Desc[i] = Desc_Name;
+		m_V4Arr[i][0] = 0.f;
+		m_V4Arr[i][1] = 0.f;
+		m_V4Arr[i][2] = 0.f;
+		m_V4Arr[i][3] = 0.f;
+
 	}
 
 	// TEX_DESC m_TEX_Desc
@@ -748,6 +757,8 @@ void MtrlEditorUI::Reset()
 		memset(Desc_Name, 0, sizeof(Desc_Name));
 		sprintf_s(Desc_Name, "TEX_%d", i);
 		m_TEX_Desc[i] = Desc_Name;
+		m_TEX_PATH[i] = "";
 	}
+
 }
 

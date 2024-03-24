@@ -52,6 +52,20 @@ void CFSM::AddState(const wstring& _StateName, CState* _State)
 	m_mapState.insert(make_pair(_StateName, _State));
 }
 
+void CFSM::DeleteState(const wstring& _StateKey)
+{
+	CState* pState = FindState(_StateKey);
+
+	if (pState == nullptr)
+	{
+		MessageBoxA(nullptr, "해당 키를 가진 스테이트가 없습니다.", "Delete State Failed", MB_OK);
+		return;
+	}
+
+	delete pState;
+	m_mapState.erase(_StateKey);
+}
+
 CState* CFSM::FindState(const wstring& _StateName)
 {
 	map<wstring, CState*>::iterator iter = m_mapState.find(_StateName);
@@ -129,8 +143,6 @@ int CFSM::Save(const wstring& _strRelativePath)
 		UINT StateType = iter->second->GetStateType();
 		fwrite(&StateType, sizeof(UINT), 1, pFile);
 
-		// State 저장
-		SaveWString(CStateMgr::GetStateName(iter->second), pFile);
 		iter->second->SaveToFile(pFile);
 	}
 

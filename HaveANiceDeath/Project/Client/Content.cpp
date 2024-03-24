@@ -154,6 +154,8 @@ void Content::ReloadContent()
 				task.Param_1 = (DWORD_PTR)i;
 				task.Param_2 = (DWORD_PTR)pair.second.Get();
 				CTaskMgr::GetInst()->AddTask(task);
+
+
 			}
 		}
 	}

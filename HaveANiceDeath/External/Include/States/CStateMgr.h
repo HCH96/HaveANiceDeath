@@ -6,7 +6,7 @@
 enum STATE_TYPE
 {
 	IDLESTATE,
-	END,
+	STATE_END,
 };
 
 using namespace std;

@@ -41,7 +41,6 @@ Ptr<CFSM> CStateMachine::GetDynamicFSM()
 
 	if (!m_FSM_Inst.Get())
 	{
-		//return m_FSM_Origin;  // @TODO: Instance 안만들고?
 		m_FSM_Inst = m_FSM->GetFSMIstance();
 	}
 

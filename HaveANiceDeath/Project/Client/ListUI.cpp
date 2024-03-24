@@ -4,6 +4,7 @@
 ListUI::ListUI()
 	: UI("", "##List")
     , m_CallBackFunc(nullptr)
+    , m_Filter{}
 {
 	Deactivate();
     SetModal(true);
@@ -18,11 +19,21 @@ void ListUI::render_update()
     ImVec2 vWinSize = ImGui::GetWindowContentRegionMax();
     vWinSize.y -= 27;
        
+    static char buffer[32];
+    strcpy_s(buffer, m_Filter.c_str());
+    ImGui::Text("Filter"); ImGui::SameLine(80); ImGui::InputText("##ListFilter", buffer, 32);
+    m_Filter = buffer;
+
     static int item_current_idx = 0; // Here we store our selection data as an index.
     if (ImGui::BeginListBox("##ListBox", vWinSize))
     {
         for (int i = 0; i < m_vecStr.size(); i++)
         {
+            if (m_vecStr[i].find(m_Filter) == std::string::npos)
+            {
+                continue;
+            }
+
             const bool is_selected = (item_current_idx == i);
 
             if (ImGui::Selectable(m_vecStr[i].c_str(), is_selected))
