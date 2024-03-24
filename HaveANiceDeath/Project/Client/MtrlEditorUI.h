@@ -41,6 +41,7 @@ private:
     void Save();
     void Load();
     void Create();
+    void Reset();
 
 public:
     MtrlEditorUI();
