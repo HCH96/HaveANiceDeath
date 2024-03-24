@@ -59,9 +59,6 @@
     <Filter Include="02. UI\03. Inspector\AssetUI">
       <UniqueIdentifier>{aed79de6-8b73-4325-a8ee-98d73ee3d6e9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. UI\03. Inspector\ComponentUI">
-      <UniqueIdentifier>{b8b47d19-e0e0-4295-a20a-8a8c1e3dd967}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02. UI\03. Inspector\AssetUI\ComputeShaderUI">
       <UniqueIdentifier>{c8e80f0b-30c1-4383-a653-7450c5008174}</UniqueIdentifier>
     </Filter>
@@ -89,35 +86,41 @@
     <Filter Include="02. UI\03. Inspector\AssetUI\SoundUI">
       <UniqueIdentifier>{8acaf8b3-a972-43a5-9580-05ea75820a00}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. UI\03. Inspector\ComponentUI\Animator2D">
-      <UniqueIdentifier>{800c6178-d9ca-4e43-84f6-05e9b5470c49}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02. UI\03. Inspector\ComponentUI\Collider2D">
-      <UniqueIdentifier>{fae81e59-dab2-4a44-a369-62b994d18ba5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02. UI\03. Inspector\ComponentUI\Light2D">
-      <UniqueIdentifier>{b91c1736-d2a3-4f2e-a811-f2dfd5c0317c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02. UI\03. Inspector\ComponentUI\MeshRender">
-      <UniqueIdentifier>{f80f9be7-bb99-4922-893d-ec04fa2ce56b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02. UI\03. Inspector\ComponentUI\ParticleSystem">
-      <UniqueIdentifier>{9ea459c8-39aa-459f-b489-ea646ba77e05}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02. UI\03. Inspector\ComponentUI\Script">
-      <UniqueIdentifier>{be8fb136-996d-4e9f-b7e1-096b5f7af08d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02. UI\03. Inspector\ComponentUI\TileMap">
-      <UniqueIdentifier>{b368d6b4-3b9e-458b-80b2-f2fcf876981a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02. UI\03. Inspector\ComponentUI\Transform">
-      <UniqueIdentifier>{a6a06ddd-fa51-49c7-962b-3104ad92f21b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02. UI\03. Inspector\ComponentUI\Animator2D\AnimationTool">
-      <UniqueIdentifier>{6ebeba7b-3859-4474-ad2c-b4afb8f919e5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02. UI\03. Inspector\AssetUI\MaterialUI\MtrlInspectorUI">
       <UniqueIdentifier>{c4ea256a-6796-4980-89cd-c175ccc248b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. UI\03. Inspector\ComponentUI">
+      <UniqueIdentifier>{b8b47d19-e0e0-4295-a20a-8a8c1e3dd967}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. UI\03. Inspector\ComponentUI\03. Animator2D">
+      <UniqueIdentifier>{800c6178-d9ca-4e43-84f6-05e9b5470c49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. UI\03. Inspector\ComponentUI\03. Animator2D\AnimationTool">
+      <UniqueIdentifier>{6ebeba7b-3859-4474-ad2c-b4afb8f919e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. UI\03. Inspector\ComponentUI\04. Light2D">
+      <UniqueIdentifier>{b91c1736-d2a3-4f2e-a811-f2dfd5c0317c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. UI\03. Inspector\ComponentUI\06. MeshRender">
+      <UniqueIdentifier>{f80f9be7-bb99-4922-893d-ec04fa2ce56b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. UI\03. Inspector\ComponentUI\08. ParticleSystem">
+      <UniqueIdentifier>{9ea459c8-39aa-459f-b489-ea646ba77e05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. UI\03. Inspector\ComponentUI\01. Transform">
+      <UniqueIdentifier>{a6a06ddd-fa51-49c7-962b-3104ad92f21b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. UI\03. Inspector\ComponentUI\02. Collider2D">
+      <UniqueIdentifier>{fae81e59-dab2-4a44-a369-62b994d18ba5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. UI\03. Inspector\ComponentUI\05. StateMachine">
+      <UniqueIdentifier>{7f04e294-22ca-417e-ac7f-862a4d3ea6c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. UI\03. Inspector\ComponentUI\07. TileMap">
+      <UniqueIdentifier>{b368d6b4-3b9e-458b-80b2-f2fcf876981a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. UI\03. Inspector\ComponentUI\09. Script">
+      <UniqueIdentifier>{be8fb136-996d-4e9f-b7e1-096b5f7af08d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -218,22 +221,22 @@
       <Filter>02. UI\03. Inspector\AssetUI</Filter>
     </ClInclude>
     <ClInclude Include="Animator2DUI.h">
-      <Filter>02. UI\03. Inspector\ComponentUI\Animator2D</Filter>
+      <Filter>02. UI\03. Inspector\ComponentUI\03. Animator2D</Filter>
     </ClInclude>
     <ClInclude Include="Collider2DUI.h">
-      <Filter>02. UI\03. Inspector\ComponentUI\Collider2D</Filter>
+      <Filter>02. UI\03. Inspector\ComponentUI\02. Collider2D</Filter>
     </ClInclude>
     <ClInclude Include="Light2DUI.h">
-      <Filter>02. UI\03. Inspector\ComponentUI\Light2D</Filter>
+      <Filter>02. UI\03. Inspector\ComponentUI\04. Light2D</Filter>
     </ClInclude>
     <ClInclude Include="MeshRenderUI.h">
-      <Filter>02. UI\03. Inspector\ComponentUI\MeshRender</Filter>
+      <Filter>02. UI\03. Inspector\ComponentUI\06. MeshRender</Filter>
     </ClInclude>
     <ClInclude Include="TransformUI.h">
-      <Filter>02. UI\03. Inspector\ComponentUI\Transform</Filter>
+      <Filter>02. UI\03. Inspector\ComponentUI\01. Transform</Filter>
     </ClInclude>
     <ClInclude Include="ScriptUI.h">
-      <Filter>02. UI\03. Inspector\ComponentUI\Script</Filter>
+      <Filter>02. UI\03. Inspector\ComponentUI\09. Script</Filter>
     </ClInclude>
     <ClInclude Include="ComponentUI.h">
       <Filter>02. UI\03. Inspector\ComponentUI</Filter>
@@ -251,16 +254,19 @@
       <Filter>02. UI\06. Module\ParamUI</Filter>
     </ClInclude>
     <ClInclude Include="UIAnimDetail.h">
-      <Filter>02. UI\03. Inspector\ComponentUI\Animator2D\AnimationTool</Filter>
+      <Filter>02. UI\03. Inspector\ComponentUI\03. Animator2D\AnimationTool</Filter>
     </ClInclude>
     <ClInclude Include="UIAnimPannel.h">
-      <Filter>02. UI\03. Inspector\ComponentUI\Animator2D\AnimationTool</Filter>
+      <Filter>02. UI\03. Inspector\ComponentUI\03. Animator2D\AnimationTool</Filter>
     </ClInclude>
     <ClInclude Include="UIAnimPreview.h">
-      <Filter>02. UI\03. Inspector\ComponentUI\Animator2D\AnimationTool</Filter>
+      <Filter>02. UI\03. Inspector\ComponentUI\03. Animator2D\AnimationTool</Filter>
     </ClInclude>
     <ClInclude Include="MtrlEditorUI.h">
       <Filter>02. UI\03. Inspector\AssetUI\MaterialUI\MtrlInspectorUI</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachineUI.h">
+      <Filter>02. UI\03. Inspector\ComponentUI\05. StateMachine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -363,22 +369,22 @@
       <Filter>02. UI\03. Inspector\AssetUI</Filter>
     </ClCompile>
     <ClCompile Include="Animator2DUI.cpp">
-      <Filter>02. UI\03. Inspector\ComponentUI\Animator2D</Filter>
+      <Filter>02. UI\03. Inspector\ComponentUI\03. Animator2D</Filter>
     </ClCompile>
     <ClCompile Include="Collider2DUI.cpp">
-      <Filter>02. UI\03. Inspector\ComponentUI\Collider2D</Filter>
+      <Filter>02. UI\03. Inspector\ComponentUI\02. Collider2D</Filter>
     </ClCompile>
     <ClCompile Include="Light2DUI.cpp">
-      <Filter>02. UI\03. Inspector\ComponentUI\Light2D</Filter>
+      <Filter>02. UI\03. Inspector\ComponentUI\04. Light2D</Filter>
     </ClCompile>
     <ClCompile Include="MeshRenderUI.cpp">
-      <Filter>02. UI\03. Inspector\ComponentUI\MeshRender</Filter>
+      <Filter>02. UI\03. Inspector\ComponentUI\06. MeshRender</Filter>
     </ClCompile>
     <ClCompile Include="TransformUI.cpp">
-      <Filter>02. UI\03. Inspector\ComponentUI\Transform</Filter>
+      <Filter>02. UI\03. Inspector\ComponentUI\01. Transform</Filter>
     </ClCompile>
     <ClCompile Include="ScriptUI.cpp">
-      <Filter>02. UI\03. Inspector\ComponentUI\Script</Filter>
+      <Filter>02. UI\03. Inspector\ComponentUI\09. Script</Filter>
     </ClCompile>
     <ClCompile Include="ComponentUI.cpp">
       <Filter>02. UI\03. Inspector\ComponentUI</Filter>
@@ -396,16 +402,19 @@
       <Filter>02. UI\06. Module\ParamUI</Filter>
     </ClCompile>
     <ClCompile Include="UIAnimDetail.cpp">
-      <Filter>02. UI\03. Inspector\ComponentUI\Animator2D\AnimationTool</Filter>
+      <Filter>02. UI\03. Inspector\ComponentUI\03. Animator2D\AnimationTool</Filter>
     </ClCompile>
     <ClCompile Include="UIAnimPannel.cpp">
-      <Filter>02. UI\03. Inspector\ComponentUI\Animator2D\AnimationTool</Filter>
+      <Filter>02. UI\03. Inspector\ComponentUI\03. Animator2D\AnimationTool</Filter>
     </ClCompile>
     <ClCompile Include="UIAnimPreview.cpp">
-      <Filter>02. UI\03. Inspector\ComponentUI\Animator2D\AnimationTool</Filter>
+      <Filter>02. UI\03. Inspector\ComponentUI\03. Animator2D\AnimationTool</Filter>
     </ClCompile>
     <ClCompile Include="MtrlEditorUI.cpp">
       <Filter>02. UI\03. Inspector\AssetUI\MaterialUI\MtrlInspectorUI</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMachineUI.cpp">
+      <Filter>02. UI\03. Inspector\ComponentUI\05. StateMachine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

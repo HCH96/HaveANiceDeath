@@ -189,6 +189,7 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ScriptUI.h" />
     <ClInclude Include="SoundUI.h" />
+    <ClInclude Include="StateMachineUI.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TextureUI.h" />
     <ClInclude Include="TransformUI.h" />
@@ -238,6 +239,7 @@
     <ClCompile Include="PrefabUI.cpp" />
     <ClCompile Include="ScriptUI.cpp" />
     <ClCompile Include="SoundUI.cpp" />
+    <ClCompile Include="StateMachineUI.cpp" />
     <ClCompile Include="TextureUI.cpp" />
     <ClCompile Include="TransformUI.cpp" />
     <ClCompile Include="TreeUI.cpp" />

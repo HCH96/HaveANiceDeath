@@ -16,6 +16,7 @@ void Inspector::CreateChildUI()
 #include "Collider2DUI.h"
 #include "Light2DUI.h"
 #include "Animator2DUI.h"
+#include "StateMachineUI.h"
 #include "PrefabUI.h"
 
 void Inspector::CreateComponentUI()
@@ -31,6 +32,10 @@ void Inspector::CreateComponentUI()
 	m_arrComUI[(UINT)COMPONENT_TYPE::ANIMATOR2D] = new Animator2DUI;
 	m_arrComUI[(UINT)COMPONENT_TYPE::ANIMATOR2D]->Deactivate();
 	AddChildUI(m_arrComUI[(UINT)COMPONENT_TYPE::ANIMATOR2D]);
+
+	m_arrComUI[(UINT)COMPONENT_TYPE::STATEMACHINE] = new StateMachineUI;
+	m_arrComUI[(UINT)COMPONENT_TYPE::STATEMACHINE]->Deactivate();
+	AddChildUI(m_arrComUI[(UINT)COMPONENT_TYPE::STATEMACHINE]);
 
 	m_arrComUI[(UINT)COMPONENT_TYPE::LIGHT2D] = new Light2DUI;
 	m_arrComUI[(UINT)COMPONENT_TYPE::LIGHT2D]->Deactivate();
