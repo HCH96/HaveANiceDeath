@@ -160,8 +160,6 @@ Ptr<T> CAssetMgr::Load(const wstring& _strKey, const wstring& _strRelativePath, 
         return nullptr;
     }
 
-
-
     pAsset->SetKey(_strKey);
     pAsset->SetRelativePath(_strRelativePath);
 

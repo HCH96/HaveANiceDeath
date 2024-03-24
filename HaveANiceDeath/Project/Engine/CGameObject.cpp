@@ -75,8 +75,12 @@ void CGameObject::AddComponent(CComponent* _Comonent)
 	}
 	else
 	{
-		// 이미 해당 타입의 컴포넌트를 보유하고 있는 경우 
-		assert(!m_arrCom[(UINT)type]);
+		if (m_arrCom[(UINT)type])
+		{
+			MessageBoxA(nullptr, "이미 해당 컴포넌트를 가지고 있습니다!", "Add Component Failed!", MB_OK);
+			return;
+		}
+
 
 		m_arrCom[(UINT)type] = _Comonent;
 		_Comonent->m_Owner = this;
@@ -85,9 +89,35 @@ void CGameObject::AddComponent(CComponent* _Comonent)
 		if (nullptr != pRenderCom)
 		{
 			// 이미 한 종류 이상의 RenderComponent 를 보유하고 있는 경우
-			assert(!m_RenderCom);
+			if (m_RenderCom)
+			{
+				MessageBoxA(nullptr, "이미 랜더 컴포넌트를 가지고 있습니다!", "Add Render Component Failed!", MB_OK);
+				return;
+			}
+
 
 			m_RenderCom = pRenderCom;
+		}
+	}
+}
+
+void CGameObject::DeleteComponent(COMPONENT_TYPE _Type)
+{
+	CLevel* pLevel = CLevelMgr::GetInst()->GetCurrentLevel();
+	
+	if (LEVEL_STATE::PLAY == pLevel->GetState() || LEVEL_STATE::PAUSE == pLevel->GetState())
+	{
+		return;
+	}
+
+	if (m_arrCom[(UINT)_Type])
+	{
+		delete m_arrCom[(UINT)_Type];
+		m_arrCom[(UINT)_Type] = nullptr;
+
+		if (COMPONENT_TYPE::MESHRENDER == _Type || COMPONENT_TYPE::TILEMAP == _Type || COMPONENT_TYPE::PARTICLESYSTEM == _Type)
+		{
+			m_RenderCom = nullptr;
 		}
 	}
 }

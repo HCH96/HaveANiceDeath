@@ -52,6 +52,7 @@ void MtrlEditorUI::render_update()
 
 	// 쉐이더 이름
 	ImGui::Text("Shader"); ImGui::SameLine(100); ImGui::InputText("##ShaderName", m_ShaderName.data(), 32, ImGuiInputTextFlags_ReadOnly);
+
 	// Shader Drop 체크
 	if (ImGui::BeginDragDropTarget())
 	{
@@ -438,8 +439,9 @@ void MtrlEditorUI::Save()
 	// 중복 체크
 	if (exists(FilePath + szPath))
 	{
-		MessageBoxA(nullptr, "머터리얼이 이미 존재합니다.", "Create Material Failed!", MB_OK);
-		return;
+		int value = MessageBoxA(nullptr, "머터리얼이 이미 존재합니다. \n덮어쓰시겠습니까?", "Material Already Exist!", MB_YESNO);
+		if (value != IDYES)
+			return;
 	}
 
 	// 경로 저장
@@ -515,7 +517,20 @@ void MtrlEditorUI::Load()
 			// save
 			m_TargetMtrl = CAssetMgr::GetInst()->Load<CMaterial>(relativePath);
 			m_MtrlPath = ToString(m_TargetMtrl->GetKey());
-			m_ShaderName = ToString(m_TargetMtrl->GetShader()->GetKey());
+
+			// 파일명 빼고 날리기
+			size_t found = m_MtrlPath.find_last_of("\\/");
+			m_MtrlPath = m_MtrlPath.substr(found + 1);
+
+			// 확장자 날리기
+			found = m_MtrlPath.find(".mtrl");
+			if (found != std::wstring::npos) 
+			{
+				m_MtrlPath.erase(found);
+			}
+
+			if(m_TargetMtrl->GetShader() != nullptr)
+				m_ShaderName = ToString(m_TargetMtrl->GetShader()->GetKey());
 		}
 	}
 
@@ -571,13 +586,16 @@ void MtrlEditorUI::Load()
 	m_V4Arr[3][3] = V4_Param.w;
 	
 	// Path 로딩
-	m_TEX_PATH[0] = ToString(m_TargetMtrl->GetTexParam(TEX_PARAM::TEX_0)->GetKey());
-	m_TEX_PATH[1] = ToString(m_TargetMtrl->GetTexParam(TEX_PARAM::TEX_1)->GetKey());
-	m_TEX_PATH[2] = ToString(m_TargetMtrl->GetTexParam(TEX_PARAM::TEX_2)->GetKey());
-	m_TEX_PATH[3] = ToString(m_TargetMtrl->GetTexParam(TEX_PARAM::TEX_3)->GetKey());
-	m_TEX_PATH[4] = ToString(m_TargetMtrl->GetTexParam(TEX_PARAM::TEX_4)->GetKey());
-	m_TEX_PATH[5] = ToString(m_TargetMtrl->GetTexParam(TEX_PARAM::TEX_5)->GetKey());
+	for (int i = 0; i <= (UINT)TEX_PARAM::TEX_5; ++i)
+	{
+		TEX_PARAM CurParam = (TEX_PARAM)i;
 
+		if (m_TargetMtrl->GetTexParam(CurParam) != nullptr)
+		{
+			m_TEX_PATH[i] = ToString(m_TargetMtrl->GetTexParam(CurParam)->GetKey());
+		}
+	}
+	
 	// 디스크립션 로딩
 	Ptr<CGraphicsShader> pShader = m_TargetMtrl->GetShader();
 

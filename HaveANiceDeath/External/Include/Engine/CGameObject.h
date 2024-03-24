@@ -64,6 +64,7 @@ public:
 
 public:
     void AddComponent(CComponent* _Comonent);
+    void DeleteComponent(COMPONENT_TYPE _Type);
 
     int DisconnectWithParent();
     int DisconnectWithLayer();

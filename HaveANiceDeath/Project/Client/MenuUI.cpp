@@ -197,14 +197,186 @@ void MenuUI::GameObject()
         }
         ImGui::Separator();
 
-        if (ImGui::BeginMenu("Component", ""))
+        if (ImGui::BeginMenu("Add Component", ""))
         {
-            if (ImGui::MenuItem(u8"메이플스토리", "CTRL+X")) {}
-            if (ImGui::MenuItem("Copy", "CTRL+C")) {}
-            if (ImGui::MenuItem("Paste", "CTRL+V")) {}
+            if (ImGui::MenuItem("Add Collider"))
+            {
+                Inspector* inspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
+                CGameObject* TargetObject = inspector->GetTargetObject();
+
+                if (nullptr != TargetObject)
+                {
+                    TargetObject->AddComponent(new CCollider2D());
+                    inspector->SetTargetObject(TargetObject);
+                }
+            }
+
+
+            if (ImGui::MenuItem("Add Animator"))
+            {
+                Inspector* inspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
+                CGameObject* TargetObject = inspector->GetTargetObject();
+
+                if (nullptr != TargetObject)
+                {
+                    TargetObject->AddComponent(new CAnimator2D());
+                inspector->SetTargetObject(TargetObject);
+                }
+            }
+
+            if (ImGui::MenuItem("Add Light"))
+            {
+                Inspector* inspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
+                CGameObject* TargetObject = inspector->GetTargetObject();
+
+                if (nullptr != TargetObject)
+                {
+                    TargetObject->AddComponent(new CLight2D());
+                inspector->SetTargetObject(TargetObject);
+                }
+            }
+
+            if (ImGui::MenuItem("Add StateMachine"))
+            {
+                Inspector* inspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
+                CGameObject* TargetObject = inspector->GetTargetObject();
+
+                if (nullptr != TargetObject)
+                {
+                    TargetObject->AddComponent(new CStateMachine());
+                inspector->SetTargetObject(TargetObject);
+                }
+            }
+
+            if (ImGui::MenuItem("Add MeshRender"))
+            {
+                Inspector* inspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
+                CGameObject* TargetObject = inspector->GetTargetObject();
+
+                if (nullptr != TargetObject)
+                {
+                    TargetObject->AddComponent(new CMeshRender());
+                inspector->SetTargetObject(TargetObject);
+                }
+            }
+
+            if (ImGui::MenuItem("Add TileMap"))
+            {
+                Inspector* inspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
+                CGameObject* TargetObject = inspector->GetTargetObject();
+
+                if (nullptr != TargetObject)
+                {
+                    TargetObject->AddComponent(new CTileMap());
+                inspector->SetTargetObject(TargetObject);
+                }
+            }
+
+            if (ImGui::MenuItem("Add ParticleSystem"))
+            {
+                Inspector* inspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
+                CGameObject* TargetObject = inspector->GetTargetObject();
+
+                if (nullptr != TargetObject)
+                {
+                    TargetObject->AddComponent(new CParticleSystem());
+                inspector->SetTargetObject(TargetObject);
+                }
+            }
 
             ImGui::EndMenu();
         }
+        if (ImGui::BeginMenu("Delete Component", ""))
+        {
+            if (ImGui::MenuItem("Delete Collider"))
+            {
+                Inspector* inspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
+                CGameObject* TargetObject = inspector->GetTargetObject();
+
+                if (nullptr != TargetObject)
+                {
+                    TargetObject->DeleteComponent(COMPONENT_TYPE::COLLIDER2D);
+                inspector->SetTargetObject(TargetObject);
+                }
+            }
+
+            if (ImGui::MenuItem("Delete Animator"))
+            {
+                Inspector* inspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
+                CGameObject* TargetObject = inspector->GetTargetObject();
+
+                if (nullptr != TargetObject)
+                {
+                    TargetObject->DeleteComponent(COMPONENT_TYPE::ANIMATOR2D);
+                inspector->SetTargetObject(TargetObject);
+                }
+            }
+
+            if (ImGui::MenuItem("Delete Light"))
+            {
+                Inspector* inspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
+                CGameObject* TargetObject = inspector->GetTargetObject();
+
+                if (nullptr != TargetObject)
+                {
+                    TargetObject->DeleteComponent(COMPONENT_TYPE::LIGHT2D);
+                inspector->SetTargetObject(TargetObject);
+                }
+            }
+
+            if (ImGui::MenuItem("Delete StateMachine"))
+            {
+                Inspector* inspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
+                CGameObject* TargetObject = inspector->GetTargetObject();
+
+                if (nullptr != TargetObject)
+                {
+                    TargetObject->DeleteComponent(COMPONENT_TYPE::STATEMACHINE);
+                inspector->SetTargetObject(TargetObject);
+                }
+            }
+
+            if (ImGui::MenuItem("Delete MeshRender"))
+            {
+                Inspector* inspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
+                CGameObject* TargetObject = inspector->GetTargetObject();
+
+                if (nullptr != TargetObject)
+                {
+                    TargetObject->DeleteComponent(COMPONENT_TYPE::MESHRENDER);
+                inspector->SetTargetObject(TargetObject);
+                }
+            }
+
+
+            if (ImGui::MenuItem("Delete TileMap"))
+            {
+                Inspector* inspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
+                CGameObject* TargetObject = inspector->GetTargetObject();
+
+                if (nullptr != TargetObject)
+                {
+                    TargetObject->DeleteComponent(COMPONENT_TYPE::TILEMAP);
+                inspector->SetTargetObject(TargetObject);
+                }
+            }
+
+            if (ImGui::MenuItem("Delete ParticleSystem"))
+            {
+                Inspector* inspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
+                CGameObject* TargetObject = inspector->GetTargetObject();
+
+                if (nullptr != TargetObject)
+                {
+                    TargetObject->DeleteComponent(COMPONENT_TYPE::PARTICLESYSTEM);
+                inspector->SetTargetObject(TargetObject);
+                }
+            }
+
+            ImGui::EndMenu();
+        }
+
+
 
         if (ImGui::BeginMenu("Script", ""))
         {
@@ -219,6 +391,9 @@ void MenuUI::GameObject()
                     if (nullptr != inspector->GetTargetObject())
                     {                     
                         inspector->GetTargetObject()->AddComponent(CScriptMgr::GetScript(vecScriptName[i]));
+                        inspector->SetTargetObject(inspector->GetTargetObject());
+
+
                     }
                 }
             }
