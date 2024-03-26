@@ -20,6 +20,7 @@ void Inspector::CreateChildUI()
 #include "PrefabUI.h"
 #include "CameraUI.h"
 
+#include "ObjectController.h"
 
 void Inspector::CreateComponentUI()
 {
@@ -50,6 +51,8 @@ void Inspector::CreateComponentUI()
 	m_arrComUI[(UINT)COMPONENT_TYPE::MESHRENDER] = new MeshRenderUI;
 	m_arrComUI[(UINT)COMPONENT_TYPE::MESHRENDER]->Deactivate();
 	AddChildUI(m_arrComUI[(UINT)COMPONENT_TYPE::MESHRENDER]);
+
+	m_ObjController = new ObjectController;
 
 
 }

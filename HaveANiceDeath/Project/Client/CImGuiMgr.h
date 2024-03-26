@@ -22,11 +22,14 @@ private:
 
     HANDLE              m_hNotify;
 
+    vector<wstring>     m_LayerName;
+
 
 public:
     void init(HWND _hMainWnd, ComPtr<ID3D11Device> _Device, ComPtr <ID3D11DeviceContext> _Context);
     void begin();
     void progress();
+    void render_copytex();
 
 private:
     void thema();

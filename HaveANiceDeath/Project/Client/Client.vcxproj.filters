@@ -125,6 +125,9 @@
     <Filter Include="02. UI\03. Inspector\ComponentUI\04. CameraUI">
       <UniqueIdentifier>{325a02b3-1661-41dc-8eba-3860bf58192d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. UI\07. ObjectController">
+      <UniqueIdentifier>{4420d0c2-c56f-4461-b1fb-2962340e6d9d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -273,6 +276,9 @@
     </ClInclude>
     <ClInclude Include="CameraUI.h">
       <Filter>02. UI\03. Inspector\ComponentUI\04. CameraUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectController.h">
+      <Filter>02. UI\07. ObjectController</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -424,6 +430,9 @@
     </ClCompile>
     <ClCompile Include="CameraUI.cpp">
       <Filter>02. UI\03. Inspector\ComponentUI\04. CameraUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectController.cpp">
+      <Filter>02. UI\07. ObjectController</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

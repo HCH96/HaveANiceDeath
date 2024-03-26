@@ -1,6 +1,10 @@
 #include "pch.h"
 #include "CImGuiMgr.h"
 
+#include <Engine\CDevice.h>
+
+#include <Engine\CRenderMgr.h>
+
 #include <Engine/CLevelMgr.h>
 #include <Engine/CLevel.h>
 #include <Engine/CGameObject.h>
@@ -23,12 +27,15 @@
 
 #include "MtrlEditorUI.h"
 
+#include "ObjectController.h"
+
 
 #include "ParamUI.h"
 
 CImGuiMgr::CImGuiMgr()
     : m_bDemoUI(true)
     , m_hNotify(nullptr)
+    , m_LayerName{}
 {
 
 }
@@ -59,6 +66,7 @@ void CImGuiMgr::init(HWND _hMainWnd, ComPtr<ID3D11Device> _Device
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;         // Enable Docking
     io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;       // Enable Multi-Viewport / Platform Windows
+
     //io.ConfigViewportsNoAutoMerge = true;
     //io.ConfigViewportsNoTaskBarIcon = true;
     //io.ConfigViewportsNoDefaultParent = true;
@@ -133,6 +141,55 @@ void CImGuiMgr::progress()
     observe_content();
 }
 
+void CImGuiMgr::render_copytex()
+{
+
+    ImGui::Begin("Viewport##GameWindow");
+
+    Vec2 RenderResolution = CDevice::GetInst()->GetRenderResolution();
+    ImVec2 RenderResol = { RenderResolution.x,RenderResolution.y };
+    Ptr<CTexture> pCopyTex = CRenderMgr::GetInst()->GetRTCopyTex();
+
+    // 현재 크기
+    ImVec2 contentSize = ImGui::GetContentRegionAvail();
+
+    Vec2 vResolution = CDevice::GetInst()->GetRenderResolution();
+    ImVec2 Resolution = { vResolution.x,vResolution.y };
+
+    ImVec2 LeftTopUv;
+    LeftTopUv.x = ((vResolution.x - contentSize.x) / 2.f) / Resolution.x;
+    LeftTopUv.y = ((vResolution.y - contentSize.y) / 2.f) / Resolution.y;
+
+    ImVec2 RightBottom;
+    RightBottom.x = 1.f - LeftTopUv.x;
+    RightBottom.y = 1.f - LeftTopUv.y;
+
+    ImGui::Image((void*)pCopyTex->GetSRV().Get(), ImVec2(Resolution.x * (RightBottom.x - LeftTopUv.x), Resolution.y * (RightBottom.y - LeftTopUv.y)), LeftTopUv, RightBottom);
+    ImGui::End();
+
+    // copy render target
+    //Vec2 RenderResolution = CDevice::GetInst()->GetRenderResolution();
+    //ImVec2 RenderResol = { RenderResolution.x,RenderResolution.y };
+    //Ptr<CTexture> pCopyTex = CRenderMgr::GetInst()->GetRTCopyTex();
+
+    //ImVec2 vWinSize = ImGui::GetContentRegionAvail();
+    //ImVec2 vCenter = ImVec2(RenderResolution.x / 2.f, RenderResolution.y / 2.f);
+    //ImVec2 vLeftTopUV = vCenter - vWinSize / 2.f;
+    //ImVec2 vRightBottomUV = vCenter + vWinSize / 2.f;
+
+    //// calculate UV
+    //vLeftTopUV.x /= RenderResolution.x;
+    //vLeftTopUV.y /= RenderResolution.y;
+    //vRightBottomUV.x /= RenderResolution.x;
+    //vRightBottomUV.y /= RenderResolution.y;
+
+    //// draw img
+    //ImGui::Begin("##GameWindow");
+    //ImGui::Image((void*)pCopyTex->GetSRV().Get(), ImGui::GetContentRegionMax(), vLeftTopUV, vRightBottomUV);
+    //ImGui::End();
+
+}
+
 void CImGuiMgr::thema()
 {
     ImGuiStyle& style = ImGui::GetStyle();
@@ -145,11 +202,29 @@ void CImGuiMgr::thema()
     style.ScrollbarRounding = 0;
     style.Colors[ImGuiCol_WindowBg] = ImVec4(0.15f, 0.15f, 0.15f, 1.00f);
     style.Colors[ImGuiCol_TitleBg] = ImVec4(0.06f, 0.06f, 0.06f, 1.f);
-    style.Colors[ImGuiCol_TitleBgActive] = ImVec4(0.06f, 0.06f, 0.06f, 1.f);
+    style.Colors[ImGuiCol_TitleBgActive] = ImVec4(0.00f, 0.00f, 0.00f, 1.f);
     style.Colors[ImGuiCol_Header] = ImVec4(0.25f, 0.25f, 0.25f, 1.f);
     style.Colors[ImGuiCol_FrameBg] = ImVec4(0.05f, 0.05f, 0.05f, 1.00f);
     style.Colors[ImGuiCol_Button] = ImVec4(0.05f, 0.05f, 0.05f, 1.00f);
     style.Colors[ImGuiCol_TextSelectedBg] = ImVec4(0.00f, 0.00f, 1.00f, 0.35f);
+
+
+    //style.Colors[ImGuiCol_FrameBgHovered] = ImVec4(0.06f, 0.06f, 0.06f, 1.f);
+    style.Colors[ImGuiCol_Header] = ImVec4(0.25f, 0.25f, 0.25f, 1.00f);
+    style.Colors[ImGuiCol_HeaderHovered] = ImVec4(0.4f, 0.4f, 0.4f, 1.00f);
+    style.Colors[ImGuiCol_HeaderActive] = ImVec4(0.4f, 0.4f, 0.4f, 1.00f);
+
+    // 탭 (ex. Viewport)
+    style.Colors[ImGuiCol_Tab] = ImVec4(0.25f, 0.25f, 0.25f, 1.00f);
+    style.Colors[ImGuiCol_TabHovered] = ImVec4(0.25f, 0.25f, 0.25f, 1.00f);
+    style.Colors[ImGuiCol_TabUnfocused] = ImVec4(0.25f, 0.25f, 0.25f, 1.00f);
+    style.Colors[ImGuiCol_TabActive] = ImVec4(0.4f, 0.4f, 0.4f, 1.00f);
+    style.Colors[ImGuiCol_TabUnfocusedActive] = ImVec4(0.4f, 0.4f, 0.4f, 1.00f);
+    //style.Colors[ImGuiCol_TitleBgCollapsed] = ImVec4(0.06f, 0.06f, 0.06f, 1.f);
+
+    // 드래그 드랍 타겟
+    //style.Colors[ImGuiCol_DragDropTarget] = ImVec4(0.06f, 0.06f, 0.06f, 1.f);
+    ImGui::GetIO().FontGlobalScale = 0.8f;
 
 
     style.FrameBorderSize = 1.f;
@@ -160,6 +235,8 @@ void CImGuiMgr::tick()
     ImGui_ImplDX11_NewFrame();
     ImGui_ImplWin32_NewFrame();
     ImGui::NewFrame();
+    ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
+
 
     if (m_bDemoUI)
     {
@@ -180,6 +257,9 @@ void CImGuiMgr::render()
     {
         pair.second->render();
     }
+
+    render_copytex();
+
 
     // Rendering
     ImGui::Render();
@@ -250,6 +330,12 @@ void CImGuiMgr::create_ui()
     // Material Inspector
     pUI = new MtrlEditorUI;
     AddUI(pUI->GetID(), pUI);
+
+    // Object Controller
+    //pUI = new ObjectController;
+    //AddUI(pUI->GetID(), pUI);
+
+    
 }
 
 void CImGuiMgr::observe_content()

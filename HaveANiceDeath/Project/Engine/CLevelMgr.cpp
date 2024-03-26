@@ -10,14 +10,6 @@
 #include "CLevel.h"
 #include "CLayer.h"
 
-//====== юс╫ц ======
-#include "CGameObject.h"
-#include "components.h"
-#include "CRenderMgr.h"
-#include "CAnimator2D.h"
-#include "CCollider2D.h"
-#include "CParticleSystem.h"
-
 
 CLevelMgr::CLevelMgr()
 	: m_CurLevel(nullptr)
@@ -33,6 +25,8 @@ CLevelMgr::~CLevelMgr()
 
 void CLevelMgr::init()
 {
+	//CLevel* pLevel = CLevelSaveLoad::LoadLevel(L"level\\temp.lv");
+	//CLevelMgr::GetInst()->ChangeLevel(pLevel, LEVEL_STATE::STOP);
 }
 
 void CLevelMgr::ChangeLevel(CLevel* _NextLevel, LEVEL_STATE _NextLevelStartState)

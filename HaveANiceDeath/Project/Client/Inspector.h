@@ -14,6 +14,7 @@
 class ComponentUI;
 class ScriptUI;
 class AssetUI;
+class ObjectController;
 
 class Inspector :
     public UI
@@ -21,6 +22,8 @@ class Inspector :
 private:
     CGameObject*        m_TargetObject;
     Ptr<CAsset>         m_TargetAsset;
+
+    ObjectController*   m_ObjController;
 
     ComponentUI*        m_arrComUI[(UINT)COMPONENT_TYPE::END];
     vector<ScriptUI*>   m_vecScriptUI;

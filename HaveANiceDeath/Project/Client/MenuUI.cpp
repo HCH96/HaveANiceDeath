@@ -223,7 +223,7 @@ void MenuUI::GameObject()
                 if (nullptr != TargetObject)
                 {
                     TargetObject->AddComponent(new CAnimator2D());
-                inspector->SetTargetObject(TargetObject);
+                    inspector->SetTargetObject(TargetObject);
                 }
             }
 
@@ -235,7 +235,7 @@ void MenuUI::GameObject()
                 if (nullptr != TargetObject)
                 {
                     TargetObject->AddComponent(new CLight2D());
-                inspector->SetTargetObject(TargetObject);
+                    inspector->SetTargetObject(TargetObject);
                 }
             }
 
@@ -247,7 +247,7 @@ void MenuUI::GameObject()
                 if (nullptr != TargetObject)
                 {
                     TargetObject->AddComponent(new CStateMachine());
-                inspector->SetTargetObject(TargetObject);
+                    inspector->SetTargetObject(TargetObject);
                 }
             }
 
@@ -259,7 +259,7 @@ void MenuUI::GameObject()
                 if (nullptr != TargetObject)
                 {
                     TargetObject->AddComponent(new CMeshRender());
-                inspector->SetTargetObject(TargetObject);
+                    inspector->SetTargetObject(TargetObject);
                 }
             }
 
@@ -271,7 +271,7 @@ void MenuUI::GameObject()
                 if (nullptr != TargetObject)
                 {
                     TargetObject->AddComponent(new CTileMap());
-                inspector->SetTargetObject(TargetObject);
+                    inspector->SetTargetObject(TargetObject);
                 }
             }
 
@@ -283,7 +283,7 @@ void MenuUI::GameObject()
                 if (nullptr != TargetObject)
                 {
                     TargetObject->AddComponent(new CParticleSystem());
-                inspector->SetTargetObject(TargetObject);
+                    inspector->SetTargetObject(TargetObject);
                 }
             }
 

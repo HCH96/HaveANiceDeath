@@ -2,13 +2,20 @@
 #include "framework.h"
 #include "Client.h"
 
+#include <dwmapi.h>
+
+
+
 #include <Engine\CEngine.h>
 #include <Engine\CDevice.h>
 
 #define MAX_LOADSTRING 100
 
+//#define _RELEASE_GAME
+
 HINSTANCE   hInst;
 HWND        hWnd;
+Vec2        Resolution;
 
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
@@ -34,8 +41,48 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_CLIENT));
     MSG msg;
 
+#ifndef _RELEASE_GAME
+    // 해상도 
+    Resolution = Vec2(1919.f, 1001.f);
+
+    RECT rt = { 0,0,(int)Resolution.x, (int)Resolution.y };
+    AdjustWindowRect(&rt, WS_OVERLAPPEDWINDOW, false);
+    SetWindowPos(hWnd, nullptr, -7, 0, rt.right - rt.left, rt.bottom - rt.top, 0);
+
+    BOOL USE_DARK_MODE = true;
+    BOOL SET_IMMERSIVE_DARK_MODE_SUCCESS = SUCCEEDED(DwmSetWindowAttribute(
+        hWnd, DWMWINDOWATTRIBUTE::DWMWA_USE_IMMERSIVE_DARK_MODE,
+        &USE_DARK_MODE, sizeof(USE_DARK_MODE)));
+
+    COLORREF DARK_COLOR = 0x00505050;
+    BOOL SET_BORDER_COLOR = SUCCEEDED(DwmSetWindowAttribute(
+        hWnd, DWMWINDOWATTRIBUTE::DWMWA_BORDER_COLOR,
+        &DARK_COLOR, sizeof(DARK_COLOR)));
+
+    //COLORREF DARK_COLOR = 0x00505050;
+    BOOL SET_CAPTION_COLOR = SUCCEEDED(DwmSetWindowAttribute(
+        hWnd, DWMWINDOWATTRIBUTE::DWMWA_CAPTION_COLOR,
+        &DARK_COLOR, sizeof(DARK_COLOR)));
+
+#else
+    Resolution = Vec2(1600.f, 900.f);
+    // 현재 윈도우 스타일 가져오기
+    LONG_PTR style = GetWindowLongPtr(hWnd, GWL_STYLE);
+
+    // 윈도우를 전체 화면으로 변경하기 위해 스타일을 WS_POPUP으로 변경
+    style &= ~WS_OVERLAPPEDWINDOW;
+    style |= WS_POPUP;
+
+    // 윈도우 스타일 설정
+    SetWindowLongPtr(hWnd, GWL_STYLE, style);
+
+    // 전체 화면으로 윈도우 크기 및 위치 설정
+    SetWindowPos(hWnd, HWND_TOP, 0, 0, GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN), SWP_FRAMECHANGED | SWP_SHOWWINDOW);
+#endif
+
+
     // CEngine 초기화 실패 -> 프로그램 종료
-    if (FAILED(CEngine::GetInst()->init(hWnd, Vec2(1600.f, 900.f))))
+    if (FAILED(CEngine::GetInst()->init(hWnd, Resolution)))
     {
         MessageBox(nullptr, L"CEngine 초기화 실패", L"초기화 실패", MB_OK);
         return 0;
@@ -43,6 +90,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     CPrefab::GAMEOBJECT_SAVE = &CLevelSaveLoad::SaveGameObject;
     CPrefab::GAMEOBJECT_LOAD = &CLevelSaveLoad::LoadGameObject;
+
+
 
 #ifndef _RELEASE_GAME
     // 임시 레벨 생성

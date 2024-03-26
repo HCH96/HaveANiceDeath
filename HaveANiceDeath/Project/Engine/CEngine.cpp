@@ -36,11 +36,6 @@ int CEngine::init(HWND _HWND, Vec2 _Resolution)
 	m_MainWindow = _HWND;
 	m_Resolution = _Resolution;
 
-	// 해상도 
-	RECT rt = { 0,0,(int)m_Resolution.x, (int)m_Resolution.y };
-	AdjustWindowRect(&rt, WS_OVERLAPPEDWINDOW, false);
-	SetWindowPos(m_MainWindow, nullptr, 10, 10, rt.right - rt.left, rt.bottom - rt.top, 0);
-
 	// Device 초기화
 	if (FAILED(CDevice::GetInst()->init(m_MainWindow, m_Resolution)))
 	{
@@ -80,6 +75,8 @@ void CEngine::progress()
 
 	// FPS render
 	CTimeMgr::GetInst()->render();
+
+	CRenderMgr::GetInst()->CopyRenderTargetToImGuiRenderTexture();
 
 	// GC
 	CGC::GetInst()->tick();

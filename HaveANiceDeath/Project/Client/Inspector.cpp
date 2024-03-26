@@ -11,12 +11,14 @@
 #include "ScriptUI.h"
 
 #include "AssetUI.h"
+#include "ObjectController.h"
 
 
 Inspector::Inspector()
 	: UI("Inspector", "##Inspector")
 	, m_TargetObject(nullptr)
 	, m_arrComUI{}
+	, m_ObjController(nullptr)
 {
 	// 자식 UI 생성
 	CreateChildUI();
@@ -24,16 +26,21 @@ Inspector::Inspector()
 
 Inspector::~Inspector()
 {
-
+	if (nullptr != m_ObjController)
+		delete m_ObjController;
 }
 
 
 void Inspector::tick()
 {
+	m_ObjController->tick();
 }
 
 void Inspector::render_update()
 {
+	m_ObjController->render();
+	ImGui::Separator();
+
 	if (nullptr == m_TargetObject)
 		return;
 

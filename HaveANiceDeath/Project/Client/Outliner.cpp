@@ -98,6 +98,12 @@ void Outliner::SelectObject(DWORD_PTR _Node)
 		return;
 
 	Inspector* pInspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
+	
+	if (pInspector->GetTargetObject() == pObject)
+	{
+
+	}
+
 	pInspector->SetTargetObject(pObject);	
 }
 

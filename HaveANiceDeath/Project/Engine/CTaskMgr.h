@@ -63,11 +63,14 @@ private:
 	bool			m_bAssetChange;			// 에셋 변경 여부	
 	int				m_DeleteFrameCount;		// 
 
+	bool			m_bChangeLevel;
+
 public:
 	void tick();
 	void AddTask(const tTask& _Task) { m_vecTask.push_back(_Task); }
 	bool GetObjectEvent() { return m_bCreateObject || m_bDeleteObject; }
 	bool GetAssetEvent() { return m_bAssetChange; }
+	bool GetChangeLevel() { return m_bChangeLevel; }
 
 private:
 	void Clear();

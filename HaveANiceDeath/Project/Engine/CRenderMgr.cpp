@@ -53,6 +53,8 @@ void CRenderMgr::tick()
 	Clear();
 }
 
+
+
 void CRenderMgr::render_play()
 {
 	for (size_t i = 0; i < m_vecCam.size(); ++i)
