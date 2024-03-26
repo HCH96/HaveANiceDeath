@@ -28,7 +28,6 @@ private:
     AssetUI*            m_arrAssetUI[(UINT)ASSET_TYPE::END];
 
 public:
-    virtual void begin() override;
     virtual void tick() override;
     virtual void render_update() override;
 
