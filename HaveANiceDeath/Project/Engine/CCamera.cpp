@@ -33,6 +33,27 @@ CCamera::~CCamera()
 {
 }
 
+bool CCamera::IsLayerCheck(UINT _LayerIdx)
+{
+	return m_LayerCheck & (1 << _LayerIdx);
+}
+
+bool CCamera::IsLayerCheck(const wstring& _strLayerName)
+{
+	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurrentLevel();
+	CLayer* pLayer = pCurLevel->GetLayer(_strLayerName);
+
+	if (nullptr == pLayer)
+	{
+		MessageBoxA(nullptr, "레이어가 없습니다.", "IsLayerCheck Failed!", MB_OK);
+		return false;
+	}
+
+	int idx = pLayer->GetLayerIdx();
+	
+	return IsLayerCheck(idx);
+}
+
 void CCamera::LayerCheck(UINT _LayerIdx, bool _bCheck)
 {
 	if (_bCheck)

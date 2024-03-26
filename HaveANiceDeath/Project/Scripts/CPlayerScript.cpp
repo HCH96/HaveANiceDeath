@@ -99,14 +99,16 @@ void CPlayerScript::tick()
 
 	if (KEY_PRESSED(KEY::Y))
 	{
-		vRot.y += DT * XM_PI;
+		//vRot.y += DT * XM_PI;
+		Collider2D()->Activate();
 	}
 
 	if (KEY_PRESSED(KEY::Z))
 	{
 		
 		//vRot.z += DT * XM_PI;
-		Animator2D()->Play(L"Untitled");
+		//Animator2D()->Play(L"Untitled");
+		Collider2D()->Deactivate();
 	}
 	
 	Transform()->SetRelativePos(vPos);

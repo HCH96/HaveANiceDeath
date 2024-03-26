@@ -27,6 +27,17 @@ Inspector::~Inspector()
 
 }
 
+void Inspector::begin()
+{
+	for (UINT i = 0; i < (UINT)COMPONENT_TYPE::END; ++i)
+	{
+		if (nullptr != m_arrComUI[i])
+		{
+			m_arrComUI[i]->begin();
+		}
+	}
+}
+
 void Inspector::tick()
 {
 }

@@ -101,26 +101,29 @@
     <Filter Include="02. UI\03. Inspector\ComponentUI\04. Light2D">
       <UniqueIdentifier>{b91c1736-d2a3-4f2e-a811-f2dfd5c0317c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. UI\03. Inspector\ComponentUI\06. MeshRender">
-      <UniqueIdentifier>{f80f9be7-bb99-4922-893d-ec04fa2ce56b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02. UI\03. Inspector\ComponentUI\08. ParticleSystem">
-      <UniqueIdentifier>{9ea459c8-39aa-459f-b489-ea646ba77e05}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02. UI\03. Inspector\ComponentUI\01. Transform">
       <UniqueIdentifier>{a6a06ddd-fa51-49c7-962b-3104ad92f21b}</UniqueIdentifier>
     </Filter>
     <Filter Include="02. UI\03. Inspector\ComponentUI\02. Collider2D">
       <UniqueIdentifier>{fae81e59-dab2-4a44-a369-62b994d18ba5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. UI\03. Inspector\ComponentUI\05. StateMachine">
+    <Filter Include="02. UI\03. Inspector\ComponentUI\06. StateMachine">
       <UniqueIdentifier>{7f04e294-22ca-417e-ac7f-862a4d3ea6c4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. UI\03. Inspector\ComponentUI\07. TileMap">
+    <Filter Include="02. UI\03. Inspector\ComponentUI\07. MeshRender">
+      <UniqueIdentifier>{f80f9be7-bb99-4922-893d-ec04fa2ce56b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. UI\03. Inspector\ComponentUI\08. TileMap">
       <UniqueIdentifier>{b368d6b4-3b9e-458b-80b2-f2fcf876981a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. UI\03. Inspector\ComponentUI\09. Script">
+    <Filter Include="02. UI\03. Inspector\ComponentUI\09. ParticleSystem">
+      <UniqueIdentifier>{9ea459c8-39aa-459f-b489-ea646ba77e05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. UI\03. Inspector\ComponentUI\10. Script">
       <UniqueIdentifier>{be8fb136-996d-4e9f-b7e1-096b5f7af08d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. UI\03. Inspector\ComponentUI\04. CameraUI">
+      <UniqueIdentifier>{325a02b3-1661-41dc-8eba-3860bf58192d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -230,13 +233,13 @@
       <Filter>02. UI\03. Inspector\ComponentUI\04. Light2D</Filter>
     </ClInclude>
     <ClInclude Include="MeshRenderUI.h">
-      <Filter>02. UI\03. Inspector\ComponentUI\06. MeshRender</Filter>
+      <Filter>02. UI\03. Inspector\ComponentUI\07. MeshRender</Filter>
     </ClInclude>
     <ClInclude Include="TransformUI.h">
       <Filter>02. UI\03. Inspector\ComponentUI\01. Transform</Filter>
     </ClInclude>
     <ClInclude Include="ScriptUI.h">
-      <Filter>02. UI\03. Inspector\ComponentUI\09. Script</Filter>
+      <Filter>02. UI\03. Inspector\ComponentUI\10. Script</Filter>
     </ClInclude>
     <ClInclude Include="ComponentUI.h">
       <Filter>02. UI\03. Inspector\ComponentUI</Filter>
@@ -266,7 +269,10 @@
       <Filter>02. UI\03. Inspector\AssetUI\MaterialUI\MtrlInspectorUI</Filter>
     </ClInclude>
     <ClInclude Include="StateMachineUI.h">
-      <Filter>02. UI\03. Inspector\ComponentUI\05. StateMachine</Filter>
+      <Filter>02. UI\03. Inspector\ComponentUI\06. StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraUI.h">
+      <Filter>02. UI\03. Inspector\ComponentUI\04. CameraUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -378,13 +384,13 @@
       <Filter>02. UI\03. Inspector\ComponentUI\04. Light2D</Filter>
     </ClCompile>
     <ClCompile Include="MeshRenderUI.cpp">
-      <Filter>02. UI\03. Inspector\ComponentUI\06. MeshRender</Filter>
+      <Filter>02. UI\03. Inspector\ComponentUI\07. MeshRender</Filter>
     </ClCompile>
     <ClCompile Include="TransformUI.cpp">
       <Filter>02. UI\03. Inspector\ComponentUI\01. Transform</Filter>
     </ClCompile>
     <ClCompile Include="ScriptUI.cpp">
-      <Filter>02. UI\03. Inspector\ComponentUI\09. Script</Filter>
+      <Filter>02. UI\03. Inspector\ComponentUI\10. Script</Filter>
     </ClCompile>
     <ClCompile Include="ComponentUI.cpp">
       <Filter>02. UI\03. Inspector\ComponentUI</Filter>
@@ -414,7 +420,10 @@
       <Filter>02. UI\03. Inspector\AssetUI\MaterialUI\MtrlInspectorUI</Filter>
     </ClCompile>
     <ClCompile Include="StateMachineUI.cpp">
-      <Filter>02. UI\03. Inspector\ComponentUI\05. StateMachine</Filter>
+      <Filter>02. UI\03. Inspector\ComponentUI\06. StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraUI.cpp">
+      <Filter>02. UI\03. Inspector\ComponentUI\04. CameraUI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

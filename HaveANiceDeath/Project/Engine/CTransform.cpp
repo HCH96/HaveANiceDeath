@@ -91,6 +91,11 @@ void CTransform::UpdateData()
 
 Vec3 CTransform::GetWorldScale()
 {
+	if (m_bAbsolute)
+	{
+		return m_vRelativeScale;
+	}
+
 	CGameObject* pParent = GetOwner()->GetParent();
 	Vec3 vWorldScale = m_vRelativeScale;
 

@@ -27,7 +27,6 @@ private:
     // 변환 행렬
     Matrix                  m_matView;
     Matrix                  m_matProj;
-
     UINT                    m_LayerCheck;
     int                     m_CameraPriority;
 
@@ -39,17 +38,24 @@ private:
 
 public:
     PROJ_TYPE GetProjType() { return m_ProjType; }
+    float GetWidth() { return m_Width; }
     float GetScale() { return m_Scale; }
     float GetFOV() { return m_FOV; }
     float GetFar() { return m_Far; }
+    int GetPriority() { return m_CameraPriority; }
 
     const Matrix& GetViewMat() { return m_matView; }
     const Matrix& GetProjMat() { return m_matProj; }
 
     void SetProjType(PROJ_TYPE _Type) { m_ProjType = _Type; }
+    void SetWidth(float _Width) { m_Width = _Width; }
     void SetScale(float _Scale) { m_Scale = _Scale; }
     void SetFOV(float _FOV) { m_FOV = _FOV; }
     void SetFar(float _Far) { m_Far = _Far; }
+
+    // Layer 체크 확인
+    bool IsLayerCheck(UINT _LayerIdx);
+    bool IsLayerCheck(const wstring& _strLayerName);
 
 
     void SetCameraPriority(int _Priority) { m_CameraPriority = _Priority; }
