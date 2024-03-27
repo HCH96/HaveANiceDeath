@@ -31,7 +31,7 @@
 void CCreateTempLevel::Init()
 {
 	// Missile Prefab 생성
-	/*CGameObject* pObj = nullptr;
+	CGameObject* pObj = nullptr;
 
 	pObj = new CGameObject;
 	pObj->SetName(L"Missile");
@@ -44,12 +44,12 @@ void CCreateTempLevel::Init()
 	pObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
 	pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"Std2DMtrl"));
 
-	Ptr<CPrefab> pMissilePrefab = new CPrefab(pObj);
+	Ptr<CPrefab> pMissilePrefab = new CPrefab(pObj,true);
 	CAssetMgr::GetInst()->AddAsset<CPrefab>(L"MissilePrefab", pMissilePrefab.Get());
 
 
 	//pMissilePrefab->Save(L"prefab\\missile.pref");
-	*/
+	
 
 	// 임시 FSM 객체 에셋 하나 생성하기
 	CFSM* pFSM = new CFSM(nullptr,false);

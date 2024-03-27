@@ -18,9 +18,6 @@ CameraUI::CameraUI()
 {
 	//SetSize(ImVec2(0.f, 140.f));
 	SetComopnentTitle("Camera");
-
-
-	
 }
 
 CameraUI::~CameraUI()
@@ -208,9 +205,6 @@ void CameraUI::render_update()
 		}
 	}
 	ImGui::PopStyleVar();
-
-
-
 
 	m_vecLayerName.clear();
 }

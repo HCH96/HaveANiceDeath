@@ -1,6 +1,7 @@
 #pragma once
 #include "UI.h"
 
+class TreeUI;
 
 class TreeNode
 {
@@ -69,8 +70,15 @@ private:
     Delegate_2      m_DragDropFunc;
     bool            m_bDragDropEvent;
 
+
+    Delegate_0      m_RightClickFunc;
+    bool m_bRightClickEvent;
+
+
 public:
     virtual void render_update() override;
+
+    void AddRightClickDelegate(UI* _Inst, Delegate_0 _pFunc) { m_SelectInst = _Inst; m_RightClickFunc = _pFunc; }
 
 public:
     TreeNode* GetRootNode() { return m_Root; }
@@ -96,6 +104,7 @@ private:
     void SetSelectedNode(TreeNode* _SelectedNode);
     void SetDragNode(TreeNode* _DragNode);
     void SetDropNode(TreeNode* _DropNode);
+    void SetRightClickedNode(TreeNode* _SelectNode);
 
 
 

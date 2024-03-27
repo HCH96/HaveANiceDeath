@@ -11,7 +11,7 @@
 #include "Inspector.h"
 #include "ObjectController.h"
 #include "TreeUI.h"
-
+#include "Content.h"
 
 #include <Engine/CTaskMgr.h>
 
@@ -22,15 +22,19 @@ Outliner::Outliner()
 	m_Tree->ShowRootNode(false);
 	m_Tree->UseDragDrop(true);
 
-	AddChildUI(m_Tree);
 
 	// 트리에 클릭 이벤트 등록
+	m_Tree->AddRightClickDelegate(this, (Delegate_0)&Outliner::OpenRightClickMenu);
 	m_Tree->AddSelectDelegate(this, (Delegate_1)&Outliner::SelectObject);
 	m_Tree->AddDragDropDelegate(this, (Delegate_2)&Outliner::DragDropObject);
+
+	AddChildUI(m_Tree);
+
 
 	// 트리 내용을 현재 레벨의 물체들로 구성
 	ResetCurrentLevel();
 }
+
 
 Outliner::~Outliner()
 {
@@ -39,18 +43,15 @@ Outliner::~Outliner()
 void Outliner::render_update()
 {
 	if (CTaskMgr::GetInst()->GetObjectEvent())
-	{
 		ResetCurrentLevel();
-	}
+
 
 	if (KEY_TAP(KEY::DEL))
+		DeleteObject();
+
+	if (m_bRightClick)
 	{
-		TreeNode* pNode = m_Tree->GetSelectedNode();
-		if (nullptr != pNode)
-		{
-			CGameObject* pSelectObj = (CGameObject*)pNode->GetData();
-			GamePlayStatic::DestroyGameObject(pSelectObj);
-		}
+		DrawRightClickMenu();
 	}
 }
 
@@ -76,6 +77,87 @@ void Outliner::ResetCurrentLevel()
 		{
 			AddObjectToTree(pRootNode, vecParent[i]);
 		}
+	}
+}
+
+void Outliner::DrawRightClickMenu()
+{
+	bool bHovered = false;
+
+	//if (ImGui::BeginPopupContextItem("##OutlinerRightClickPopup"))
+	if (ImGui::BeginPopupContextItem("##OutlinerRightClickPopup"))
+	{
+		if (ImGui::Selectable("Copy"))
+		{
+			TreeNode* pNode = m_Tree->GetSelectedNode();
+
+			if (pNode)
+			{
+				CGameObject* pOrg = (CGameObject*)pNode->GetData();
+				CGameObject* pCopy = pOrg->Clone();
+				pCopy->SetName(pOrg->GetName() + L"_copy");
+
+				GamePlayStatic::SpawnGameObject(pCopy, pOrg->GetLayerIdx());
+			}
+		}
+		if (ImGui::IsItemHovered()) bHovered |= true;
+
+		if (ImGui::Selectable("Delete"))
+		{
+			DeleteObject();
+			m_bRightClick = false;
+		}
+		if (ImGui::IsItemHovered()) bHovered |= true;
+
+		if (ImGui::Selectable("Create Prefab"))
+		{
+			TreeNode* pNode = m_Tree->GetSelectedNode();
+
+			if (pNode)
+			{
+				// create prefab
+				CGameObject* pSelectObj = (CGameObject*)pNode->GetData();
+ 				Ptr<CPrefab> pPrefab = new CPrefab(pSelectObj->Clone(), false);
+				wstring strPath = L"prefab\\" + pSelectObj->GetName() + L".pref";
+				pPrefab->SetName(strPath);
+				CAssetMgr::GetInst()->AddAsset(strPath, pPrefab.Get());
+
+				Content* pContent = (Content*)CImGuiMgr::GetInst()->FindUI("##Content");
+				pContent->ReloadContent();
+
+				// save prefab
+				pPrefab->Save(strPath);
+			}
+
+			m_bRightClick = false;
+		}
+		if (ImGui::IsItemHovered()) bHovered |= true;
+
+		//if (ImGui::Selectable("Create Prefab")) {} //value = 0.0f;
+
+		if (ImGui::Selectable("Close"))
+		{
+			ImGui::CloseCurrentPopup();
+			m_bRightClick = false;
+		}
+
+		if (KEY_TAP(KEY::LBTN) && not bHovered)
+			m_bRightClick = false;
+
+		ImGui::EndPopup();
+	}
+
+	ImGui::OpenPopup("##OutlinerRightClickPopup", ImGuiPopupFlags_MouseButtonRight);
+}
+
+void Outliner::DeleteObject()
+{
+	TreeNode* pNode = m_Tree->GetSelectedNode();
+
+	if (pNode)
+	{
+		CGameObject* pSelectObj = (CGameObject*)pNode->GetData();
+		GamePlayStatic::DestroyGameObject(pSelectObj);
 	}
 }
 
@@ -115,14 +197,21 @@ void Outliner::DragDropObject(DWORD_PTR _Dest, DWORD_PTR _Source)
 	TreeNode* pSourceNode = (TreeNode*)_Source;
 
 	CGameObject* pDestObj = nullptr;
-	if(nullptr != pDestNode)
+
+	if (nullptr != pDestNode)
+	{
 		pDestObj = (CGameObject*)pDestNode->GetData();
+	}
+
+	if (nullptr == pSourceNode)
+		return;
 
 	CGameObject* pSourceObj = (CGameObject*)pSourceNode->GetData();
-
+	
 	// 부모 오브젝트가 자신의 자식오브젝트의 자식으로 들어가려는 경우는 방지
 	if (pDestObj != nullptr && pDestObj->IsAncestor(pSourceObj))
 		return;
+
 
 	if (nullptr == pDestNode)
 	{

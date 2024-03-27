@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "ObjectController.h"
 
+
+#include <Engine\CTimeMgr.h>
 #include <Engine\CRenderMgr.h>
 #include <Engine\CLevelMgr.h>
 #include <Engine\CKeyMgr.h>

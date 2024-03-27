@@ -19,8 +19,12 @@ CCollider2D::CCollider2D(const CCollider2D& _OriginCollider2D)
 	: CComponent(_OriginCollider2D)
 	, m_Offset(_OriginCollider2D.m_Offset)
 	, m_Scale(_OriginCollider2D.m_Scale)
-	, m_OverlapCount(0)
+	, m_Rotation(_OriginCollider2D.m_Rotation)
+	, m_matColWorld(_OriginCollider2D.m_matColWorld)
 	, m_Absolute(_OriginCollider2D.m_Absolute)
+	, m_OverlapCount(0)
+	, m_Active(_OriginCollider2D.m_Active)
+	, m_SemiDeactive(false)
 {
 }
 

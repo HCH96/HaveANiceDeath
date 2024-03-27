@@ -40,8 +40,13 @@ void TreeNode::render_update()
 
 			// Tree 에 자신이 Drag 된 노드임을 알린다.
 			m_Owner->SetDragNode(this);
-		}
 
+			// case: prefab drag
+			if (m_ParentNode->GetName() == "PREFAB")
+				CImGuiMgr::GetInst()->DragPrefab(m_Data);
+			else
+				CImGuiMgr::GetInst()->DragPrefab(DWORD_PTR(0));
+		}
 		else if (ImGui::BeginDragDropTarget())
 		{
 			const ImGuiPayload* payload = ImGui::AcceptDragDropPayload(m_Owner->GetID().c_str());
@@ -51,13 +56,13 @@ void TreeNode::render_update()
 			}
 			ImGui::EndDragDropTarget();
 		}
-
-		else
+		else if (KEY_RELEASED(KEY::RBTN) && ImGui::IsItemHovered(ImGuiHoveredFlags_None))
 		{
-			if ( KEY_RELEASED(KEY::LBTN) && ImGui::IsItemHovered(ImGuiHoveredFlags_None))
-			{
-				m_Owner->SetSelectedNode(this);
-			}
+			m_Owner->SetRightClickedNode(this);
+		}
+		else if(KEY_RELEASED(KEY::LBTN) && ImGui::IsItemHovered(ImGuiHoveredFlags_None))
+		{
+			m_Owner->SetSelectedNode(this);
 		}
 
 		for (size_t i = 0; i < m_vecChildNode.size(); ++i)
@@ -69,6 +74,8 @@ void TreeNode::render_update()
 	}
 	else
 	{
+		// 오브젝트를 오브젝트 위에 드랍했을때 자식으로 넣는다
+
 		if (ImGui::BeginDragDropSource())
 		{
 			ImGui::SetDragDropPayload(m_Owner->GetID().c_str(), &m_Data, sizeof(DWORD_PTR));
@@ -78,12 +85,22 @@ void TreeNode::render_update()
 			// Tree 에 자신이 Drag 된 노드임을 알린다.
 			m_Owner->SetDragNode(this);
 		}
-		else
+		else if (ImGui::BeginDragDropTarget())
 		{
-			if (KEY_RELEASED(KEY::LBTN) && ImGui::IsItemHovered(ImGuiHoveredFlags_None))
+			const ImGuiPayload* payload = ImGui::AcceptDragDropPayload(m_Owner->GetID().c_str());
+			if (payload)
 			{
-				m_Owner->SetSelectedNode(this);
+				m_Owner->SetDropNode(this);
 			}
+			ImGui::EndDragDropTarget();
+		}
+		else if (KEY_RELEASED(KEY::RBTN) && ImGui::IsItemHovered(ImGuiHoveredFlags_None))
+		{
+			m_Owner->SetRightClickedNode(this);
+		}
+		else if (KEY_RELEASED(KEY::LBTN) && ImGui::IsItemHovered(ImGuiHoveredFlags_None))
+		{
+			m_Owner->SetSelectedNode(this);
 		}
 	}
 }
@@ -125,14 +142,6 @@ void TreeUI::render_update()
 		}
 	}
 
-	
-
-
-
-
-
-
-
 	// Delegate 호출
 	if (m_bSelectEvent)
 	{
@@ -140,6 +149,12 @@ void TreeUI::render_update()
 		{
 			(m_SelectInst->*m_SelectFunc)((DWORD_PTR)m_Selected);
 		}
+	}
+
+	if (m_bRightClickEvent)
+	{
+		if (m_SelectInst && m_RightClickFunc)
+			(m_SelectInst->*m_RightClickFunc)();
 	}
 
 
@@ -165,6 +180,7 @@ void TreeUI::render_update()
 
 	m_bSelectEvent = false;
 	m_bDragDropEvent = false;
+	m_bRightClickEvent = false;
 }
 
 TreeNode* TreeUI::AddTreeNode(TreeNode* _Parent, string _strName, DWORD_PTR _dwData)
@@ -222,4 +238,10 @@ void TreeUI::SetDropNode(TreeNode* _DropNode)
 {
 	m_DropNode = _DropNode;
 	m_bDragDropEvent = true;
+}
+
+void TreeUI::SetRightClickedNode(TreeNode* _SelectNode)
+{
+	SetSelectedNode(_SelectNode);
+	m_bRightClickEvent = true;
 }

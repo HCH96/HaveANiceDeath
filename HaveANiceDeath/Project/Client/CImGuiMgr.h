@@ -24,6 +24,8 @@ private:
 
     vector<string>     m_LayerName;
 
+    Ptr<CPrefab>                m_Prefab;
+
 
 
 public:
@@ -36,6 +38,9 @@ public:
     void render_copytex();
     void LoadLayerName();
 
+public:
+    void DragPrefab(DWORD_PTR _pref);
+
 private:
     void thema();
     void tick();
@@ -44,7 +49,9 @@ private:
     void observe_content();
 
 
+
 public:
     UI* FindUI(const string& _strUIName);
     void AddUI(const string& _strKey, UI* _UI);
 };
+

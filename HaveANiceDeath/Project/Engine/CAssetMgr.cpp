@@ -65,7 +65,8 @@ void CAssetMgr::DeleteAsset(ASSET_TYPE _Type, const wstring& _strKey)
 {
 	map<wstring, Ptr<CAsset>>::iterator iter = m_mapAsset[(UINT)_Type].find(_strKey);
 
-	assert(!(iter == m_mapAsset[(UINT)_Type].end()));
+	if (iter == m_mapAsset[(UINT)_Type].end())
+		return;
 
 	m_mapAsset[(UINT)_Type].erase(iter);
 }

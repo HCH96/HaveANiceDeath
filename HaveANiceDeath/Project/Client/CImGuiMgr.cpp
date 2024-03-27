@@ -147,7 +147,6 @@ void CImGuiMgr::render_copytex()
     ImGui::Begin("Viewport##GameWindow");
 
 
-
     Vec2 RenderResolution = CDevice::GetInst()->GetRenderResolution();
     ImVec2 RenderResol = { RenderResolution.x,RenderResolution.y };
     Ptr<CTexture> pCopyTex = CRenderMgr::GetInst()->GetRTCopyTex();
@@ -177,6 +176,16 @@ void CImGuiMgr::render_copytex()
     // Image Ãâ·Â
     ImGui::Image((void*)pCopyTex->GetSRV().Get(), ImVec2(Resolution.x * (RightBottom.x - LeftTopUv.x), Resolution.y * (RightBottom.y - LeftTopUv.y)), LeftTopUv, RightBottom);
 
+    // case: drop
+    if (ImGui::IsMouseReleased(0) && ImGui::BeginDragDropTarget())
+    {
+        if (m_Prefab.Get())
+        {
+            GamePlayStatic::SpawnGameObject(m_Prefab->Instantiate(), 0);
+        }
+
+        ImGui::EndDragDropTarget();
+    }
 
     ImGui::End();
 
@@ -233,7 +242,6 @@ void CImGuiMgr::tick()
     {
         LoadLayerName();
     }
-
 
     if (m_bDemoUI)
     {
@@ -368,5 +376,19 @@ void CImGuiMgr::LoadLayerName()
         }
 
         m_LayerName.push_back("[" + std::to_string(i) + "]" + " " + strLayerName);
+    }
+}
+
+
+void CImGuiMgr::DragPrefab(DWORD_PTR _pref)
+{
+
+    Ptr<CAsset> pAsset = (CAsset*)_pref;
+
+    
+
+    if (pAsset.Get() && pAsset->GetType() == ASSET_TYPE::PREFAB)
+    {
+        m_Prefab = (CPrefab*)pAsset.Get();
     }
 }
