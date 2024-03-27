@@ -78,6 +78,18 @@ void CCamera::LayerCheck(const wstring& _strLayerName, bool _bCheck)
 	LayerCheck(idx, _bCheck);
 }
 
+Vec2 CCamera::GetWorldPosInWindow(Vec2 _Diff)
+{
+	Vec3 Center = Transform()->GetWorldPos();
+	
+	Vec2 vResol = CDevice::GetInst()->GetRenderResolution();
+	Vec2 vWinSize = Vec2(vResol.x * m_Scale, (vResol.x / m_AspectRatio) * m_Scale);
+
+	Vec2 MouseWorldPos = Vec2(Center.x + _Diff.x * m_Scale, Center.y + _Diff.y * m_Scale);
+
+	return MouseWorldPos;
+}
+
 void CCamera::begin()
 {
 	// 카메라를 우선순위값에 맞게 RenderMgr 에 등록시킴

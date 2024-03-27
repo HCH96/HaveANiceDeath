@@ -39,8 +39,6 @@ public:
     virtual void render_update() override;
     virtual void Deactivate() override;
 
-
-
 public:
     ListUI();
     ~ListUI();

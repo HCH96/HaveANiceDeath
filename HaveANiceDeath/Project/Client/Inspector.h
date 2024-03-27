@@ -40,6 +40,8 @@ public:
 
     CGameObject* GetTargetObject() { return m_TargetObject; }
 
+    ObjectController* GetObjController() { return m_ObjController; }
+
 private:
     void CreateChildUI();
     void CreateComponentUI();

@@ -18,6 +18,8 @@ private:
 
 
 public:
+	bool IsActive() { return m_bActive; }
+
 	void SetName(const string& _name) { m_strName = _name; }
 	const string& GetName() { return m_strName; }
 	const string& GetID() { return m_strID; }

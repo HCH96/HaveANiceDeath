@@ -22,14 +22,19 @@ private:
 
     HANDLE              m_hNotify;
 
-    vector<wstring>     m_LayerName;
+    vector<string>     m_LayerName;
 
+
+
+public:
+    const vector<string>& GetLayerName() { return m_LayerName; }
 
 public:
     void init(HWND _hMainWnd, ComPtr<ID3D11Device> _Device, ComPtr <ID3D11DeviceContext> _Context);
     void begin();
     void progress();
     void render_copytex();
+    void LoadLayerName();
 
 private:
     void thema();
@@ -37,6 +42,7 @@ private:
     void render();
     void create_ui();
     void observe_content();
+
 
 public:
     UI* FindUI(const string& _strUIName);

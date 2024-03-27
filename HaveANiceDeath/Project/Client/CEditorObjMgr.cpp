@@ -6,6 +6,8 @@
 
 #include <Engine/CRenderMgr.h>
 
+#include <Scripts\CCameraMoveScript.h>
+
 CEditorObjMgr::CEditorObjMgr()
 {
 
@@ -22,7 +24,7 @@ void CEditorObjMgr::init()
 	CGameObjectEx* pEditorCam = new CGameObjectEx;
 	pEditorCam->AddComponent(new CTransform);
 	pEditorCam->AddComponent(new CCamera);
-	//pEditorCam->AddComponent(new CCameraMoveScript);
+	pEditorCam->AddComponent(new CCameraMoveScript);
 
 	pEditorCam->Camera()->LayerCheckAll();
 	pEditorCam->Camera()->LayerCheck(31, false);

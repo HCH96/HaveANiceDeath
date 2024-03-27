@@ -3,10 +3,12 @@
 
 #include <Engine\CDevice.h>
 
+#include <Engine\CTaskMgr.h>
 #include <Engine\CRenderMgr.h>
 
 #include <Engine/CLevelMgr.h>
 #include <Engine/CLevel.h>
+#include <Engine\CLayer.h>
 #include <Engine/CGameObject.h>
 
 #include <Engine/CPathMgr.h>
@@ -29,7 +31,6 @@
 
 #include "ObjectController.h"
 
-
 #include "ParamUI.h"
 
 CImGuiMgr::CImGuiMgr()
@@ -50,12 +51,12 @@ CImGuiMgr::~CImGuiMgr()
     // UI 
     Delete_Map(m_mapUI);
 
+
     // 디렉터리 변경 감시 종료
     FindCloseChangeNotification(m_hNotify);
 }
 
-void CImGuiMgr::init(HWND _hMainWnd, ComPtr<ID3D11Device> _Device
-    , ComPtr<ID3D11DeviceContext> _Context)
+void CImGuiMgr::init(HWND _hMainWnd, ComPtr<ID3D11Device> _Device, ComPtr<ID3D11DeviceContext> _Context)
 {
     // ImGui 초기화
     // Setup Dear ImGui context
@@ -143,8 +144,9 @@ void CImGuiMgr::progress()
 
 void CImGuiMgr::render_copytex()
 {
-
     ImGui::Begin("Viewport##GameWindow");
+
+
 
     Vec2 RenderResolution = CDevice::GetInst()->GetRenderResolution();
     ImVec2 RenderResol = { RenderResolution.x,RenderResolution.y };
@@ -164,29 +166,19 @@ void CImGuiMgr::render_copytex()
     RightBottom.x = 1.f - LeftTopUv.x;
     RightBottom.y = 1.f - LeftTopUv.y;
 
+    // Image 위치 기록
+    ImVec2 windowPos = ImGui::GetCursorScreenPos();
+    ImVec2 windowSize = ImVec2(Resolution.x * (RightBottom.x - LeftTopUv.x), Resolution.y * (RightBottom.y - LeftTopUv.y));
+    Inspector* pInspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
+
+    pInspector->GetObjController()->SetStartPos(windowPos);
+    pInspector->GetObjController()->SetViewportSize(windowSize);
+
+    // Image 출력
     ImGui::Image((void*)pCopyTex->GetSRV().Get(), ImVec2(Resolution.x * (RightBottom.x - LeftTopUv.x), Resolution.y * (RightBottom.y - LeftTopUv.y)), LeftTopUv, RightBottom);
+
+
     ImGui::End();
-
-    // copy render target
-    //Vec2 RenderResolution = CDevice::GetInst()->GetRenderResolution();
-    //ImVec2 RenderResol = { RenderResolution.x,RenderResolution.y };
-    //Ptr<CTexture> pCopyTex = CRenderMgr::GetInst()->GetRTCopyTex();
-
-    //ImVec2 vWinSize = ImGui::GetContentRegionAvail();
-    //ImVec2 vCenter = ImVec2(RenderResolution.x / 2.f, RenderResolution.y / 2.f);
-    //ImVec2 vLeftTopUV = vCenter - vWinSize / 2.f;
-    //ImVec2 vRightBottomUV = vCenter + vWinSize / 2.f;
-
-    //// calculate UV
-    //vLeftTopUV.x /= RenderResolution.x;
-    //vLeftTopUV.y /= RenderResolution.y;
-    //vRightBottomUV.x /= RenderResolution.x;
-    //vRightBottomUV.y /= RenderResolution.y;
-
-    //// draw img
-    //ImGui::Begin("##GameWindow");
-    //ImGui::Image((void*)pCopyTex->GetSRV().Get(), ImGui::GetContentRegionMax(), vLeftTopUV, vRightBottomUV);
-    //ImGui::End();
 
 }
 
@@ -236,6 +228,11 @@ void CImGuiMgr::tick()
     ImGui_ImplWin32_NewFrame();
     ImGui::NewFrame();
     ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
+
+    if (CTaskMgr::GetInst()->GetChangeLevel())
+    {
+        LoadLayerName();
+    }
 
 
     if (m_bDemoUI)
@@ -297,6 +294,7 @@ void CImGuiMgr::create_ui()
 {
     UI* pUI = nullptr;
 
+
     // Inspector
     pUI = new Inspector;
     AddUI(pUI->GetID(), pUI);
@@ -331,6 +329,7 @@ void CImGuiMgr::create_ui()
     pUI = new MtrlEditorUI;
     AddUI(pUI->GetID(), pUI);
 
+
     // Object Controller
     //pUI = new ObjectController;
     //AddUI(pUI->GetID(), pUI);
@@ -350,5 +349,24 @@ void CImGuiMgr::observe_content()
         // ContentUI 에 Reload 작업 수행
         Content* pContentUI = (Content*)FindUI("##Content");
         pContentUI->ReloadContent();
+    }
+}
+
+void CImGuiMgr::LoadLayerName()
+{
+    m_LayerName.clear();
+
+    CLevel* pLevel = CLevelMgr::GetInst()->GetCurrentLevel();
+
+    for (int i = 0; i < LAYER_MAX; ++i)
+    {
+        wstring layerName = pLevel->GetLayer(i)->GetName();
+        string strLayerName = string(layerName.begin(), layerName.end());
+        if (strLayerName == "")
+        {
+            strLayerName = std::to_string(i);
+        }
+
+        m_LayerName.push_back("[" + std::to_string(i) + "]" + " " + strLayerName);
     }
 }

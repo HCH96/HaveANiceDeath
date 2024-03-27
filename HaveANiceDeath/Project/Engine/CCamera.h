@@ -64,6 +64,8 @@ public:
     void LayerCheckAll() { m_LayerCheck = 0xffffffff; }
     void LayerCheckOffAll() { m_LayerCheck = 0x00000000; }
 
+    // 인자로 들어오는 값은 카메라 기준 Diff 벡터
+    Vec2 GetWorldPosInWindow(Vec2 _Diff);
 
 public:
     virtual void begin() override;

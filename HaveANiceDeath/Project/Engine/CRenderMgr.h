@@ -45,6 +45,7 @@ public:
 
 public:
     CCamera* GetEditorCamera() { return m_EditorCam; }
+    const vector<CCamera*>& GetCameras() { return m_vecCam; }
     bool IsEditorMode() { return m_isEditorMode; }
 
     void RegisterCamera(CCamera* _Cam, int _Idx);

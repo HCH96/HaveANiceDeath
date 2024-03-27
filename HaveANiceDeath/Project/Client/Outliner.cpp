@@ -9,7 +9,9 @@
 
 #include "CImGuiMgr.h"
 #include "Inspector.h"
+#include "ObjectController.h"
 #include "TreeUI.h"
+
 
 #include <Engine/CTaskMgr.h>
 
@@ -101,7 +103,7 @@ void Outliner::SelectObject(DWORD_PTR _Node)
 	
 	if (pInspector->GetTargetObject() == pObject)
 	{
-
+		pInspector->GetObjController()->FocusObject(pObject);
 	}
 
 	pInspector->SetTargetObject(pObject);	

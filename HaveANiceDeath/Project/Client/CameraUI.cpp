@@ -51,19 +51,8 @@ void CameraUI::CheckLayer(DWORD_PTR _ptr)
 void CameraUI::render_update()
 {
 
-	CLevel* pLevel = CLevelMgr::GetInst()->GetCurrentLevel();
-
-	for (int i = 0; i < LAYER_MAX; ++i)
-	{
-		wstring layerName = pLevel->GetLayer(i)->GetName();
-		string strLayerName = string(layerName.begin(), layerName.end());
-		if (strLayerName == "")
-		{
-			strLayerName = std::to_string(i);
-		}
-
-		m_vecLayerName.push_back("[" + std::to_string(i) + "]" + " " + strLayerName);
-	}
+	// Layer 이름을 CImGuiMgr 에게서 가져옴
+	m_vecLayerName = CImGuiMgr::GetInst()->GetLayerName();
 
 
 	if (nullptr == GetTargetObject())
