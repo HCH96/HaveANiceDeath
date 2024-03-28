@@ -78,6 +78,7 @@ void CGameObject::AddComponent(CComponent* _Comonent)
 		if (m_arrCom[(UINT)type])
 		{
 			MessageBoxA(nullptr, "이미 해당 컴포넌트를 가지고 있습니다!", "Add Component Failed!", MB_OK);
+			delete _Comonent;
 			return;
 		}
 
@@ -120,6 +121,14 @@ void CGameObject::DeleteComponent(COMPONENT_TYPE _Type)
 			m_RenderCom = nullptr;
 		}
 	}
+}
+
+int CGameObject::ChangeLayer(int _Idx)
+{
+	DisconnectWithLayer();
+	CLevelMgr::GetInst()->GetCurrentLevel()->AddObject(this, _Idx, false);
+
+	return 0;
 }
 
 int CGameObject::DisconnectWithParent()

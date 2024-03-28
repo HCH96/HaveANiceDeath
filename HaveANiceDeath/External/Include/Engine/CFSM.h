@@ -47,4 +47,5 @@ public:
 
 
     friend class CTaskMgr;
+    friend class CStateMachine;
 };

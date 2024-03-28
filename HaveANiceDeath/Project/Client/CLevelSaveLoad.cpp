@@ -8,6 +8,7 @@
 #include <Engine/CGameObject.h>
 #include <Engine/components.h>
 #include <Engine/CAssetMgr.h>
+#include <Engine\CMovement.h>
 
 #include <Scripts/CScriptMgr.h>
 #include <Engine/CScript.h>
@@ -192,6 +193,10 @@ CGameObject* CLevelSaveLoad::LoadGameObject(FILE* _File)
 		case COMPONENT_TYPE::STATEMACHINE:
 			pComponent = new CStateMachine;
 			break;
+		case COMPONENT_TYPE::MOVEMENT:
+			pComponent = new CMovement;
+			break;
+
 		case COMPONENT_TYPE::MESHRENDER:
 			pComponent = new CMeshRender;
 			break;
@@ -201,6 +206,8 @@ CGameObject* CLevelSaveLoad::LoadGameObject(FILE* _File)
 		case COMPONENT_TYPE::PARTICLESYSTEM:
 			pComponent = new CParticleSystem;
 			break;
+
+
 		default:
 			assert(nullptr);
 			break;

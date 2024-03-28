@@ -12,6 +12,7 @@
 
 #include "AssetUI.h"
 #include "ObjectController.h"
+#include "Outliner.h"
 
 
 Inspector::Inspector()
@@ -41,8 +42,26 @@ void Inspector::render_update()
 	m_ObjController->render();
 	ImGui::Separator();
 
+
 	if (nullptr == m_TargetObject)
 		return;
+
+	// name
+	char str[100]{};
+	strcpy_s(str, ToString(GetTargetObject()->GetName()).c_str());
+
+	ImGui::Text("Name"); ImGui::SameLine(130);
+	if (ImGui::InputText("##InspectorObjName", str, 100, ImGuiInputTextFlags_EnterReturnsTrue))
+	{
+		GetTargetObject()->SetName(ToWString(string(str)));
+		Outliner* outliner = (Outliner*)CImGuiMgr::GetInst()->FindUI("##Outliner");
+		outliner->ResetCurrentLevel();
+	}
+
+	// layer
+	ImGui::Text("Layer"); ImGui::SameLine(130);
+	DrawLayerUI();
+	ImGui::Separator();
 
 	if (nullptr != m_TargetObject)
 	{
@@ -133,4 +152,38 @@ void Inspector::SetTargetAsset(Ptr<CAsset> _Asset)
 	}	
 
 
+}
+
+
+
+
+
+void Inspector::DrawLayerUI()
+{
+	ImGui::BeginGroup();
+	{
+		const vector<string>& LayerName = CImGuiMgr::GetInst()->GetLayerName();
+		int item_current_idx = m_TargetObject->GetLayerIdx();
+		int item_prev_idx = item_current_idx;
+		if (ImGui::BeginCombo("##CheckLayerList", LayerName[item_current_idx].c_str()))
+		{
+			for (int i = 0; i < LayerName.size(); i++)
+			{
+				const bool is_selected = (item_current_idx == i);
+
+				if (ImGui::Selectable(LayerName[i].c_str(), is_selected))
+					item_current_idx = i;
+
+				if (is_selected)
+					ImGui::SetItemDefaultFocus();
+			}
+			ImGui::EndCombo();
+		}
+
+		if (item_prev_idx != item_current_idx)
+			m_TargetObject->ChangeLayer(item_current_idx);
+		item_prev_idx = item_current_idx;
+
+		ImGui::EndGroup();
+	}
 }

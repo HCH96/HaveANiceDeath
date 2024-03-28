@@ -47,6 +47,7 @@ private:
     void CreateComponentUI();
     void CreateAssetUI();
     void ResizeScriptUI(UINT _Size);
+    void DrawLayerUI();
 
 public:
     Inspector();

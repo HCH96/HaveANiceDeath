@@ -141,6 +141,8 @@
       <MinFilesInUnityFile>10</MinFilesInUnityFile>
       <MaxFilesInUnityFile>20</MaxFilesInUnityFile>
       <UnityFilesDirectory>$(ProjectDir)</UnityFilesDirectory>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -175,6 +177,7 @@
     <ClInclude Include="imstb_textedit.h" />
     <ClInclude Include="imstb_truetype.h" />
     <ClInclude Include="Inspector.h" />
+    <ClInclude Include="LayerEditor.h" />
     <ClInclude Include="Light2DUI.h" />
     <ClInclude Include="ListUI.h" />
     <ClInclude Include="MaterialUI.h" />
@@ -200,6 +203,7 @@
     <ClInclude Include="UIAnimDetail.h" />
     <ClInclude Include="UIAnimPannel.h" />
     <ClInclude Include="UIAnimPreview.h" />
+    <ClInclude Include="UIMovement.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animator2DUI.cpp" />
@@ -225,6 +229,7 @@
     <ClCompile Include="imgui_widgets.cpp" />
     <ClCompile Include="Inspector.cpp" />
     <ClCompile Include="Inspector_init.cpp" />
+    <ClCompile Include="LayerEditor.cpp" />
     <ClCompile Include="Light2DUI.cpp" />
     <ClCompile Include="ListUI.cpp" />
     <ClCompile Include="main.cpp" />
@@ -239,6 +244,7 @@
     <ClCompile Include="ParamUI.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="PrefabUI.cpp" />
     <ClCompile Include="ScriptUI.cpp" />
@@ -251,6 +257,7 @@
     <ClCompile Include="UIAnimDetail.cpp" />
     <ClCompile Include="UIAnimPannel.cpp" />
     <ClCompile Include="UIAnimPreview.cpp" />
+    <ClCompile Include="UIMovement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc" />

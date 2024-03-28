@@ -99,6 +99,7 @@ void Outliner::DrawRightClickMenu()
 
 				GamePlayStatic::SpawnGameObject(pCopy, pOrg->GetLayerIdx());
 			}
+			m_bRightClick = false;
 		}
 		if (ImGui::IsItemHovered()) bHovered |= true;
 

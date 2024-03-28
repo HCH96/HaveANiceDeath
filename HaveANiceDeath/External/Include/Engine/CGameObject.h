@@ -9,6 +9,7 @@ class CCamera;
 class CCollider2D;
 class CLight2D;
 class CStateMachine;
+class CMovement;
 
 class CRenderComponent;
 class CMeshRender;
@@ -46,6 +47,7 @@ public:
     GET_COMPONENT(Light2D, LIGHT2D);
     GET_COMPONENT(Camera, CAMERA);
     GET_COMPONENT(StateMachine, STATEMACHINE);
+    GET_COMPONENT(Movement, MOVEMENT);
 
     GET_COMPONENT(MeshRender, MESHRENDER);
     GET_COMPONENT(TileMap, TILEMAP);
@@ -65,6 +67,7 @@ public:
 public:
     void AddComponent(CComponent* _Comonent);
     void DeleteComponent(COMPONENT_TYPE _Type);
+    int  ChangeLayer(int _Idx);
 
     int DisconnectWithParent();
     int DisconnectWithLayer();

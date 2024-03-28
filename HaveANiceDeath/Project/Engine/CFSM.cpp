@@ -21,6 +21,10 @@ CFSM::CFSM(CFSM* _Origin, bool _bEngine)
 	// case: original FSM
 	if (!m_Master)
 		m_Blackboard = new CBlackboard();
+	else
+		m_Blackboard = _Origin->m_Blackboard;
+
+
 }
 
 CFSM::~CFSM()
@@ -81,11 +85,9 @@ CFSM* CFSM::GetFSMIstance()
 	CFSM* pFSMInst = new CFSM(this, true);
 
 	pFSMInst->m_mapState = m_mapState;
-	pFSMInst->m_Master = this;
-	pFSMInst->m_Blackboard = m_Blackboard;
-	pFSMInst->m_CurState = nullptr;
 
 	return pFSMInst;
+
 }
 
 void CFSM::ChangeState(const wstring& _strStateName)
@@ -114,9 +116,11 @@ void CFSM::ChangeState_proc(CState* _pNextState)
 	if (m_CurState)
 		m_CurState->Exit();
 
-	//m_CurState = FindState(_strStateName); assert(m_CurState);
 	m_CurState = _pNextState;
+	m_CurState->m_FSM = this;
 	m_CurState->Enter();
+
+
 }
 
 int CFSM::Save(const wstring& _strRelativePath)

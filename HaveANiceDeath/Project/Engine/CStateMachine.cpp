@@ -19,7 +19,6 @@ void CStateMachine::begin()
 		m_FSM_Inst = m_FSM->GetFSMIstance();
 		m_FSM_Inst->SetStateMachine(this);
 	}
-
 }
 
 void CStateMachine::finaltick()

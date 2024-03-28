@@ -42,6 +42,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_CLIENT));
     MSG msg;
 
+    
+    // Window 크기 설정
 #ifdef _DEBUG
     RECT rect = { 0,0, GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN) };
     AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
@@ -68,6 +70,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     BOOL SET_CAPTION_COLOR = SUCCEEDED(DwmSetWindowAttribute(hWnd, DWMWINDOWATTRIBUTE::DWMWA_CAPTION_COLOR, &DARK_COLOR, sizeof(DARK_COLOR)));
 
 
+
     // CEnigne init
     if (FAILED(CEngine::GetInst()->init(hWnd, WinSize)))
     {
@@ -75,14 +78,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         return 0;
     }
 
-
-
-    //// CEngine 초기화 실패 -> 프로그램 종료
-    //if (FAILED(CEngine::GetInst()->init(hWnd, Resolution)))
-    //{
-    //    MessageBox(nullptr, L"CEngine 초기화 실패", L"초기화 실패", MB_OK);
-    //    return 0;
-    //}
 
     CPrefab::GAMEOBJECT_SAVE = &CLevelSaveLoad::SaveGameObject;
     CPrefab::GAMEOBJECT_LOAD = &CLevelSaveLoad::LoadGameObject;
@@ -93,8 +88,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     // 임시 레벨 생성
     CCreateTempLevel::Init();
     CCreateTempLevel::CreateTempLevel();
-
-    const map<wstring, Ptr<CAsset>> test = CAssetMgr::GetInst()->GetAssets<CTexture>();
 
     // EditorObjectManager 초기화
     CEditorObjMgr::GetInst()->init();
@@ -121,8 +114,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         {
             // Engine Update
             CEngine::GetInst()->progress();
-
-
 
 #ifndef _RELEASE_GAME
             // EditorObj

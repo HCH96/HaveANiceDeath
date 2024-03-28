@@ -166,6 +166,9 @@
     <ClInclude Include="CSound.h">
       <Filter>08. Asset\Sound</Filter>
     </ClInclude>
+    <ClInclude Include="CMovement.h">
+      <Filter>07. Component\10. Movement</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -317,6 +320,9 @@
     </ClCompile>
     <ClCompile Include="CSound.cpp">
       <Filter>08. Asset\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="CMovement.cpp">
+      <Filter>07. Component\10. Movement</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -475,6 +481,9 @@
     </Filter>
     <Filter Include="08. Asset\FSM\State">
       <UniqueIdentifier>{becfff4b-2d7c-475d-87b5-434958bd9959}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07. Component\10. Movement">
+      <UniqueIdentifier>{4925bf51-3ea1-4292-a83f-3c03071a1e74}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -17,6 +17,7 @@ void Inspector::CreateChildUI()
 #include "Light2DUI.h"
 #include "Animator2DUI.h"
 #include "StateMachineUI.h"
+#include "UIMovement.h"
 #include "PrefabUI.h"
 #include "CameraUI.h"
 
@@ -51,6 +52,12 @@ void Inspector::CreateComponentUI()
 	m_arrComUI[(UINT)COMPONENT_TYPE::MESHRENDER] = new MeshRenderUI;
 	m_arrComUI[(UINT)COMPONENT_TYPE::MESHRENDER]->Deactivate();
 	AddChildUI(m_arrComUI[(UINT)COMPONENT_TYPE::MESHRENDER]);
+
+	m_arrComUI[(UINT)COMPONENT_TYPE::MOVEMENT] = new UIMovement;
+	m_arrComUI[(UINT)COMPONENT_TYPE::MOVEMENT]->Deactivate();
+	AddChildUI(m_arrComUI[(UINT)COMPONENT_TYPE::MOVEMENT]);
+
+	
 
 	m_ObjController = new ObjectController;
 

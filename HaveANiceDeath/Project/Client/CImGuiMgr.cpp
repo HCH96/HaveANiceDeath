@@ -10,6 +10,8 @@
 #include <Engine/CLevel.h>
 #include <Engine\CLayer.h>
 #include <Engine/CGameObject.h>
+#include <Engine\CCamera.h>
+#include <Engine\CTransform.h>
 
 #include <Engine/CPathMgr.h>
 
@@ -30,6 +32,7 @@
 #include "MtrlEditorUI.h"
 
 #include "ObjectController.h"
+#include "LayerEditor.h"
 
 #include "ParamUI.h"
 
@@ -54,6 +57,33 @@ CImGuiMgr::~CImGuiMgr()
 
     // 디렉터리 변경 감시 종료
     FindCloseChangeNotification(m_hNotify);
+}
+
+Vec2 CImGuiMgr::GetMouseWorldPos(ImVec2 _MousePos)
+{
+    CCamera* pCurCam = nullptr;
+    if (CRenderMgr::GetInst()->IsEditorMode())
+    {
+        pCurCam = CRenderMgr::GetInst()->GetEditorCamera();
+    }
+    else
+    {
+        vector<CCamera*> vecCams = CRenderMgr::GetInst()->GetCameras();
+        if (vecCams.size() > 0)
+        {
+            pCurCam = vecCams[0];
+        }
+    }
+
+    ImVec2 WinCenter = ImVec2(m_ViewportStart.x + m_ViewportSize.x / 2.f, m_ViewportStart.y + m_ViewportSize.y / 2.f);
+
+    // Window 좌표계라 y축 뒤집어 줘야 함
+    ImVec2 diffVec = _MousePos - WinCenter;
+    diffVec.y *= -1;
+
+    Vec2 MouseWorldPos = pCurCam->GetWorldPosInWindow(Vec2(diffVec.x, diffVec.y));
+
+    return MouseWorldPos;
 }
 
 void CImGuiMgr::init(HWND _hMainWnd, ComPtr<ID3D11Device> _Device, ComPtr<ID3D11DeviceContext> _Context)
@@ -170,8 +200,8 @@ void CImGuiMgr::render_copytex()
     ImVec2 windowSize = ImVec2(Resolution.x * (RightBottom.x - LeftTopUv.x), Resolution.y * (RightBottom.y - LeftTopUv.y));
     Inspector* pInspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
 
-    pInspector->GetObjController()->SetStartPos(windowPos);
-    pInspector->GetObjController()->SetViewportSize(windowSize);
+    m_ViewportStart = windowPos;
+    m_ViewportSize = windowSize;
 
     // Image 출력
     ImGui::Image((void*)pCopyTex->GetSRV().Get(), ImVec2(Resolution.x * (RightBottom.x - LeftTopUv.x), Resolution.y * (RightBottom.y - LeftTopUv.y)), LeftTopUv, RightBottom);
@@ -181,7 +211,11 @@ void CImGuiMgr::render_copytex()
     {
         if (m_Prefab.Get())
         {
-            GamePlayStatic::SpawnGameObject(m_Prefab->Instantiate(), 0);
+            CGameObject* pObj = m_Prefab->Instantiate();
+            ImVec2 mousePosition = ImGui::GetMousePos();
+            Vec2 MouseWorldPos = GetMouseWorldPos(mousePosition);
+            pObj->Transform()->SetRelativePos(Vec3(MouseWorldPos.x, MouseWorldPos.y, pObj->Transform()->GetRelativePos().z));
+            GamePlayStatic::SpawnGameObject(pObj, 0);
         }
 
         ImGui::EndDragDropTarget();
@@ -337,6 +371,9 @@ void CImGuiMgr::create_ui()
     pUI = new MtrlEditorUI;
     AddUI(pUI->GetID(), pUI);
 
+
+    pUI = new LayerEditor;
+    AddUI(pUI->GetID(), pUI);
 
     // Object Controller
     //pUI = new ObjectController;

@@ -25,7 +25,7 @@
 #include "UIAnimPannel.h"
 #include "MtrlEditorUI.h"
 
-
+#include "LayerEditor.h"
 
 MenuUI::MenuUI()
 	: UI("Menu", "##Menu")
@@ -125,6 +125,16 @@ void MenuUI::File()
                 pInspector->SetTargetObject(nullptr);
             }
         }
+
+
+        if (ImGui::MenuItem("Layer Name Setting", ""))
+        {
+            LayerEditor* pLayerEditor = (LayerEditor*)CImGuiMgr::GetInst()->FindUI("##LayerEditor");
+            pLayerEditor->Activate();
+        }
+
+
+
 
         ImGui::EndMenu();
     }

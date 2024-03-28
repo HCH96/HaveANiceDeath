@@ -41,6 +41,8 @@ enum class COMPONENT_TYPE
 
 	STATEMACHINE, // 상태머신
 
+	MOVEMENT,
+
 	// Render Component
 	MESHRENDER,
 	TILEMAP,

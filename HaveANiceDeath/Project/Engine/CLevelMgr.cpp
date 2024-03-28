@@ -25,6 +25,9 @@ CLevelMgr::~CLevelMgr()
 
 void CLevelMgr::init()
 {
+	// TO DO: Ãæµ¹ ¼³Á¤ ÇØÁà¾ß µÊ
+
+
 	//CLevel* pLevel = CLevelSaveLoad::LoadLevel(L"level\\temp.lv");
 	//CLevelMgr::GetInst()->ChangeLevel(pLevel, LEVEL_STATE::STOP);
 }

@@ -18,9 +18,15 @@ CRenderMgr::CRenderMgr()
 	, m_DebugPosition(true)
 	, m_EditorCam(nullptr)
 	, m_RenderFunc(nullptr)
-	, m_isEditorMode(true)
 {
 	m_RenderFunc = &CRenderMgr::render_play;
+
+#ifndef _RELEASE_GAME
+	m_isEditorMode = true;
+#else
+	m_isEditorMode = false;
+#endif
+
 }
 
 CRenderMgr::~CRenderMgr()
