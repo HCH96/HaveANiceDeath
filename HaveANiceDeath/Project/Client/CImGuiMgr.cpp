@@ -33,6 +33,7 @@
 
 #include "ObjectController.h"
 #include "LayerEditor.h"
+#include "UIGamePlayPannel.h"
 
 #include "ParamUI.h"
 
@@ -373,6 +374,10 @@ void CImGuiMgr::create_ui()
 
 
     pUI = new LayerEditor;
+    AddUI(pUI->GetID(), pUI);
+
+    // GamePlay
+    pUI = new UIGamePlayPannel;
     AddUI(pUI->GetID(), pUI);
 
     // Object Controller

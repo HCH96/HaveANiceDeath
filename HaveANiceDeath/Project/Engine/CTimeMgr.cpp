@@ -51,6 +51,8 @@ void CTimeMgr::tick()
 	m_szText[50] = {};
 	if (1.f <= m_Time)
 	{
+		m_FPS = m_CallCount;
+
 		swprintf_s(m_szText, 50, L"DeltaTime : %f, FPS : %d", m_DeltaTime, m_CallCount);
 		m_CallCount = 0;
 		m_Time = 0.f;

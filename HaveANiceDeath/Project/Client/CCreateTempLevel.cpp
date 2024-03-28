@@ -147,7 +147,7 @@ void CCreateTempLevel::CreateTempLevel()
 	CGameObject* pObj = nullptr;
 
 	// Backgruond Object 持失
-	/*pObj = new CGameObject;
+	pObj = new CGameObject;
 	pObj->SetName(L"Background");
 
 	pObj->AddComponent(new CTransform);
@@ -160,13 +160,13 @@ void CCreateTempLevel::CreateTempLevel()
 	pObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
 	pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"BackgroundMtrl"));
 
-	Ptr<CTexture> pTex = CAssetMgr::GetInst()->Load<CTexture>(L"texture\\Background.jpg", L"texture\\Background.jpg");
+	Ptr<CTexture> pTex = CAssetMgr::GetInst()->Load<CTexture>(L"texture\\Background.png", L"texture\\Background.png");
 	pObj->MeshRender()->GetMaterial()->SetTexParam(TEX_PARAM::TEX_0, pTex);
 
-	pTempLevel->AddObject(pObj, L"Background", false);*/
+	pTempLevel->AddObject(pObj, L"Background", false);
 
 	// Player Object 持失
-	/*pObj = new CGameObject;
+	pObj = new CGameObject;
 	pObj->SetName(L"Player");
 
 	pObj->AddComponent(new CTransform);
@@ -206,44 +206,44 @@ void CCreateTempLevel::CreateTempLevel()
 
 
 
-	pTempLevel->AddObject(pObj, L"Player", false);*/
+	pTempLevel->AddObject(pObj, L"Player", false);
 
 	// Particle Object
-	//CGameObject* pParticleObj = new CGameObject;
-	//pParticleObj->SetName(L"Particle");
+	CGameObject* pParticleObj = new CGameObject;
+	pParticleObj->SetName(L"Particle");
 
-	//pParticleObj->AddComponent(new CTransform);
-	//pParticleObj->AddComponent(new CParticleSystem);
+	pParticleObj->AddComponent(new CTransform);
+	pParticleObj->AddComponent(new CParticleSystem);
 
-	//pParticleObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 200.f));
+	pParticleObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 200.f));
 
-	//pObj->AddChild(pParticleObj);
+	pObj->AddChild(pParticleObj);
 
 
 	// Monster Object 持失
-	//pObj = new CGameObject;
-	//pObj->SetName(L"Monster");
+	pObj = new CGameObject;
+	pObj->SetName(L"Monster");
 
-	//pObj->AddComponent(new CTransform);
-	//pObj->AddComponent(new CMeshRender);
-	//pObj->AddComponent(new CCollider2D);
-	//pObj->AddComponent(new CStateMachine);
-	//pObj->AddComponent(new CMonsterScript);
+	pObj->AddComponent(new CTransform);
+	pObj->AddComponent(new CMeshRender);
+	pObj->AddComponent(new CCollider2D);
+	pObj->AddComponent(new CStateMachine);
+	pObj->AddComponent(new CMonsterScript);
 
-	//pObj->Transform()->SetRelativePos(Vec3(500.f, 0.f, 500.f));
-	//pObj->Transform()->SetRelativeScale(Vec3(200.f, 200.f, 1.f));
+	pObj->Transform()->SetRelativePos(Vec3(500.f, 0.f, 500.f));
+	pObj->Transform()->SetRelativeScale(Vec3(200.f, 200.f, 1.f));
 
-	//pObj->Collider2D()->SetAbsolute(true);
-	//pObj->Collider2D()->SetScale(Vec3(120.f, 120.f, 1.f));
-	//pObj->Collider2D()->SetOffset(Vec3(0.f, 0.f, 0.f));
+	pObj->Collider2D()->SetAbsolute(true);
+	pObj->Collider2D()->SetScale(Vec3(120.f, 120.f, 1.f));
+	pObj->Collider2D()->SetOffset(Vec3(0.f, 0.f, 0.f));
 
-	//pObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
-	//pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"Std2DMtrl"));
-	//pObj->MeshRender()->GetMaterial()->SetTexParam(TEX_PARAM::TEX_0, CAssetMgr::GetInst()->Load<CTexture>(L"texture\\Fighter.bmp", L"texture\\Fighter.bmp"));
+	pObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
+	pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"Std2DMtrl"));
+	pObj->MeshRender()->GetMaterial()->SetTexParam(TEX_PARAM::TEX_0, CAssetMgr::GetInst()->Load<CTexture>(L"texture\\Fighter.bmp", L"texture\\Fighter.bmp"));
 
-	//pObj->StateMachine()->SetFSM(CAssetMgr::GetInst()->FindAsset<CFSM>(L"NormalMonsterFSM"));
+	pObj->StateMachine()->SetFSM(CAssetMgr::GetInst()->FindAsset<CFSM>(L"NormalMonsterFSM"));
 
-	//pTempLevel->AddObject(pObj, L"Monster", false);
+	pTempLevel->AddObject(pObj, L"Monster", false);
 
 
 	CLevelMgr::GetInst()->ChangeLevel(pTempLevel, LEVEL_STATE::STOP);

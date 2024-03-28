@@ -39,9 +39,6 @@ void Inspector::tick()
 
 void Inspector::render_update()
 {
-	m_ObjController->render();
-	ImGui::Separator();
-
 
 	if (nullptr == m_TargetObject)
 		return;

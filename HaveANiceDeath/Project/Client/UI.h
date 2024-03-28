@@ -14,7 +14,7 @@ private:
 
 	UI*				m_Parent;
 	vector<UI*>		m_vecChildUI;
-
+	bool            m_bScroll;
 
 
 public:
@@ -39,7 +39,7 @@ public:
 	bool IsActivate() { return m_bActive; }
 	void SetModal(bool _Modal) { m_bModal = _Modal; }
 
-
+	void            SetScroll(bool _bScroll) { m_bScroll = _bScroll; }
 public:
 	virtual void begin() {}
 	virtual void tick();

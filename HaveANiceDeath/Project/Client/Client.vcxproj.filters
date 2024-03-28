@@ -134,6 +134,9 @@
     <Filter Include="02. UI\08. LayerEditor">
       <UniqueIdentifier>{b1297789-90e7-406e-91d4-65635bca2241}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. UI\09. UIGamePlayPannel">
+      <UniqueIdentifier>{a2379937-ab97-4eb4-a057-4868b4a74602}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -291,6 +294,9 @@
     </ClInclude>
     <ClInclude Include="LayerEditor.h">
       <Filter>02. UI\08. LayerEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="UIGamePlayPannel.h">
+      <Filter>02. UI\09. UIGamePlayPannel</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -451,6 +457,9 @@
     </ClCompile>
     <ClCompile Include="LayerEditor.cpp">
       <Filter>02. UI\08. LayerEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="UIGamePlayPannel.cpp">
+      <Filter>02. UI\09. UIGamePlayPannel</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

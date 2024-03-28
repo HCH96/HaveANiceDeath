@@ -26,6 +26,13 @@ void Animator2DUI::render_update()
 {
 	ComponentUI::render_update();
 
+	wstring CurAnim = GetTargetObject()->Animator2D()->GetCurAnim();
+
+
+	ImGui::Text("Current Animation: "); ImGui::SameLine(130);
+	ImGui::InputText("##CurAnimationName", (char*)ToString(CurAnim).c_str(), 128, ImGuiInputTextFlags_ReadOnly);
+
+
 	// 애니메이션 목록 헤더
 	ImGui::Text("Animations:");
 

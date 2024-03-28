@@ -43,6 +43,9 @@ void ObjectController::FocusObject(CGameObject* _Object)
 
 void ObjectController::tick()
 {
+	Inspector* pInspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
+	m_ClickedObject = pInspector->GetTargetObject();
+
 	CCamera* pCurCam = nullptr;
 	if (CRenderMgr::GetInst()->IsEditorMode())
 	{
@@ -220,13 +223,18 @@ void ObjectController::tick()
 
 void ObjectController::render()
 {
+	CCamera* EditorCam = nullptr;
 
-	if (!CRenderMgr::GetInst()->IsEditorMode())
+	if (CRenderMgr::GetInst()->IsEditorMode())
 	{
-		return;
+		EditorCam = CRenderMgr::GetInst()->GetEditorCamera();
+	}
+	else
+	{
+		EditorCam = CRenderMgr::GetInst()->GetCameras()[0];
 	}
 
-	ImGui::Text("Layer"); ImGui::SameLine(130);
+	ImGui::Text("Show "); ImGui::SameLine();
 
 	m_vecLayerName.push_back("[All]");
 
@@ -250,7 +258,7 @@ void ObjectController::render()
 		ImGui::EndCombo();
 	}
 
-	CCamera* EditorCam = CRenderMgr::GetInst()->GetEditorCamera();
+	
 
 	if (m_CurLayer == "[All]")
 	{

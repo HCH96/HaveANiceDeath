@@ -73,10 +73,6 @@ void CEngine::progress()
 	// Render
 	CRenderMgr::GetInst()->tick();
 
-
-	// FPS render
-	CTimeMgr::GetInst()->render();
-
 	CRenderMgr::GetInst()->CopyRenderTargetToImGuiRenderTexture();
 
 	// GC

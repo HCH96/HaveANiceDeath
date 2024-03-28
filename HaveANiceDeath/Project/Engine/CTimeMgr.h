@@ -18,8 +18,12 @@ private:
 	bool			m_Lock;
 
 	wchar_t			m_szText[256];
+	UINT            m_FPS;
+
+
 
 public:
+	UINT GetFPS() { return m_FPS; }
 	float GetDeltaTime() { return (float)m_DeltaTime; }
 	double GetDeltaTime_d() { return m_DeltaTime; }
 

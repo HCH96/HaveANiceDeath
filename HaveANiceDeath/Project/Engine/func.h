@@ -87,6 +87,7 @@ void Delete_Vec(vector<T*>& _vec)
 		if (nullptr != _vec[i])
 		{
 			delete _vec[i];
+			_vec[i] = nullptr;
 		}
 	}
 

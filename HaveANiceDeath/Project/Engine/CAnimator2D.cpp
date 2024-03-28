@@ -65,6 +65,17 @@ void CAnimator2D::AddAnimation(CAnim* _Anim)
 	m_mapAnim.insert(make_pair(_Anim->GetName(), _Anim));
 }
 
+wstring CAnimator2D::GetCurAnim()
+{
+	wstring CurAnimName = L"";
+
+	if (m_CurAnim)
+		CurAnimName = m_CurAnim->GetName();
+
+
+	return CurAnimName;
+}
+
 void CAnimator2D::finaltick()
 {
 	if (nullptr == m_CurAnim)

@@ -25,6 +25,8 @@ public:
 
 
 public:
+    wstring GetCurAnim();
+
     virtual void finaltick() override;
 
     void UpdateData();
