@@ -1,5 +1,9 @@
 CBackgroundScript
 CCameraMoveScript
+CLDScript
 CMissileScript
 CMonsterScript
+CPlayerMgrScript
 CPlayerScript
+CScriptTemplate
+CUnitScript

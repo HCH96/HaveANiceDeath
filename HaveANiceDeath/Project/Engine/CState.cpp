@@ -2,7 +2,7 @@
 #include "CState.h"
 
 #include "CStateMachine.h"
-
+#include "CFSM.h"
 
 
 CState::CState(UINT _StateType)
@@ -19,6 +19,11 @@ void* CState::GetBlackboardData(const wstring& _strKey)
 {
 	CStateMachine* pSM = m_FSM->GetStateMachine();
 	return pSM->GetBlackboardData(_strKey);
+}
+
+CGameObject* CState::GetOwnerObj()
+{
+	return m_FSM->GetStateMachine()->GetOwner();;
 }
 
 void CState::ChangeState(const wstring& _strStateName)

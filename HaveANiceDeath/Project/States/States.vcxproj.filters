@@ -7,8 +7,23 @@
     <Filter Include="States">
       <UniqueIdentifier>{76c1e4c2-d3df-4952-b9ad-0be3da670c2a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="StateMgr">
+    <Filter Include="Lecture">
+      <UniqueIdentifier>{b1834b22-218d-4849-a416-7308b04192f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit">
+      <UniqueIdentifier>{d4ad27df-fc63-44f3-8f41-5930961f5e2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\LD">
+      <UniqueIdentifier>{04b94856-60a7-4c14-9176-0cfa1358ab41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. StateMgr">
       <UniqueIdentifier>{362bcb0c-c278-4639-bded-1a733a81f9eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\LD\Idle">
+      <UniqueIdentifier>{2823e826-1b42-49f9-9d08-ce9c6238a379}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\LD\IdleToTurn">
+      <UniqueIdentifier>{24f211c1-1cd9-4674-a687-25dcbaffe2eb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -19,10 +34,16 @@
       <Filter>Default</Filter>
     </ClInclude>
     <ClInclude Include="CStateMgr.h">
-      <Filter>StateMgr</Filter>
+      <Filter>02. StateMgr</Filter>
     </ClInclude>
     <ClInclude Include="CIdleState.h">
-      <Filter>States</Filter>
+      <Filter>Lecture</Filter>
+    </ClInclude>
+    <ClInclude Include="CLDIdle.h">
+      <Filter>01. Unit\LD\Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="CLDIdleUTurn.h">
+      <Filter>01. Unit\LD\IdleToTurn</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -33,10 +54,16 @@
       <Filter>Default</Filter>
     </ClCompile>
     <ClCompile Include="CStateMgr.cpp">
-      <Filter>StateMgr</Filter>
+      <Filter>02. StateMgr</Filter>
     </ClCompile>
     <ClCompile Include="CIdleState.cpp">
-      <Filter>States</Filter>
+      <Filter>Lecture</Filter>
+    </ClCompile>
+    <ClCompile Include="CLDIdle.cpp">
+      <Filter>01. Unit\LD\Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="CLDIdleUTurn.cpp">
+      <Filter>01. Unit\LD\IdleToTurn</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

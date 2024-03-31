@@ -303,6 +303,7 @@ call EngineCopy.bat</Command>
     <FxCompile Include="func.fx" />
     <FxCompile Include="particle.fx" />
     <FxCompile Include="particle_update.fx" />
+    <FxCompile Include="player.fx" />
     <FxCompile Include="postprocess.fx" />
     <FxCompile Include="register.fx" />
     <FxCompile Include="std2d.fx" />

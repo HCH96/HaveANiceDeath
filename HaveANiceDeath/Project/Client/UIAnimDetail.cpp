@@ -93,15 +93,17 @@ void UIAnimDetail::render_update()
 			ImGui::Text("Offset  "); ImGui::SameLine(); ImGui::DragFloat2(ID.c_str(), vOffset, 0.1f);
 
 			// frame input
-			int fFps = 1.f / m_vecAnimUV[i].Duration;
-			ImGui::Text("FPS     "); ImGui::SameLine(); ImGui::DragInt(ID.c_str(), &fFps, 0.1f);
+			float fFps = 1.f / m_vecAnimUV[i].Duration;
+			int iFPS = (int)(fFps + 0.5f);
+
+			ImGui::Text("FPS     "); ImGui::SameLine(); ImGui::DragInt(ID.c_str(), &iFPS, 0.1f);
 
 			ImGui::EndChild();
 			ImGui::Separator();
 
 			// current anim vec update (owenr: UIAnimDeatil)
 			m_vecAnimUV[i].vOffset = Vec2(vOffset.x / (float)m_Atlas->GetWidth(), vOffset.y / (float)m_Atlas->GetHeight());
-			m_vecAnimUV[i].Duration = 1.f / fFps;
+			m_vecAnimUV[i].Duration = m_vecAnimUV[i].Duration;
 		}
 	}
 }

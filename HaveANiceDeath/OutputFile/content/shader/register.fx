@@ -63,7 +63,7 @@ cbuffer MATERIAL_CONST : register(b1)
 cbuffer ANIM_DATA2D : register(b2)
 {
     float2 g_vLeftTop;
-    float2 g_vSlizeSize;
+    float2 g_vSliceSize;
     float2 g_vBackground;
     float2 g_vOffset;
     int g_UseAnim2D;

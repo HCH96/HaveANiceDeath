@@ -485,6 +485,9 @@
     <Filter Include="07. Component\10. Movement">
       <UniqueIdentifier>{4925bf51-3ea1-4292-a83f-3c03071a1e74}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ShaderCode\Render\Player">
+      <UniqueIdentifier>{ff822138-ae3b-4c30-9108-ad0b597284c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">
@@ -518,6 +521,9 @@
     </FxCompile>
     <FxCompile Include="particle_update.fx">
       <Filter>ShaderCode\Compute\ParticleUpdate</Filter>
+    </FxCompile>
+    <FxCompile Include="player.fx">
+      <Filter>ShaderCode\Render\Player</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

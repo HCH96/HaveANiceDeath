@@ -1,6 +1,10 @@
 #pragma once
 #include "CEntity.h"
 
+
+#include "CGameObject.h"
+#include "CAnimator2D.h"
+
 class CFSM;
 class CStateMachine;
 
@@ -8,7 +12,6 @@ class CState :
     public CEntity
 {
 private:
-
     const UINT              m_StateType;
     CFSM*                   m_FSM;
 
@@ -23,6 +26,8 @@ public:
 protected:
     CFSM* GetFSM() { return m_FSM; }
     void* GetBlackboardData(const wstring& _strKey);
+
+    CGameObject* GetOwnerObj();
 
     void ChangeState(const wstring& _strStateName);
 

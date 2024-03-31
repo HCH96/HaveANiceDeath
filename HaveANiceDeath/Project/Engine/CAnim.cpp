@@ -54,7 +54,7 @@ void CAnim::UpdateData()
 	data.UseAnim2D = 1;
 	data.vLeftTop = m_vecFrm[m_CurFrmIdx].vLeftTop;
 	data.vOffset = m_vecFrm[m_CurFrmIdx].vOffset;
-	data.vSlizeSize = m_vecFrm[m_CurFrmIdx].vSlice;
+	data.vSliceSize = m_vecFrm[m_CurFrmIdx].vSlice;
 	data.vBackGround = m_vecFrm[m_CurFrmIdx].vBackground;
 	data.vAtlasSize = Vec2(m_AtlasTex->GetWidth(), m_AtlasTex->GetHeight());
 

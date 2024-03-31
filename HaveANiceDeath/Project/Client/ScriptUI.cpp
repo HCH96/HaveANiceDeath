@@ -36,6 +36,7 @@ void ScriptUI::render_update()
 		switch (vecParam[i].Type)
 		{
 		case SCRIPT_PARAM::INT:
+			ParamUI::Param_INT((int*)vecParam[i].pData, vecParam[i].Desc);
 			break;
 		case SCRIPT_PARAM::FLOAT:
 			ParamUI::Param_FLOAT((float*)vecParam[i].pData, vecParam[i].Desc);

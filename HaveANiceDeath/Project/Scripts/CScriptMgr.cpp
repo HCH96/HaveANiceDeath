@@ -3,17 +3,25 @@
 
 #include "CBackgroundScript.h"
 #include "CCameraMoveScript.h"
+#include "CLDScript.h"
 #include "CMissileScript.h"
 #include "CMonsterScript.h"
+#include "CPlayerMgrScript.h"
 #include "CPlayerScript.h"
+#include "CScriptTemplate.h"
+#include "CUnitScript.h"
 
 void CScriptMgr::GetScriptInfo(vector<wstring>& _vec)
 {
 	_vec.push_back(L"CBackgroundScript");
 	_vec.push_back(L"CCameraMoveScript");
+	_vec.push_back(L"CLDScript");
 	_vec.push_back(L"CMissileScript");
 	_vec.push_back(L"CMonsterScript");
+	_vec.push_back(L"CPlayerMgrScript");
 	_vec.push_back(L"CPlayerScript");
+	_vec.push_back(L"CScriptTemplate");
+	_vec.push_back(L"CUnitScript");
 }
 
 CScript * CScriptMgr::GetScript(const wstring& _strScriptName)
@@ -22,12 +30,20 @@ CScript * CScriptMgr::GetScript(const wstring& _strScriptName)
 		return new CBackgroundScript;
 	if (L"CCameraMoveScript" == _strScriptName)
 		return new CCameraMoveScript;
+	if (L"CLDScript" == _strScriptName)
+		return new CLDScript;
 	if (L"CMissileScript" == _strScriptName)
 		return new CMissileScript;
 	if (L"CMonsterScript" == _strScriptName)
 		return new CMonsterScript;
+	if (L"CPlayerMgrScript" == _strScriptName)
+		return new CPlayerMgrScript;
 	if (L"CPlayerScript" == _strScriptName)
 		return new CPlayerScript;
+	if (L"CScriptTemplate" == _strScriptName)
+		return new CScriptTemplate;
+	if (L"CUnitScript" == _strScriptName)
+		return new CUnitScript;
 	return nullptr;
 }
 
@@ -41,14 +57,26 @@ CScript * CScriptMgr::GetScript(UINT _iScriptType)
 	case (UINT)SCRIPT_TYPE::CAMERAMOVESCRIPT:
 		return new CCameraMoveScript;
 		break;
+	case (UINT)SCRIPT_TYPE::LDSCRIPT:
+		return new CLDScript;
+		break;
 	case (UINT)SCRIPT_TYPE::MISSILESCRIPT:
 		return new CMissileScript;
 		break;
 	case (UINT)SCRIPT_TYPE::MONSTERSCRIPT:
 		return new CMonsterScript;
 		break;
+	case (UINT)SCRIPT_TYPE::PLAYERMGRSCRIPT:
+		return new CPlayerMgrScript;
+		break;
 	case (UINT)SCRIPT_TYPE::PLAYERSCRIPT:
 		return new CPlayerScript;
+		break;
+	case (UINT)SCRIPT_TYPE::SCRIPTTEMPLATE:
+		return new CScriptTemplate;
+		break;
+	case (UINT)SCRIPT_TYPE::UNITSCRIPT:
+		return new CUnitScript;
 		break;
 	}
 	return nullptr;
@@ -66,6 +94,10 @@ const wchar_t * CScriptMgr::GetScriptName(CScript * _pScript)
 		return L"CCameraMoveScript";
 		break;
 
+	case SCRIPT_TYPE::LDSCRIPT:
+		return L"CLDScript";
+		break;
+
 	case SCRIPT_TYPE::MISSILESCRIPT:
 		return L"CMissileScript";
 		break;
@@ -74,8 +106,20 @@ const wchar_t * CScriptMgr::GetScriptName(CScript * _pScript)
 		return L"CMonsterScript";
 		break;
 
+	case SCRIPT_TYPE::PLAYERMGRSCRIPT:
+		return L"CPlayerMgrScript";
+		break;
+
 	case SCRIPT_TYPE::PLAYERSCRIPT:
 		return L"CPlayerScript";
+		break;
+
+	case SCRIPT_TYPE::SCRIPTTEMPLATE:
+		return L"CScriptTemplate";
+		break;
+
+	case SCRIPT_TYPE::UNITSCRIPT:
+		return L"CUnitScript";
 		break;
 
 	}

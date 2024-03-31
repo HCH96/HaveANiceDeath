@@ -54,14 +54,14 @@ float4 PS_Std2D(VS_OUT _in) : SV_Target
     if (g_UseAnim2D)
     {
         // Background
-        float2 vBackgroundLeftTop = g_vLeftTop + (g_vSlizeSize / 2.f) - (g_vBackground / 2.f);
+        float2 vBackgroundLeftTop = g_vLeftTop + (g_vSliceSize / 2.f) - (g_vBackground / 2.f);
         // vBackgroundLeftTop -= g_vOffset;
         float2 vUV = vBackgroundLeftTop + (_in.vUV * g_vBackground); //UV는 한 프레임의 크기를 대상으로 함
         
         // 가져오려는 이미지를 벗어나면 그리지 않음
         // 즉, 부족한 부분에 대해서만 더 그림
-        if (vUV.x < g_vLeftTop.x || vUV.x > g_vLeftTop.x + g_vSlizeSize.x
-            || vUV.y < g_vLeftTop.y || vUV.y > g_vLeftTop.y + g_vSlizeSize.y)
+        if (vUV.x < g_vLeftTop.x || vUV.x > g_vLeftTop.x + g_vSliceSize.x
+            || vUV.y < g_vLeftTop.y || vUV.y > g_vLeftTop.y + g_vSliceSize.y)
             discard;
         else
             vColor = g_anim2d_tex.Sample(g_sam_1, vUV);
@@ -119,12 +119,12 @@ float4 PS_Std2D_Effect(VS_OUT _in) : SV_Target
     
     if (g_UseAnim2D)
     {
-        float2 vBackgroundLeftTop = g_vLeftTop + (g_vSlizeSize / 2.f) - (g_vBackground / 2.f);
+        float2 vBackgroundLeftTop = g_vLeftTop + (g_vSliceSize / 2.f) - (g_vBackground / 2.f);
         vBackgroundLeftTop -= g_vOffset;
         float2 vUV = vBackgroundLeftTop + (g_vBackground * _in.vUV);
         
-        if (vUV.x < g_vLeftTop.x || (g_vLeftTop.x + g_vSlizeSize.x) < vUV.x
-            || vUV.y < g_vLeftTop.y || (g_vLeftTop.y + g_vSlizeSize.y) < vUV.y)
+        if (vUV.x < g_vLeftTop.x || (g_vLeftTop.x + g_vSliceSize.x) < vUV.x
+            || vUV.y < g_vLeftTop.y || (g_vLeftTop.y + g_vSliceSize.y) < vUV.y)
         {
             //vColor = float4(1.f, 1.f, 0.f, 1.f);
             discard;

@@ -7,24 +7,34 @@
     <ClInclude Include="pch.h">
       <Filter>Default</Filter>
     </ClInclude>
-    <ClInclude Include="CBackgroundScript.h">
-      <Filter>Scripts</Filter>
-    </ClInclude>
-    <ClInclude Include="CMissileScript.h">
-      <Filter>Scripts</Filter>
-    </ClInclude>
-    <ClInclude Include="CPlayerScript.h">
-      <Filter>Scripts</Filter>
-    </ClInclude>
     <ClInclude Include="CScriptMgr.h">
       <Filter>ScriptMgr</Filter>
     </ClInclude>
-    <ClInclude Include="CMonsterScript.h">
-      <Filter>Scripts</Filter>
+    <ClInclude Include="CUnitScript.h">
+      <Filter>Scripts\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="CBackgroundScript.h">
+      <Filter>Lecture</Filter>
     </ClInclude>
     <ClInclude Include="CCameraMoveScript.h">
-      <Filter>Scripts</Filter>
+      <Filter>Lecture</Filter>
     </ClInclude>
+    <ClInclude Include="CMissileScript.h">
+      <Filter>Lecture</Filter>
+    </ClInclude>
+    <ClInclude Include="CMonsterScript.h">
+      <Filter>Lecture</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayerScript.h">
+      <Filter>Lecture</Filter>
+    </ClInclude>
+    <ClInclude Include="CLDScript.h">
+      <Filter>Scripts\Unit\LD</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayerMgrScript.h">
+      <Filter>Manager\PlayerManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CScriptTemplate.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -33,24 +43,34 @@
     <ClCompile Include="Scripts.cpp">
       <Filter>Default</Filter>
     </ClCompile>
-    <ClCompile Include="CBackgroundScript.cpp">
-      <Filter>Scripts</Filter>
-    </ClCompile>
-    <ClCompile Include="CMissileScript.cpp">
-      <Filter>Scripts</Filter>
-    </ClCompile>
-    <ClCompile Include="CPlayerScript.cpp">
-      <Filter>Scripts</Filter>
-    </ClCompile>
     <ClCompile Include="CScriptMgr.cpp">
       <Filter>ScriptMgr</Filter>
     </ClCompile>
-    <ClCompile Include="CMonsterScript.cpp">
-      <Filter>Scripts</Filter>
+    <ClCompile Include="CUnitScript.cpp">
+      <Filter>Scripts\Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="CBackgroundScript.cpp">
+      <Filter>Lecture</Filter>
     </ClCompile>
     <ClCompile Include="CCameraMoveScript.cpp">
-      <Filter>Scripts</Filter>
+      <Filter>Lecture</Filter>
     </ClCompile>
+    <ClCompile Include="CMissileScript.cpp">
+      <Filter>Lecture</Filter>
+    </ClCompile>
+    <ClCompile Include="CMonsterScript.cpp">
+      <Filter>Lecture</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayerScript.cpp">
+      <Filter>Lecture</Filter>
+    </ClCompile>
+    <ClCompile Include="CLDScript.cpp">
+      <Filter>Scripts\Unit\LD</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayerMgrScript.cpp">
+      <Filter>Manager\PlayerManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CScriptTemplate.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Default">
@@ -61,6 +81,21 @@
     </Filter>
     <Filter Include="ScriptMgr">
       <UniqueIdentifier>{b42de7fc-e585-40cf-9c65-79e91e2b59d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scripts\Unit">
+      <UniqueIdentifier>{383ed31b-8539-4343-9e5a-ab5a7615b651}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lecture">
+      <UniqueIdentifier>{e8894254-e800-4168-9e66-c93b4e2fcb48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scripts\Unit\LD">
+      <UniqueIdentifier>{d92b386f-251f-4dc4-bbe9-bad72a53cf70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{2851db46-0803-4eb4-964d-75b3eeec0515}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\PlayerManager">
+      <UniqueIdentifier>{e2ef99bc-a1b3-446e-adec-23078ecbf899}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

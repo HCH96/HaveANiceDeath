@@ -1,9 +1,10 @@
 #pragma once
 #include "CAsset.h"
-#include "CState.h"
+//#include "CState.h"
 #include "CBlackboard.h"
 
 class CStateMachine;
+class CState;
 
 class CFSM :
     public CAsset
@@ -16,6 +17,7 @@ private:
     CBlackboard* m_Blackboard;
 
     CState* m_CurState;
+    CState* m_PrevState;
 
 public:
     const map<wstring, CState*>& GetStates() { return m_mapState; }

@@ -116,10 +116,10 @@ void CFSM::ChangeState_proc(CState* _pNextState)
 	if (m_CurState)
 		m_CurState->Exit();
 
+	m_PrevState = m_CurState;
 	m_CurState = _pNextState;
 	m_CurState->m_FSM = this;
 	m_CurState->Enter();
-
 
 }
 

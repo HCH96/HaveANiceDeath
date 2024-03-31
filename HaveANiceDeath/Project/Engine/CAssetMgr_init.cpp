@@ -301,6 +301,28 @@ void CAssetMgr::CreateDefaultGraphicsShader()
 	pShader->SetDomain(SHADER_DOMAIN::DOMAIN_DEBUG);
 
 	AddAsset(L"DebugShapeShader", pShader.Get());
+
+
+
+	// =================================
+	// PlayerShader
+	// =================================
+	pShader = nullptr;
+
+	pShader = new CGraphicsShader;
+	pShader->CreateVertexShader(L"shader\\Player.fx", "VS_Player");
+	pShader->CreatePixelShader(L"shader\\Player.fx", "PS_Player");
+
+	pShader->SetRSType(RS_TYPE::CULL_NONE);
+	pShader->SetDSType(DS_TYPE::LESS);
+	pShader->SetBSType(BS_TYPE::DEFAULT);
+	pShader->SetDomain(SHADER_DOMAIN::DOMAIN_MASKED);
+
+	// Parameter	
+	pShader->AddScalarParam(SCALAR_PARAM::INT_0, "Anim Dir");
+	pShader->AddTexParam(TEX_PARAM::TEX_0, "Default Tex");
+
+	AddAsset(L"PlayerShader", pShader.Get());
 }
 
 void CAssetMgr::CreateDefaultMaterial()

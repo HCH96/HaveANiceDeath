@@ -150,7 +150,7 @@ struct tMtrlConst
 struct tAnimData2D
 {
 	Vec2 vLeftTop;
-	Vec2 vSlizeSize;
+	Vec2 vSliceSize;
 	Vec2 vBackGround;
 	Vec2 vOffset;
 	int  UseAnim2D;
@@ -169,3 +169,20 @@ struct tGlobalData
 	int		g_Light3DCount;			// 3D ±¤¿ø °³¼ö	
 };
 extern tGlobalData g_global;
+
+
+// State
+
+struct tUnitInfo
+{
+	float           MaxHP;
+	float           HP;
+
+	float           MaxMP;
+	float           MP;
+	float           Att;
+
+	float           Speed;
+
+	ANIM_DIR        Dir;
+};

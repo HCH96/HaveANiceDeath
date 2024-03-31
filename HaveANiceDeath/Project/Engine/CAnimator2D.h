@@ -17,6 +17,9 @@ private:
 
 public:
     const map<wstring, CAnim*>& GetAnimations() { return m_mapAnim; }
+    CAnim* GetCurAnimInst() { return m_CurAnim;}
+    bool IsCurAnimFinished();
+
 
 public:
     int DeleteAnim(const wstring& _AnimationKey);
