@@ -184,5 +184,5 @@ struct tUnitInfo
 
 	float           Speed;
 
-	ANIM_DIR        Dir;
+	ANIM_DIR        Dir = ANIM_DIR::RIGHT;
 };

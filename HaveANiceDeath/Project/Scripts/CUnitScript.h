@@ -8,17 +8,17 @@ class CUnitScript :
 {
 protected:
     tUnitInfo m_CurUnitInfo;
-    tUnitInfo m_NextUnitInfo;
+    tUnitInfo m_PrevUnitInfo;
 
     bool m_DirLock;
 
 public:
     tUnitInfo& GetUnitInfo() { return m_CurUnitInfo; }
-    tUnitInfo& GetNextInfo() { return m_NextUnitInfo; }
+    tUnitInfo& GetPrevInfo() { return m_PrevUnitInfo; }
 
     ANIM_DIR GetDir() { return m_CurUnitInfo.Dir; }
 
-    bool SetLock(bool _Lock) { m_DirLock = _Lock; }
+    void SetLock(bool _Lock) { m_DirLock = _Lock; }
     bool IsLock() { return m_DirLock; }
 
 public:

@@ -42,6 +42,8 @@ public:
     void SetGround(bool _Ground) { if (_Ground) { m_vVelocity.y = 0.f; } m_bGround = _Ground; }
     void UseGravity(bool _Use) { m_bUseGravity = _Use; }
     Vec3 MakeMoveToForce(){ return m_vAccel * m_fMass;}
+    void SetVelocityX(float _XSpeed) { m_vVelocity.x = _XSpeed; }
+
 
     Vec3 GetForce() { return m_vForce; }
     Vec3 GetVelocity() {return m_vVelocity;}

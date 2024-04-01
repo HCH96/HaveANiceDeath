@@ -8,7 +8,6 @@ class CLDIdleUTurn :
 private:
 
 
-
 public:
     virtual void finaltick();
     virtual void Enter();

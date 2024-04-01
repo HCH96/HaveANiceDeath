@@ -219,7 +219,7 @@ void MenuUI::GameObject()
 
                 if (nullptr != TargetObject)
                 {
-                    TargetObject->AddComponent(new CCollider2D());
+                    TargetObject->AddComponent(new CCollider2D);
                     inspector->SetTargetObject(TargetObject);
                 }
             }
@@ -232,7 +232,7 @@ void MenuUI::GameObject()
 
                 if (nullptr != TargetObject)
                 {
-                    TargetObject->AddComponent(new CAnimator2D());
+                    TargetObject->AddComponent(new CAnimator2D);
                     inspector->SetTargetObject(TargetObject);
                 }
             }
@@ -244,7 +244,7 @@ void MenuUI::GameObject()
 
                 if (nullptr != TargetObject)
                 {
-                    TargetObject->AddComponent(new CLight2D());
+                    TargetObject->AddComponent(new CLight2D);
                     inspector->SetTargetObject(TargetObject);
                 }
             }
@@ -256,10 +256,23 @@ void MenuUI::GameObject()
 
                 if (nullptr != TargetObject)
                 {
-                    TargetObject->AddComponent(new CStateMachine());
+                    TargetObject->AddComponent(new CStateMachine);
                     inspector->SetTargetObject(TargetObject);
                 }
             }
+
+            if (ImGui::MenuItem("Add Movement"))
+            {
+                Inspector* inspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
+                CGameObject* TargetObject = inspector->GetTargetObject();
+
+                if (nullptr != TargetObject)
+                {
+                    TargetObject->AddComponent(new CMovement);
+                    inspector->SetTargetObject(TargetObject);
+                }
+            }
+
 
             if (ImGui::MenuItem("Add MeshRender"))
             {
@@ -268,7 +281,7 @@ void MenuUI::GameObject()
 
                 if (nullptr != TargetObject)
                 {
-                    TargetObject->AddComponent(new CMeshRender());
+                    TargetObject->AddComponent(new CMeshRender);
                     inspector->SetTargetObject(TargetObject);
                 }
             }
@@ -280,7 +293,7 @@ void MenuUI::GameObject()
 
                 if (nullptr != TargetObject)
                 {
-                    TargetObject->AddComponent(new CTileMap());
+                    TargetObject->AddComponent(new CTileMap);
                     inspector->SetTargetObject(TargetObject);
                 }
             }
@@ -292,7 +305,7 @@ void MenuUI::GameObject()
 
                 if (nullptr != TargetObject)
                 {
-                    TargetObject->AddComponent(new CParticleSystem());
+                    TargetObject->AddComponent(new CParticleSystem);
                     inspector->SetTargetObject(TargetObject);
                 }
             }

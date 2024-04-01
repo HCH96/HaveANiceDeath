@@ -14,12 +14,38 @@ CLDIdle::~CLDIdle()
 
 void CLDIdle::finaltick()
 {
+	GetOwnerObj()->Movement()->SetVelocityX(0.f);
+
 	CLDScript* pScript = GetOwnerObj()->GetScript<CLDScript>();
-	if (pScript->IsDirChanged())
+
+	if ((KEY_TAP(KEY::A) || KEY_PRESSED(KEY::A)) && KEY_NONE(KEY::D))
 	{
-		ChangeState(L"IdleUTurn");
+		if (pScript->IsDirChanged())
+		{
+			ChangeState(L"IdleUTurn");
+		}
+		else
+		{
+			ChangeState(L"IdleToRun");
+		}
 	}
 
+	if ((KEY_TAP(KEY::D) || KEY_PRESSED(KEY::D)) && KEY_NONE(KEY::A))
+	{
+		if (pScript->IsDirChanged())
+		{
+			ChangeState(L"IdleUTurn");
+		}
+		else
+		{
+			ChangeState(L"IdleToRun");
+		}
+	}
+
+	if (KEY_TAP(KEY::SPACE))
+	{
+		ChangeState(L"JumpStart");
+	}
 }
 
 void CLDIdle::Enter()

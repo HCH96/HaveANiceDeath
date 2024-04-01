@@ -45,8 +45,6 @@ void StateMachineUI::StateSelect(DWORD_PTR _ptr)
 
 }
 
-
-
 void StateMachineUI::render_update()
 {
 	if (nullptr == GetTargetObject())
@@ -57,6 +55,17 @@ void StateMachineUI::render_update()
 	CGameObject* pTarget = GetTargetObject();
 	CStateMachine* pStateMachine = pTarget->StateMachine();
 	Ptr<CFSM> pFSM = pStateMachine->GetFSM();
+	Ptr<CFSM> pDynamicFSM = pStateMachine->GetDynamicFSM();
+
+	wstring CurStateName = L"";
+	CState* pCurState = pDynamicFSM->GetCurState();
+	if (pCurState != nullptr)
+	{
+		CurStateName = CStateMgr::GetStateName(pCurState);
+	}
+
+	ImGui::Text("Current State: "); ImGui::SameLine(100);
+	ImGui::InputText("##CurStateName", (ToString(CurStateName)).data(), 128, ImGuiInputTextFlags_ReadOnly);
 
 
 	string FSMName = "";

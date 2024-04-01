@@ -80,6 +80,7 @@ CState* CFSM::FindState(const wstring& _StateName)
 	return iter->second;
 }
 
+
 CFSM* CFSM::GetFSMIstance()
 {
 	CFSM* pFSMInst = new CFSM(this, true);
@@ -143,9 +144,10 @@ int CFSM::Save(const wstring& _strRelativePath)
 		// State Key 저장
 		SaveWString(iter->first, pFile);
 
-		// State Type 저장
-		UINT StateType = iter->second->GetStateType();
-		fwrite(&StateType, sizeof(UINT), 1, pFile);
+		// State Name 저장
+		wstring StrName = CStateMgr::GetStateName(iter->second);
+
+		SaveWString(StrName,pFile);
 
 		iter->second->SaveToFile(pFile);
 	}
@@ -174,12 +176,12 @@ int CFSM::Load(const wstring& _strFilePath)
 		wstring StateKey;
 		LoadWString(StateKey, pFile);
 
-		// 스테이트 타입 로드
-		UINT StateType;
-		fread(&StateType, sizeof(UINT), 1, pFile);
+		// 스테이트 Name 로드
+		wstring StateName;
+		LoadWString(StateName, pFile);
 
 		// 스테이트 생성
-		CState* pState = CStateMgr::GetState(StateType);
+		CState* pState = CStateMgr::GetState(StateName);
 		pState->LoadFromFile(pFile);
 
 		pState->m_FSM = this;

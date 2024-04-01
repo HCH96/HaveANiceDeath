@@ -20,6 +20,7 @@ private:
     CState* m_PrevState;
 
 public:
+    CState* GetCurState() { return m_CurState; }
     const map<wstring, CState*>& GetStates() { return m_mapState; }
     CFSM* GetFSMIstance();
     CStateMachine* GetStateMachine() { return m_StateMachine; }

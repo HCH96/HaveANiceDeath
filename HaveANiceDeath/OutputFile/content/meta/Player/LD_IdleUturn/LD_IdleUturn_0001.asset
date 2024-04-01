@@ -13,7 +13,7 @@ Sprite:
     y: 1207.0195
     width: 95.95721
     height: 128.88097
-  m_Offset: {x: -0.24168013, y: 11.499035}
+  m_Offset: {x: 0.24168013, y: 11.499035}
   m_Border: {x: 0, y: 0, z: 0, w: 0}
   m_PixelsToUnits: 71.28906
   m_Pivot: {x: 0.49748138, y: 0.58922213}

@@ -173,16 +173,32 @@ call CodeGen.exe</Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CIdleState.h" />
+    <ClInclude Include="CLDDash.h" />
     <ClInclude Include="CLDIdle.h" />
+    <ClInclude Include="CLDIdleToRun.h" />
     <ClInclude Include="CLDIdleUTurn.h" />
+    <ClInclude Include="CLDJumpFall.h" />
+    <ClInclude Include="CLDJumpLanding.h" />
+    <ClInclude Include="CLDJumpStart.h" />
+    <ClInclude Include="CLDRun.h" />
+    <ClInclude Include="CLDRunToIdle.h" />
+    <ClInclude Include="CLDRunUTurn.h" />
     <ClInclude Include="CStateMgr.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CIdleState.cpp" />
+    <ClCompile Include="CLDDash.cpp" />
     <ClCompile Include="CLDIdle.cpp" />
+    <ClCompile Include="CLDIdleToRun.cpp" />
     <ClCompile Include="CLDIdleUTurn.cpp" />
+    <ClCompile Include="CLDJumpFall.cpp" />
+    <ClCompile Include="CLDJumpLanding.cpp" />
+    <ClCompile Include="CLDJumpStart.cpp" />
+    <ClCompile Include="CLDRun.cpp" />
+    <ClCompile Include="CLDRunToIdle.cpp" />
+    <ClCompile Include="CLDRunUTurn.cpp" />
     <ClCompile Include="CStateMgr.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

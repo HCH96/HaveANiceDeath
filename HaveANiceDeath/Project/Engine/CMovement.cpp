@@ -120,6 +120,7 @@ void CMovement::SaveToFile(FILE* _File)
 	fwrite(&m_fMass, sizeof(float), 1, _File);
 	fwrite(&m_fInitSpeed, sizeof(float), 1, _File);
 	fwrite(&m_fMaxSpeed_InAir, sizeof(float), 1, _File);
+	fwrite(&m_fMaxSpeed_Ground, sizeof(float), 1, _File);
 	fwrite(&m_fFrictionScale, sizeof(float), 1, _File);
 	fwrite(&m_bUseGravity, sizeof(bool), 1, _File);
 	fwrite(&m_bGround, sizeof(bool), 1, _File);
@@ -131,6 +132,7 @@ void CMovement::LoadFromFile(FILE* _File)
 	fread(&m_fMass, sizeof(float), 1, _File);
 	fread(&m_fInitSpeed, sizeof(float), 1, _File);
 	fread(&m_fMaxSpeed_InAir, sizeof(float), 1, _File);
+	fread(&m_fMaxSpeed_Ground, sizeof(float), 1, _File);
 	fread(&m_fFrictionScale, sizeof(float), 1, _File);
 	fread(&m_bUseGravity, sizeof(bool), 1, _File);
 	fread(&m_bGround, sizeof(bool), 1, _File);

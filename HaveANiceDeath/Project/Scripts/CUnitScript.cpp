@@ -20,12 +20,12 @@ CUnitScript::~CUnitScript()
 
 void CUnitScript::begin()
 {
-	m_CurUnitInfo = m_NextUnitInfo;
+	m_PrevUnitInfo = m_CurUnitInfo;
 }
 
 void CUnitScript::tick()
 {
-	m_CurUnitInfo = m_NextUnitInfo;
+	m_PrevUnitInfo = m_CurUnitInfo;
 }
 
 void CUnitScript::SaveToFile(FILE* _File)

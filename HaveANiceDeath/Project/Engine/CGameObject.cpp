@@ -228,6 +228,8 @@ bool CGameObject::IsAncestor(CGameObject* _Other)
 
 void CGameObject::begin()
 {
+	size_t ChildvecSize = m_vecChild.size();
+
 	for (UINT i = 0; i < UINT(COMPONENT_TYPE::END); ++i)
 	{
 		if (nullptr != m_arrCom[i])
@@ -241,7 +243,7 @@ void CGameObject::begin()
 		m_vecScript[i]->begin();
 	}
 
-	for (size_t i = 0; i < m_vecChild.size(); ++i)
+	for (size_t i = 0; i < ChildvecSize; ++i)
 	{
 		m_vecChild[i]->begin();
 	}

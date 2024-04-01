@@ -9,7 +9,6 @@ class CLDScript :
 private:
     bool m_DirChanged;
 
-
 public:
     bool IsDirChanged() { return m_DirChanged; }
 

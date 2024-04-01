@@ -25,6 +25,30 @@
     <Filter Include="01. Unit\LD\IdleToTurn">
       <UniqueIdentifier>{24f211c1-1cd9-4674-a687-25dcbaffe2eb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Unit\LD\Run">
+      <UniqueIdentifier>{6581171d-ae16-4e41-82fb-1e6911605477}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\LD\JumpStart">
+      <UniqueIdentifier>{03668b07-9a2b-429b-914c-cfe7183ec7f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\LD\JumpFall">
+      <UniqueIdentifier>{5c2f3785-7ab8-4f17-a3e6-d9a60ebfaafc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\LD\JumpLanding">
+      <UniqueIdentifier>{c59054ec-07ef-4622-9d4b-00f0bb47aabd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\LD\RunToIdle">
+      <UniqueIdentifier>{e80ca560-10a5-4eb5-a92f-033ec2e1e492}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\LD\RunUTurn">
+      <UniqueIdentifier>{c3bc2442-f2e0-44dd-ac2c-295c1277a2b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\LD\IdleToRun">
+      <UniqueIdentifier>{50fc715f-0ae9-452a-a733-479a2615f543}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\LD\Dash">
+      <UniqueIdentifier>{1d4f3f73-2bd3-400a-8681-8d0221426667}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -45,6 +69,30 @@
     <ClInclude Include="CLDIdleUTurn.h">
       <Filter>01. Unit\LD\IdleToTurn</Filter>
     </ClInclude>
+    <ClInclude Include="CLDJumpStart.h">
+      <Filter>01. Unit\LD\JumpStart</Filter>
+    </ClInclude>
+    <ClInclude Include="CLDJumpFall.h">
+      <Filter>01. Unit\LD\JumpFall</Filter>
+    </ClInclude>
+    <ClInclude Include="CLDJumpLanding.h">
+      <Filter>01. Unit\LD\JumpLanding</Filter>
+    </ClInclude>
+    <ClInclude Include="CLDIdleToRun.h">
+      <Filter>01. Unit\LD\IdleToRun</Filter>
+    </ClInclude>
+    <ClInclude Include="CLDDash.h">
+      <Filter>01. Unit\LD\Dash</Filter>
+    </ClInclude>
+    <ClInclude Include="CLDRunUTurn.h">
+      <Filter>01. Unit\LD\RunUTurn</Filter>
+    </ClInclude>
+    <ClInclude Include="CLDRunToIdle.h">
+      <Filter>01. Unit\LD\RunToIdle</Filter>
+    </ClInclude>
+    <ClInclude Include="CLDRun.h">
+      <Filter>01. Unit\LD\Run</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -64,6 +112,30 @@
     </ClCompile>
     <ClCompile Include="CLDIdleUTurn.cpp">
       <Filter>01. Unit\LD\IdleToTurn</Filter>
+    </ClCompile>
+    <ClCompile Include="CLDJumpStart.cpp">
+      <Filter>01. Unit\LD\JumpStart</Filter>
+    </ClCompile>
+    <ClCompile Include="CLDJumpFall.cpp">
+      <Filter>01. Unit\LD\JumpFall</Filter>
+    </ClCompile>
+    <ClCompile Include="CLDJumpLanding.cpp">
+      <Filter>01. Unit\LD\JumpLanding</Filter>
+    </ClCompile>
+    <ClCompile Include="CLDIdleToRun.cpp">
+      <Filter>01. Unit\LD\IdleToRun</Filter>
+    </ClCompile>
+    <ClCompile Include="CLDDash.cpp">
+      <Filter>01. Unit\LD\Dash</Filter>
+    </ClCompile>
+    <ClCompile Include="CLDRunUTurn.cpp">
+      <Filter>01. Unit\LD\RunUTurn</Filter>
+    </ClCompile>
+    <ClCompile Include="CLDRunToIdle.cpp">
+      <Filter>01. Unit\LD\RunToIdle</Filter>
+    </ClCompile>
+    <ClCompile Include="CLDRun.cpp">
+      <Filter>01. Unit\LD\Run</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

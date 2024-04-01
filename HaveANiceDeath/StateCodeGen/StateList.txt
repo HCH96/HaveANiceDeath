@@ -1,3 +1,11 @@
 CIdleState
+CLDDash
 CLDIdle
+CLDIdleToRun
 CLDIdleUTurn
+CLDJumpFall
+CLDJumpLanding
+CLDJumpStart
+CLDRun
+CLDRunToIdle
+CLDRunUTurn

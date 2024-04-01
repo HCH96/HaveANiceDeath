@@ -3,10 +3,13 @@
 
 #include <Engine\CKeyMgr.h>
 
+
+
 CLDScript::CLDScript()
 	: CUnitScript(LDSCRIPT)
 	, m_DirChanged(false)
 {
+	m_CurUnitInfo.Dir = ANIM_DIR::RIGHT;
 }
 
 CLDScript::~CLDScript()
@@ -32,18 +35,22 @@ void CLDScript::tick()
 	{
 		CUnitScript::tick();
 
-		if ((KEY_TAP(KEY::A) || KEY_PRESSED(KEY::A)) && (KEY_NONE(KEY::D) || KEY_RELEASED(KEY::D)))
+		if ((KEY_TAP(KEY::A) || KEY_PRESSED(KEY::A)) && KEY_NONE(KEY::D))
 		{
-			m_NextUnitInfo.Dir = ANIM_DIR::LEFT;
+			m_CurUnitInfo.Dir = ANIM_DIR::LEFT;
+			
+			Movement()->SetVelocityX(-500.f);
 		}
 
-		if ((KEY_TAP(KEY::D) || KEY_PRESSED(KEY::D)) && (KEY_NONE(KEY::A) || KEY_RELEASED(KEY::A)))
+		if ((KEY_TAP(KEY::D) || KEY_PRESSED(KEY::D)) && KEY_NONE(KEY::A))
 		{
-			m_NextUnitInfo.Dir = ANIM_DIR::RIGHT;
+			m_CurUnitInfo.Dir = ANIM_DIR::RIGHT;
+
+			Movement()->SetVelocityX(500.f);
 		}
 
 		// 다음 프레임에 방향이 바뀌는지
-		if (m_CurUnitInfo.Dir != m_NextUnitInfo.Dir)
+		if (m_CurUnitInfo.Dir != m_PrevUnitInfo.Dir)
 		{
 			m_DirChanged = true;
 		}
@@ -51,15 +58,14 @@ void CLDScript::tick()
 		{
 			m_DirChanged = false;
 		}
+
 	}
 	else
 	{
 		m_DirChanged = false;
 	}
 
-
-
-	// Anim 방향 정보 갱신 0: Left , 1: Right
+	// Anim 방향 정보 갱신 -1: Left , 1: Right
 	GetRenderComponent()->GetMaterial()->SetScalarParam(SCALAR_PARAM::INT_0, (int)m_CurUnitInfo.Dir);
 }
 

@@ -225,10 +225,10 @@ enum class LEVEL_STATE
 // Script
 
 // 방향 정보 
-// Left 0, Right 1, End 2
+// Left -1, Right 1, End 0
 enum class ANIM_DIR
 {
-	LEFT,
-	RIGHT,
-	END,
+	LEFT = -1,
+	RIGHT = 1,
+	END = 0,
 };

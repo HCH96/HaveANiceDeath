@@ -29,7 +29,20 @@ VS_OUT VS_Player(VS_IN _in)
     
     // Offset 가져오기
     float2 vOffset = { g_vOffset.x * g_vAtlasSize.x, g_vOffset.y * g_vAtlasSize.y };
-    output.vPosition -= float4(vOffset.x, vOffset.y, 0.f, 0.f);
+    
+    
+    // Animation 뒤집기
+    if (g_int_0 == -1)
+    {
+        output.vUV = float2((1.f - _in.vUV.x), _in.vUV.y);
+        output.vPosition -= float4(-vOffset.x, vOffset.y, 0.f, 0.f);
+    }
+    else
+    {
+        output.vUV = _in.vUV;
+        output.vPosition -= float4(vOffset.x, vOffset.y, 0.f, 0.f);
+    }
+    
     
     // World 저장
     output.vWorldPos = output.vPosition;
@@ -40,15 +53,7 @@ VS_OUT VS_Player(VS_IN _in)
     
     output.vColor = _in.vColor;
     
-    // Animation 뒤집기
-    if (g_int_0 == 0)
-    {
-        output.vUV = float2((1.f - _in.vUV.x), _in.vUV.y);
-    }
-    else
-    {
-        output.vUV = _in.vUV;
-    }
+
     
     return output;
 }
