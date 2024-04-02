@@ -6,6 +6,9 @@ class CTransform :
     public CComponent
 {
 private:
+    Vec3    m_vPrevWorldPos;
+    Vec3    m_vCurWorldPos;
+
     Vec3    m_vRelativePos;
     Vec3    m_vRelativeScale;
     Vec3    m_vRealtiveRotation;
@@ -17,6 +20,8 @@ private:
     bool    m_bAbsolute;
 
 public:
+    Vec3 GetPrevPos() { return m_vPrevWorldPos; }
+    Vec3 GetCurPos() { return m_vCurWorldPos; }
     Vec3 GetRelativePos() { return m_vRelativePos; }
     Vec3 GetRelativeScale() { return m_vRelativeScale; }
     Vec3 GetRelativeRotation() { return m_vRealtiveRotation; }

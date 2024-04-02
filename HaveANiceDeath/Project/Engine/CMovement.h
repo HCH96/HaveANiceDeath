@@ -7,10 +7,22 @@
 
 class CPlayer;
 
+typedef short MovementDir;
+
+enum MovementDirFlag
+{
+    MV_UP = 0x01,
+    MV_DOWN = 0x02,
+    MV_LEFT = 0x04,
+    MV_RIGHT = 0x08,
+};
+
 class CMovement :
     public CComponent
 {
 private:
+    MovementDir m_Dir;
+
     Vec3        m_vForce;            // 누적된 힘
     Vec3        m_vAccel;            // 현재 가속도
     Vec3        m_vVelocity;         // 현재 속도
@@ -31,6 +43,10 @@ public:
     virtual void LoadFromFile(FILE* _File) override;
 
 public:
+    MovementDir GetDir() { return m_Dir; }
+    void CalDir();
+
+public:
     void AddForce(Vec3 _vForce) { m_vForce += _vForce; }
     void SetVelocity(Vec3 _vVelocity) { m_vVelocity = _vVelocity; }
     void SetGravityForce(Vec3 _vGravityForce) { m_vGravityForce = _vGravityForce; }
@@ -43,6 +59,7 @@ public:
     void UseGravity(bool _Use) { m_bUseGravity = _Use; }
     Vec3 MakeMoveToForce(){ return m_vAccel * m_fMass;}
     void SetVelocityX(float _XSpeed) { m_vVelocity.x = _XSpeed; }
+    void SetVelocityY(float _YSpeed) { m_vVelocity.y = _YSpeed; }
 
 
     Vec3 GetForce() { return m_vForce; }

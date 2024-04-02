@@ -8,7 +8,6 @@ class CScriptTemplate :
 public:
     virtual void begin() override;
     virtual void tick() override;
-    virtual void UpdateData() override;
 
 public:
     virtual void SaveToFile(FILE* _File) override;

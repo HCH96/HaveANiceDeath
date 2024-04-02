@@ -115,6 +115,7 @@ enum class BS_TYPE
 // ScriptParam
 enum class SCRIPT_PARAM
 {
+	BOOL,
 	INT,
 	FLOAT,
 	VEC2,

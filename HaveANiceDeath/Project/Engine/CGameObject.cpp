@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "CGameObject.h"
 
+#include "CRenderMgr.h"
+
 #include "CComponent.h"
 #include "CRenderComponent.h"
 
@@ -302,6 +304,17 @@ void CGameObject::finaltick()
 			++iter;
 		}
 	}
+
+	// UI, Camera 는 크로스헤어 안그림
+
+	if (GetLayerIdx() == 31 || (Camera() != nullptr))
+		return;
+
+	if (CRenderMgr::GetInst()->IsDebugPosition())
+	{
+		GamePlayStatic::DrawDebugCross(Transform()->GetWorldPos(), 20.f, Vec3(0.f, 1.f, 0.f), true);
+	}
+
 }
 
 void CGameObject::render()

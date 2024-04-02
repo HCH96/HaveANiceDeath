@@ -152,9 +152,6 @@ void Inspector::SetTargetAsset(Ptr<CAsset> _Asset)
 }
 
 
-
-
-
 void Inspector::DrawLayerUI()
 {
 	ImGui::BeginGroup();
@@ -162,6 +159,13 @@ void Inspector::DrawLayerUI()
 		const vector<string>& LayerName = CImGuiMgr::GetInst()->GetLayerName();
 		int item_current_idx = m_TargetObject->GetLayerIdx();
 		int item_prev_idx = item_current_idx;
+
+		if (item_current_idx == -1)
+		{
+			ImGui::EndGroup();
+			return;
+		}
+
 		if (ImGui::BeginCombo("##CheckLayerList", LayerName[item_current_idx].c_str()))
 		{
 			for (int i = 0; i < LayerName.size(); i++)

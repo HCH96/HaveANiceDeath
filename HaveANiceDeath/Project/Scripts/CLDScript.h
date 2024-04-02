@@ -7,6 +7,7 @@ class CLDScript :
     public CUnitScript
 {
 private:
+
     bool m_DirChanged;
 
 public:

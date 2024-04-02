@@ -17,6 +17,7 @@ public:
 public:
     void SetGameObject(CGameObject* _Object);
     CGameObject* Instantiate();
+    CGameObject* GetProtoObj() { return m_ProtoObj; }
 
 public:
     virtual int Save(const wstring& _strRelativePath);

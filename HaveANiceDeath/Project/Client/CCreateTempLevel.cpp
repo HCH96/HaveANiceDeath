@@ -87,8 +87,8 @@ void CCreateTempLevel::CreateTempLevel()
 	pStd2DMtrl->SetTexParam(TEX_PARAM::TEX_0, CAssetMgr::GetInst()->Load<CTexture>(L"texture\\Fighter.bmp", L"texture\\Fighter.bmp"));
 
 	// 충돌 설정
-	CCollisionMgr::GetInst()->LayerCheck(3, 4);
-	CCollisionMgr::GetInst()->LayerCheck(4, 4);
+	CCollisionMgr::GetInst()->LayerCheck(5, 7);
+	//CCollisionMgr::GetInst()->LayerCheck(4, 4);
 
 
 	CLevel* pLevel = CLevelSaveLoad::LoadLevel(L"level\\Lv1.lv");

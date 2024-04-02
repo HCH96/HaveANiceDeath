@@ -6,6 +6,7 @@
 #include "CLDScript.h"
 #include "CMissileScript.h"
 #include "CMonsterScript.h"
+#include "CPlatformScript.h"
 #include "CPlayerMgrScript.h"
 #include "CPlayerScript.h"
 #include "CScriptTemplate.h"
@@ -18,6 +19,7 @@ void CScriptMgr::GetScriptInfo(vector<wstring>& _vec)
 	_vec.push_back(L"CLDScript");
 	_vec.push_back(L"CMissileScript");
 	_vec.push_back(L"CMonsterScript");
+	_vec.push_back(L"CPlatformScript");
 	_vec.push_back(L"CPlayerMgrScript");
 	_vec.push_back(L"CPlayerScript");
 	_vec.push_back(L"CScriptTemplate");
@@ -36,6 +38,8 @@ CScript * CScriptMgr::GetScript(const wstring& _strScriptName)
 		return new CMissileScript;
 	if (L"CMonsterScript" == _strScriptName)
 		return new CMonsterScript;
+	if (L"CPlatformScript" == _strScriptName)
+		return new CPlatformScript;
 	if (L"CPlayerMgrScript" == _strScriptName)
 		return new CPlayerMgrScript;
 	if (L"CPlayerScript" == _strScriptName)
@@ -65,6 +69,9 @@ CScript * CScriptMgr::GetScript(UINT _iScriptType)
 		break;
 	case (UINT)SCRIPT_TYPE::MONSTERSCRIPT:
 		return new CMonsterScript;
+		break;
+	case (UINT)SCRIPT_TYPE::PLATFORMSCRIPT:
+		return new CPlatformScript;
 		break;
 	case (UINT)SCRIPT_TYPE::PLAYERMGRSCRIPT:
 		return new CPlayerMgrScript;
@@ -104,6 +111,10 @@ const wchar_t * CScriptMgr::GetScriptName(CScript * _pScript)
 
 	case SCRIPT_TYPE::MONSTERSCRIPT:
 		return L"CMonsterScript";
+		break;
+
+	case SCRIPT_TYPE::PLATFORMSCRIPT:
+		return L"CPlatformScript";
 		break;
 
 	case SCRIPT_TYPE::PLAYERMGRSCRIPT:

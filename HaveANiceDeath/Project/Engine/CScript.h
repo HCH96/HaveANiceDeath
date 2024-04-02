@@ -43,6 +43,7 @@ public:
     virtual void LoadFromFile(FILE* _File) = 0;
 public:
     CScript(UINT _ScriptType);
+    CScript(const CScript& _OriginScript);
     ~CScript();
     CScript* Clone() = 0;
 };

@@ -123,11 +123,12 @@ void Outliner::DrawRightClickMenu()
 				pPrefab->SetName(strPath);
 				CAssetMgr::GetInst()->AddAsset(strPath, pPrefab.Get());
 
-				Content* pContent = (Content*)CImGuiMgr::GetInst()->FindUI("##Content");
-				pContent->ReloadContent();
-
 				// save prefab
 				pPrefab->Save(strPath);
+
+
+				Content* pContent = (Content*)CImGuiMgr::GetInst()->FindUI("##Content");
+				pContent->ReloadContent();
 			}
 
 			m_bRightClick = false;
@@ -177,8 +178,9 @@ void Outliner::AddObjectToTree(TreeNode* _Node, CGameObject* _Object)
 void Outliner::SelectObject(DWORD_PTR _Node)
 {
 	TreeNode* pNode = (TreeNode*)_Node;
-	CGameObject* pObject = (CGameObject*)pNode->GetData();
 
+	CGameObject* pObject = (CGameObject*)pNode->GetData();
+	
 	if (nullptr == pObject)
 		return;
 

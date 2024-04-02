@@ -10,6 +10,7 @@ CLDScript::CLDScript()
 	, m_DirChanged(false)
 {
 	m_CurUnitInfo.Dir = ANIM_DIR::RIGHT;
+
 }
 
 CLDScript::~CLDScript()

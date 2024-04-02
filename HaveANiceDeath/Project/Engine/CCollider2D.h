@@ -6,6 +6,7 @@ class CCollider2D :
 {
 private:
     Vec3    m_Offset;   // 오프셋 포지션
+    Vec3    m_PrevFinalPos;
     Vec3    m_FinalPos; // 충돌체의 최종 위치 ( Object Position + Collider offset )
 
     Vec3    m_Scale;    // 오브젝트로부터 상대적인 배율    
@@ -24,9 +25,11 @@ public:
     Vec3 GetOffset() { return m_Offset; }
     Vec3 GetScale() { return m_Scale; }
     Vec3 GetFinalPos() { return m_FinalPos; }
+    Vec3 GetPrevFinalPos() { return m_PrevFinalPos; }
     Vec3 GetRotation() { return m_Rotation; }
     int GetOverlapCount() { return m_OverlapCount; }
     float GetRotationZ() { return m_Rotation.z; }
+
 
     void SetOffset(Vec3 _Offset) { m_Offset = _Offset; }
     void SetScale(Vec3 _Scale) { m_Scale = _Scale; }

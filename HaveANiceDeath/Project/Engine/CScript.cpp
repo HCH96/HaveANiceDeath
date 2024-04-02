@@ -4,6 +4,14 @@
 CScript::CScript(UINT _ScriptType)
 	: CComponent(COMPONENT_TYPE::SCRIPT)
 	, m_ScriptType(_ScriptType)
+	, m_ScriptParam{}
+{
+}
+
+CScript::CScript(const CScript& _OriginScript)
+	: CComponent(_OriginScript)
+	, m_ScriptType(_OriginScript.m_ScriptType)
+	, m_ScriptParam{}
 {
 }
 

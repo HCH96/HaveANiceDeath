@@ -35,6 +35,9 @@
       <Filter>Manager\PlayerManager</Filter>
     </ClInclude>
     <ClInclude Include="CScriptTemplate.h" />
+    <ClInclude Include="CPlatformScript.h">
+      <Filter>Scripts\Platform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -71,6 +74,9 @@
       <Filter>Manager\PlayerManager</Filter>
     </ClCompile>
     <ClCompile Include="CScriptTemplate.cpp" />
+    <ClCompile Include="CPlatformScript.cpp">
+      <Filter>Scripts\Platform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Default">
@@ -96,6 +102,9 @@
     </Filter>
     <Filter Include="Manager\PlayerManager">
       <UniqueIdentifier>{e2ef99bc-a1b3-446e-adec-23078ecbf899}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scripts\Platform">
+      <UniqueIdentifier>{50f8f38c-9818-4b39-af04-22b9d611a161}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

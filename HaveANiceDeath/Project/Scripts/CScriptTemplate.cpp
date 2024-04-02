@@ -19,9 +19,6 @@ void CScriptTemplate::tick()
 {
 }
 
-void CScriptTemplate::UpdateData()
-{
-}
 
 void CScriptTemplate::SaveToFile(FILE* _File)
 {

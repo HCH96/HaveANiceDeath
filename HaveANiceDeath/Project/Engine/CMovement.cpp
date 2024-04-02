@@ -137,3 +137,33 @@ void CMovement::LoadFromFile(FILE* _File)
 	fread(&m_bUseGravity, sizeof(bool), 1, _File);
 	fread(&m_bGround, sizeof(bool), 1, _File);
 }
+
+void CMovement::CalDir()
+{
+	m_Dir = 0;
+
+	Vec3 PrevPos = Transform()->GetPrevPos();
+	Vec3 CurPos = Transform()->GetCurPos();
+
+	Vec3 Dir = CurPos - PrevPos;
+
+	if (Dir.x > 0)
+	{
+		m_Dir |= MV_RIGHT;
+	}
+	
+	if (Dir.x < 0)
+	{
+		m_Dir |= MV_LEFT;
+	}
+
+	if (Dir.y > 0)
+	{
+		m_Dir |= MV_UP;
+	}
+
+	if (Dir.y < 0)
+	{
+		m_Dir |= MV_DOWN;
+	}
+}

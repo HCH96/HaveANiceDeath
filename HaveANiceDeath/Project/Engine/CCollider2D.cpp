@@ -57,6 +57,7 @@ void CCollider2D::finaltick()
 
 	// 최종 위치값을 계산
 	Vec3 vObjPos = Transform()->GetRelativePos();
+	m_PrevFinalPos = m_FinalPos;
 	m_FinalPos = vObjPos + m_Offset;
 
 	// Absolute가 꺼져있다면 소유 오브젝트의 Scale의 영향을 받음

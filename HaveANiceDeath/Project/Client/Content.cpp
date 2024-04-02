@@ -3,6 +3,7 @@
 
 #include <Engine/CAssetMgr.h>
 #include <Engine/CTaskMgr.h>
+#include <Engine\CPrefab.h>
 
 #include "CImGuiMgr.h"
 #include "Inspector.h"
@@ -76,8 +77,18 @@ void Content::SelectAsset(DWORD_PTR _Node)
 	if (nullptr == pAsset)
 		return;
 
-	// 선택한 에셋을 Inspector 에게 알려준다.
+	CPrefab* pPrefab = dynamic_cast<CPrefab*>(pAsset.Get());
+
 	Inspector* pInspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
+
+	// 프리팹이라면 오브젝트를 타겟으로 설정
+	if (nullptr != pPrefab)
+	{
+		pInspector->SetTargetObject(pPrefab->GetProtoObj());
+		return;
+	}
+
+	// 선택한 에셋을 Inspector 에게 알려준다.
 	pInspector->SetTargetAsset(pAsset);
 }
 

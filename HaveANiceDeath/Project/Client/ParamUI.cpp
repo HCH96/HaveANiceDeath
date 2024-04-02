@@ -8,6 +8,21 @@
 
 int ParamUI::g_ID = 0;
 
+bool ParamUI::Param_BOOL(bool* _Data, const string& _Desc)
+{
+	ImGui::Text(_Desc.c_str());
+	ImGui::SameLine();
+
+	char szID[256] = {};
+	sprintf_s(szID, "##bool%d", g_ID++);
+	if (ImGui::Checkbox(szID, _Data))
+	{
+		return true;
+	}
+
+	return false;
+}
+
 bool ParamUI::Param_INT(int* _Data, const string& _Desc)
 {
 	ImGui::Text(_Desc.c_str());
