@@ -184,7 +184,9 @@
     <ClInclude Include="CBlurY.h">
       <Filter>ShaderCode\Compute\BlurY</Filter>
     </ClInclude>
-    <ClInclude Include="CSetColor.h" />
+    <ClInclude Include="CSetColor.h">
+      <Filter>ShaderCode\Compute\SetColor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -355,7 +357,9 @@
     <ClCompile Include="CBlurY.cpp">
       <Filter>ShaderCode\Compute\BlurY</Filter>
     </ClCompile>
-    <ClCompile Include="CSetColor.cpp" />
+    <ClCompile Include="CSetColor.cpp">
+      <Filter>ShaderCode\Compute\SetColor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="01. Header">
@@ -541,6 +545,9 @@
     <Filter Include="ShaderCode\Compute\Sampling\UpSampling">
       <UniqueIdentifier>{aa2b45b4-58ed-4418-971d-d039b16b8b15}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ShaderCode\Compute\SetColor">
+      <UniqueIdentifier>{3d4d708b-9048-4df3-98ac-d0baab63271f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">
@@ -596,6 +603,8 @@
     <FxCompile Include="blury.fx">
       <Filter>ShaderCode\Compute\BlurY</Filter>
     </FxCompile>
-    <FxCompile Include="setcolor.fx" />
+    <FxCompile Include="setcolor.fx">
+      <Filter>ShaderCode\Compute\SetColor</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

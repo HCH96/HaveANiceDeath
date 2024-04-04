@@ -95,6 +95,9 @@ int CDevice::init(HWND _hWnd, Vec2 _vResolution)
 
 void CDevice::ClearRenderTarget(float(&Color)[4])
 {
+	Ptr<CTexture> pBloomRTTex = CRenderMgr::GetInst()->GetRTGlow();
+	m_Context->ClearRenderTargetView(pBloomRTTex->GetRTV().Get(), Color);
+
 	m_Context->ClearRenderTargetView(m_RTTex->GetRTV().Get(), Color);
 	m_Context->ClearDepthStencilView(m_DSTex->GetDSV().Get(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.f, 0);
 }

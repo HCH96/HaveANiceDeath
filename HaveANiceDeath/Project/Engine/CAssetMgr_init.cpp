@@ -347,6 +347,8 @@ void CAssetMgr::CreateDefaultGraphicsShader()
 
 	pShader->AddTexParam(TEX_PARAM::TEX_0, "Default Tex");
 
+	AddAsset(L"StdGlowShader", pShader.Get());
+
 }
 
 void CAssetMgr::CreateDefaultMaterial()
