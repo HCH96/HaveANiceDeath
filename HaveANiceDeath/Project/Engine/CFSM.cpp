@@ -81,6 +81,16 @@ CState* CFSM::FindState(const wstring& _StateName)
 }
 
 
+void CFSM::AddBlackboardData(const wstring& _strKey, BB_DATA _Type, void* _pData)
+{
+	m_Blackboard->AddBlackboardData(_strKey, _Type, _pData);
+}
+
+void* CFSM::GetBlackboardData(const wstring& _strKey)
+{
+	return m_Blackboard->GetBlackboardData(_strKey);
+}
+
 CFSM* CFSM::GetFSMIstance()
 {
 	CFSM* pFSMInst = new CFSM(this, true);

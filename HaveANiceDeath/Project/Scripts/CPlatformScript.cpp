@@ -89,10 +89,10 @@ void CPlatformScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherOb
 	// 위에서 아래로 충돌
 	if ((ObjDir & MV_DOWN) && PlatformLT.y < PrevPos.y - ObjColScale.y / 2.f)
 	{
-		UpCollision(_OtherObj, PlatformLT.y, ObjColScale.y);
+ 		UpCollision(_OtherObj, PlatformLT.y, ObjColScale.y);
 	}
 	// 아래서 위로 충돌
-	else if ((ObjDir & MV_UP) && PlatformRB.y > PrevPos.y + ObjColScale.y / 2.f)
+	else if ((ObjDir & MV_UP) && PlatformRB.y >= PrevPos.y + ObjColScale.y / 2.f)
 	{
 		DownCollision(_OtherObj, PlatformRB.y, ObjColScale.y);
 	}
@@ -172,7 +172,7 @@ void CPlatformScript::Overlap(CCollider2D* _Collider, CGameObject* _OtherObj, CC
 
 
 	// 아래서 위 충돌
-	if ((ObjDir & MV_UP) && PlatformRB.y > PrevPos.y + ObjColScale.y / 2.f)
+	if ((ObjDir & MV_UP) && PlatformRB.y >= PrevPos.y + ObjColScale.y / 2.f)
 	{
 		DownCollision(_OtherObj, PlatformRB.y, ObjColScale.y);
 	}
@@ -275,4 +275,3 @@ void CPlatformScript::RightCollision(CGameObject* _Obj, float _PlatformRight, fl
 
 	_Obj->Transform()->SetRelativePos(ObjPos);
 }
-

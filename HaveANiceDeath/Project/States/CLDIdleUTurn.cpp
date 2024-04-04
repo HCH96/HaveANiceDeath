@@ -15,14 +15,18 @@ CLDIdleUTurn::~CLDIdleUTurn()
 
 void CLDIdleUTurn::finaltick()
 {
+	CLDScript* pScript = GetOwnerObj()->GetScript<CLDScript>();
+	
+	GetOwnerObj()->Movement()->SetVelocityX(200.f * (int)pScript->GetDir());
+
 	if ((KEY_TAP(KEY::A) || KEY_PRESSED(KEY::A)) && KEY_NONE(KEY::D))
 	{
-		GetOwnerObj()->Movement()->SetVelocityX(-500.f);
+		GetOwnerObj()->Movement()->SetVelocityX(-900.f);
 	}
 
 	if ((KEY_TAP(KEY::D) || KEY_PRESSED(KEY::D)) && KEY_NONE(KEY::A))
 	{
-		GetOwnerObj()->Movement()->SetVelocityX(500.f);
+		GetOwnerObj()->Movement()->SetVelocityX(900.f);
 	}
 
 	// 애니메이션이 종료 되었다면
@@ -36,6 +40,11 @@ void CLDIdleUTurn::finaltick()
 		{
 			ChangeState(L"Idle");
 		}
+	}
+
+	if (KEY_TAP(KEY::SPACE))
+	{
+		ChangeState(L"JumpStart");
 	}
 }
 

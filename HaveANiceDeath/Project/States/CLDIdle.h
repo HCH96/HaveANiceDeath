@@ -5,6 +5,7 @@
 class CLDIdle :
     public CState
 {
+
 public:
     virtual void finaltick();
     virtual void Enter();

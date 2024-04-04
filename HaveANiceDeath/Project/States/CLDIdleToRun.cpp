@@ -25,6 +25,11 @@ void CLDIdleToRun::finaltick()
 			ChangeState(L"RunToIdle");
 		}
 	}
+
+	if (KEY_TAP(KEY::SPACE))
+	{
+		ChangeState(L"JumpStart");
+	}
 }
 
 void CLDIdleToRun::Enter()

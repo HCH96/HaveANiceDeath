@@ -20,6 +20,10 @@ private:
     CState* m_PrevState;
 
 public:
+    void AddBlackboardData(const wstring& _strKey, BB_DATA _Type, void* _pData);
+    void* GetBlackboardData(const wstring& _strKey);
+
+public:
     CState* GetCurState() { return m_CurState; }
     const map<wstring, CState*>& GetStates() { return m_mapState; }
     CFSM* GetFSMIstance();

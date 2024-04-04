@@ -103,7 +103,7 @@ void UIAnimDetail::render_update()
 
 			// current anim vec update (owenr: UIAnimDeatil)
 			m_vecAnimUV[i].vOffset = Vec2(vOffset.x / (float)m_Atlas->GetWidth(), vOffset.y / (float)m_Atlas->GetHeight());
-			m_vecAnimUV[i].Duration = m_vecAnimUV[i].Duration;
+			m_vecAnimUV[i].Duration = 1.f / iFPS;
 		}
 	}
 }

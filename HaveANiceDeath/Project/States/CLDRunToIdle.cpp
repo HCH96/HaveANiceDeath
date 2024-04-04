@@ -31,11 +31,15 @@ void CLDRunToIdle::finaltick()
 		}
 	}
 
-
 	// 애니메이션이 종료 되었다면
 	if (GetOwnerObj()->Animator2D()->IsCurAnimFinished())
 	{
 		ChangeState(L"Idle");
+	}
+
+	if (KEY_TAP(KEY::SPACE))
+	{
+		ChangeState(L"JumpStart");
 	}
 }
 

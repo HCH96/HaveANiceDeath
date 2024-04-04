@@ -24,6 +24,7 @@ public:
 public:
     CLONE(CLDScript);
     CLDScript();
+    CLDScript(const CLDScript& _Origin);
     ~CLDScript();
 };
 

@@ -34,6 +34,11 @@ void CLDRunUTurn::finaltick()
 		}
 	}
 
+	if (KEY_TAP(KEY::SPACE))
+	{
+		ChangeState(L"JumpStart");
+	}
+
 }
 
 void CLDRunUTurn::Enter()

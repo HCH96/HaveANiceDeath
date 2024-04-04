@@ -13,6 +13,13 @@ CLDScript::CLDScript()
 
 }
 
+CLDScript::CLDScript(const CLDScript& _Origin)
+	: CUnitScript(_Origin)
+	, m_DirChanged(false)
+{
+	m_CurUnitInfo.Dir = ANIM_DIR::RIGHT;
+}
+
 CLDScript::~CLDScript()
 {
 }
@@ -40,14 +47,14 @@ void CLDScript::tick()
 		{
 			m_CurUnitInfo.Dir = ANIM_DIR::LEFT;
 			
-			Movement()->SetVelocityX(-500.f);
+			Movement()->SetVelocityX(-900.f);
 		}
 
 		if ((KEY_TAP(KEY::D) || KEY_PRESSED(KEY::D)) && KEY_NONE(KEY::A))
 		{
 			m_CurUnitInfo.Dir = ANIM_DIR::RIGHT;
 
-			Movement()->SetVelocityX(500.f);
+			Movement()->SetVelocityX(900.f);
 		}
 
 		// 다음 프레임에 방향이 바뀌는지
