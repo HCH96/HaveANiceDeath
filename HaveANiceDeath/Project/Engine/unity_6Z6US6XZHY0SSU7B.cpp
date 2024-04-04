@@ -1,12 +1,15 @@
 #include "pch.h"
 
-#include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\Engine\CRenderMgr.cpp"
-
-
 #include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\Engine\CRenderMgr_init.cpp"
 
 
+#include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\Engine\CDownSampling.cpp"
+
+
 #include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\Engine\CScript.cpp"
+
+
+#include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\Engine\CSetColor.cpp"
 
 
 #include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\Engine\CShader.cpp"
@@ -37,6 +40,9 @@
 
 
 #include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\Engine\CTransform.cpp"
+
+
+#include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\Engine\CUpsampling.cpp"
 
 
 #include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\Engine\Engine.cpp"

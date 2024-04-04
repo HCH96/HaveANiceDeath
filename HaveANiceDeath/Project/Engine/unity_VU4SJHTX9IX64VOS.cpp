@@ -18,6 +18,12 @@
 #include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\Engine\CBlackboard.cpp"
 
 
+#include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\Engine\CBlurX.cpp"
+
+
+#include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\Engine\CBlurY.cpp"
+
+
 #include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\Engine\CCamera.cpp"
 
 
@@ -25,6 +31,9 @@
 
 
 #include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\Engine\CCollisionMgr.cpp"
+
+
+#include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\Engine\CCombine.cpp"
 
 
 #include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\Engine\CComponent.cpp"
@@ -46,7 +55,4 @@
 
 
 #include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\Engine\CFontMgr.cpp"
-
-
-#include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\Engine\CFSM.cpp"
 

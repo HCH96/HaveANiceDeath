@@ -18,6 +18,8 @@ CRenderMgr::CRenderMgr()
 	, m_DebugPosition(true)
 	, m_EditorCam(nullptr)
 	, m_RenderFunc(nullptr)
+	, m_RTGlow(nullptr)
+	, m_BloomLevel(5)
 {
 	m_RenderFunc = &CRenderMgr::render_play;
 
@@ -40,12 +42,8 @@ CRenderMgr::~CRenderMgr()
 
 void CRenderMgr::tick()
 {
-	// 렌더타겟 및 깊이 타겟 설정
-	Ptr<CTexture> pRTTex = CAssetMgr::GetInst()->FindAsset<CTexture>(L"RenderTargetTex");
-	Ptr<CTexture> pDSTex = CAssetMgr::GetInst()->FindAsset<CTexture>(L"DepthStencilTex");
-
 	// Output Merge State에 렌더타겟과 뎊스스텐실 텍스쳐를 등록
-	CONTEXT->OMSetRenderTargets(1, pRTTex->GetRTV().GetAddressOf(), pDSTex->GetDSV().Get());
+	CDevice::GetInst()->SetRenderTarget();
 
 	// Clear
 	Vec4 vClearColor = Vec4(0.f, 0.f, 0.f, 1.f);
@@ -59,10 +57,27 @@ void CRenderMgr::tick()
 	Clear();
 }
 
+void CRenderMgr::ActiveEditorMode(bool _bActive)
+{
+	if (_bActive)
+	{
+		m_RenderFunc = &CRenderMgr::render_editor;
+		m_isEditorMode = true;
+	}
+	else
+	{
+		m_RenderFunc = &CRenderMgr::render_play;
+		m_isEditorMode = false;
+	}
+}
+
 
 
 void CRenderMgr::render_play()
 {
+	// ViewPort 설정
+	CDevice::GetInst()->SetViewPort(CDevice::GetInst()->GetRenderResolution());
+
 	for (size_t i = 0; i < m_vecCam.size(); ++i)
 	{
 		m_vecCam[i]->SortObject();
@@ -72,6 +87,9 @@ void CRenderMgr::render_play()
 
 void CRenderMgr::render_editor()
 {
+	// ViewPort 설정
+	CDevice::GetInst()->SetViewPort(CDevice::GetInst()->GetRenderResolution());
+
 	if (nullptr == m_EditorCam)
 		return;
 
@@ -81,6 +99,9 @@ void CRenderMgr::render_editor()
 
 void CRenderMgr::render_debug()
 {
+	// ViewPort 설정
+	CDevice::GetInst()->SetViewPort(CDevice::GetInst()->GetRenderResolution());
+
 	// 카메라가 없다면 return
 	if (m_vecCam.empty() && m_EditorCam == nullptr)
 	{
@@ -155,7 +176,6 @@ void CRenderMgr::render_debug()
 void CRenderMgr::UpdateData()
 {
 	g_global.g_Light2DCount = (int)m_vecLight2D.size();
-	//g_global.g_Light3DCount = (int)m_vecLight3D.size();
 
 	// 전역 데이터 업데이트
 	static CConstBuffer* pCB = CDevice::GetInst()->GetConstBuffer(CB_TYPE::GLOBAL_DATA);
@@ -180,14 +200,13 @@ void CRenderMgr::UpdateData()
 	m_Light2DBuffer->UpdateData(11);
 
 	vecLight2DInfo.clear();
-
-	// 3D 광원정보 업데이트
 }
 
 void CRenderMgr::Clear()
 {
 	m_vecLight2D.clear();
 }
+
 
 void CRenderMgr::RegisterCamera(CCamera* _Cam, int _Idx)
 {

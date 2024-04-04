@@ -2,6 +2,7 @@
 #include "CDevice.h"
 
 #include "CAssetMgr.h"
+#include "CRenderMgr.h"
 
 #include "CConstBuffer.h"
 
@@ -80,17 +81,7 @@ int CDevice::init(HWND _hWnd, Vec2 _vResolution)
 
 
 	// ViewPort 설정
-	D3D11_VIEWPORT ViewportDesc = {};
-
-	ViewportDesc.MinDepth = 0;
-	ViewportDesc.MaxDepth = 1.f;
-
-	ViewportDesc.TopLeftX = 0;
-	ViewportDesc.TopLeftY = 0;
-	ViewportDesc.Width = m_RenderResolution.x;
-	ViewportDesc.Height = m_RenderResolution.y;
-
-	CONTEXT->RSSetViewports(1, &ViewportDesc);
+	SetViewPort(m_RenderResolution);
 
 	// Const Buffer 생성
 	if (FAILED(CreateConstBuffer()))
@@ -113,6 +104,31 @@ void CDevice::Present()
 	m_SwapChain->Present(0, 0);
 }
 
+void CDevice::SetRenderTarget()
+{
+	Ptr<CTexture> pBloomRTTex = CRenderMgr::GetInst()->GetRTGlow();
+	ID3D11RenderTargetView* arrRTV[2] = { m_RTTex->GetRTV().Get(), pBloomRTTex->GetRTV().Get() };
+
+	CONTEXT->OMSetRenderTargets(2, arrRTV, m_DSTex->GetDSV().Get());
+}
+
+
+void CDevice::SetViewPort(Vec2 _Resolution)
+{
+	// ViewPort 설정
+	D3D11_VIEWPORT ViewportDesc = {};
+
+	ViewportDesc.MinDepth = 0;
+	ViewportDesc.MaxDepth = 1.f;
+
+	ViewportDesc.TopLeftX = 0;
+	ViewportDesc.TopLeftY = 0;
+	ViewportDesc.Width = _Resolution.x;
+	ViewportDesc.Height = _Resolution.y;
+
+	CONTEXT->RSSetViewports(1, &ViewportDesc);
+}
+
 int CDevice::CreateSwapChain()
 {
 	// SwapChain 생성 구조체
@@ -120,7 +136,7 @@ int CDevice::CreateSwapChain()
 
 	// SwapChain 이 관리하는 Buffer(RenderTarget) 의 구성 정보
 	tDesc.BufferCount = 1;
-	tDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
+	tDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT | DXGI_USAGE_UNORDERED_ACCESS;
 	tDesc.BufferDesc.Width = (UINT)m_RenderResolution.x;
 	tDesc.BufferDesc.Height = (UINT)m_RenderResolution.y;
 	tDesc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;

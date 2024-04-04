@@ -1,5 +1,5 @@
 #ifndef _PARTICLE
-#define _PARTICLe
+#define _PARTICLE
 
 #include "register.fx"
 #include "struct.fx"

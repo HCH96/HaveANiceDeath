@@ -49,7 +49,8 @@ public:
 	void ClearRenderTarget(float(&Color)[4]);
 	void Present();
 
-
+	void SetRenderTarget();
+	void SetViewPort(Vec2 _Resolution);
 
 private:
 	int CreateSwapChain();

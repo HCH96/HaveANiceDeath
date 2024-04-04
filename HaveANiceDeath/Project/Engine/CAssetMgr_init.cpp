@@ -192,7 +192,7 @@ void CAssetMgr::CreateDefaultGraphicsShader()
 
 	// Parameter	
 	pShader->AddScalarParam(SCALAR_PARAM::INT_0, "Test Param");
-	pShader->AddTexParam(TEX_PARAM::TEX_0, "Output Texture 1");
+	pShader->AddTexParam(TEX_PARAM::TEX_0, "Output Texture 0");
 
 
 	AddAsset(L"Std2DShader", pShader.Get());
@@ -323,6 +323,30 @@ void CAssetMgr::CreateDefaultGraphicsShader()
 	pShader->AddTexParam(TEX_PARAM::TEX_0, "Default Tex");
 
 	AddAsset(L"PlayerShader", pShader.Get());
+
+
+	// =================================
+	// Std2DGlowShader
+	// =================================
+	pShader = nullptr;
+
+	pShader = new CGraphicsShader;
+	pShader->CreateVertexShader(L"shader\\StdGlow.fx", "VS_Std2D_Glow");
+	pShader->CreatePixelShader(L"shader\\StdGlow.fx", "PS_Std2D_Glow");
+
+	pShader->SetRSType(RS_TYPE::CULL_NONE);
+	pShader->SetDSType(DS_TYPE::LESS);
+	pShader->SetBSType(BS_TYPE::DEFAULT);
+	pShader->SetDomain(SHADER_DOMAIN::DOMAIN_MASKED);
+
+	// Parameter	
+	pShader->AddScalarParam(SCALAR_PARAM::INT_0, "Anim Dir");
+	pShader->AddScalarParam(SCALAR_PARAM::INT_1, "Glow Enable");
+	pShader->AddScalarParam(SCALAR_PARAM::FLOAT_0, "Threshold");
+	pShader->AddScalarParam(SCALAR_PARAM::VEC4_0, "Glow Color");
+
+	pShader->AddTexParam(TEX_PARAM::TEX_0, "Default Tex");
+
 }
 
 void CAssetMgr::CreateDefaultMaterial()
@@ -389,6 +413,13 @@ void CAssetMgr::CreateDefaultMaterial()
 
 
 #include "CParticleUpdate.h"
+#include "CDownSampling.h"
+#include "CUpsampling.h"
+#include "CCombine.h"
+#include "CBlurX.h"
+#include "CBlurY.h"
+
+#include "CSetColor.h"
 
 void CAssetMgr::CreateDefaultComputeShader()
 {
@@ -397,6 +428,27 @@ void CAssetMgr::CreateDefaultComputeShader()
 	// ParticleUpdateShader
 	pShader = new CParticleUpdate;
 	AddAsset(L"ParticleUpdateShader", pShader.Get());
+
+	// SamplingShader
+	pShader = new CDownSampling;
+	AddAsset(L"DownSamplingShader", pShader.Get());
+
+	pShader = new CUpsampling;
+	AddAsset(L"UpSamplingShader", pShader.Get());
+
+	pShader = new CCombine;
+	AddAsset(L"CombineShader", pShader.Get());
+
+	pShader = new CBlurX;
+	AddAsset(L"BlurXShader", pShader.Get());
+
+	pShader = new CBlurY;
+	AddAsset(L"BlurYShader", pShader.Get());
+
+	// SetColorShader
+	pShader = new CSetColorShader;
+	AddAsset(L"SetColorShader", pShader.Get());
+
 }
 
 

@@ -169,6 +169,22 @@
     <ClInclude Include="CMovement.h">
       <Filter>07. Component\10. Movement</Filter>
     </ClInclude>
+    <ClInclude Include="CCombine.h">
+      <Filter>ShaderCode\Compute\Combine</Filter>
+    </ClInclude>
+    <ClInclude Include="CDownSampling.h">
+      <Filter>ShaderCode\Compute\Sampling\DownSampling</Filter>
+    </ClInclude>
+    <ClInclude Include="CUpsampling.h">
+      <Filter>ShaderCode\Compute\Sampling\UpSampling</Filter>
+    </ClInclude>
+    <ClInclude Include="CBlurX.h">
+      <Filter>ShaderCode\Compute\BlurX</Filter>
+    </ClInclude>
+    <ClInclude Include="CBlurY.h">
+      <Filter>ShaderCode\Compute\BlurY</Filter>
+    </ClInclude>
+    <ClInclude Include="CSetColor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -324,6 +340,22 @@
     <ClCompile Include="CMovement.cpp">
       <Filter>07. Component\10. Movement</Filter>
     </ClCompile>
+    <ClCompile Include="CCombine.cpp">
+      <Filter>ShaderCode\Compute\Combine</Filter>
+    </ClCompile>
+    <ClCompile Include="CDownSampling.cpp">
+      <Filter>ShaderCode\Compute\Sampling\DownSampling</Filter>
+    </ClCompile>
+    <ClCompile Include="CUpsampling.cpp">
+      <Filter>ShaderCode\Compute\Sampling\UpSampling</Filter>
+    </ClCompile>
+    <ClCompile Include="CBlurX.cpp">
+      <Filter>ShaderCode\Compute\BlurX</Filter>
+    </ClCompile>
+    <ClCompile Include="CBlurY.cpp">
+      <Filter>ShaderCode\Compute\BlurY</Filter>
+    </ClCompile>
+    <ClCompile Include="CSetColor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="01. Header">
@@ -488,6 +520,27 @@
     <Filter Include="ShaderCode\Render\Player">
       <UniqueIdentifier>{ff822138-ae3b-4c30-9108-ad0b597284c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ShaderCode\Render\Glow">
+      <UniqueIdentifier>{b9550708-2407-4042-a122-d70c833a6f57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShaderCode\Compute\Sampling">
+      <UniqueIdentifier>{abd591cb-b96f-4f28-92ae-466f49ef2a61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShaderCode\Compute\BlurX">
+      <UniqueIdentifier>{668257f2-f0ac-488f-b54c-5414623cd644}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShaderCode\Compute\BlurY">
+      <UniqueIdentifier>{2258132e-1e51-4769-8271-85a8fafa9ec6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShaderCode\Compute\Combine">
+      <UniqueIdentifier>{c0bd37a3-0d20-4985-bf92-a1304f33e502}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShaderCode\Compute\Sampling\DownSampling">
+      <UniqueIdentifier>{6f2ffebf-cfaf-4700-a871-cfa3289d2589}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShaderCode\Compute\Sampling\UpSampling">
+      <UniqueIdentifier>{aa2b45b4-58ed-4418-971d-d039b16b8b15}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">
@@ -525,5 +578,24 @@
     <FxCompile Include="player.fx">
       <Filter>ShaderCode\Render\Player</Filter>
     </FxCompile>
+    <FxCompile Include="StdGlow.fx">
+      <Filter>ShaderCode\Render\Glow</Filter>
+    </FxCompile>
+    <FxCompile Include="combind.fx">
+      <Filter>ShaderCode\Compute\Combine</Filter>
+    </FxCompile>
+    <FxCompile Include="downsampling.fx">
+      <Filter>ShaderCode\Compute\Sampling\DownSampling</Filter>
+    </FxCompile>
+    <FxCompile Include="upsampling.fx">
+      <Filter>ShaderCode\Compute\Sampling\UpSampling</Filter>
+    </FxCompile>
+    <FxCompile Include="blurx.fx">
+      <Filter>ShaderCode\Compute\BlurX</Filter>
+    </FxCompile>
+    <FxCompile Include="blury.fx">
+      <Filter>ShaderCode\Compute\BlurY</Filter>
+    </FxCompile>
+    <FxCompile Include="setcolor.fx" />
   </ItemGroup>
 </Project>

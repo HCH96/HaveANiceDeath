@@ -110,6 +110,4 @@ float4 PS_Player(VS_OUT _in) : SV_Target
     return vColor;
 }
 
-
-
 #endif

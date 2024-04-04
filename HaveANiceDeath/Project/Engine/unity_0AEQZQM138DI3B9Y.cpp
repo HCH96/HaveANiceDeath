@@ -1,5 +1,8 @@
 #include "pch.h"
 
+#include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\Engine\CFSM.cpp"
+
+
 #include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\Engine\CGameObject.cpp"
 
 
@@ -49,4 +52,7 @@
 
 
 #include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\Engine\CRenderComponent.cpp"
+
+
+#include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\Engine\CRenderMgr.cpp"
 

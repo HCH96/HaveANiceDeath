@@ -1,18 +1,6 @@
 #pragma once
 #include "CShader.h"
 
-struct tScalarParam
-{
-    SCALAR_PARAM    Type;
-    string          Desc;
-};
-
-struct tTexParam
-{
-    TEX_PARAM       Type;
-    string          Desc;
-};
-
 
 class CGraphicsShader :
     public CShader
@@ -46,9 +34,7 @@ private:
     // Shader Domain
     SHADER_DOMAIN                   m_Domain;
 
-    // Shader 파라미터 목록
-    vector<tScalarParam>            m_ScalarParam;
-    vector<tTexParam>               m_TexParam;
+
 
 public:
     D3D11_PRIMITIVE_TOPOLOGY GetTopology() { return m_Topology; }
@@ -70,8 +56,7 @@ public:
     int CreateGeometryShader(const wstring& _strRelativePath, const string& _strFuncName);
     int CreatePixelShader(const wstring& _strRelativePath, const string& _strFuncName);
 
-    void AddScalarParam(SCALAR_PARAM _Param, const string& _Desc) { m_ScalarParam.push_back(tScalarParam{ _Param , _Desc }); }
-    void AddTexParam(TEX_PARAM _Param, const string& _Desc) { m_TexParam.push_back(tTexParam{ _Param , _Desc }); }
+
 
 public:
     virtual int UpdateData();

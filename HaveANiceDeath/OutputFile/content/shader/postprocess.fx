@@ -43,7 +43,6 @@ float4 PS_GrayFilter(VS_OUT _in) : SV_Target
 }
 
 
-// 
 VS_OUT VS_Distortion(VS_IN _in)
 {
     VS_OUT output = (VS_OUT) 0.f;

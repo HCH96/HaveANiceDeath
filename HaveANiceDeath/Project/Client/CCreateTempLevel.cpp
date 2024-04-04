@@ -78,13 +78,60 @@ void CCreateTempLevel::Init()
 
 }
 
+#include <Engine\CBlurX.h>
+#include <Engine\CBlurY.h>
+#include <Engine\CDownSampling.h>
+#include <Engine\CUpsampling.h>
+#include <Engine\CCombine.h>
+#include <Engine\CSetColor.h>
+
 void CCreateTempLevel::CreateTempLevel()
 {
 	//CAssetMgr::GetInst()->Load<CTexture>(L"texture\\Background.jpg", L"texture\\Background.jpg");
 	Ptr<CMaterial> pBackgroudMtrl = CAssetMgr::GetInst()->FindAsset<CMaterial>(L"BackgroundMtrl");
 	Ptr<CMaterial> pStd2DMtrl = CAssetMgr::GetInst()->FindAsset<CMaterial>(L"Std2DMtrl");
 
+	Ptr<CTexture> pPlayerTex = CAssetMgr::GetInst()->Load<CTexture>(L"texture\\Fighter.bmp", L"texture\\Fighter.bmp");
+
 	pStd2DMtrl->SetTexParam(TEX_PARAM::TEX_0, CAssetMgr::GetInst()->Load<CTexture>(L"texture\\Fighter.bmp", L"texture\\Fighter.bmp"));
+
+	Ptr<CTexture> pTestTex = CAssetMgr::GetInst()->CreateTexture(L"TestTex", pPlayerTex->GetWidth(), pPlayerTex->GetHeight(), DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_UNORDERED_ACCESS);
+	Ptr<CBlurY> pCS = (CBlurY*)CAssetMgr::GetInst()->FindAsset<CComputeShader>(L"BlurYShader").Get();
+	pCS->SetResourceTex(CAssetMgr::GetInst()->FindAsset<CTexture>(L"texture\\Fighter.bmp"));
+	pCS->SetTargetTexture(pTestTex);
+	pCS->Execute();
+
+
+	Ptr<CTexture> pDownTest = CAssetMgr::GetInst()->CreateTexture(L"Downtest", pPlayerTex->GetWidth()/2, pPlayerTex->GetHeight()/2, DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_UNORDERED_ACCESS);
+	Ptr<CDownSampling> pCSDown = (CDownSampling*)CAssetMgr::GetInst()->FindAsset<CComputeShader>(L"DownSamplingShader").Get();
+	pCSDown->SetResourceTex(pPlayerTex);
+	pCSDown->SetTargetTexture(pDownTest);
+	pCSDown->Execute();
+
+
+	Ptr<CTexture> pUpTest = CAssetMgr::GetInst()->CreateTexture(L"Uptest", pPlayerTex->GetWidth() * 2, pPlayerTex->GetHeight() * 2, DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_UNORDERED_ACCESS);
+	Ptr<CUpsampling> pCSUp = (CUpsampling*)CAssetMgr::GetInst()->FindAsset<CComputeShader>(L"UpSamplingShader").Get();
+	pCSUp->SetResourceTex(pPlayerTex);
+	pCSUp->SetTargetTexture(pUpTest);
+	pCSUp->Execute();
+
+	Ptr<CTexture> pComTest = CAssetMgr::GetInst()->CreateTexture(L"ComTest", pPlayerTex->GetWidth() * 2, pPlayerTex->GetHeight() * 2, DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_UNORDERED_ACCESS);
+	Ptr<CCombine> pCSCom = (CCombine*)CAssetMgr::GetInst()->FindAsset<CComputeShader>(L"CombineShader").Get();
+	Ptr<CTexture> pComTest2 = CAssetMgr::GetInst()->CreateTexture(L"ComTest2", pPlayerTex->GetWidth() * 2, pPlayerTex->GetHeight() * 2, DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_UNORDERED_ACCESS);
+
+	Ptr<CSetColorShader> pCSSetColor = (CSetColorShader*)CAssetMgr::GetInst()->FindAsset<CComputeShader>(L"SetColorShader").Get();
+	pCSSetColor->SetColor(Vec3(1.f, 0.f, 0.f));
+	pCSSetColor->SetTargetTexture(pComTest);
+	pCSSetColor->Execute();
+
+	pCSCom->SetBloomTex(pComTest);
+	pCSCom->SetRenderTargetCopyTex(pUpTest);
+	pCSCom->SetRenderTargetTex(pComTest2);
+	pCSCom->Execute();
+
+
+
+
 
 	// 충돌 설정
 	CCollisionMgr::GetInst()->LayerCheck(5, 7);

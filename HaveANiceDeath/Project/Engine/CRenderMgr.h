@@ -40,41 +40,44 @@ private:
     // RenderTarget Copy Texture
     Ptr<CTexture>           m_RTCopyTex;
 
-public:
-    Ptr<CTexture> GetRTCopyTex() { return m_RTCopyTex; }
+    // ============
+    // Bloom Effect
+    // ============
+
+    // Bloom Level
+    int                     m_BloomLevel;
+
+    // GlowTexture
+    Ptr<CTexture>           m_RTGlow;
+    vector<Ptr<CTexture>>   m_BloomFirst;
+    vector<Ptr<CTexture>>   m_BloomSecond;
 
 public:
     CCamera* GetEditorCamera() { return m_EditorCam; }
+    Ptr<CTexture> GetRTCopyTex() { return m_RTCopyTex; }
+    Ptr<CTexture> GetRTGlow() { return m_RTGlow; }
+    Ptr<CTexture> GetPostProcessTex() { return m_PostProcessTex; }
     const vector<CCamera*>& GetCameras() { return m_vecCam; }
     bool IsEditorMode() { return m_isEditorMode; }
 
+    //camera
     void RegisterCamera(CCamera* _Cam, int _Idx);
-    void AddDebugShapeInfo(const tDebugShapeInfo& _info) { m_DbgShapeInfo.push_back(_info); }
-
-    void SetDebugPosition(bool _OnOff) { m_DebugPosition = _OnOff; }
-    bool IsDebugPosition() { return m_DebugPosition; }
-
-    void RegisterLight2D(CLight2D* _Light2D) { m_vecLight2D.push_back(_Light2D); }
-
-    void CopyRenderTargetToPostProcessTarget();
-    Ptr<CTexture> GetPostProcessTex() { return m_PostProcessTex; }
-
     void RegisterEditorCamera(CCamera* _Cam) { m_EditorCam = _Cam; }
     void ClearCamera() { m_vecCam.clear(); }
 
-    void ActiveEditorMode(bool _bActive)
-    {
-        if (_bActive)
-        {
-            m_RenderFunc = &CRenderMgr::render_editor;
-            m_isEditorMode = true;
-        }
-        else
-        {
-            m_RenderFunc = &CRenderMgr::render_play;
-            m_isEditorMode = false;
-        }
-    }
+    // debug
+    void AddDebugShapeInfo(const tDebugShapeInfo& _info) { m_DbgShapeInfo.push_back(_info); }
+    void SetDebugPosition(bool _OnOff) { m_DebugPosition = _OnOff; }
+    bool IsDebugPosition() { return m_DebugPosition; }
+
+    // 광원
+    void RegisterLight2D(CLight2D* _Light2D) { m_vecLight2D.push_back(_Light2D); }
+
+    // post process
+    void CopyRenderTargetToPostProcessTarget();
+
+    // Render mode
+    void ActiveEditorMode(bool _bActive);
 
     void CopyRenderTargetToImGuiRenderTexture();
 
@@ -93,4 +96,8 @@ private:
 
     // 리소스 클리어
     void Clear();
+
+    // Bloom
+    void CreateBloomTex();
+
 };
