@@ -43,10 +43,6 @@ void CRenderMgr::init()
 
 	// RenderTarget Copy Texture
 	m_RTCopyTex = CAssetMgr::GetInst()->CreateTexture(L"RTCopyTex", (UINT)vRenderResolution.x, (UINT)vRenderResolution.y, DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE, D3D11_USAGE_DEFAULT);
-
-	CAssetMgr::GetInst()->CreateTexture(L"ATestTex", (UINT)vRenderResolution.x, (UINT)vRenderResolution.y, DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE, D3D11_USAGE_DEFAULT);
-	CAssetMgr::GetInst()->CreateTexture(L"A1TestTex", (UINT)vRenderResolution.x, (UINT)vRenderResolution.y, DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE, D3D11_USAGE_DEFAULT);
-
 }
 
 void CRenderMgr::CopyRenderTargetToPostProcessTarget()
@@ -58,9 +54,6 @@ void CRenderMgr::CopyRenderTargetToPostProcessTarget()
 void CRenderMgr::CopyRTTexture()
 {
 	Ptr<CTexture> pRTTex = CAssetMgr::GetInst()->FindAsset<CTexture>(L"RenderTargetTex");
-
-	//Vec4 vClearColor = Vec4(0.f, 0.f, 0.f, 1.f);
-	//CONTEXT->ClearRenderTargetView(m_RTCopyTex->GetRTV().Get(), vClearColor);
 
 	CONTEXT->CopyResource(m_RTCopyTex->GetTex2D().Get(), pRTTex->GetTex2D().Get());
 }
@@ -85,25 +78,6 @@ void CRenderMgr::CreateBloomTex()
 		m_BloomSecond.push_back(pBloomSecondTex);
 
 	}
-
-	for (int i = 0; i < m_BloomFirst.size(); ++i)
-	{
-		UINT testwidth =m_BloomFirst[i]->GetWidth();
-		UINT testheight =m_BloomFirst[i]->GetHeight();
-	}
-
-	CAssetMgr::GetInst()->CreateTexture(L"AAL1firstTex", (UINT)m_BloomFirst[0]->GetWidth(), (UINT)m_BloomFirst[0]->GetHeight(), DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE, D3D11_USAGE_DEFAULT);
-	CAssetMgr::GetInst()->CreateTexture(L"AAL1SecondTex", (UINT)m_BloomFirst[0]->GetWidth(), (UINT)m_BloomFirst[0]->GetHeight(), DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE, D3D11_USAGE_DEFAULT);
-
-	CAssetMgr::GetInst()->CreateTexture(L"AAL2firstTex", (UINT)m_BloomFirst[1]->GetWidth(), (UINT)m_BloomFirst[1]->GetHeight(), DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE, D3D11_USAGE_DEFAULT);
-	CAssetMgr::GetInst()->CreateTexture(L"AAL2SecondTex", (UINT)m_BloomFirst[1]->GetWidth(), (UINT)m_BloomFirst[1]->GetHeight(), DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE, D3D11_USAGE_DEFAULT);
-
-	CAssetMgr::GetInst()->CreateTexture(L"AAL3firstTex", (UINT)m_BloomFirst[2]->GetWidth(), (UINT)m_BloomFirst[2]->GetHeight(), DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE, D3D11_USAGE_DEFAULT);
-	CAssetMgr::GetInst()->CreateTexture(L"AAL3SecondTex", (UINT)m_BloomFirst[2]->GetWidth(), (UINT)m_BloomFirst[2]->GetHeight(), DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE, D3D11_USAGE_DEFAULT);
-
-	CAssetMgr::GetInst()->CreateTexture(L"AAL4firstTex", (UINT)m_BloomFirst[3]->GetWidth(), (UINT)m_BloomFirst[3]->GetHeight(), DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE, D3D11_USAGE_DEFAULT);
-	CAssetMgr::GetInst()->CreateTexture(L"AAL4SecondTex", (UINT)m_BloomFirst[3]->GetWidth(), (UINT)m_BloomFirst[3]->GetHeight(), DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE, D3D11_USAGE_DEFAULT);
-	
 
 
 }

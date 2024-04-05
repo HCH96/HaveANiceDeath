@@ -7,8 +7,6 @@ Texture2D<float4> BloomTexture : register(t1);
 
 RWTexture2D<float4> RenderTarget : register(u0);
 
-// 1901 950 475 237 118
-
 [numthreads(32, 32, 1)]
 void CS_Combind(uint3 dispatchThreadID : SV_DispatchThreadID)
 {
@@ -28,7 +26,7 @@ void CS_Combind(uint3 dispatchThreadID : SV_DispatchThreadID)
         return;
     }
     
-    float3 vColor = saturate(RenderTargetCopy[dispatchThreadID.xy].rgb + 100 * BloomTexture[dispatchThreadID.xy].rgb);
+    float3 vColor = saturate(RenderTargetCopy[dispatchThreadID.xy].rgb + BloomTexture[dispatchThreadID.xy].rgb);
     
     RenderTarget[dispatchThreadID.xy] = float4(vColor, 1.f);
 
