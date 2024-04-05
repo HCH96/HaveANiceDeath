@@ -50,6 +50,7 @@ public:
 	void Present();
 
 	void SetRenderTarget();
+	void ClearRenderTarget();
 	void SetViewPort(Vec2 _Resolution);
 
 private:

@@ -231,6 +231,8 @@ void CCamera::render_postprocess()
 
 void CCamera::render_Bloom()
 {
+	CDevice::GetInst()->ClearRenderTarget();
+
 	// 랜더타겟 텍스쳐
 	Ptr<CTexture> mainRTTex = CAssetMgr::GetInst()->FindAsset<CTexture>(L"RenderTargetTex");
 
@@ -258,6 +260,9 @@ void CCamera::render_Bloom()
 	Ptr<CCombine> CombineShader = (CCombine*)CAssetMgr::GetInst()->FindAsset<CComputeShader>(L"CombineShader").Get();
 
 
+	Ptr<CTexture> test1 = CAssetMgr::GetInst()->FindAsset<CTexture>(L"A1TestTex");
+	CONTEXT->CopyResource(test1->GetTex2D().Get(), GlowTex->GetTex2D().Get());
+
 	// Down Sampling
 	for (int i = 0; i < BloomLevel-1; ++i)
 	{
@@ -273,6 +278,21 @@ void CCamera::render_Bloom()
 		DownScalingShader->SetTargetTexture(BloomFirst[i]);
 		DownScalingShader->Execute();
 	}
+	
+	Ptr<CTexture> AAL1firstTex = CAssetMgr::GetInst()->FindAsset<CTexture>(L"AAL1firstTex");
+	CONTEXT->CopyResource(AAL1firstTex->GetTex2D().Get(), BloomFirst[0]->GetTex2D().Get());
+		
+	Ptr<CTexture> AAL2firstTex = CAssetMgr::GetInst()->FindAsset<CTexture>(L"AAL2firstTex");
+	CONTEXT->CopyResource(AAL2firstTex->GetTex2D().Get(), BloomFirst[1]->GetTex2D().Get());
+
+
+	Ptr<CTexture> AAL3firstTex = CAssetMgr::GetInst()->FindAsset<CTexture>(L"AAL3firstTex");
+	CONTEXT->CopyResource(AAL3firstTex->GetTex2D().Get(), BloomFirst[2]->GetTex2D().Get());
+
+
+	Ptr<CTexture> AAL4firstTex = CAssetMgr::GetInst()->FindAsset<CTexture>(L"AAL4firstTex");
+	CONTEXT->CopyResource(AAL4firstTex->GetTex2D().Get(), BloomFirst[3]->GetTex2D().Get());
+
 
 	// BlurXY, Up Scaling
 	for (int i = BloomLevel-2 ; i >= 0; --i)
@@ -301,11 +321,30 @@ void CCamera::render_Bloom()
 		UpScalingShader->Execute();
 	}
 
+	Ptr<CTexture> AAL1SecondTex = CAssetMgr::GetInst()->FindAsset<CTexture>(L"AAL1SecondTex");
+	CONTEXT->CopyResource(AAL1SecondTex->GetTex2D().Get(), BloomSecond[0]->GetTex2D().Get());
+
+	Ptr<CTexture> AAL2SecondTex = CAssetMgr::GetInst()->FindAsset<CTexture>(L"AAL2SecondTex");
+	CONTEXT->CopyResource(AAL2SecondTex->GetTex2D().Get(), BloomSecond[1]->GetTex2D().Get());
+
+	Ptr<CTexture> AAL3SecondTex = CAssetMgr::GetInst()->FindAsset<CTexture>(L"AAL3SecondTex");
+	CONTEXT->CopyResource(AAL3SecondTex->GetTex2D().Get(), BloomSecond[2]->GetTex2D().Get());
+
+	Ptr<CTexture> AAL4SecondTex = CAssetMgr::GetInst()->FindAsset<CTexture>(L"AAL4SecondTex");
+	CONTEXT->CopyResource(AAL4SecondTex->GetTex2D().Get(), BloomSecond[3]->GetTex2D().Get());
+
+	Ptr<CTexture> test = CAssetMgr::GetInst()->FindAsset<CTexture>(L"ATestTex");
+	CONTEXT->CopyResource(test->GetTex2D().Get(), GlowTex->GetTex2D().Get());
+
+
 	// Combine
 	CombineShader->SetRenderTargetCopyTex(RTCopy);
 	CombineShader->SetBloomTex(GlowTex);
 	CombineShader->SetRenderTargetTex(mainRTTex);
 	CombineShader->Execute();
+
+	 
+
 
 	CDevice::GetInst()->SetRenderTarget();
 }

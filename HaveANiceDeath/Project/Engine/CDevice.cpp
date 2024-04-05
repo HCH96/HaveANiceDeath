@@ -115,6 +115,11 @@ void CDevice::SetRenderTarget()
 	CONTEXT->OMSetRenderTargets(2, arrRTV, m_DSTex->GetDSV().Get());
 }
 
+void CDevice::ClearRenderTarget()
+{
+	CONTEXT->OMSetRenderTargets(0, nullptr, nullptr);
+}
+
 
 void CDevice::SetViewPort(Vec2 _Resolution)
 {

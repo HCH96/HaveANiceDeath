@@ -6,6 +6,8 @@ Texture2D<float4> inputTexture : register(t0);
 // 작은 사이즈 텍스쳐
 RWTexture2D<float4> outputTexture : register(u0);
 
+SamplerState g_sam_0 : register(s0);
+SamplerState g_sam_1 : register(s1);
 
 [numthreads(32, 32, 1)]
 void CS_DownSampling(uint3 dispatchThreadID : SV_DispatchThreadID)
@@ -29,6 +31,9 @@ void CS_DownSampling(uint3 dispatchThreadID : SV_DispatchThreadID)
     
     // 입력 텍스처에서 샘플링하여 새로운 텍스처에 쓰기
     float4 color = inputTexture.Load(int3(Location.x, Location.y, 0));
+    color.a = 1.f;
+    
+    //float4 color = inputTexture.SampleLevel(g_sam_0, Location, 0);
     
     outputTexture[dispatchThreadID.xy] = color;
 }
