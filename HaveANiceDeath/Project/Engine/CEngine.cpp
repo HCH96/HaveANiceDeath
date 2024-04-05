@@ -73,7 +73,7 @@ void CEngine::progress()
 	// Render
 	CRenderMgr::GetInst()->tick();
 
-	CRenderMgr::GetInst()->CopyRenderTargetToImGuiRenderTexture();
+	CRenderMgr::GetInst()->CopyRTTexture();
 
 	// GC
 	CGC::GetInst()->tick();

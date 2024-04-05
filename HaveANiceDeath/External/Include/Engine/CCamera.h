@@ -76,6 +76,7 @@ public:
 private:
     void render(vector<CGameObject*>& _vecObj);
     void render_postprocess();
+    void render_Bloom();
 
     virtual void SaveToFile(FILE* _File) override;
     virtual void LoadFromFile(FILE* _File) override;

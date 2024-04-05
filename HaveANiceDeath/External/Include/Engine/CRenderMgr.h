@@ -56,6 +56,9 @@ public:
     CCamera* GetEditorCamera() { return m_EditorCam; }
     Ptr<CTexture> GetRTCopyTex() { return m_RTCopyTex; }
     Ptr<CTexture> GetRTGlow() { return m_RTGlow; }
+    vector<Ptr<CTexture>>& GetBloomFirst() { return m_BloomFirst; }
+    vector<Ptr<CTexture>>& GetBloomSecond() { return m_BloomSecond; }
+    int GetBloomLevel() { return m_BloomLevel; }
     Ptr<CTexture> GetPostProcessTex() { return m_PostProcessTex; }
     const vector<CCamera*>& GetCameras() { return m_vecCam; }
     bool IsEditorMode() { return m_isEditorMode; }
@@ -79,7 +82,7 @@ public:
     // Render mode
     void ActiveEditorMode(bool _bActive);
 
-    void CopyRenderTargetToImGuiRenderTexture();
+    void CopyRTTexture();
 
 public:
     void init();

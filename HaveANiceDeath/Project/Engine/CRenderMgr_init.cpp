@@ -52,9 +52,13 @@ void CRenderMgr::CopyRenderTargetToPostProcessTarget()
 	CONTEXT->CopyResource(m_PostProcessTex->GetTex2D().Get(), pRTTex->GetTex2D().Get());
 }
 
-void CRenderMgr::CopyRenderTargetToImGuiRenderTexture()
+void CRenderMgr::CopyRTTexture()
 {
 	Ptr<CTexture> pRTTex = CAssetMgr::GetInst()->FindAsset<CTexture>(L"RenderTargetTex");
+
+	//Vec4 vClearColor = Vec4(0.f, 0.f, 0.f, 1.f);
+	//CONTEXT->ClearRenderTargetView(m_RTCopyTex->GetRTV().Get(), vClearColor);
+
 	CONTEXT->CopyResource(m_RTCopyTex->GetTex2D().Get(), pRTTex->GetTex2D().Get());
 }
 
@@ -64,9 +68,8 @@ void CRenderMgr::CreateBloomTex()
 
 	m_RTGlow = CAssetMgr::GetInst()->CreateTexture(L"GlowTexture", Resolution.x, Resolution.y, DXGI_FORMAT::DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_RENDER_TARGET | D3D11_BIND_SHADER_RESOURCE, D3D11_USAGE_DEFAULT);
 
-	for (int i = 1; i <= m_BloomLevel; ++i)
+	for (int i = 1; i < m_BloomLevel; ++i)
 	{
-		
 		int div = pow(2, i);
 
 		// Bloom Down Texture

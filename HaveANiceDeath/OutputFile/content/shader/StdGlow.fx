@@ -132,7 +132,6 @@ PS_Std2D_Glow_Output PS_Std2D_Glow(VS_OUT _in) : SV_Target
     
     // ±âÁ¸ ·»´õÅ¸°Ù¿¡ Âï±â
     output.RenderTarget = vColor;
-    output.GlowTarget = vColor;
    
     return output;
 }
