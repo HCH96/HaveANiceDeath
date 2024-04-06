@@ -420,7 +420,6 @@ void CAssetMgr::CreateDefaultMaterial()
 #include "CCombine.h"
 #include "CBlurX.h"
 #include "CBlurY.h"
-
 #include "CSetColor.h"
 
 void CAssetMgr::CreateDefaultComputeShader()

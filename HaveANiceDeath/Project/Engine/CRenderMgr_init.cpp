@@ -78,6 +78,4 @@ void CRenderMgr::CreateBloomTex()
 		m_BloomSecond.push_back(pBloomSecondTex);
 
 	}
-
-
 }

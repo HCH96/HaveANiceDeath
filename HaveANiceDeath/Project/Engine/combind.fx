@@ -26,9 +26,10 @@ void CS_Combind(uint3 dispatchThreadID : SV_DispatchThreadID)
         return;
     }
     
-    float3 vColor = saturate(RenderTargetCopy[dispatchThreadID.xy].rgb + BloomTexture[dispatchThreadID.xy].rgb);
+    float4 vColor = saturate(RenderTargetCopy[dispatchThreadID.xy] + BloomTexture[dispatchThreadID.xy]);
+    vColor.a = 1.f;
     
-    RenderTarget[dispatchThreadID.xy] = float4(vColor, 1.f);
+    RenderTarget[dispatchThreadID.xy] = vColor;
 
 }
 
