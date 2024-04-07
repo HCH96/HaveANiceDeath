@@ -133,6 +133,10 @@ void GamePlayStatic::Play2DBGM(const wstring& _SoundPath, float _Volume)
 	}
 }
 
+float lerp(float a, float b, float t)
+{
+	return a + t * (b - a);
+}
 
 
 void Vector3::ToDegree()

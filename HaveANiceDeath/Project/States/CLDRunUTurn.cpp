@@ -39,6 +39,11 @@ void CLDRunUTurn::finaltick()
 		ChangeState(L"JumpStart");
 	}
 
+	if (KEY_TAP(KEY::LBTN))
+	{
+		ChangeState(L"ComboMove01");
+	}
+
 }
 
 void CLDRunUTurn::Enter()

@@ -30,6 +30,8 @@ private:
 
 public:
     Ptr<CTexture> GetAtlas() { return m_AtlasTex; }
+    int GetCurAnimIdx() { return m_CurFrmIdx; }
+
 
 public:
     void finaltick();

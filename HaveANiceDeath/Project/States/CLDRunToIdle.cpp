@@ -41,6 +41,11 @@ void CLDRunToIdle::finaltick()
 	{
 		ChangeState(L"JumpStart");
 	}
+
+	if (KEY_TAP(KEY::LBTN))
+	{
+		ChangeState(L"ComboMove01");
+	}
 }
 
 void CLDRunToIdle::Enter()

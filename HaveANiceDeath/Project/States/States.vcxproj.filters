@@ -52,6 +52,18 @@
     <Filter Include="01. Unit\LD\CornerTrigger">
       <UniqueIdentifier>{2d735c42-593b-41ad-a72d-941a59db0367}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Unit\LD\ComboMove01">
+      <UniqueIdentifier>{b833774f-29ad-44e5-b57a-704a82954d1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\LD\ComboMove02">
+      <UniqueIdentifier>{460a5c3e-2d28-4d2d-8a60-c5c2b8015905}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\LD\ComboMove03">
+      <UniqueIdentifier>{8b0e9bda-a371-47db-ba87-8b7164e3eda7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\LD\ComboMove04">
+      <UniqueIdentifier>{283aa0bc-aeff-43d7-a0c7-d064c190c9ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -99,6 +111,18 @@
     <ClInclude Include="CLDCornerTrigger.h">
       <Filter>01. Unit\LD\CornerTrigger</Filter>
     </ClInclude>
+    <ClInclude Include="CComboMove01.h">
+      <Filter>01. Unit\LD\ComboMove01</Filter>
+    </ClInclude>
+    <ClInclude Include="CComboMove02.h">
+      <Filter>01. Unit\LD\ComboMove02</Filter>
+    </ClInclude>
+    <ClInclude Include="CComboMove04.h">
+      <Filter>01. Unit\LD\ComboMove04</Filter>
+    </ClInclude>
+    <ClInclude Include="CComboMove03.h">
+      <Filter>01. Unit\LD\ComboMove03</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -145,6 +169,18 @@
     </ClCompile>
     <ClCompile Include="CLDCornerTrigger.cpp">
       <Filter>01. Unit\LD\CornerTrigger</Filter>
+    </ClCompile>
+    <ClCompile Include="CComboMove01.cpp">
+      <Filter>01. Unit\LD\ComboMove01</Filter>
+    </ClCompile>
+    <ClCompile Include="CComboMove02.cpp">
+      <Filter>01. Unit\LD\ComboMove02</Filter>
+    </ClCompile>
+    <ClCompile Include="CComboMove03.cpp">
+      <Filter>01. Unit\LD\ComboMove03</Filter>
+    </ClCompile>
+    <ClCompile Include="CComboMove04.cpp">
+      <Filter>01. Unit\LD\ComboMove04</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,6 +1,10 @@
 #include "pch.h"
 #include "CStateMgr.h"
 
+#include "CComboMove01.h"
+#include "CComboMove02.h"
+#include "CComboMove03.h"
+#include "CComboMove04.h"
 #include "CIdleState.h"
 #include "CLDCornerTrigger.h"
 #include "CLDDash.h"
@@ -16,6 +20,10 @@
 
 void CStateMgr::GetStateInfo(vector<wstring>& _vec)
 {
+	_vec.push_back(L"CComboMove01");
+	_vec.push_back(L"CComboMove02");
+	_vec.push_back(L"CComboMove03");
+	_vec.push_back(L"CComboMove04");
 	_vec.push_back(L"CIdleState");
 	_vec.push_back(L"CLDCornerTrigger");
 	_vec.push_back(L"CLDDash");
@@ -32,6 +40,14 @@ void CStateMgr::GetStateInfo(vector<wstring>& _vec)
 
 CState* CStateMgr::GetState(const wstring& _strStateName)
 {
+	if (L"CComboMove01" == _strStateName)
+		return new CComboMove01;
+	if (L"CComboMove02" == _strStateName)
+		return new CComboMove02;
+	if (L"CComboMove03" == _strStateName)
+		return new CComboMove03;
+	if (L"CComboMove04" == _strStateName)
+		return new CComboMove04;
 	if (L"CIdleState" == _strStateName)
 		return new CIdleState;
 	if (L"CLDCornerTrigger" == _strStateName)
@@ -63,6 +79,18 @@ CState* CStateMgr::GetState(UINT _iStateType)
 {
 	switch (_iStateType)
 	{
+	case (UINT)STATE_TYPE::COMBOMOVE01:
+		return new CComboMove01;
+		break;
+	case (UINT)STATE_TYPE::COMBOMOVE02:
+		return new CComboMove02;
+		break;
+	case (UINT)STATE_TYPE::COMBOMOVE03:
+		return new CComboMove03;
+		break;
+	case (UINT)STATE_TYPE::COMBOMOVE04:
+		return new CComboMove04;
+		break;
 	case (UINT)STATE_TYPE::IDLESTATE:
 		return new CIdleState;
 		break;
@@ -107,6 +135,22 @@ const wchar_t * CStateMgr::GetStateName(CState * _pState)
 {
 	switch ((STATE_TYPE)_pState->GetStateType())
 	{
+	case STATE_TYPE::COMBOMOVE01:
+		return L"CComboMove01";
+		break;
+
+	case STATE_TYPE::COMBOMOVE02:
+		return L"CComboMove02";
+		break;
+
+	case STATE_TYPE::COMBOMOVE03:
+		return L"CComboMove03";
+		break;
+
+	case STATE_TYPE::COMBOMOVE04:
+		return L"CComboMove04";
+		break;
+
 	case STATE_TYPE::IDLESTATE:
 		return L"CIdleState";
 		break;

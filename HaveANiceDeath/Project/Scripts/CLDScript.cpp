@@ -3,6 +3,7 @@
 
 #include <Engine\CKeyMgr.h>
 
+#include <States/CStateMgr.h>
 
 
 CLDScript::CLDScript()
@@ -25,12 +26,29 @@ CLDScript::~CLDScript()
 }
 
 
+void CLDScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
+{
+}
+
+void CLDScript::Overlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
+{
+}
+
+void CLDScript::EndOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
+{
+}
+
 void CLDScript::begin()
 {
 	CUnitScript::begin();
 
 	// Dynamic Mtrl 생성
 	GetRenderComponent()->GetDynamicMaterial();
+
+	// glow Effect 설정
+	GetRenderComponent()->GetMaterial()->SetScalarParam(SCALAR_PARAM::FLOAT_0, 0.5f);
+	GetRenderComponent()->GetMaterial()->SetScalarParam(SCALAR_PARAM::VEC4_0, Vec4(0.3f, 0.2f, 0.4f, 1.f));
+
 
 	StateMachine()->GetDynamicFSM()->ChangeState(L"Idle");
 }
@@ -72,6 +90,20 @@ void CLDScript::tick()
 	{
 		m_DirChanged = false;
 	}
+
+	// Glow Effect UpdateData
+	CState* CurState = StateMachine()->GetDynamicFSM()->GetCurState();
+	wstring CurStateName = CStateMgr::GetStateName(CurState);
+
+	if (CurStateName == L"CComboMove01" || CurStateName == L"CComboMove02" || CurStateName == L"CComboMove03" || CurStateName == L"CComboMove04")
+	{
+
+	}
+	else
+	{
+		GetRenderComponent()->GetMaterial()->SetScalarParam(SCALAR_PARAM::INT_1, 0);
+	}
+
 
 	// Anim 방향 정보 갱신 -1: Left , 1: Right
 	GetRenderComponent()->GetMaterial()->SetScalarParam(SCALAR_PARAM::INT_0, (int)m_CurUnitInfo.Dir);

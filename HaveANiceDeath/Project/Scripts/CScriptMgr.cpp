@@ -4,6 +4,7 @@
 #include "CBackgroundScript.h"
 #include "CCameraMoveScript.h"
 #include "CCornerTriggerScript.h"
+#include "CLDHitBox.h"
 #include "CLDScript.h"
 #include "CMissileScript.h"
 #include "CMonsterScript.h"
@@ -18,6 +19,7 @@ void CScriptMgr::GetScriptInfo(vector<wstring>& _vec)
 	_vec.push_back(L"CBackgroundScript");
 	_vec.push_back(L"CCameraMoveScript");
 	_vec.push_back(L"CCornerTriggerScript");
+	_vec.push_back(L"CLDHitBox");
 	_vec.push_back(L"CLDScript");
 	_vec.push_back(L"CMissileScript");
 	_vec.push_back(L"CMonsterScript");
@@ -36,6 +38,8 @@ CScript * CScriptMgr::GetScript(const wstring& _strScriptName)
 		return new CCameraMoveScript;
 	if (L"CCornerTriggerScript" == _strScriptName)
 		return new CCornerTriggerScript;
+	if (L"CLDHitBox" == _strScriptName)
+		return new CLDHitBox;
 	if (L"CLDScript" == _strScriptName)
 		return new CLDScript;
 	if (L"CMissileScript" == _strScriptName)
@@ -67,6 +71,9 @@ CScript * CScriptMgr::GetScript(UINT _iScriptType)
 		break;
 	case (UINT)SCRIPT_TYPE::CORNERTRIGGERSCRIPT:
 		return new CCornerTriggerScript;
+		break;
+	case (UINT)SCRIPT_TYPE::LDHITBOX:
+		return new CLDHitBox;
 		break;
 	case (UINT)SCRIPT_TYPE::LDSCRIPT:
 		return new CLDScript;
@@ -110,6 +117,10 @@ const wchar_t * CScriptMgr::GetScriptName(CScript * _pScript)
 
 	case SCRIPT_TYPE::CORNERTRIGGERSCRIPT:
 		return L"CCornerTriggerScript";
+		break;
+
+	case SCRIPT_TYPE::LDHITBOX:
+		return L"CLDHitBox";
 		break;
 
 	case SCRIPT_TYPE::LDSCRIPT:

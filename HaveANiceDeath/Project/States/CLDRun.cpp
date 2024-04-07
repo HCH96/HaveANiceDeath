@@ -32,6 +32,11 @@ void CLDRun::finaltick()
 		ChangeState(L"JumpStart");
 	}
 
+	if (KEY_TAP(KEY::LBTN))
+	{
+		ChangeState(L"ComboMove01");
+	}
+
 }
 
 void CLDRun::Enter()

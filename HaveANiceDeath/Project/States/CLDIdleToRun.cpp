@@ -30,6 +30,11 @@ void CLDIdleToRun::finaltick()
 	{
 		ChangeState(L"JumpStart");
 	}
+
+	if (KEY_TAP(KEY::LBTN))
+	{
+		ChangeState(L"ComboMove01");
+	}
 }
 
 void CLDIdleToRun::Enter()

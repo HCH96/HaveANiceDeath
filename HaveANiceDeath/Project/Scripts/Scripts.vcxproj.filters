@@ -22,9 +22,6 @@
     <ClInclude Include="CMissileScript.h">
       <Filter>Lecture</Filter>
     </ClInclude>
-    <ClInclude Include="CMonsterScript.h">
-      <Filter>Lecture</Filter>
-    </ClInclude>
     <ClInclude Include="CPlayerScript.h">
       <Filter>Lecture</Filter>
     </ClInclude>
@@ -40,6 +37,12 @@
     </ClInclude>
     <ClInclude Include="CCornerTriggerScript.h">
       <Filter>Scripts\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="CLDHitBox.h">
+      <Filter>Scripts\Unit\LD</Filter>
+    </ClInclude>
+    <ClInclude Include="CMonsterScript.h">
+      <Filter>Scripts\Unit\Monster</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -64,9 +67,6 @@
     <ClCompile Include="CMissileScript.cpp">
       <Filter>Lecture</Filter>
     </ClCompile>
-    <ClCompile Include="CMonsterScript.cpp">
-      <Filter>Lecture</Filter>
-    </ClCompile>
     <ClCompile Include="CPlayerScript.cpp">
       <Filter>Lecture</Filter>
     </ClCompile>
@@ -82,6 +82,12 @@
     </ClCompile>
     <ClCompile Include="CCornerTriggerScript.cpp">
       <Filter>Scripts\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="CLDHitBox.cpp">
+      <Filter>Scripts\Unit\LD</Filter>
+    </ClCompile>
+    <ClCompile Include="CMonsterScript.cpp">
+      <Filter>Scripts\Unit\Monster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -111,6 +117,9 @@
     </Filter>
     <Filter Include="Scripts\Platform">
       <UniqueIdentifier>{50f8f38c-9818-4b39-af04-22b9d611a161}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scripts\Unit\Monster">
+      <UniqueIdentifier>{429dff60-b2a1-481f-aed6-769144cc5e5e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

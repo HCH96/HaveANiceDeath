@@ -7,6 +7,7 @@
 #include "CImGuiMgr.h"
 #include "ListUI.h"
 #include "Inspector.h"
+#include "ParamUI.h"
 
 
 MeshRenderUI::MeshRenderUI()
@@ -113,6 +114,59 @@ void MeshRenderUI::render_update()
 		pListUI->SetDbClickDelegate(this, (Delegate_1)&MeshRenderUI::MaterialSelect);
 		pListUI->Activate();
 	}
+
+	// 머터리얼 가져오기
+	Ptr<CMaterial> DynamicMtrl = pMeshRender->GetDynamicMaterial();
+
+	if (DynamicMtrl == nullptr)
+		return;
+
+	Ptr<CGraphicsShader> pShader = DynamicMtrl->GetShader();
+
+	ImGui::Text("Material Parameter");
+	ImGui::Spacing(); ImGui::Spacing();
+
+	// Shader Parameter
+	if (nullptr == pShader)
+		return;
+
+	const vector<tScalarParam>& vecScalarParam = pShader->GetScalarParam();
+	for (size_t i = 0; i < vecScalarParam.size(); ++i)
+	{
+		switch (vecScalarParam[i].Type)
+		{
+		case SCALAR_PARAM::INT_0:
+		case SCALAR_PARAM::INT_1:
+		case SCALAR_PARAM::INT_2:
+		case SCALAR_PARAM::INT_3:
+			ParamUI::Param_INT((int*)DynamicMtrl->GetScalarParam(vecScalarParam[i].Type), vecScalarParam[i].Desc);
+			break;
+		case SCALAR_PARAM::FLOAT_0:
+		case SCALAR_PARAM::FLOAT_1:
+		case SCALAR_PARAM::FLOAT_2:
+		case SCALAR_PARAM::FLOAT_3:
+			ParamUI::Param_FLOAT((float*)DynamicMtrl->GetScalarParam(vecScalarParam[i].Type), vecScalarParam[i].Desc);
+			break;
+		case SCALAR_PARAM::VEC2_0:
+		case SCALAR_PARAM::VEC2_1:
+		case SCALAR_PARAM::VEC2_2:
+		case SCALAR_PARAM::VEC2_3:
+			ParamUI::Param_VEC2((Vec2*)DynamicMtrl->GetScalarParam(vecScalarParam[i].Type), vecScalarParam[i].Desc);
+			break;
+		case SCALAR_PARAM::VEC4_0:
+		case SCALAR_PARAM::VEC4_1:
+		case SCALAR_PARAM::VEC4_2:
+		case SCALAR_PARAM::VEC4_3:
+			ParamUI::Param_VEC4((Vec4*)DynamicMtrl->GetScalarParam(vecScalarParam[i].Type), vecScalarParam[i].Desc);
+			break;
+		case SCALAR_PARAM::MAT_0:
+		case SCALAR_PARAM::MAT_1:
+		case SCALAR_PARAM::MAT_2:
+		case SCALAR_PARAM::MAT_3:
+			break;
+		}
+	}
+
 }
 
 void MeshRenderUI::MeshSelect(DWORD_PTR _ptr)

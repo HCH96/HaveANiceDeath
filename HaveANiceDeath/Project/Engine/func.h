@@ -20,6 +20,7 @@ namespace GamePlayStatic
 	void Play2DBGM(const wstring& _SoundPath, float _Volume);
 }
 
+float lerp(float a, float b, float t);
 
 string ToString(const wstring& _str);
 wstring ToWString(const string& _str);

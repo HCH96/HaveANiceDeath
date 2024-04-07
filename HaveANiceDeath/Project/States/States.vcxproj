@@ -172,6 +172,10 @@ call CodeGen.exe</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CComboMove01.h" />
+    <ClInclude Include="CComboMove02.h" />
+    <ClInclude Include="CComboMove03.h" />
+    <ClInclude Include="CComboMove04.h" />
     <ClInclude Include="CIdleState.h" />
     <ClInclude Include="CLDCornerTrigger.h" />
     <ClInclude Include="CLDDash.h" />
@@ -189,6 +193,10 @@ call CodeGen.exe</Command>
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CComboMove01.cpp" />
+    <ClCompile Include="CComboMove02.cpp" />
+    <ClCompile Include="CComboMove03.cpp" />
+    <ClCompile Include="CComboMove04.cpp" />
     <ClCompile Include="CIdleState.cpp" />
     <ClCompile Include="CLDCornerTrigger.cpp" />
     <ClCompile Include="CLDDash.cpp" />

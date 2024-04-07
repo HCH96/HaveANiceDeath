@@ -19,6 +19,18 @@ void CScriptTemplate::tick()
 {
 }
 
+void CScriptTemplate::BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
+{
+}
+
+void CScriptTemplate::Overlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
+{
+}
+
+void CScriptTemplate::EndOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
+{
+}
+
 
 void CScriptTemplate::SaveToFile(FILE* _File)
 {

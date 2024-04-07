@@ -46,6 +46,11 @@ void CLDIdle::finaltick()
 	{
 		ChangeState(L"JumpStart");
 	}
+
+	if (KEY_TAP(KEY::LBTN))
+	{
+		ChangeState(L"ComboMove01");
+	}
 }
 
 void CLDIdle::Enter()

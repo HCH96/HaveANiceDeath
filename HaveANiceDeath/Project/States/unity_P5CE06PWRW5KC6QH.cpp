@@ -1,5 +1,17 @@
 #include "pch.h"
 
+#include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\States\CComboMove01.cpp"
+
+
+#include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\States\CComboMove02.cpp"
+
+
+#include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\States\CComboMove03.cpp"
+
+
+#include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\States\CComboMove04.cpp"
+
+
 #include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\States\CIdleState.cpp"
 
 

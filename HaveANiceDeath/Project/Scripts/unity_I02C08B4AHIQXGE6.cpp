@@ -9,6 +9,9 @@
 #include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\Scripts\CCornerTriggerScript.cpp"
 
 
+#include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\Scripts\CLDHitBox.cpp"
+
+
 #include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\Scripts\CLDScript.cpp"
 
 
