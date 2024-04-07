@@ -57,6 +57,9 @@ void StateMachineUI::render_update()
 	Ptr<CFSM> pFSM = pStateMachine->GetFSM();
 	Ptr<CFSM> pDynamicFSM = pStateMachine->GetDynamicFSM();
 
+	if (!pFSM.Get() || !pDynamicFSM.Get())
+		return;
+
 	wstring CurStateName = L"";
 	CState* pCurState = pDynamicFSM->GetCurState();
 	if (pCurState != nullptr)

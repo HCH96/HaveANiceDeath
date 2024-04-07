@@ -1,5 +1,6 @@
 CBackgroundScript
 CCameraMoveScript
+CCornerTriggerScript
 CLDScript
 CMissileScript
 CMonsterScript

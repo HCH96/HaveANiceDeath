@@ -49,6 +49,9 @@
     <Filter Include="01. Unit\LD\Dash">
       <UniqueIdentifier>{1d4f3f73-2bd3-400a-8681-8d0221426667}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Unit\LD\CornerTrigger">
+      <UniqueIdentifier>{2d735c42-593b-41ad-a72d-941a59db0367}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -93,6 +96,9 @@
     <ClInclude Include="CLDRun.h">
       <Filter>01. Unit\LD\Run</Filter>
     </ClInclude>
+    <ClInclude Include="CLDCornerTrigger.h">
+      <Filter>01. Unit\LD\CornerTrigger</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -136,6 +142,9 @@
     </ClCompile>
     <ClCompile Include="CLDRun.cpp">
       <Filter>01. Unit\LD\Run</Filter>
+    </ClCompile>
+    <ClCompile Include="CLDCornerTrigger.cpp">
+      <Filter>01. Unit\LD\CornerTrigger</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

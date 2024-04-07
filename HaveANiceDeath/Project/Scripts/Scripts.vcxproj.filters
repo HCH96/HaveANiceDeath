@@ -38,6 +38,9 @@
     <ClInclude Include="CPlatformScript.h">
       <Filter>Scripts\Platform</Filter>
     </ClInclude>
+    <ClInclude Include="CCornerTriggerScript.h">
+      <Filter>Scripts\Platform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -75,6 +78,9 @@
     </ClCompile>
     <ClCompile Include="CScriptTemplate.cpp" />
     <ClCompile Include="CPlatformScript.cpp">
+      <Filter>Scripts\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="CCornerTriggerScript.cpp">
       <Filter>Scripts\Platform</Filter>
     </ClCompile>
   </ItemGroup>

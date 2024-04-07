@@ -11,6 +11,7 @@ struct tLightColor
 struct tLightInfo
 {
     tLightColor Color;
+    
 
     float3 vWorldPos; // 광원의 위치
     float3 vWorldDir; // 광원이 향하는 방향

@@ -31,4 +31,5 @@ void CLight2D::finaltick()
 
 	// ±¤¿ø µî·Ï
 	CRenderMgr::GetInst()->RegisterLight2D(this);
+
 }

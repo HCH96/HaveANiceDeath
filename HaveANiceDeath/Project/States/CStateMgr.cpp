@@ -2,6 +2,7 @@
 #include "CStateMgr.h"
 
 #include "CIdleState.h"
+#include "CLDCornerTrigger.h"
 #include "CLDDash.h"
 #include "CLDIdle.h"
 #include "CLDIdleToRun.h"
@@ -16,6 +17,7 @@
 void CStateMgr::GetStateInfo(vector<wstring>& _vec)
 {
 	_vec.push_back(L"CIdleState");
+	_vec.push_back(L"CLDCornerTrigger");
 	_vec.push_back(L"CLDDash");
 	_vec.push_back(L"CLDIdle");
 	_vec.push_back(L"CLDIdleToRun");
@@ -32,6 +34,8 @@ CState* CStateMgr::GetState(const wstring& _strStateName)
 {
 	if (L"CIdleState" == _strStateName)
 		return new CIdleState;
+	if (L"CLDCornerTrigger" == _strStateName)
+		return new CLDCornerTrigger;
 	if (L"CLDDash" == _strStateName)
 		return new CLDDash;
 	if (L"CLDIdle" == _strStateName)
@@ -61,6 +65,9 @@ CState* CStateMgr::GetState(UINT _iStateType)
 	{
 	case (UINT)STATE_TYPE::IDLESTATE:
 		return new CIdleState;
+		break;
+	case (UINT)STATE_TYPE::LDCORNERTRIGGER:
+		return new CLDCornerTrigger;
 		break;
 	case (UINT)STATE_TYPE::LDDASH:
 		return new CLDDash;
@@ -102,6 +109,10 @@ const wchar_t * CStateMgr::GetStateName(CState * _pState)
 	{
 	case STATE_TYPE::IDLESTATE:
 		return L"CIdleState";
+		break;
+
+	case STATE_TYPE::LDCORNERTRIGGER:
+		return L"CLDCornerTrigger";
 		break;
 
 	case STATE_TYPE::LDDASH:

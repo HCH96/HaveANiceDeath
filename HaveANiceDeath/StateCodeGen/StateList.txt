@@ -1,4 +1,5 @@
 CIdleState
+CLDCornerTrigger
 CLDDash
 CLDIdle
 CLDIdleToRun

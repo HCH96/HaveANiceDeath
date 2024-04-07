@@ -173,6 +173,7 @@ call CodeGen.exe</Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CIdleState.h" />
+    <ClInclude Include="CLDCornerTrigger.h" />
     <ClInclude Include="CLDDash.h" />
     <ClInclude Include="CLDIdle.h" />
     <ClInclude Include="CLDIdleToRun.h" />
@@ -189,6 +190,7 @@ call CodeGen.exe</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CIdleState.cpp" />
+    <ClCompile Include="CLDCornerTrigger.cpp" />
     <ClCompile Include="CLDDash.cpp" />
     <ClCompile Include="CLDIdle.cpp" />
     <ClCompile Include="CLDIdleToRun.cpp" />

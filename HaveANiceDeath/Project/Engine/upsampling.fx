@@ -29,9 +29,25 @@ void CS_UpSampling(uint3 dispatchThreadID : SV_DispatchThreadID)
     
     // 입력 텍스처에서 샘플링하여 새로운 텍스처에 쓰기
     float2 Location = inputUV * float2(inputWidth, inputHeight);
-    float4 color = inputTexture.Load(int3(round(Location.x), round(Location.y), 0));
-    //float4 color = inputTexture.SampleLevel(g_sam_1, inputUV, 0);
+    //float4 color = inputTexture.Load(int3(round(Location.x), round(Location.y), 0));
+    float4 color = inputTexture.Load(int3(Location.x, Location.y, 0));
+
     
+    
+    
+    color += inputTexture.Load(int3(round(Location.x - 1), round(Location.y - 1), 0));
+    color += inputTexture.Load(int3(round(Location.x - 1), round(Location.y + 1), 0));
+    color += inputTexture.Load(int3(round(Location.x + 1), round(Location.y - 1), 0));
+    color += inputTexture.Load(int3(round(Location.x + 1), round(Location.y + 1), 0));
+    
+    color += inputTexture.Load(int3(round(Location.x + 1), round(Location.y), 0));
+    color += inputTexture.Load(int3(round(Location.x - 1), round(Location.y), 0));
+    color += inputTexture.Load(int3(round(Location.x), round(Location.y - 1), 0));
+    color += inputTexture.Load(int3(round(Location.x), round(Location.y + 1), 0));
+    
+    color /= 9;
+    
+
     outputTexture[dispatchThreadID.xy] = color;
 }
 
