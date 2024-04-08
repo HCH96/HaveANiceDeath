@@ -14,7 +14,7 @@ private:
     bool m_Active;
     bool m_IsColliderActive;
 
-private:
+public:
     void On();
     void Off();
 

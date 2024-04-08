@@ -207,6 +207,13 @@ void CGameObject::AddChild(CGameObject* _Child)
 	m_vecChild.push_back(_Child);
 }
 
+void CGameObject::AddChild_Load(CGameObject* _Child)
+{
+	// 부모 자식 연결
+	_Child->m_Parent = this;
+	m_vecChild.push_back(_Child);
+}
+
 void CGameObject::Destroy()
 {
 	GamePlayStatic::DestroyGameObject(this);
@@ -323,4 +330,15 @@ void CGameObject::render()
 	{
 		m_RenderCom->render();
 	}
+}
+
+CGameObject* CGameObject::GetChild(const wstring& _ChildName)
+{
+	for (int i = 0; i < m_vecChild.size(); ++i)
+	{
+		if (m_vecChild[i]->GetName() == _ChildName)
+			return m_vecChild[i];
+	}
+
+	return nullptr;
 }

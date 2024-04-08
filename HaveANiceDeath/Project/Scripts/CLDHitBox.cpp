@@ -53,7 +53,7 @@ void CLDHitBox::On()
 
 		m_Damage = 10.f;
 
-		m_StartTime = 0.1f;
+		m_StartTime = 0.f;
 		m_Duration = 0.5f;
 	}
 
@@ -102,6 +102,7 @@ void CLDHitBox::On()
 
 void CLDHitBox::Off()
 {
+	GetOwner()->Collider2D()->Deactivate();
 	m_Active = false;
 
 	m_Acc = 0.f;
@@ -125,7 +126,7 @@ void CLDHitBox::begin()
 	GetOwner()->Collider2D()->SetAbsolute(true);
 
 	Transform()->SetRelativePos(Vec3(0.f, 0.f, 0.f));
-	Transform()->SetRelativeScale(Vec3(0.f, 0.f, 0.f));
+	Transform()->SetRelativeScale(Vec3(1.f, 1.f, 1.f));
 	Transform()->SetAbsolute(true);
 
 	m_Active = false;

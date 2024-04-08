@@ -34,11 +34,13 @@ private:
 public:
     CGameObject* GetParent() { return m_Parent; }
     const vector<CGameObject*>& GetChild() { return m_vecChild; }
+    CGameObject* GetChild(const wstring& _ChildName);
     int GetLayerIdx() { return m_LayerIdx; }
 
     CComponent* GetComponent(COMPONENT_TYPE _Type) { return m_arrCom[(UINT)_Type]; }
     CRenderComponent* GetRenderComponent() { return m_RenderCom; }
     const vector<CScript*>& GetScripts() { return m_vecScript; }
+    void SetLayerIdx(int _LayerIdx) { m_LayerIdx = _LayerIdx; }
 
 
     GET_COMPONENT(Transform, TRANSFORM);
@@ -73,6 +75,8 @@ public:
     int DisconnectWithLayer();
 
     void AddChild(CGameObject* _Child);
+    void AddChild_Load(CGameObject* _Child);
+
     bool IsDead() { return m_bDead; }
 
     void Destroy();

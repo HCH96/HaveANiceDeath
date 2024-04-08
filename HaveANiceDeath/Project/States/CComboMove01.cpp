@@ -6,6 +6,7 @@
 #include <Engine/CMovement.h>
 
 #include <Scripts/CLDScript.h>
+#include <Scripts/CLDHitBox.h>
 
 CComboMove01::CComboMove01()
 	:CState(COMBOMOVE01)
@@ -48,6 +49,13 @@ void CComboMove01::Enter()
 	GetOwnerObj()->MeshRender()->GetMaterial()->SetScalarParam(SCALAR_PARAM::INT_1, 1);
 
 	GetOwnerObj()->Movement()->SetVelocityX(0.f);
+
+	CLDHitBox* HitBoxScript = GetOwnerObj()->GetChild(L"LD_Att")->GetScript<CLDHitBox>();
+	if (HitBoxScript != nullptr)
+	{
+		HitBoxScript->On();
+	}
+
 
 	IsClicked = false;
 }
