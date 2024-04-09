@@ -5,6 +5,7 @@
 #include <Engine/CMeshRender.h>
 
 #include <Scripts/CLDScript.h>
+#include <Scripts/CLDHitBox.h>
 
 CComboMove03::CComboMove03()
 	:CState(COMBOMOVE03)
@@ -57,6 +58,12 @@ void CComboMove03::Enter()
 	else
 	{
 		GetOwnerObj()->Movement()->SetVelocityX(700.f);
+	}
+
+	CLDHitBox* HitBoxScript = GetOwnerObj()->GetChild(L"LD_Att")->GetScript<CLDHitBox>();
+	if (HitBoxScript != nullptr)
+	{
+		HitBoxScript->On();
 	}
 
 

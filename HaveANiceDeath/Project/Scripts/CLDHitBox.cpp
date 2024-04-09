@@ -48,46 +48,79 @@ void CLDHitBox::On()
 	// On된 순간 Player의 정보를 가져와 자신의 Offset, Scale 세팅
 	if(CurStateName == L"CComboMove01")
 	{
-		HitBox->SetOffset(Vec3(100.f, 100.f, 0.f));
-		HitBox->SetScale(Vec3(100.f, 100.f, 1.f));
+		HitBox->SetOffset(Vec3(160.f, 0.f, 0.f));
+		HitBox->SetScale(Vec3(200.f, 100.f, 1.f));
 
 		m_Damage = 10.f;
 
-		m_StartTime = 0.f;
-		m_Duration = 0.5f;
+		m_StartTime = 0.1f;
+		m_Duration = 0.1f;
 	}
 
 	if (CurStateName == L"CComboMove02")
 	{
-		HitBox->SetOffset(Vec3(100.f, 100.f, 0.f));
-		HitBox->SetScale(Vec3(100.f, 100.f, 1.f));
+		HitBox->SetOffset(Vec3(25.f, 50.f, 0.f));
+		HitBox->SetScale(Vec3(300.f, 200.f, 1.f));
 
 		m_Damage = 10.f;
 
 		m_StartTime = 0.f;
-		m_Duration = 2.f;
+		m_Duration = 0.1f;
 	}
 
 	if (CurStateName == L"CComboMove03")
 	{
-		HitBox->SetOffset(Vec3(100.f, 100.f, 0.f));
-		HitBox->SetScale(Vec3(100.f, 100.f, 1.f));
+		HitBox->SetOffset(Vec3(25.f, 75.f, 0.f));
+		HitBox->SetScale(Vec3(350.f, 250.f, 1.f));
 
-		m_Damage = 10.f;
+		m_Damage = 15.f;
 
 		m_StartTime = 0.f;
-		m_Duration = 2.f;
+		m_Duration = 0.1f;
 	}
 
 	if (CurStateName == L"CComboMove04")
 	{
 		HitBox->SetOffset(Vec3(100.f, 100.f, 0.f));
-		HitBox->SetScale(Vec3(100.f, 100.f, 1.f));
+		HitBox->SetScale(Vec3(300.f, 300.f, 1.f));
+
+		m_Damage = 20.f;
+
+		m_StartTime = 0.35f;
+		m_Duration = 0.1f;
+	}
+
+	if (CurStateName == L"CComboStand01")
+	{
+		HitBox->SetOffset(Vec3(0.f, 60.f, 0.f));
+		HitBox->SetScale(Vec3(300.f, 250.f, 1.f));
 
 		m_Damage = 10.f;
 
 		m_StartTime = 0.f;
-		m_Duration = 2.f;
+		m_Duration = 0.1f;
+	}
+
+	if (CurStateName == L"CComboStand02")
+	{
+		HitBox->SetOffset(Vec3(160.f, 0.f, 0.f));
+		HitBox->SetScale(Vec3(200.f, 100.f, 1.f));
+
+		m_Damage = 10.f;
+
+		m_StartTime = 0.1f;
+		m_Duration = 0.1f;
+	}
+
+	if (CurStateName == L"CComboStand03")
+	{
+		HitBox->SetOffset(Vec3(50.f, 100.f, 0.f));
+		HitBox->SetScale(Vec3(300.f, 300.f, 1.f));
+
+		m_Damage = 20.f;
+
+		m_StartTime = 0.1f;
+		m_Duration = 0.1f;
 	}
 
 	// 방향이 반대인 경우 뒤집어주기

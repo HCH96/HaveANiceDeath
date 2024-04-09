@@ -2,6 +2,7 @@
 #include "CLDJumpStart.h"
 
 #include <Engine\CMovement.h>
+#include <Scripts/CLDScript.h>
 
 CLDJumpStart::CLDJumpStart()
 	:CState(LDJUMPSTART)
@@ -15,6 +16,7 @@ CLDJumpStart::~CLDJumpStart()
 
 void CLDJumpStart::finaltick()
 {
+	CLDScript* LDScript = GetOwnerObj()->GetScript<CLDScript>();
 	GetOwnerObj()->Movement()->SetVelocityX(0.f);
 
 
@@ -43,6 +45,21 @@ void CLDJumpStart::finaltick()
 	}
 
 	m_Acc += DT;
+
+	if (KEY_TAP(KEY::LBTN))
+	{
+		LDScript->PlayComboStand();
+	}
+
+	if (KEY_TAP(KEY::LBTN) && KEY_PRESSED(KEY::W))
+	{
+		ChangeState(L"ComboUp");
+	}
+
+	if (GetOwnerObj()->Movement()->IsGround())
+	{
+		ChangeState(L"JumpLanding");
+	}
 
 }
 

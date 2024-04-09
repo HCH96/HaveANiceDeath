@@ -2,6 +2,10 @@ CComboMove01
 CComboMove02
 CComboMove03
 CComboMove04
+CComboStand01
+CComboStand02
+CComboStand03
+CComboUp
 CIdleState
 CLDCornerTrigger
 CLDDash

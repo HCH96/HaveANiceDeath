@@ -176,6 +176,10 @@ call CodeGen.exe</Command>
     <ClInclude Include="CComboMove02.h" />
     <ClInclude Include="CComboMove03.h" />
     <ClInclude Include="CComboMove04.h" />
+    <ClInclude Include="CComboStand01.h" />
+    <ClInclude Include="CComboStand02.h" />
+    <ClInclude Include="CComboStand03.h" />
+    <ClInclude Include="CComboUp.h" />
     <ClInclude Include="CIdleState.h" />
     <ClInclude Include="CLDCornerTrigger.h" />
     <ClInclude Include="CLDDash.h" />
@@ -197,6 +201,10 @@ call CodeGen.exe</Command>
     <ClCompile Include="CComboMove02.cpp" />
     <ClCompile Include="CComboMove03.cpp" />
     <ClCompile Include="CComboMove04.cpp" />
+    <ClCompile Include="CComboStand01.cpp" />
+    <ClCompile Include="CComboStand02.cpp" />
+    <ClCompile Include="CComboStand03.cpp" />
+    <ClCompile Include="CComboUp.cpp" />
     <ClCompile Include="CIdleState.cpp" />
     <ClCompile Include="CLDCornerTrigger.cpp" />
     <ClCompile Include="CLDDash.cpp" />

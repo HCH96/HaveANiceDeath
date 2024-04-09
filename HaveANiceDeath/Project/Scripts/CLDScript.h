@@ -8,11 +8,21 @@ class CLDScript :
 {
 private:
 
+    int m_NextComboStand;
+
     bool m_DirChanged;
+    bool m_IsDownCollision;
+
+
 
 public:
+    bool IsDownCollision() { return m_IsDownCollision; }
     bool IsDirChanged() { return m_DirChanged; }
     void SetDir(ANIM_DIR _Dir) { m_CurUnitInfo.Dir = _Dir; }
+    void SetDownCollision(bool _IsDown) { m_IsDownCollision = _IsDown; }
+    void ResetComboStand() { m_NextComboStand = 1; }
+
+    void PlayComboStand();
 
 public:
     virtual void BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider) override;

@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "CLDJumpLanding.h"
 
+#include <Scripts/CLDScript.h>
+
 CLDJumpLanding::CLDJumpLanding()
 	:CState(LDJUMPLANDING)
 {
@@ -43,5 +45,7 @@ void CLDJumpLanding::Enter()
 
 void CLDJumpLanding::Exit()
 {
+	CLDScript* LDScript = GetOwnerObj()->GetScript<CLDScript>();
+ 	LDScript->ResetComboStand();
 }
 

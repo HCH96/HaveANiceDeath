@@ -4,6 +4,7 @@
 #include "CUnitScript.h"
 
 #include <Engine\CMovement.h>
+#include "CLDScript.h"
 
 CPlatformScript::CPlatformScript()
 	:CScript(PLATFORMSCRIPT)
@@ -203,6 +204,9 @@ void CPlatformScript::EndOverlap(CCollider2D* _Collider, CGameObject* _OtherObj,
 	CUnitScript* UnitScript = _OtherObj->GetScript<CUnitScript>();
 	UnitScript->SubOverlapGround(GetOwner());
 
+	CLDScript* ObjScript = _OtherObj->GetScript<CLDScript>();
+	ObjScript->SetDownCollision(false);
+
 	if (UnitScript->GetOverlapGround() <= 0)
 	{
 		_OtherObj->Movement()->SetGround(false);
@@ -246,6 +250,9 @@ void CPlatformScript::DownCollision(CGameObject* _Obj, float _PlatformBottom, fl
 {
 	float NewY = _PlatformBottom - _ObjColScaleY / 2.f;
 	NewY -= _Obj->Collider2D()->GetOffset().y;
+
+	CLDScript* ObjScript = _Obj->GetScript<CLDScript>();
+	ObjScript->SetDownCollision(true);
 
 	Vec3 ObjPos = _Obj->Transform()->GetRelativePos();
 	ObjPos.y = NewY;

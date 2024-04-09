@@ -5,7 +5,9 @@
 #include <Engine/CMeshRender.h>
 #include <Engine/CAnim.h>
 
+
 #include <Scripts/CLDScript.h>
+#include <Scripts/CLDHitBox.h>
 
 
 CComboMove02::CComboMove02()
@@ -62,6 +64,13 @@ void CComboMove02::Enter()
 	{
 		GetOwnerObj()->Movement()->SetVelocityX(500.f);
 	}
+
+	CLDHitBox* HitBoxScript = GetOwnerObj()->GetChild(L"LD_Att")->GetScript<CLDHitBox>();
+	if (HitBoxScript != nullptr)
+	{
+		HitBoxScript->On();
+	}
+
 
 	// Animation
 	GetOwnerObj()->Animator2D()->Play(L"LD_COMBOMOVE02", false);

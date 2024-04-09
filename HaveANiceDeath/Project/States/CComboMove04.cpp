@@ -4,6 +4,7 @@
 #include <Engine/CMeshRender.h>
 
 #include <Scripts/CLDScript.h>
+#include <Scripts/CLDHitBox.h>
 
 CComboMove04::CComboMove04()
 	:CState(COMBOMOVE04)
@@ -46,6 +47,11 @@ void CComboMove04::Enter()
 		GetOwnerObj()->Movement()->SetVelocityX(700.f);
 	}
 
+	CLDHitBox* HitBoxScript = GetOwnerObj()->GetChild(L"LD_Att")->GetScript<CLDHitBox>();
+	if (HitBoxScript != nullptr)
+	{
+		HitBoxScript->On();
+	}
 
 	GetOwnerObj()->Animator2D()->Play(L"LD_COMBOMOVE04", false);
 	GetOwnerObj()->MeshRender()->GetMaterial()->SetScalarParam(SCALAR_PARAM::INT_1, 1);

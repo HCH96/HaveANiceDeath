@@ -51,6 +51,11 @@ void CLDIdle::finaltick()
 	{
 		ChangeState(L"ComboMove01");
 	}
+
+	if (KEY_TAP(KEY::LBTN) && KEY_PRESSED(KEY::W))
+	{
+		ChangeState(L"ComboUp");
+	}
 }
 
 void CLDIdle::Enter()

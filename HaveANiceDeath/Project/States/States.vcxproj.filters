@@ -64,6 +64,18 @@
     <Filter Include="01. Unit\LD\ComboMove04">
       <UniqueIdentifier>{283aa0bc-aeff-43d7-a0c7-d064c190c9ec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Unit\LD\ComboUp">
+      <UniqueIdentifier>{f1377d5f-6379-4fa2-8a3d-6b08f8d524a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\LD\ComboStand01">
+      <UniqueIdentifier>{e68037b0-cb86-40c3-b166-9df493f390fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\LD\ComboStand02">
+      <UniqueIdentifier>{aa8b0eec-7fa7-4310-92b4-cd400f7e7e03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\LD\ComboStand03">
+      <UniqueIdentifier>{6505a4bb-9ce0-4ed4-8f82-8c329211d2bb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -123,6 +135,18 @@
     <ClInclude Include="CComboMove03.h">
       <Filter>01. Unit\LD\ComboMove03</Filter>
     </ClInclude>
+    <ClInclude Include="CComboUp.h">
+      <Filter>01. Unit\LD\ComboUp</Filter>
+    </ClInclude>
+    <ClInclude Include="CComboStand01.h">
+      <Filter>01. Unit\LD\ComboStand01</Filter>
+    </ClInclude>
+    <ClInclude Include="CComboStand02.h">
+      <Filter>01. Unit\LD\ComboStand02</Filter>
+    </ClInclude>
+    <ClInclude Include="CComboStand03.h">
+      <Filter>01. Unit\LD\ComboStand03</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -181,6 +205,18 @@
     </ClCompile>
     <ClCompile Include="CComboMove04.cpp">
       <Filter>01. Unit\LD\ComboMove04</Filter>
+    </ClCompile>
+    <ClCompile Include="CComboUp.cpp">
+      <Filter>01. Unit\LD\ComboUp</Filter>
+    </ClCompile>
+    <ClCompile Include="CComboStand01.cpp">
+      <Filter>01. Unit\LD\ComboStand01</Filter>
+    </ClCompile>
+    <ClCompile Include="CComboStand02.cpp">
+      <Filter>01. Unit\LD\ComboStand02</Filter>
+    </ClCompile>
+    <ClCompile Include="CComboStand03.cpp">
+      <Filter>01. Unit\LD\ComboStand03</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

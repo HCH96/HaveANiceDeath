@@ -9,6 +9,8 @@
 CLDScript::CLDScript()
 	: CUnitScript(LDSCRIPT)
 	, m_DirChanged(false)
+	, m_NextComboStand(1)
+	, m_IsDownCollision(false)
 {
 	m_CurUnitInfo.Dir = ANIM_DIR::RIGHT;
 
@@ -17,6 +19,8 @@ CLDScript::CLDScript()
 CLDScript::CLDScript(const CLDScript& _Origin)
 	: CUnitScript(_Origin)
 	, m_DirChanged(false)
+	, m_NextComboStand(1)
+	, m_IsDownCollision(false)
 {
 	m_CurUnitInfo.Dir = ANIM_DIR::RIGHT;
 }
@@ -25,6 +29,29 @@ CLDScript::~CLDScript()
 {
 }
 
+
+void CLDScript::PlayComboStand()
+{
+		
+	if (m_NextComboStand == 1)
+	{
+		StateMachine()->GetDynamicFSM()->ChangeState(L"ComboStand01");
+	}
+	else if (m_NextComboStand == 2)
+	{
+		StateMachine()->GetDynamicFSM()->ChangeState(L"ComboStand02");
+	}
+	else if (m_NextComboStand == 3)
+	{
+		StateMachine()->GetDynamicFSM()->ChangeState(L"ComboStand03");
+	}
+	else
+	{
+		return;
+	}
+
+	++m_NextComboStand;
+}
 
 void CLDScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
 {
@@ -90,20 +117,6 @@ void CLDScript::tick()
 	{
 		m_DirChanged = false;
 	}
-
-	// Glow Effect UpdateData
-	CState* CurState = StateMachine()->GetDynamicFSM()->GetCurState();
-	wstring CurStateName = CStateMgr::GetStateName(CurState);
-
-	if (CurStateName == L"CComboMove01" || CurStateName == L"CComboMove02" || CurStateName == L"CComboMove03" || CurStateName == L"CComboMove04")
-	{
-
-	}
-	else
-	{
-		GetRenderComponent()->GetMaterial()->SetScalarParam(SCALAR_PARAM::INT_1, 0);
-	}
-
 
 	// Anim 방향 정보 갱신 -1: Left , 1: Right
 	GetRenderComponent()->GetMaterial()->SetScalarParam(SCALAR_PARAM::INT_0, (int)m_CurUnitInfo.Dir);

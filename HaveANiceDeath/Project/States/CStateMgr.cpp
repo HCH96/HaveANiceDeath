@@ -5,6 +5,10 @@
 #include "CComboMove02.h"
 #include "CComboMove03.h"
 #include "CComboMove04.h"
+#include "CComboStand01.h"
+#include "CComboStand02.h"
+#include "CComboStand03.h"
+#include "CComboUp.h"
 #include "CIdleState.h"
 #include "CLDCornerTrigger.h"
 #include "CLDDash.h"
@@ -24,6 +28,10 @@ void CStateMgr::GetStateInfo(vector<wstring>& _vec)
 	_vec.push_back(L"CComboMove02");
 	_vec.push_back(L"CComboMove03");
 	_vec.push_back(L"CComboMove04");
+	_vec.push_back(L"CComboStand01");
+	_vec.push_back(L"CComboStand02");
+	_vec.push_back(L"CComboStand03");
+	_vec.push_back(L"CComboUp");
 	_vec.push_back(L"CIdleState");
 	_vec.push_back(L"CLDCornerTrigger");
 	_vec.push_back(L"CLDDash");
@@ -48,6 +56,14 @@ CState* CStateMgr::GetState(const wstring& _strStateName)
 		return new CComboMove03;
 	if (L"CComboMove04" == _strStateName)
 		return new CComboMove04;
+	if (L"CComboStand01" == _strStateName)
+		return new CComboStand01;
+	if (L"CComboStand02" == _strStateName)
+		return new CComboStand02;
+	if (L"CComboStand03" == _strStateName)
+		return new CComboStand03;
+	if (L"CComboUp" == _strStateName)
+		return new CComboUp;
 	if (L"CIdleState" == _strStateName)
 		return new CIdleState;
 	if (L"CLDCornerTrigger" == _strStateName)
@@ -90,6 +106,18 @@ CState* CStateMgr::GetState(UINT _iStateType)
 		break;
 	case (UINT)STATE_TYPE::COMBOMOVE04:
 		return new CComboMove04;
+		break;
+	case (UINT)STATE_TYPE::COMBOSTAND01:
+		return new CComboStand01;
+		break;
+	case (UINT)STATE_TYPE::COMBOSTAND02:
+		return new CComboStand02;
+		break;
+	case (UINT)STATE_TYPE::COMBOSTAND03:
+		return new CComboStand03;
+		break;
+	case (UINT)STATE_TYPE::COMBOUP:
+		return new CComboUp;
 		break;
 	case (UINT)STATE_TYPE::IDLESTATE:
 		return new CIdleState;
@@ -149,6 +177,22 @@ const wchar_t * CStateMgr::GetStateName(CState * _pState)
 
 	case STATE_TYPE::COMBOMOVE04:
 		return L"CComboMove04";
+		break;
+
+	case STATE_TYPE::COMBOSTAND01:
+		return L"CComboStand01";
+		break;
+
+	case STATE_TYPE::COMBOSTAND02:
+		return L"CComboStand02";
+		break;
+
+	case STATE_TYPE::COMBOSTAND03:
+		return L"CComboStand03";
+		break;
+
+	case STATE_TYPE::COMBOUP:
+		return L"CComboUp";
 		break;
 
 	case STATE_TYPE::IDLESTATE:

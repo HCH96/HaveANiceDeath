@@ -12,6 +12,18 @@
 #include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\States\CComboMove04.cpp"
 
 
+#include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\States\CComboStand01.cpp"
+
+
+#include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\States\CComboStand02.cpp"
+
+
+#include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\States\CComboStand03.cpp"
+
+
+#include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\States\CComboUp.cpp"
+
+
 #include "C:\Users\changhee\Desktop\PortPolio\HaveANiceDeath\HaveANiceDeath\Project\States\CIdleState.cpp"
 
 
