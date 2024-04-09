@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "CLDIdleToRun.h"
 
+#include <Scripts\CLDScript.h>
+
 CLDIdleToRun::CLDIdleToRun()
 	:CState(LDIDLETORUN)
 {
@@ -13,6 +15,8 @@ CLDIdleToRun::~CLDIdleToRun()
 
 void CLDIdleToRun::finaltick()
 {
+	CLDScript* pScript = GetOwnerObj()->GetScript<CLDScript>();
+
 	// 애니메이션이 종료 되었다면
 	if (GetOwnerObj()->Animator2D()->IsCurAnimFinished())
 	{
@@ -24,6 +28,11 @@ void CLDIdleToRun::finaltick()
 		{
 			ChangeState(L"RunToIdle");
 		}
+	}
+
+	if (KEY_TAP(KEY::LSHIFT) && !(pScript->IsDashCoolTime()))
+	{
+		ChangeState(L"Dash");
 	}
 
 	if (KEY_TAP(KEY::SPACE))

@@ -40,6 +40,7 @@ void CLDJumpLanding::finaltick()
 
 void CLDJumpLanding::Enter()
 {
+
 	GetOwnerObj()->Animator2D()->Play(L"LD_JUMPLANDING", true);
 }
 
@@ -47,5 +48,8 @@ void CLDJumpLanding::Exit()
 {
 	CLDScript* LDScript = GetOwnerObj()->GetScript<CLDScript>();
  	LDScript->ResetComboStand();
+	LDScript->SetComboUp(false);
+	LDScript->SetDownCollision(false);
+
 }
 

@@ -11,6 +11,9 @@ CLDScript::CLDScript()
 	, m_DirChanged(false)
 	, m_NextComboStand(1)
 	, m_IsDownCollision(false)
+	, m_IsComboUp(false)
+	, m_IsDash(true)
+	, m_DashCoolTime(0.f)
 {
 	m_CurUnitInfo.Dir = ANIM_DIR::RIGHT;
 
@@ -21,6 +24,9 @@ CLDScript::CLDScript(const CLDScript& _Origin)
 	, m_DirChanged(false)
 	, m_NextComboStand(1)
 	, m_IsDownCollision(false)
+	, m_IsComboUp(false)
+	, m_IsDash(true)
+	, m_DashCoolTime(0.f)
 {
 	m_CurUnitInfo.Dir = ANIM_DIR::RIGHT;
 }
@@ -111,12 +117,26 @@ void CLDScript::tick()
 		{
 			m_DirChanged = false;
 		}
-
 	}
 	else
 	{
 		m_DirChanged = false;
 	}
+
+	// 대쉬를 사용했는지
+	if (m_IsDash)
+	{
+		m_DashCoolTime += DT;
+	}
+	
+	if (m_DashCoolTime > 0.5f)
+	{
+		m_DashCoolTime = 0.f;
+		m_IsDashCoolTime = false;
+		m_IsDash = false;
+	}
+
+
 
 	// Anim 방향 정보 갱신 -1: Left , 1: Right
 	GetRenderComponent()->GetMaterial()->SetScalarParam(SCALAR_PARAM::INT_0, (int)m_CurUnitInfo.Dir);

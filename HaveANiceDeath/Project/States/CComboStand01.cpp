@@ -36,6 +36,7 @@ void CComboStand01::finaltick()
 		GetOwnerObj()->Movement()->SetVelocityX(200.f);
 	}
 
+
 	if (GetOwnerObj()->Animator2D()->IsCurAnimFinished())
 	{
 		if (m_IsClicked)

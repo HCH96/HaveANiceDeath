@@ -204,9 +204,6 @@ void CPlatformScript::EndOverlap(CCollider2D* _Collider, CGameObject* _OtherObj,
 	CUnitScript* UnitScript = _OtherObj->GetScript<CUnitScript>();
 	UnitScript->SubOverlapGround(GetOwner());
 
-	CLDScript* ObjScript = _OtherObj->GetScript<CLDScript>();
-	ObjScript->SetDownCollision(false);
-
 	if (UnitScript->GetOverlapGround() <= 0)
 	{
 		_OtherObj->Movement()->SetGround(false);

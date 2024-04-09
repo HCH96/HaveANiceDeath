@@ -42,10 +42,12 @@ void CLDIdle::finaltick()
 		}
 	}
 
-	if (KEY_TAP(KEY::SPACE))
+	
+	if (KEY_TAP(KEY::LSHIFT) && !(pScript->IsDashCoolTime()))
 	{
-		ChangeState(L"JumpStart");
+		ChangeState(L"Dash");
 	}
+
 
 	if (KEY_TAP(KEY::LBTN))
 	{
@@ -56,6 +58,12 @@ void CLDIdle::finaltick()
 	{
 		ChangeState(L"ComboUp");
 	}
+	else if (KEY_TAP(KEY::SPACE))
+	{
+		ChangeState(L"JumpStart");
+	}
+
+
 }
 
 void CLDIdle::Enter()

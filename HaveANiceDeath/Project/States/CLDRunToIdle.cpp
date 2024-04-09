@@ -37,6 +37,11 @@ void CLDRunToIdle::finaltick()
 		ChangeState(L"Idle");
 	}
 
+	if (KEY_TAP(KEY::LSHIFT) && !(pScript->IsDashCoolTime()))
+	{
+		ChangeState(L"Dash");
+	}
+
 	if (KEY_TAP(KEY::SPACE))
 	{
 		ChangeState(L"JumpStart");
@@ -45,11 +50,6 @@ void CLDRunToIdle::finaltick()
 	if (KEY_TAP(KEY::LBTN))
 	{
 		ChangeState(L"ComboMove01");
-	}
-
-	if (KEY_TAP(KEY::LBTN) && KEY_PRESSED(KEY::W))
-	{
-		ChangeState(L"ComboUp");
 	}
 
 	if (KEY_TAP(KEY::LBTN) && KEY_PRESSED(KEY::W))

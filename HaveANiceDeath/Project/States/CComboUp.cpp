@@ -40,6 +40,9 @@ void CComboUp::finaltick()
 	GetOwnerObj()->Movement()->SetVelocityX(0.f);
 
 
+
+
+
 	if (GetOwnerObj()->Animator2D()->IsCurAnimFinished())
 	{
 		ChangeState(L"JumpFall");
@@ -58,9 +61,11 @@ void CComboUp::finaltick()
 
 void CComboUp::Enter()
 {
-	m_IsDown = false;
+	CLDScript* LDScript = GetOwnerObj()->GetScript<CLDScript>();
+	LDScript->SetComboUp(true);
 
 	m_StartPos = GetOwnerObj()->Transform()->GetWorldPos().y;
+	m_IsDown = false;
 
 	GetOwnerObj()->Animator2D()->Play(L"LD_COMBOUP", false);
 	GetOwnerObj()->Movement()->SetGround(false);

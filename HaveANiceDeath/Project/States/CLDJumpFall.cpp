@@ -30,14 +30,18 @@ void CLDJumpFall::finaltick()
 		GetOwnerObj()->Movement()->SetVelocityX(900.f);
 	}
 
-	if (KEY_TAP(KEY::LBTN) && KEY_PRESSED(KEY::W))
+	if (KEY_TAP(KEY::LBTN) && KEY_PRESSED(KEY::W) && false == LDScript->IsComboUp())
 	{
 		ChangeState(L"ComboUp");
 	}
-
-	if (KEY_TAP(KEY::LBTN))
+	else if (KEY_TAP(KEY::LBTN))
 	{
 		LDScript->PlayComboStand();
+	}
+
+	if (KEY_TAP(KEY::LSHIFT) && !(LDScript->IsDashCoolTime()))
+	{
+		ChangeState(L"Dash");
 	}
 
 

@@ -3,6 +3,9 @@
 class CLDDash :
     public CState
 {
+private:
+    float m_StartPos;
+
 
 public:
     virtual void finaltick();

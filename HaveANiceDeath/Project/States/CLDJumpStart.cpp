@@ -46,14 +46,18 @@ void CLDJumpStart::finaltick()
 
 	m_Acc += DT;
 
-	if (KEY_TAP(KEY::LBTN))
+	if (KEY_TAP(KEY::LSHIFT) && !(LDScript->IsDashCoolTime()))
 	{
-		LDScript->PlayComboStand();
+		ChangeState(L"Dash");
 	}
 
-	if (KEY_TAP(KEY::LBTN) && KEY_PRESSED(KEY::W))
+	if (KEY_TAP(KEY::LBTN) && KEY_PRESSED(KEY::W) && false ==LDScript->IsComboUp())
 	{
 		ChangeState(L"ComboUp");
+	}
+	else if (KEY_TAP(KEY::LBTN))
+	{
+		LDScript->PlayComboStand();
 	}
 
 	if (GetOwnerObj()->Movement()->IsGround())
