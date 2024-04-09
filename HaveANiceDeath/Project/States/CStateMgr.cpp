@@ -9,6 +9,8 @@
 #include "CComboStand02.h"
 #include "CComboStand03.h"
 #include "CComboUp.h"
+#include "CCrush.h"
+#include "CCrushDown.h"
 #include "CIdleState.h"
 #include "CLDCornerTrigger.h"
 #include "CLDDash.h"
@@ -32,6 +34,8 @@ void CStateMgr::GetStateInfo(vector<wstring>& _vec)
 	_vec.push_back(L"CComboStand02");
 	_vec.push_back(L"CComboStand03");
 	_vec.push_back(L"CComboUp");
+	_vec.push_back(L"CCrush");
+	_vec.push_back(L"CCrushDown");
 	_vec.push_back(L"CIdleState");
 	_vec.push_back(L"CLDCornerTrigger");
 	_vec.push_back(L"CLDDash");
@@ -64,6 +68,10 @@ CState* CStateMgr::GetState(const wstring& _strStateName)
 		return new CComboStand03;
 	if (L"CComboUp" == _strStateName)
 		return new CComboUp;
+	if (L"CCrush" == _strStateName)
+		return new CCrush;
+	if (L"CCrushDown" == _strStateName)
+		return new CCrushDown;
 	if (L"CIdleState" == _strStateName)
 		return new CIdleState;
 	if (L"CLDCornerTrigger" == _strStateName)
@@ -118,6 +126,12 @@ CState* CStateMgr::GetState(UINT _iStateType)
 		break;
 	case (UINT)STATE_TYPE::COMBOUP:
 		return new CComboUp;
+		break;
+	case (UINT)STATE_TYPE::CRUSH:
+		return new CCrush;
+		break;
+	case (UINT)STATE_TYPE::CRUSHDOWN:
+		return new CCrushDown;
 		break;
 	case (UINT)STATE_TYPE::IDLESTATE:
 		return new CIdleState;
@@ -193,6 +207,14 @@ const wchar_t * CStateMgr::GetStateName(CState * _pState)
 
 	case STATE_TYPE::COMBOUP:
 		return L"CComboUp";
+		break;
+
+	case STATE_TYPE::CRUSH:
+		return L"CCrush";
+		break;
+
+	case STATE_TYPE::CRUSHDOWN:
+		return L"CCrushDown";
 		break;
 
 	case STATE_TYPE::IDLESTATE:

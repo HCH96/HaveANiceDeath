@@ -6,6 +6,8 @@ CComboStand01
 CComboStand02
 CComboStand03
 CComboUp
+CCrush
+CCrushDown
 CIdleState
 CLDCornerTrigger
 CLDDash

@@ -23,13 +23,46 @@ void CLDDash::finaltick()
 
 	int CurIdx = GetOwnerObj()->Animator2D()->GetCurAnimInst()->GetCurAnimIdx();
 
+	if (CurIdx > 1)
+	{
+		if (KEY_TAP(KEY::LBTN))
+			m_IsTapLBTN = true;
+	}
+
 	if(CurIdx == 4)
 		GetOwnerObj()->Movement()->SetVelocityX(0.f);
 
 	if (GetOwnerObj()->Animator2D()->IsCurAnimFinished())
 	{
-		ChangeState(L"Idle");
+		if (GetOwnerObj()->Movement()->IsGround())
+		{
+			if (m_IsTapLBTN)
+			{
+				ChangeState(L"ComboMove01");
+			}
+			else if (m_IsTapLBTN && KEY_PRESSED(KEY::W))
+			{
+				ChangeState(L"ComboUp");
+			}
+			else if (KEY_TAP(KEY::SPACE)|| KEY_PRESSED(KEY::SPACE))
+			{
+				ChangeState(L"JumpStart");
+			}
+			else
+			{
+				ChangeState(L"Idle");
+			}
+		}
+		else
+		{
+			ChangeState(L"JumpFall");
+		}
 	}
+
+
+
+
+
 }
 
 void CLDDash::Enter()
@@ -37,6 +70,8 @@ void CLDDash::Enter()
 	CLDScript* LDScript = GetOwnerObj()->GetScript<CLDScript>();
 	LDScript->SetDash(true);
 	LDScript->SetLock(true);
+
+	m_IsTapLBTN = false;
 
 	GetOwnerObj()->Animator2D()->Play(L"LD_DASH", false);
 

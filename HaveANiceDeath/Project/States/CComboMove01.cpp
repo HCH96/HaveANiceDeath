@@ -7,6 +7,7 @@
 
 #include <Scripts/CLDScript.h>
 #include <Scripts/CLDHitBox.h>
+#include <Engine/CAnim.h>
 
 CComboMove01::CComboMove01()
 	:CState(COMBOMOVE01)
@@ -20,10 +21,28 @@ CComboMove01::~CComboMove01()
 
 void CComboMove01::finaltick()
 {
+	CLDScript* pScript = GetOwnerObj()->GetScript<CLDScript>();
+
+	int CurIdx = GetOwnerObj()->Animator2D()->GetCurAnimInst()->GetCurAnimIdx();
+
 	if (KEY_TAP(KEY::LBTN))
 	{
 		IsClicked = true;
 	}
+
+	if (CurIdx > 0 && CurIdx<2 && (KEY_PRESSED(KEY::A) || KEY_PRESSED(KEY::D)))
+	{
+		if (pScript->GetDir() == ANIM_DIR::LEFT)
+		{
+			GetOwnerObj()->Movement()->SetVelocityX(-100.f);
+		}
+		else
+		{
+			GetOwnerObj()->Movement()->SetVelocityX(100.f);
+		}
+	}
+
+
 
 
 	if (GetOwnerObj()->Animator2D()->IsCurAnimFinished())

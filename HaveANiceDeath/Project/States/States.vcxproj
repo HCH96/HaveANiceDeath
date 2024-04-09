@@ -180,6 +180,8 @@ call CodeGen.exe</Command>
     <ClInclude Include="CComboStand02.h" />
     <ClInclude Include="CComboStand03.h" />
     <ClInclude Include="CComboUp.h" />
+    <ClInclude Include="CCrush.h" />
+    <ClInclude Include="CCrushDown.h" />
     <ClInclude Include="CIdleState.h" />
     <ClInclude Include="CLDCornerTrigger.h" />
     <ClInclude Include="CLDDash.h" />
@@ -205,6 +207,8 @@ call CodeGen.exe</Command>
     <ClCompile Include="CComboStand02.cpp" />
     <ClCompile Include="CComboStand03.cpp" />
     <ClCompile Include="CComboUp.cpp" />
+    <ClCompile Include="CCrush.cpp" />
+    <ClCompile Include="CCrushDown.cpp" />
     <ClCompile Include="CIdleState.cpp" />
     <ClCompile Include="CLDCornerTrigger.cpp" />
     <ClCompile Include="CLDDash.cpp" />

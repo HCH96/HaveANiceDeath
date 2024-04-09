@@ -76,6 +76,12 @@
     <Filter Include="01. Unit\LD\ComboStand03">
       <UniqueIdentifier>{6505a4bb-9ce0-4ed4-8f82-8c329211d2bb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Unit\LD\CrushDown">
+      <UniqueIdentifier>{51ba4688-87bb-4c44-8a34-d2e4f2c9977e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\LD\Crush">
+      <UniqueIdentifier>{ef4f2354-1fac-433c-8383-4ea460ac8bcf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -147,6 +153,12 @@
     <ClInclude Include="CComboStand03.h">
       <Filter>01. Unit\LD\ComboStand03</Filter>
     </ClInclude>
+    <ClInclude Include="CCrush.h">
+      <Filter>01. Unit\LD\Crush</Filter>
+    </ClInclude>
+    <ClInclude Include="CCrushDown.h">
+      <Filter>01. Unit\LD\CrushDown</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -217,6 +229,12 @@
     </ClCompile>
     <ClCompile Include="CComboStand03.cpp">
       <Filter>01. Unit\LD\ComboStand03</Filter>
+    </ClCompile>
+    <ClCompile Include="CCrush.cpp">
+      <Filter>01. Unit\LD\Crush</Filter>
+    </ClCompile>
+    <ClCompile Include="CCrushDown.cpp">
+      <Filter>01. Unit\LD\CrushDown</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

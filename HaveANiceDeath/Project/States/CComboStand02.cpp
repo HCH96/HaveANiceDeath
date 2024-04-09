@@ -7,6 +7,8 @@
 #include <Scripts/CLDScript.h>
 #include <Scripts/CLDHitBox.h>
 
+#include <Engine/CAnim.h>
+
 CComboStand02::CComboStand02()
 	: CState(COMBOSTAND02)
 {
@@ -26,16 +28,34 @@ void CComboStand02::finaltick()
 		m_IsClicked = true;
 	}
 
-	if (m_Dir == ANIM_DIR::LEFT)
+	int CurIdx = GetOwnerObj()->Animator2D()->GetCurAnimInst()->GetCurAnimIdx();
+
+	if (CurIdx == 2 || CurIdx == 3 || CurIdx == 4)
 	{
-		GetOwnerObj()->Movement()->SetVelocityX(-200.f);
+		if (m_Dir == ANIM_DIR::LEFT)
+		{
+			GetOwnerObj()->Movement()->SetVelocityX(-200.f);
+		}
+		else
+		{
+			GetOwnerObj()->Movement()->SetVelocityX(200.f);
+		}
+	}
+	else if(CurIdx > 4)
+	{
+		if (m_Dir == ANIM_DIR::LEFT)
+		{
+			GetOwnerObj()->Movement()->SetVelocityX(-100.f);
+		}
+		else
+		{
+			GetOwnerObj()->Movement()->SetVelocityX(100.f);
+		}
 	}
 	else
 	{
-		GetOwnerObj()->Movement()->SetVelocityX(200.f);
+		GetOwnerObj()->Movement()->SetVelocityX(0.f);
 	}
-
-
 
 	if (GetOwnerObj()->Animator2D()->IsCurAnimFinished())
 	{

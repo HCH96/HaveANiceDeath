@@ -51,9 +51,13 @@ void CLDJumpStart::finaltick()
 		ChangeState(L"Dash");
 	}
 
-	if (KEY_TAP(KEY::LBTN) && KEY_PRESSED(KEY::W) && false ==LDScript->IsComboUp())
+	if (KEY_TAP(KEY::LBTN) && (KEY_PRESSED(KEY::W) || KEY_TAP(KEY::W)) && false ==LDScript->IsComboUp())
 	{
 		ChangeState(L"ComboUp");
+	}
+	else if (KEY_TAP(KEY::LBTN) && (KEY_PRESSED(KEY::S)|| KEY_TAP(KEY::S)))
+	{
+		ChangeState(L"CrushDown");
 	}
 	else if (KEY_TAP(KEY::LBTN))
 	{

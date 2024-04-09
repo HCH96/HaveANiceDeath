@@ -1,13 +1,8 @@
 #pragma once
 #include <Engine\CState.h>
-class CLDDash :
+class CCrushDown :
     public CState
 {
-private:
-    float m_StartPos;
-
-    bool m_IsTapLBTN;
-
 public:
     virtual void finaltick();
     virtual void Enter();
@@ -15,7 +10,8 @@ public:
 
 
 public:
-    CLDDash();
-    ~CLDDash();
+    CCrushDown();
+    ~CCrushDown();
+
 };
 

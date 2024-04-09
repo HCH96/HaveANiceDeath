@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "CComboStand03.h"
 
-
+#include <Engine/CAnim.h>
 #include <Engine/CMovement.h>
 #include <Engine/CMeshRender.h>
 
@@ -20,14 +20,26 @@ CComboStand03::~CComboStand03()
 
 void CComboStand03::finaltick()
 {
-	if (m_Dir == ANIM_DIR::LEFT)
+
+	int CurIdx = GetOwnerObj()->Animator2D()->GetCurAnimInst()->GetCurAnimIdx();
+
+	if (CurIdx > 5)
 	{
-		GetOwnerObj()->Movement()->SetVelocityX(-200.f);
+		if (m_Dir == ANIM_DIR::LEFT)
+		{
+			GetOwnerObj()->Movement()->SetVelocityX(-400.f);
+		}
+		else
+		{
+			GetOwnerObj()->Movement()->SetVelocityX(400.f);
+		}
 	}
 	else
 	{
-		GetOwnerObj()->Movement()->SetVelocityX(200.f);
+		GetOwnerObj()->Movement()->SetVelocityX(0.f);
 	}
+
+
 
 
 	if (GetOwnerObj()->Animator2D()->IsCurAnimFinished())
@@ -44,7 +56,7 @@ void CComboStand03::Enter()
 
 	m_Dir = pScript->GetDir();
 
-	GetOwnerObj()->Animator2D()->Play(L"LD_COMBOMOVE03", false);
+	GetOwnerObj()->Animator2D()->Play(L"LD_COMBOSTAND02", false);
 	GetOwnerObj()->MeshRender()->GetMaterial()->SetScalarParam(SCALAR_PARAM::INT_1, 1);
 
 	GetOwnerObj()->Movement()->SetGround(true);

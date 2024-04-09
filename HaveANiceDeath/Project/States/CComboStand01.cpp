@@ -21,19 +21,11 @@ void CComboStand01::finaltick()
 {
 	CLDScript* LDScript = GetOwnerObj()->GetScript<CLDScript>();
 
+	GetOwnerObj()->Movement()->SetVelocityX(0.f);
+
 	if (m_IsClicked == false && KEY_TAP(KEY::LBTN))
 	{
 		m_IsClicked = true;
-	}
-
-	if (m_Dir == ANIM_DIR::LEFT)
-	{
-		GetOwnerObj()->Movement()->SetVelocityX(-200.f);
-
-	}
-	else
-	{
-		GetOwnerObj()->Movement()->SetVelocityX(200.f);
 	}
 
 

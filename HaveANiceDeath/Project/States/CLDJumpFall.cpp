@@ -30,9 +30,13 @@ void CLDJumpFall::finaltick()
 		GetOwnerObj()->Movement()->SetVelocityX(900.f);
 	}
 
-	if (KEY_TAP(KEY::LBTN) && KEY_PRESSED(KEY::W) && false == LDScript->IsComboUp())
+	if (KEY_TAP(KEY::LBTN) && (KEY_PRESSED(KEY::W) || KEY_TAP(KEY::W)) && false == LDScript->IsComboUp())
 	{
 		ChangeState(L"ComboUp");
+	}
+	else if (KEY_TAP(KEY::LBTN) && (KEY_PRESSED(KEY::S) || KEY_TAP(KEY::S)))
+	{
+		ChangeState(L"CrushDown");
 	}
 	else if (KEY_TAP(KEY::LBTN))
 	{

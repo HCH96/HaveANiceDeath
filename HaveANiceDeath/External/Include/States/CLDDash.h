@@ -6,6 +6,7 @@ class CLDDash :
 private:
     float m_StartPos;
 
+    bool m_IsTapLBTN;
 
 public:
     virtual void finaltick();
