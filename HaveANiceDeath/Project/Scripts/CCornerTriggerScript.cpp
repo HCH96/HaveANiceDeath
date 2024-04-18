@@ -39,7 +39,10 @@ void CCornerTriggerScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _Ot
 	}
 
 	Ptr<CFSM> pFSM = _OtherObj->StateMachine()->GetDynamicFSM();
-	pFSM->ChangeState(L"CornerTrigger");
+	if (L"CLDDash" != CStateMgr::GetStateName(pFSM->GetCurState()))
+	{
+		pFSM->ChangeState(L"CornerTrigger");
+	}
 
 	CUnitScript* UnitScript = _OtherObj->GetScript<CUnitScript>();
 	UnitScript->AddOverlapGround(GetOwner());
@@ -108,7 +111,7 @@ void CCornerTriggerScript::Overlap(CCollider2D* _Collider, CGameObject* _OtherOb
 	// CornerTrigger
 	if (PlatformRB.y <= PrevPos.y - ObjColScale.y / 2.f)
 	{
-		if (CurState == L"CLDCornerTrigger" &&( PlatformLT.y-1.f >= PrevPos.y - ObjColScale.y / 2.f && (ObjDir & MV_RIGHT) | (ObjDir & MV_LEFT)))
+		if ((CurState == L"CLDCornerTrigger"|| CurState == L"CLDDash") && (PlatformLT.y - 1.f >= PrevPos.y - ObjColScale.y / 2.f && (ObjDir & MV_RIGHT) | (ObjDir & MV_LEFT)))
 		{
 			float upVelocity = fabs(_OtherObj->Movement()->GetVelocity().x) * DT;
 			Vec3 CurPos = _OtherObj->Transform()->GetRelativePos();

@@ -178,6 +178,27 @@ void CCamera::SortObject()
 	}
 }
 
+// 오름차순
+bool CmpAscending(CGameObject* _First, CGameObject* _Second) 
+{
+	return _First->Transform()->GetWorldPos().z < _Second->Transform()->GetWorldPos().z;
+}
+
+
+// 내름차순
+bool CmpDescending(CGameObject* _First, CGameObject* _Second)
+{
+	return _First->Transform()->GetWorldPos().z > _Second->Transform()->GetWorldPos().z;
+}
+
+
+void CCamera::DepthSort()
+{
+	std::sort(m_vecOpaque.begin(), m_vecOpaque.end(), CmpAscending);
+	std::sort(m_vecMasked.begin(), m_vecMasked.end(), CmpAscending);
+	std::sort(m_vecTransparent.begin(), m_vecTransparent.end(), CmpDescending);
+}
+
 void CCamera::render()
 {
 	// 계산한 view 행렬과 proj 행렬을 전역변수에 담아둔다.

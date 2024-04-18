@@ -71,6 +71,7 @@ public:
     virtual void begin() override;
     virtual void finaltick() override;
     void SortObject();
+    void DepthSort();
     void render();
 
 private:

@@ -4,6 +4,7 @@
 #include <Engine/CAssetMgr.h>
 
 #include "ParamUI.h"
+#include "ListUI.h"
 
 MtrlEditorUI::MtrlEditorUI()
 	: UI("MtrlInspector", "##MtrlInspector")
@@ -163,6 +164,20 @@ void MtrlEditorUI::render_update()
 			}
 
 			ImGui::EndDragDropTarget();
+		}
+
+		ImGui::SameLine();
+		if (ImGui::Button("##MatTex0", ImVec2(20, 20)))
+		{
+			ListUI* pListUI = (ListUI*)CImGuiMgr::GetInst()->FindUI("##List");
+			vector<string> vecTex;
+			map<wstring, Ptr<CAsset>> mapTex = CAssetMgr::GetInst()->GetAssets(ASSET_TYPE::TEXTURE);
+			for (const std::pair<wstring, Ptr<CAsset>>& pair : mapTex)
+				vecTex.push_back(ToString(pair.first));
+
+			pListUI->AddString(vecTex);
+			pListUI->SetDbClickDelegate(this, (Delegate_1)&MtrlEditorUI::SelectTex);
+			pListUI->Activate();
 		}
 
 		ImGui::Separator(); ImGui::Spacing(); ImGui::Spacing();
@@ -762,3 +777,13 @@ void MtrlEditorUI::Reset()
 
 }
 
+void MtrlEditorUI::SelectTex(DWORD_PTR _ptr)
+{
+	string strTexKey = (char*)_ptr;
+	Ptr<CTexture> pTex = CAssetMgr::GetInst()->FindAsset<CTexture>(ToWString(strTexKey));
+	if (!pTex.Get())
+		return;
+
+	m_TargetMtrl->SetTexParam(TEX_PARAM::TEX_0, pTex);
+	m_TEX_PATH[0] = strTexKey;
+}

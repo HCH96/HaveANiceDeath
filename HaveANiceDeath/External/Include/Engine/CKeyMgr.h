@@ -42,6 +42,8 @@ class CKeyMgr
 {
 	SINGLE(CKeyMgr);
 private:
+	short m_fMouseWheel;
+
 	vector<FKeyData>	m_vecKeyData;
 
 	Vec2				m_vMousePos;
@@ -50,6 +52,9 @@ private:
 	Vec2				m_vMouseDrag;
 
 public:
+	void SetMouseWheel(short _val) { m_fMouseWheel = _val; }
+	short GetMouseWheel() { return m_fMouseWheel; }
+
 	KEY_STATE GetKeyState(KEY _Key) { return m_vecKeyData[_Key].eState; }
 	Vec2 GetMousePos() { return m_vMousePos; }
 	Vec2 GetMouseDrag() { return m_vMouseDrag; }

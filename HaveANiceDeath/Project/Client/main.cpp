@@ -8,6 +8,7 @@
 
 #include <Engine\CEngine.h>
 #include <Engine\CDevice.h>
+#include <Engine/CKeyMgr.h>
 
 #define MAX_LOADSTRING 100
 
@@ -217,9 +218,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             ::SetWindowPos(hWnd, nullptr, suggested_rect->left, suggested_rect->top, suggested_rect->right - suggested_rect->left, suggested_rect->bottom - suggested_rect->top, SWP_NOZORDER | SWP_NOACTIVATE);
         }
         break;
+    case WM_MOUSEWHEEL:
+    {
+        short zDelta = GET_WHEEL_DELTA_WPARAM(wParam);
+        CKeyMgr::GetInst()->SetMouseWheel(zDelta);
+    }
+    break;
 
     default:
+    {
+        CKeyMgr::GetInst()->SetMouseWheel(0);
         return DefWindowProc(hWnd, message, wParam, lParam);
+    }
+
     }
     return 0;
 }

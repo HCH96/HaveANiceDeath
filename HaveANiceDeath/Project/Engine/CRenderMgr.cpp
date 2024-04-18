@@ -81,6 +81,7 @@ void CRenderMgr::render_play()
 	for (size_t i = 0; i < m_vecCam.size(); ++i)
 	{
 		m_vecCam[i]->SortObject();
+		m_vecCam[i]->DepthSort();
 		m_vecCam[i]->render();
 	}
 }

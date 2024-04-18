@@ -73,14 +73,14 @@ float4 PS_Std2D(VS_OUT _in) : SV_Target
             //vColor = g_tex_0.Sample(g_sam_1, _in.vUV + float2(g_time * 0.1, 0.f));
             vColor = g_tex_0.Sample(g_sam_1, _in.vUV);
                     
-            //saturate 0 ~ 1 을 넘지 않게 보정
-            float fAlpha = 1.f - saturate(dot(vColor.rb, vColor.rb) / 2.f);
+            ////saturate 0 ~ 1 을 넘지 않게 보정
+            //float fAlpha = 1.f - saturate(dot(vColor.rb, vColor.rb) / 2.f);
         
-            if (fAlpha < 0.1f)
-            {
-            // 픽셀 쉐이더를 중간에 폐기처리
-                discard; //clip(-1);            
-            }
+            //if (fAlpha < 0.1f)
+            //{
+            //// 픽셀 쉐이더를 중간에 폐기처리
+            //    discard; //clip(-1);            
+            //}
         }
     }
         
@@ -97,14 +97,14 @@ float4 PS_Std2D(VS_OUT _in) : SV_Target
     
     vColor.rgb *= (LightColor.vColor.rgb + LightColor.vAmbient.rgb);
         
-    if (0.f == vColor.a)
-        discard;
+    //if (0.f == vColor.a)
+    //    discard;
     
-    float x = g_NoiseTex.Sample(g_sam_0, _in.vUV).x;
-    if (0 > x - g_float_1)
-    {
-        discard;
-    }
+    //float x = g_NoiseTex.Sample(g_sam_0, _in.vUV).x;
+    //if (0 > x - g_float_1)
+    //{
+    //    discard;
+    //}
     
     return vColor;
 }
