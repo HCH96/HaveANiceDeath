@@ -58,7 +58,22 @@ void Inspector::render_update()
 	// layer
 	ImGui::Text("Layer"); ImGui::SameLine(130);
 	DrawLayerUI();
+
+	// Activate
+	bool bActive = GetTargetObject()->IsActive();
+	ImGui::Text("Active"); ImGui::SameLine(130); ImGui::Checkbox("##ObjActive", &bActive);
+
+	if (bActive)
+	{
+		GetTargetObject()->Activate();
+	}
+	else
+	{
+		GetTargetObject()->Deactivate();
+	}
+
 	ImGui::Separator();
+
 
 	if (nullptr != m_TargetObject)
 	{

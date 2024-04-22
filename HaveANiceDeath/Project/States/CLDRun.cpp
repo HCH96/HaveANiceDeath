@@ -47,6 +47,11 @@ void CLDRun::finaltick()
 		ChangeState(L"ComboUp");
 	}
 
+	if (GetOwnerObj()->Movement()->IsGround() == false)
+	{
+		ChangeState(L"JumpFall");
+	}
+
 }
 
 void CLDRun::Enter()

@@ -29,7 +29,7 @@ private:
     CRenderComponent*       m_RenderCom;
     vector<CScript*>        m_vecScript;
 
-
+    bool                    m_bActive;
 
 public:
     CGameObject* GetParent() { return m_Parent; }
@@ -78,10 +78,14 @@ public:
     void AddChild_Load(CGameObject* _Child);
 
     bool IsDead() { return m_bDead; }
+    bool IsActive() { return m_bActive; }
 
     void Destroy();
 
     bool IsAncestor(CGameObject* _Other);
+
+    void Activate() { m_bActive = true; }
+    void Deactivate() { m_bActive = false; }
 
 public:
     void begin();

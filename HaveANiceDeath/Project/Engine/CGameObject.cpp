@@ -20,6 +20,7 @@ CGameObject::CGameObject()
 	, m_Parent(nullptr)
 	, m_LayerIdx(-1)
 	, m_bDead(false)
+	, m_bActive(true)
 {
 }
 
@@ -30,6 +31,7 @@ CGameObject::CGameObject(const CGameObject& _OriginObject)
 	, m_Parent(nullptr)
 	, m_LayerIdx(-1)
 	, m_bDead(false)
+	, m_bActive(true)
 {
 	for (UINT i = 0; i < (UINT)COMPONENT_TYPE::END; ++i)
 	{
@@ -237,6 +239,9 @@ bool CGameObject::IsAncestor(CGameObject* _Other)
 
 void CGameObject::begin()
 {
+	if (!m_bActive)
+		return;
+
 	size_t ChildvecSize = m_vecChild.size();
 
 	for (UINT i = 0; i < UINT(COMPONENT_TYPE::END); ++i)
@@ -260,6 +265,9 @@ void CGameObject::begin()
 
 void CGameObject::tick()
 {
+	if (!m_bActive)
+		return;
+
 	for (UINT i = 0; i < UINT(COMPONENT_TYPE::END); ++i)
 	{
 		if (nullptr != m_arrCom[i])
@@ -282,6 +290,10 @@ void CGameObject::tick()
 
 void CGameObject::finaltick()
 {
+	if (!m_bActive)
+		return;
+
+
 	// Component finaltick
 	for (UINT i = 0; i < UINT(COMPONENT_TYPE::END); ++i)
 	{
@@ -326,6 +338,9 @@ void CGameObject::finaltick()
 
 void CGameObject::render()
 {
+	if (!m_bActive)
+		return;
+
 	if (nullptr != m_RenderCom)
 	{
 		m_RenderCom->render();

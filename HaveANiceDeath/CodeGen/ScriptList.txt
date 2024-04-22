@@ -6,6 +6,7 @@ CLDHitBox
 CLDScript
 CMissileScript
 CMonsterScript
+CParallelScript
 CPlatformScript
 CPlayerMgrScript
 CPlayerScript

@@ -47,6 +47,9 @@
     <ClInclude Include="CCamCtrlScript.h">
       <Filter>Manager\CamCtrl</Filter>
     </ClInclude>
+    <ClInclude Include="CParallelScript.h">
+      <Filter>Scripts\ParallelScript</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -95,6 +98,9 @@
     <ClCompile Include="CCamCtrlScript.cpp">
       <Filter>Manager\CamCtrl</Filter>
     </ClCompile>
+    <ClCompile Include="CParallelScript.cpp">
+      <Filter>Scripts\ParallelScript</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Default">
@@ -129,6 +135,9 @@
     </Filter>
     <Filter Include="Manager\CamCtrl">
       <UniqueIdentifier>{2b17bb50-5719-429c-97ab-3eb898fea038}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scripts\ParallelScript">
+      <UniqueIdentifier>{fb158054-49c3-46b3-ac8c-c61c413dd415}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
