@@ -178,7 +178,7 @@ void CPlatformScript::Overlap(CCollider2D* _Collider, CGameObject* _OtherObj, CC
 		DownCollision(_OtherObj, PlatformRB.y, ObjColScale.y);
 	}
 
-	if (m_SideCollision)
+	if (m_SideCollision && !_OtherObj->GetScript<CUnitScript>()->IsOverlapGround(GetOwner()))
 	{
 		// Left Ãæµ¹
 		if ((ObjDir & MV_RIGHT) && PlatformLT.x >= PrevPos.x + ObjColScale.x / 2.f)

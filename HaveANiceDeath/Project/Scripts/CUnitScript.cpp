@@ -56,6 +56,21 @@ void CUnitScript::LoadFromFile(FILE* _File)
 {
 }
 
+bool CUnitScript::IsOverlapGround(CGameObject* _pObject)
+{
+	vector<CGameObject*>::iterator iter = m_Ground.begin();
+
+	for (; iter != m_Ground.end(); ++iter)
+	{
+		if (*iter == _pObject)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
 void CUnitScript::AddOverlapGround(CGameObject* _pObejct)
 {
 	m_Ground.push_back(_pObejct);

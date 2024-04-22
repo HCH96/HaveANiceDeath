@@ -25,6 +25,8 @@ public:
 
     void SetLock(bool _Lock) { m_DirLock = _Lock; }
 
+
+    bool IsOverlapGround(CGameObject* _pObject);
     void AddOverlapGround(CGameObject* _pObejct);
     void SubOverlapGround(CGameObject* _pObejct);
 
