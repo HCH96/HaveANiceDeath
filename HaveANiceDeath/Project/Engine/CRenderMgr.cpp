@@ -95,6 +95,7 @@ void CRenderMgr::render_editor()
 		return;
 
 	m_EditorCam->SortObject();
+	m_EditorCam->DepthSort();
 	m_EditorCam->render();
 }
 

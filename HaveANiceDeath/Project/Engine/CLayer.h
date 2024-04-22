@@ -15,6 +15,7 @@ public:
     const vector<CGameObject*>& GetParentObjects() { return  m_vecParent; }
     const vector<CGameObject*>& GetLayerObjects() { return m_vecObjects; }
     int GetLayerIdx() { return m_LayerIdx; }
+    CGameObject* GetObjectByName(const wstring& _ObjectName);
 
 public:
     // 특정 오브젝트를 레이어에서 제거

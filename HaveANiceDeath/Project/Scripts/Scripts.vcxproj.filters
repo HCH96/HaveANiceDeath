@@ -44,6 +44,9 @@
     <ClInclude Include="CMonsterScript.h">
       <Filter>Scripts\Unit\Monster</Filter>
     </ClInclude>
+    <ClInclude Include="CCamCtrlScript.h">
+      <Filter>Manager\CamCtrl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -89,6 +92,9 @@
     <ClCompile Include="CMonsterScript.cpp">
       <Filter>Scripts\Unit\Monster</Filter>
     </ClCompile>
+    <ClCompile Include="CCamCtrlScript.cpp">
+      <Filter>Manager\CamCtrl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Default">
@@ -120,6 +126,9 @@
     </Filter>
     <Filter Include="Scripts\Unit\Monster">
       <UniqueIdentifier>{429dff60-b2a1-481f-aed6-769144cc5e5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\CamCtrl">
+      <UniqueIdentifier>{2b17bb50-5719-429c-97ab-3eb898fea038}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -548,6 +548,9 @@
     <Filter Include="ShaderCode\Compute\SetColor">
       <UniqueIdentifier>{3d4d708b-9048-4df3-98ac-d0baab63271f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ShaderCode\Render\AirPerspective">
+      <UniqueIdentifier>{e2966923-e5f9-496c-960d-0a70dee8fdea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">
@@ -605,6 +608,9 @@
     </FxCompile>
     <FxCompile Include="setcolor.fx">
       <Filter>ShaderCode\Compute\SetColor</Filter>
+    </FxCompile>
+    <FxCompile Include="StdAirperspective.fx">
+      <Filter>ShaderCode\Render\AirPerspective</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

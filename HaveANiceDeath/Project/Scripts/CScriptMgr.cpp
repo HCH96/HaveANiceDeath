@@ -2,6 +2,7 @@
 #include "CScriptMgr.h"
 
 #include "CBackgroundScript.h"
+#include "CCamCtrlScript.h"
 #include "CCameraMoveScript.h"
 #include "CCornerTriggerScript.h"
 #include "CLDHitBox.h"
@@ -17,6 +18,7 @@
 void CScriptMgr::GetScriptInfo(vector<wstring>& _vec)
 {
 	_vec.push_back(L"CBackgroundScript");
+	_vec.push_back(L"CCamCtrlScript");
 	_vec.push_back(L"CCameraMoveScript");
 	_vec.push_back(L"CCornerTriggerScript");
 	_vec.push_back(L"CLDHitBox");
@@ -34,6 +36,8 @@ CScript * CScriptMgr::GetScript(const wstring& _strScriptName)
 {
 	if (L"CBackgroundScript" == _strScriptName)
 		return new CBackgroundScript;
+	if (L"CCamCtrlScript" == _strScriptName)
+		return new CCamCtrlScript;
 	if (L"CCameraMoveScript" == _strScriptName)
 		return new CCameraMoveScript;
 	if (L"CCornerTriggerScript" == _strScriptName)
@@ -65,6 +69,9 @@ CScript * CScriptMgr::GetScript(UINT _iScriptType)
 	{
 	case (UINT)SCRIPT_TYPE::BACKGROUNDSCRIPT:
 		return new CBackgroundScript;
+		break;
+	case (UINT)SCRIPT_TYPE::CAMCTRLSCRIPT:
+		return new CCamCtrlScript;
 		break;
 	case (UINT)SCRIPT_TYPE::CAMERAMOVESCRIPT:
 		return new CCameraMoveScript;
@@ -109,6 +116,10 @@ const wchar_t * CScriptMgr::GetScriptName(CScript * _pScript)
 	{
 	case SCRIPT_TYPE::BACKGROUNDSCRIPT:
 		return L"CBackgroundScript";
+		break;
+
+	case SCRIPT_TYPE::CAMCTRLSCRIPT:
+		return L"CCamCtrlScript";
 		break;
 
 	case SCRIPT_TYPE::CAMERAMOVESCRIPT:

@@ -61,6 +61,20 @@ void CLayer::finaltick()
 	}
 }
 
+CGameObject* CLayer::GetObjectByName(const wstring& _ObjectName)
+{
+	m_vecParent;
+	for (int i = 0; i < m_vecParent.size(); ++i)
+	{
+		if (m_vecParent[i]->GetName() == _ObjectName)
+		{
+			return m_vecParent[i];
+		}
+	}
+
+	return nullptr;
+}
+
 void CLayer::AddObject(CGameObject* _Object, bool _bMove)
 {
 	// _bMove : true  - 레이어에 입력되는 Object가 자식이 있는 경우, 자식까지 모두 해당 레이어로 넘어온다.

@@ -1,5 +1,5 @@
-#ifndef _PLAYER
-#define _PLAYER
+#ifndef _STDGLOW
+#define _STDGLOW
 
 #include "register.fx"
 #include "func.fx"

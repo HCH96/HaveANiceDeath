@@ -349,6 +349,29 @@ void CAssetMgr::CreateDefaultGraphicsShader()
 
 	AddAsset(L"StdGlowShader", pShader.Get());
 
+	// =================================
+	// StdAirPerspectiveShader
+	// =================================
+
+	pShader = nullptr;
+
+	pShader = new CGraphicsShader;
+	pShader->CreateVertexShader(L"shader\\StdAirperspective.fx", "VS_Std2D_AirPersp");
+	pShader->CreatePixelShader(L"shader\\StdAirperspective.fx", "PS_Std2D_AirPersp");
+
+	pShader->SetRSType(RS_TYPE::CULL_NONE);
+	pShader->SetDSType(DS_TYPE::LESS);
+	pShader->SetBSType(BS_TYPE::ALPHA_BLEND);
+	pShader->SetDomain(SHADER_DOMAIN::DOMAIN_TRANSPARENT);
+
+	// Parameter	
+	pShader->AddScalarParam(SCALAR_PARAM::INT_0, "AirPersp Enable");
+	pShader->AddScalarParam(SCALAR_PARAM::FLOAT_0, "ObjDepth");
+	pShader->AddScalarParam(SCALAR_PARAM::VEC4_0, "Air Color");
+
+	pShader->AddTexParam(TEX_PARAM::TEX_0, "Default Tex");
+
+	AddAsset(L"StdAirPerspShader", pShader.Get());
 }
 
 void CAssetMgr::CreateDefaultMaterial()
