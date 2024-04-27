@@ -551,6 +551,9 @@
     <Filter Include="ShaderCode\Render\AirPerspective">
       <UniqueIdentifier>{e2966923-e5f9-496c-960d-0a70dee8fdea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ShaderCode\Render\Effect">
+      <UniqueIdentifier>{13a8f320-b491-42b6-88db-3a9c8175f16a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">
@@ -611,6 +614,9 @@
     </FxCompile>
     <FxCompile Include="StdAirperspective.fx">
       <Filter>ShaderCode\Render\AirPerspective</Filter>
+    </FxCompile>
+    <FxCompile Include="StormBackground.fx">
+      <Filter>ShaderCode\Render\Effect</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

@@ -176,6 +176,7 @@ call CodeGen.exe</Command>
     <ClInclude Include="CCamCtrlScript.h" />
     <ClInclude Include="CCameraMoveScript.h" />
     <ClInclude Include="CCornerTriggerScript.h" />
+    <ClInclude Include="CDrownedScript.h" />
     <ClInclude Include="CLDHitBox.h" />
     <ClInclude Include="CLDScript.h" />
     <ClInclude Include="CMissileScript.h" />
@@ -186,6 +187,7 @@ call CodeGen.exe</Command>
     <ClInclude Include="CPlayerScript.h" />
     <ClInclude Include="CScriptMgr.h" />
     <ClInclude Include="CScriptTemplate.h" />
+    <ClInclude Include="CStormBGScript.h" />
     <ClInclude Include="CUnitScript.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
@@ -195,6 +197,7 @@ call CodeGen.exe</Command>
     <ClCompile Include="CCamCtrlScript.cpp" />
     <ClCompile Include="CCameraMoveScript.cpp" />
     <ClCompile Include="CCornerTriggerScript.cpp" />
+    <ClCompile Include="CDrownedScript.cpp" />
     <ClCompile Include="CLDHitBox.cpp" />
     <ClCompile Include="CLDScript.cpp" />
     <ClCompile Include="CMissileScript.cpp" />
@@ -205,6 +208,7 @@ call CodeGen.exe</Command>
     <ClCompile Include="CPlayerScript.cpp" />
     <ClCompile Include="CScriptMgr.cpp" />
     <ClCompile Include="CScriptTemplate.cpp" />
+    <ClCompile Include="CStormBGScript.cpp" />
     <ClCompile Include="CUnitScript.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

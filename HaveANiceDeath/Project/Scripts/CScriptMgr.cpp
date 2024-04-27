@@ -5,6 +5,7 @@
 #include "CCamCtrlScript.h"
 #include "CCameraMoveScript.h"
 #include "CCornerTriggerScript.h"
+#include "CDrownedScript.h"
 #include "CLDHitBox.h"
 #include "CLDScript.h"
 #include "CMissileScript.h"
@@ -14,6 +15,7 @@
 #include "CPlayerMgrScript.h"
 #include "CPlayerScript.h"
 #include "CScriptTemplate.h"
+#include "CStormBGScript.h"
 #include "CUnitScript.h"
 
 void CScriptMgr::GetScriptInfo(vector<wstring>& _vec)
@@ -22,6 +24,7 @@ void CScriptMgr::GetScriptInfo(vector<wstring>& _vec)
 	_vec.push_back(L"CCamCtrlScript");
 	_vec.push_back(L"CCameraMoveScript");
 	_vec.push_back(L"CCornerTriggerScript");
+	_vec.push_back(L"CDrownedScript");
 	_vec.push_back(L"CLDHitBox");
 	_vec.push_back(L"CLDScript");
 	_vec.push_back(L"CMissileScript");
@@ -31,6 +34,7 @@ void CScriptMgr::GetScriptInfo(vector<wstring>& _vec)
 	_vec.push_back(L"CPlayerMgrScript");
 	_vec.push_back(L"CPlayerScript");
 	_vec.push_back(L"CScriptTemplate");
+	_vec.push_back(L"CStormBGScript");
 	_vec.push_back(L"CUnitScript");
 }
 
@@ -44,6 +48,8 @@ CScript * CScriptMgr::GetScript(const wstring& _strScriptName)
 		return new CCameraMoveScript;
 	if (L"CCornerTriggerScript" == _strScriptName)
 		return new CCornerTriggerScript;
+	if (L"CDrownedScript" == _strScriptName)
+		return new CDrownedScript;
 	if (L"CLDHitBox" == _strScriptName)
 		return new CLDHitBox;
 	if (L"CLDScript" == _strScriptName)
@@ -62,6 +68,8 @@ CScript * CScriptMgr::GetScript(const wstring& _strScriptName)
 		return new CPlayerScript;
 	if (L"CScriptTemplate" == _strScriptName)
 		return new CScriptTemplate;
+	if (L"CStormBGScript" == _strScriptName)
+		return new CStormBGScript;
 	if (L"CUnitScript" == _strScriptName)
 		return new CUnitScript;
 	return nullptr;
@@ -82,6 +90,9 @@ CScript * CScriptMgr::GetScript(UINT _iScriptType)
 		break;
 	case (UINT)SCRIPT_TYPE::CORNERTRIGGERSCRIPT:
 		return new CCornerTriggerScript;
+		break;
+	case (UINT)SCRIPT_TYPE::DROWNEDSCRIPT:
+		return new CDrownedScript;
 		break;
 	case (UINT)SCRIPT_TYPE::LDHITBOX:
 		return new CLDHitBox;
@@ -110,6 +121,9 @@ CScript * CScriptMgr::GetScript(UINT _iScriptType)
 	case (UINT)SCRIPT_TYPE::SCRIPTTEMPLATE:
 		return new CScriptTemplate;
 		break;
+	case (UINT)SCRIPT_TYPE::STORMBGSCRIPT:
+		return new CStormBGScript;
+		break;
 	case (UINT)SCRIPT_TYPE::UNITSCRIPT:
 		return new CUnitScript;
 		break;
@@ -135,6 +149,10 @@ const wchar_t * CScriptMgr::GetScriptName(CScript * _pScript)
 
 	case SCRIPT_TYPE::CORNERTRIGGERSCRIPT:
 		return L"CCornerTriggerScript";
+		break;
+
+	case SCRIPT_TYPE::DROWNEDSCRIPT:
+		return L"CDrownedScript";
 		break;
 
 	case SCRIPT_TYPE::LDHITBOX:
@@ -171,6 +189,10 @@ const wchar_t * CScriptMgr::GetScriptName(CScript * _pScript)
 
 	case SCRIPT_TYPE::SCRIPTTEMPLATE:
 		return L"CScriptTemplate";
+		break;
+
+	case SCRIPT_TYPE::STORMBGSCRIPT:
+		return L"CStormBGScript";
 		break;
 
 	case SCRIPT_TYPE::UNITSCRIPT:

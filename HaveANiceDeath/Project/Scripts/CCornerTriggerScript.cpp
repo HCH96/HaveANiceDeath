@@ -98,7 +98,7 @@ void CCornerTriggerScript::Overlap(CCollider2D* _Collider, CGameObject* _OtherOb
 	PlatformRB = Vec2(ColPos.x + ColScale.x / 2.f, ColPos.y - ColScale.y / 2.f);
 
 	// Object의 방향 구하기
-	_OtherObj->Movement()->CalDir();
+	//_OtherObj->Movement()->CalDir();
 	MovementDir ObjDir = _OtherObj->Movement()->GetDir();
 
 	// Object Collider의 PrevPos

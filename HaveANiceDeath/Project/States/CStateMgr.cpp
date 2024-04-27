@@ -11,6 +11,17 @@
 #include "CComboUp.h"
 #include "CCrush.h"
 #include "CCrushDown.h"
+#include "CDrownedAppear.h"
+#include "CDrownedAttack01.h"
+#include "CDrownedDeath.h"
+#include "CDrownedHit.h"
+#include "CDrownedIdle.h"
+#include "CDrownedRun.h"
+#include "CDrownedStunEnd.h"
+#include "CDrownedStunLoop.h"
+#include "CDrownedStunStart.h"
+#include "CDrownedSurprised.h"
+#include "CDrownedUTurn.h"
 #include "CIdleState.h"
 #include "CLDCornerTrigger.h"
 #include "CLDDash.h"
@@ -36,6 +47,17 @@ void CStateMgr::GetStateInfo(vector<wstring>& _vec)
 	_vec.push_back(L"CComboUp");
 	_vec.push_back(L"CCrush");
 	_vec.push_back(L"CCrushDown");
+	_vec.push_back(L"CDrownedAppear");
+	_vec.push_back(L"CDrownedAttack01");
+	_vec.push_back(L"CDrownedDeath");
+	_vec.push_back(L"CDrownedHit");
+	_vec.push_back(L"CDrownedIdle");
+	_vec.push_back(L"CDrownedRun");
+	_vec.push_back(L"CDrownedStunEnd");
+	_vec.push_back(L"CDrownedStunLoop");
+	_vec.push_back(L"CDrownedStunStart");
+	_vec.push_back(L"CDrownedSurprised");
+	_vec.push_back(L"CDrownedUTurn");
 	_vec.push_back(L"CIdleState");
 	_vec.push_back(L"CLDCornerTrigger");
 	_vec.push_back(L"CLDDash");
@@ -72,6 +94,28 @@ CState* CStateMgr::GetState(const wstring& _strStateName)
 		return new CCrush;
 	if (L"CCrushDown" == _strStateName)
 		return new CCrushDown;
+	if (L"CDrownedAppear" == _strStateName)
+		return new CDrownedAppear;
+	if (L"CDrownedAttack01" == _strStateName)
+		return new CDrownedAttack01;
+	if (L"CDrownedDeath" == _strStateName)
+		return new CDrownedDeath;
+	if (L"CDrownedHit" == _strStateName)
+		return new CDrownedHit;
+	if (L"CDrownedIdle" == _strStateName)
+		return new CDrownedIdle;
+	if (L"CDrownedRun" == _strStateName)
+		return new CDrownedRun;
+	if (L"CDrownedStunEnd" == _strStateName)
+		return new CDrownedStunEnd;
+	if (L"CDrownedStunLoop" == _strStateName)
+		return new CDrownedStunLoop;
+	if (L"CDrownedStunStart" == _strStateName)
+		return new CDrownedStunStart;
+	if (L"CDrownedSurprised" == _strStateName)
+		return new CDrownedSurprised;
+	if (L"CDrownedUTurn" == _strStateName)
+		return new CDrownedUTurn;
 	if (L"CIdleState" == _strStateName)
 		return new CIdleState;
 	if (L"CLDCornerTrigger" == _strStateName)
@@ -132,6 +176,39 @@ CState* CStateMgr::GetState(UINT _iStateType)
 		break;
 	case (UINT)STATE_TYPE::CRUSHDOWN:
 		return new CCrushDown;
+		break;
+	case (UINT)STATE_TYPE::DROWNEDAPPEAR:
+		return new CDrownedAppear;
+		break;
+	case (UINT)STATE_TYPE::DROWNEDATTACK01:
+		return new CDrownedAttack01;
+		break;
+	case (UINT)STATE_TYPE::DROWNEDDEATH:
+		return new CDrownedDeath;
+		break;
+	case (UINT)STATE_TYPE::DROWNEDHIT:
+		return new CDrownedHit;
+		break;
+	case (UINT)STATE_TYPE::DROWNEDIDLE:
+		return new CDrownedIdle;
+		break;
+	case (UINT)STATE_TYPE::DROWNEDRUN:
+		return new CDrownedRun;
+		break;
+	case (UINT)STATE_TYPE::DROWNEDSTUNEND:
+		return new CDrownedStunEnd;
+		break;
+	case (UINT)STATE_TYPE::DROWNEDSTUNLOOP:
+		return new CDrownedStunLoop;
+		break;
+	case (UINT)STATE_TYPE::DROWNEDSTUNSTART:
+		return new CDrownedStunStart;
+		break;
+	case (UINT)STATE_TYPE::DROWNEDSURPRISED:
+		return new CDrownedSurprised;
+		break;
+	case (UINT)STATE_TYPE::DROWNEDUTURN:
+		return new CDrownedUTurn;
 		break;
 	case (UINT)STATE_TYPE::IDLESTATE:
 		return new CIdleState;
@@ -215,6 +292,50 @@ const wchar_t * CStateMgr::GetStateName(CState * _pState)
 
 	case STATE_TYPE::CRUSHDOWN:
 		return L"CCrushDown";
+		break;
+
+	case STATE_TYPE::DROWNEDAPPEAR:
+		return L"CDrownedAppear";
+		break;
+
+	case STATE_TYPE::DROWNEDATTACK01:
+		return L"CDrownedAttack01";
+		break;
+
+	case STATE_TYPE::DROWNEDDEATH:
+		return L"CDrownedDeath";
+		break;
+
+	case STATE_TYPE::DROWNEDHIT:
+		return L"CDrownedHit";
+		break;
+
+	case STATE_TYPE::DROWNEDIDLE:
+		return L"CDrownedIdle";
+		break;
+
+	case STATE_TYPE::DROWNEDRUN:
+		return L"CDrownedRun";
+		break;
+
+	case STATE_TYPE::DROWNEDSTUNEND:
+		return L"CDrownedStunEnd";
+		break;
+
+	case STATE_TYPE::DROWNEDSTUNLOOP:
+		return L"CDrownedStunLoop";
+		break;
+
+	case STATE_TYPE::DROWNEDSTUNSTART:
+		return L"CDrownedStunStart";
+		break;
+
+	case STATE_TYPE::DROWNEDSURPRISED:
+		return L"CDrownedSurprised";
+		break;
+
+	case STATE_TYPE::DROWNEDUTURN:
+		return L"CDrownedUTurn";
 		break;
 
 	case STATE_TYPE::IDLESTATE:

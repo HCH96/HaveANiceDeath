@@ -8,6 +8,17 @@ CComboStand03
 CComboUp
 CCrush
 CCrushDown
+CDrownedAppear
+CDrownedAttack01
+CDrownedDeath
+CDrownedHit
+CDrownedIdle
+CDrownedRun
+CDrownedStunEnd
+CDrownedStunLoop
+CDrownedStunStart
+CDrownedSurprised
+CDrownedUTurn
 CIdleState
 CLDCornerTrigger
 CLDDash

@@ -109,6 +109,30 @@ void CMovement::finaltick()
 	Vec3 vObjPos = GetOwner()->Transform()->GetRelativePos();
 	vObjPos += m_vVelocity * DT;
 	GetOwner()->Transform()->SetRelativePos(vObjPos);
+	
+	m_Dir = 0;
+
+	// 방향 정보 업데이트
+	if (m_vVelocity.x > 0)
+	{
+		m_Dir |= MV_RIGHT;
+	}
+	
+	if (m_vVelocity.x < 0)
+	{
+		m_Dir |= MV_LEFT;
+	}
+
+	if (m_vVelocity.y > 0)
+	{
+		m_Dir |= MV_UP;
+	}
+
+	if (m_vVelocity.y < 0)
+	{
+		m_Dir |= MV_DOWN;
+	}
+
 
 	// ------------------------------
 	// 힘 리셋

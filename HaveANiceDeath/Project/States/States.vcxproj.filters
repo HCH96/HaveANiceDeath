@@ -82,6 +82,42 @@
     <Filter Include="01. Unit\LD\Crush">
       <UniqueIdentifier>{ef4f2354-1fac-433c-8383-4ea460ac8bcf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Unit\Drowned">
+      <UniqueIdentifier>{a83d72f1-33c8-4b41-ac15-242aaf4d1ee5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\Drowned\Appear">
+      <UniqueIdentifier>{884d94a2-c366-4d88-8410-f176c4b5bf0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\Drowned\Attack01">
+      <UniqueIdentifier>{87e62d5e-3f4c-4a61-a8fc-0b69cae1d783}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\Drowned\Death">
+      <UniqueIdentifier>{58f19b49-8b02-49a3-ba32-eb0bd4eeb62c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\Drowned\Hit">
+      <UniqueIdentifier>{ec84cbfe-7fa6-4ac7-82a6-43fac391144e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\Drowned\Idle">
+      <UniqueIdentifier>{f9626a5a-e1c8-4173-be87-d92a0f9d7ea8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\Drowned\StunEnd">
+      <UniqueIdentifier>{6542b163-4c8b-4389-9041-1a0427dc9405}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\Drowned\StunLoop">
+      <UniqueIdentifier>{31c5fb86-6096-43c7-bd8a-3e9020665ca9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\Drowned\StunStart">
+      <UniqueIdentifier>{fac5e4a5-cc8a-439e-9f84-0a0e071bfe38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\Drowned\Run">
+      <UniqueIdentifier>{493ff518-fedf-442a-956b-4aac21953c74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\Drowned\Surprised">
+      <UniqueIdentifier>{cf031443-468c-4fb8-9449-85dc25fc50bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Unit\Drowned\UTurn">
+      <UniqueIdentifier>{a2ac7a90-f2d9-4656-aadc-b5a557912e9a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -159,6 +195,39 @@
     <ClInclude Include="CCrushDown.h">
       <Filter>01. Unit\LD\CrushDown</Filter>
     </ClInclude>
+    <ClInclude Include="CDrownedAppear.h">
+      <Filter>01. Unit\Drowned\Appear</Filter>
+    </ClInclude>
+    <ClInclude Include="CDrownedAttack01.h">
+      <Filter>01. Unit\Drowned\Attack01</Filter>
+    </ClInclude>
+    <ClInclude Include="CDrownedDeath.h">
+      <Filter>01. Unit\Drowned\Death</Filter>
+    </ClInclude>
+    <ClInclude Include="CDrownedHit.h">
+      <Filter>01. Unit\Drowned\Hit</Filter>
+    </ClInclude>
+    <ClInclude Include="CDrownedIdle.h">
+      <Filter>01. Unit\Drowned\Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="CDrownedRun.h">
+      <Filter>01. Unit\Drowned\Run</Filter>
+    </ClInclude>
+    <ClInclude Include="CDrownedStunEnd.h">
+      <Filter>01. Unit\Drowned\StunEnd</Filter>
+    </ClInclude>
+    <ClInclude Include="CDrownedStunLoop.h">
+      <Filter>01. Unit\Drowned\StunLoop</Filter>
+    </ClInclude>
+    <ClInclude Include="CDrownedStunStart.h">
+      <Filter>01. Unit\Drowned\StunStart</Filter>
+    </ClInclude>
+    <ClInclude Include="CDrownedSurprised.h">
+      <Filter>01. Unit\Drowned\Surprised</Filter>
+    </ClInclude>
+    <ClInclude Include="CDrownedUTurn.h">
+      <Filter>01. Unit\Drowned\UTurn</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -235,6 +304,39 @@
     </ClCompile>
     <ClCompile Include="CCrushDown.cpp">
       <Filter>01. Unit\LD\CrushDown</Filter>
+    </ClCompile>
+    <ClCompile Include="CDrownedAppear.cpp">
+      <Filter>01. Unit\Drowned\Appear</Filter>
+    </ClCompile>
+    <ClCompile Include="CDrownedAttack01.cpp">
+      <Filter>01. Unit\Drowned\Attack01</Filter>
+    </ClCompile>
+    <ClCompile Include="CDrownedDeath.cpp">
+      <Filter>01. Unit\Drowned\Death</Filter>
+    </ClCompile>
+    <ClCompile Include="CDrownedHit.cpp">
+      <Filter>01. Unit\Drowned\Hit</Filter>
+    </ClCompile>
+    <ClCompile Include="CDrownedIdle.cpp">
+      <Filter>01. Unit\Drowned\Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="CDrownedRun.cpp">
+      <Filter>01. Unit\Drowned\Run</Filter>
+    </ClCompile>
+    <ClCompile Include="CDrownedStunEnd.cpp">
+      <Filter>01. Unit\Drowned\StunEnd</Filter>
+    </ClCompile>
+    <ClCompile Include="CDrownedStunLoop.cpp">
+      <Filter>01. Unit\Drowned\StunLoop</Filter>
+    </ClCompile>
+    <ClCompile Include="CDrownedStunStart.cpp">
+      <Filter>01. Unit\Drowned\StunStart</Filter>
+    </ClCompile>
+    <ClCompile Include="CDrownedSurprised.cpp">
+      <Filter>01. Unit\Drowned\Surprised</Filter>
+    </ClCompile>
+    <ClCompile Include="CDrownedUTurn.cpp">
+      <Filter>01. Unit\Drowned\UTurn</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -50,6 +50,12 @@
     <ClInclude Include="CParallelScript.h">
       <Filter>Scripts\ParallelScript</Filter>
     </ClInclude>
+    <ClInclude Include="CStormBGScript.h">
+      <Filter>Scripts\ParallelScript</Filter>
+    </ClInclude>
+    <ClInclude Include="CDrownedScript.h">
+      <Filter>Scripts\Unit\Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -100,6 +106,12 @@
     </ClCompile>
     <ClCompile Include="CParallelScript.cpp">
       <Filter>Scripts\ParallelScript</Filter>
+    </ClCompile>
+    <ClCompile Include="CStormBGScript.cpp">
+      <Filter>Scripts\ParallelScript</Filter>
+    </ClCompile>
+    <ClCompile Include="CDrownedScript.cpp">
+      <Filter>Scripts\Unit\Monster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -2,6 +2,7 @@ CBackgroundScript
 CCamCtrlScript
 CCameraMoveScript
 CCornerTriggerScript
+CDrownedScript
 CLDHitBox
 CLDScript
 CMissileScript
@@ -11,4 +12,5 @@ CPlatformScript
 CPlayerMgrScript
 CPlayerScript
 CScriptTemplate
+CStormBGScript
 CUnitScript

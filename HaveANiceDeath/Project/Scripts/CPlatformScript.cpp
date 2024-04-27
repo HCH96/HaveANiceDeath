@@ -85,7 +85,8 @@ void CPlatformScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherOb
 	MovementDir ObjDir = _OtherObj->Movement()->GetDir();
 
 	// Object Collider의 PrevPos
-	Vec3 PrevPos = _OtherObj->Collider2D()->GetPrevFinalPos();
+	Vec3 MoveDir = _OtherObj->Transform()->GetRelativePos() - _OtherObj->Transform()->GetRelativePos_Prev();
+	Vec3 PrevPos = _OtherObj->Collider2D()->GetFinalPos() - MoveDir;
 
 	// 위에서 아래로 충돌
 	if ((ObjDir & MV_DOWN) && PlatformLT.y < PrevPos.y - ObjColScale.y / 2.f)
@@ -165,11 +166,12 @@ void CPlatformScript::Overlap(CCollider2D* _Collider, CGameObject* _OtherObj, CC
 	PlatformRB = Vec2(ColPos.x + ColScale.x / 2.f, ColPos.y - ColScale.y / 2.f);
 
 	// Object의 방향 구하기
-	_OtherObj->Movement()->CalDir();
+	//_OtherObj->Movement()->CalDir();
 	MovementDir ObjDir = _OtherObj->Movement()->GetDir();
 
 	// Object Collider의 PrevPos
-	Vec3 PrevPos = _OtherObj->Collider2D()->GetPrevFinalPos();
+	Vec3 MoveDir = _OtherObj->Transform()->GetRelativePos() - _OtherObj->Transform()->GetRelativePos_Prev();
+	Vec3 PrevPos = _OtherObj->Collider2D()->GetFinalPos() - MoveDir;
 
 
 	// 아래서 위 충돌
@@ -272,7 +274,7 @@ void CPlatformScript::LeftCollision(CGameObject* _Obj, float _PlatformLeft, floa
 void CPlatformScript::RightCollision(CGameObject* _Obj, float _PlatformRight, float _ObjColScaleX)
 {
 	float NewX = _PlatformRight + _ObjColScaleX / 2.f;
-	NewX -= _Obj->Collider2D()->GetOffset().x;
+	NewX -= _Obj->Collider2D()->GetOffset().x ;
 
 	Vec3 ObjPos = _Obj->Transform()->GetRelativePos();
 	ObjPos.x = NewX;

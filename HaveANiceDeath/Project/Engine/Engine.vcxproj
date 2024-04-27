@@ -326,6 +326,7 @@ call EngineCopy.bat</Command>
     <FxCompile Include="std2d.fx" />
     <FxCompile Include="StdAirperspective.fx" />
     <FxCompile Include="StdGlow.fx" />
+    <FxCompile Include="StormBackground.fx" />
     <FxCompile Include="struct.fx" />
     <FxCompile Include="tilemap.fx" />
     <FxCompile Include="upsampling.fx" />

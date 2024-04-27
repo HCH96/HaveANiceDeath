@@ -57,20 +57,6 @@ void StateMachineUI::render_update()
 	Ptr<CFSM> pFSM = pStateMachine->GetFSM();
 	Ptr<CFSM> pDynamicFSM = pStateMachine->GetDynamicFSM();
 
-	if (!pFSM.Get() || !pDynamicFSM.Get())
-		return;
-
-	wstring CurStateName = L"";
-	CState* pCurState = pDynamicFSM->GetCurState();
-	if (pCurState != nullptr)
-	{
-		CurStateName = CStateMgr::GetStateName(pCurState);
-	}
-
-	ImGui::Text("Current State: "); ImGui::SameLine(100);
-	ImGui::InputText("##CurStateName", (ToString(CurStateName)).data(), 128, ImGuiInputTextFlags_ReadOnly);
-
-
 	string FSMName = "";
 
 	if (nullptr != pFSM)
@@ -95,6 +81,21 @@ void StateMachineUI::render_update()
 		}
 		ImGui::EndDragDropTarget();
 	}
+
+	if (!pFSM.Get() || !pDynamicFSM.Get())
+		return;
+
+	wstring CurStateName = L"";
+	CState* pCurState = pDynamicFSM->GetCurState();
+	if (pCurState != nullptr)
+	{
+		CurStateName = CStateMgr::GetStateName(pCurState);
+	}
+
+	ImGui::Text("Current State: "); ImGui::SameLine(100);
+	ImGui::InputText("##CurStateName", (ToString(CurStateName)).data(), 128, ImGuiInputTextFlags_ReadOnly);
+
+
 
 	ImGui::Text("State Name"); ImGui::SameLine(100); ImGui::InputText("##StateName", (char*)m_StateName.c_str(), m_StateName.length(), ImGuiInputTextFlags_ReadOnly);
 

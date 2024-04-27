@@ -8,6 +8,7 @@ class CTransform :
 private:
     Vec3    m_vPrevWorldPos;
     Vec3    m_vCurWorldPos;
+    Vec3    m_vRelativePos_Prev;
 
     Vec3    m_vRelativePos;
     Vec3    m_vRelativeScale;
@@ -23,6 +24,7 @@ public:
     Vec3 GetPrevPos() { return m_vPrevWorldPos; }
     Vec3 GetCurPos() { return m_vCurWorldPos; }
     Vec3 GetRelativePos() { return m_vRelativePos; }
+    Vec3 GetRelativePos_Prev() { return m_vRelativePos_Prev; }
     Vec3 GetRelativeScale() { return m_vRelativeScale; }
     Vec3 GetRelativeRotation() { return m_vRealtiveRotation; }
     Vec3 GetWorldPos() { return m_matWorld.Translation(); }

@@ -17,6 +17,8 @@ CTransform::~CTransform()
 
 void CTransform::finaltick()
 {
+	m_vRelativePos_Prev = m_vRelativePos;
+
 	m_matWorld = XMMatrixIdentity();
 
 	Matrix matScale = XMMatrixScaling(m_vRelativeScale.x, m_vRelativeScale.y, m_vRelativeScale.z);

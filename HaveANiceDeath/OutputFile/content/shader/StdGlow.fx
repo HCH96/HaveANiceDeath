@@ -114,7 +114,6 @@ PS_Std2D_Glow_Output PS_Std2D_Glow(VS_OUT _in) : SV_Target
     {
         output.GlowTarget = float4(0.f, 0.f, 0.f, 1.f);
     }
-
         
     // ±¤¿ø Ã³¸®
     tLightColor LightColor = (tLightColor) 0.f;

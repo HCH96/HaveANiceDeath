@@ -81,6 +81,7 @@ PS_OUT PS_Std2D_AirPersp(VS_OUT _in) : SV_Target
         }
     }
     
+
     // Air Perspective
     if (AirPerspEnable && ObjDepth != 0.f)
     {
