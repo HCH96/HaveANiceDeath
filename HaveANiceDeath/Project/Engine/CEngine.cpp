@@ -12,6 +12,7 @@
 #include "CFontMgr.h"
 #include "CRenderMgr.h"
 #include "CGC.h"
+#include "CCollisionMgr.h"
 
 #include "CSound.h"
 
@@ -51,6 +52,7 @@ int CEngine::init(HWND _HWND, Vec2 _Resolution)
 	CRenderMgr::GetInst()->init();
 	CLevelMgr::GetInst()->init();
 	CFontMgr::GetInst()->init();
+	CCollisionMgr::GetInst()->init();
 
 	return S_OK;
 }

@@ -134,7 +134,7 @@ void CCreateTempLevel::CreateTempLevel()
 
 
 	// 충돌 설정
-	CCollisionMgr::GetInst()->LayerCheck(5, 7);
+	//CCollisionMgr::GetInst()->LayerCheck(5, 7);
 	//CCollisionMgr::GetInst()->LayerCheck(4, 4);
 
 

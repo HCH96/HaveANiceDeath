@@ -16,6 +16,27 @@ CCollisionMgr::~CCollisionMgr()
 {
 }
 
+void CCollisionMgr::init()
+{
+	// Layer Check
+
+	// 0 Default
+	// 1 Background
+	// 5 Pltform
+	// 7 Player
+	// 8 PlayerAtt
+	// 12 Monster
+	// 13 MonsterAtt
+
+	CCollisionMgr::GetInst()->LayerCheck(5, 7);
+	CCollisionMgr::GetInst()->LayerCheck(5, 12);
+	CCollisionMgr::GetInst()->LayerCheck(7, 13);
+	CCollisionMgr::GetInst()->LayerCheck(8, 12);
+
+
+
+}
+
 void CCollisionMgr::tick()
 {
 	for (UINT Row = 0; Row < LAYER_MAX; ++Row)
