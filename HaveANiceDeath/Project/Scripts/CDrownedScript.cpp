@@ -2,7 +2,7 @@
 #include "CDrownedScript.h"
 
 CDrownedScript::CDrownedScript()
-	:CUnitScript(DROWNEDSCRIPT)
+	:CMonsterScript(DROWNEDSCRIPT)
 {
 }
 
@@ -22,6 +22,7 @@ void CDrownedScript::begin()
 	GetRenderComponent()->GetDynamicMaterial();
 
 	// glow Effect ¼³Á¤
+	GetRenderComponent()->GetMaterial()->SetScalarParam(SCALAR_PARAM::INT_1, 1);
 	GetRenderComponent()->GetMaterial()->SetScalarParam(SCALAR_PARAM::FLOAT_0, 0.7f);
 	GetRenderComponent()->GetMaterial()->SetScalarParam(SCALAR_PARAM::VEC4_0, Vec4(0.f, 0.3f, 0.3f, 0.7f));
 
@@ -31,6 +32,8 @@ void CDrownedScript::begin()
 
 void CDrownedScript::tick()
 {
+	CUnitScript::tick();
+
 	float CurDamage = m_PrevUnitInfo.HP - m_CurUnitInfo.HP;
 
 

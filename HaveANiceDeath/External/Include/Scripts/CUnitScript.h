@@ -24,6 +24,7 @@ public:
     tUnitInfo& GetUnitInfo() { return m_CurUnitInfo; }
 
     void SetLock(bool _Lock) { m_DirLock = _Lock; }
+    virtual void Hit(float _Damage) {}
 
 
     bool IsOverlapGround(CGameObject* _pObject);

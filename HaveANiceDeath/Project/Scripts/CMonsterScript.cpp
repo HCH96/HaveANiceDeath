@@ -6,6 +6,11 @@ CMonsterScript::CMonsterScript()
 {
 }
 
+CMonsterScript::CMonsterScript(UINT _ScriptType)
+	:CUnitScript(_ScriptType)
+{
+}
+
 CMonsterScript::~CMonsterScript()
 {
 }

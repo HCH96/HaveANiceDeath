@@ -48,7 +48,7 @@ void ScriptUI::render_update()
 			ParamUI::Param_VEC2((Vec2*)vecParam[i].pData, vecParam[i].Desc);
 			break;
 		case SCRIPT_PARAM::VEC3:
-			//ParamUI::Param_VEC3((Vec3*)vecParam[i].pData, vecParam[i].Desc);
+			ParamUI::Param_VEC3((Vec3*)vecParam[i].pData, vecParam[i].Desc);
 			break;
 		case SCRIPT_PARAM::VEC4:
 			ParamUI::Param_VEC4((Vec4*)vecParam[i].pData, vecParam[i].Desc);

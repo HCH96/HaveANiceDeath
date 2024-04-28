@@ -6,6 +6,7 @@ CDrownedScript
 CLDHitBox
 CLDScript
 CMissileScript
+CMonsterHitBoxScript
 CMonsterScript
 CParallelScript
 CPlatformScript

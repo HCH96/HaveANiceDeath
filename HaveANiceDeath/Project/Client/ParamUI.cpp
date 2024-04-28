@@ -69,6 +69,19 @@ bool ParamUI::Param_VEC2(Vec2* _Data, const string& _Desc)
 	}
 }
 
+bool ParamUI::Param_VEC3(Vec3* _Data, const string& _Desc)
+{
+	ImGui::Text(_Desc.c_str());
+	ImGui::SameLine();
+
+	char szID[256] = {};
+	sprintf_s(szID, "##Vec3%d", g_ID++);
+	if (ImGui::InputFloat3(szID, *_Data))
+	{
+		return true;
+	}
+}
+
 bool ParamUI::Param_VEC4(Vec4* _Data, const string& _Desc)
 {
 	ImGui::Text(_Desc.c_str());

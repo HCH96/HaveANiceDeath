@@ -56,6 +56,9 @@
     <ClInclude Include="CDrownedScript.h">
       <Filter>Scripts\Unit\Monster</Filter>
     </ClInclude>
+    <ClInclude Include="CMonsterHitBoxScript.h">
+      <Filter>Scripts\Unit\Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -111,6 +114,9 @@
       <Filter>Scripts\ParallelScript</Filter>
     </ClCompile>
     <ClCompile Include="CDrownedScript.cpp">
+      <Filter>Scripts\Unit\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="CMonsterHitBoxScript.cpp">
       <Filter>Scripts\Unit\Monster</Filter>
     </ClCompile>
   </ItemGroup>

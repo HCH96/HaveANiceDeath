@@ -5,6 +5,11 @@
 class CDrownedAttack01 :
     public CState
 {
+private:
+    int m_PrevFrame;
+    int m_CurFrame;
+
+
 public:
     virtual void finaltick();
     virtual void Enter();

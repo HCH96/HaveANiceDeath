@@ -1,8 +1,8 @@
 #pragma once
-#include "CUnitScript.h"
+#include "CMonsterScript.h"
 
 class CDrownedScript :
-    public CUnitScript
+    public CMonsterScript
 {
 public:
     virtual void begin() override;

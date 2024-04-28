@@ -19,6 +19,7 @@ public:
 public:
     CLONE(CMonsterScript);
     CMonsterScript();
+    CMonsterScript(UINT _ScriptType);
     ~CMonsterScript();
 
 };

@@ -59,6 +59,12 @@ void CLDScript::PlayComboStand()
 	++m_NextComboStand;
 }
 
+void CLDScript::Hit(float _Damage)
+{
+}
+
+
+
 void CLDScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
 {
 }

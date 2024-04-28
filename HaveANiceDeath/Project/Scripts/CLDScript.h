@@ -19,8 +19,6 @@ private:
     bool m_IsDash;
     bool m_IsDashCoolTime;
 
-
-
 public:
     bool IsDashCoolTime() { return m_IsDashCoolTime; }
     bool IsDash() { return m_IsDash; }
@@ -32,9 +30,9 @@ public:
     void ResetComboStand() { m_NextComboStand = 1; }
     void SetComboUp(bool _IsComboUp) { m_IsComboUp = _IsComboUp; }
     void SetDash(bool _IsDash) { m_IsDash = _IsDash; m_IsDashCoolTime = _IsDash;}
-
-
     void PlayComboStand();
+
+    virtual void Hit(float _Damage) override;
 
 public:
     virtual void BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider) override;

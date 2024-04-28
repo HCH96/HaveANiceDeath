@@ -3,6 +3,7 @@
 class CDrownedHit :
     public CState
 {
+
 public:
     virtual void finaltick();
     virtual void Enter();

@@ -180,6 +180,7 @@ call CodeGen.exe</Command>
     <ClInclude Include="CLDHitBox.h" />
     <ClInclude Include="CLDScript.h" />
     <ClInclude Include="CMissileScript.h" />
+    <ClInclude Include="CMonsterHitBoxScript.h" />
     <ClInclude Include="CMonsterScript.h" />
     <ClInclude Include="CParallelScript.h" />
     <ClInclude Include="CPlatformScript.h" />
@@ -201,6 +202,7 @@ call CodeGen.exe</Command>
     <ClCompile Include="CLDHitBox.cpp" />
     <ClCompile Include="CLDScript.cpp" />
     <ClCompile Include="CMissileScript.cpp" />
+    <ClCompile Include="CMonsterHitBoxScript.cpp" />
     <ClCompile Include="CMonsterScript.cpp" />
     <ClCompile Include="CParallelScript.cpp" />
     <ClCompile Include="CPlatformScript.cpp" />
