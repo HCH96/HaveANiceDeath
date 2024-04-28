@@ -3,6 +3,9 @@
 class CDrownedRun :
     public CState
 {
+private:
+    CGameObject* m_Target;
+
 public:
     virtual void finaltick();
     virtual void Enter();

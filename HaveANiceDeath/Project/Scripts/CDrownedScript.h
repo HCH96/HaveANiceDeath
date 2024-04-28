@@ -5,6 +5,9 @@ class CDrownedScript :
     public CMonsterScript
 {
 public:
+    virtual void Hit(float _Damage) override;
+
+public:
     virtual void begin() override;
     virtual void tick() override;
 

@@ -6,8 +6,11 @@
 
 #define AnimDir g_int_0
 #define GlowEnable g_int_1
-#define GlowColor g_vec4_0
 #define Threshold g_float_0
+#define GlowColor g_vec4_0
+#define VarColor g_vec4_1
+
+
 
 struct VS_IN
 {
@@ -128,6 +131,12 @@ PS_Std2D_Glow_Output PS_Std2D_Glow(VS_OUT _in) : SV_Target
     if (0.f == vColor.a)
         discard;
     
+    // Variation
+    if (0.f != VarColor.a)
+    {
+        vColor.rgb += VarColor.rgb * VarColor.a;
+        vColor.rgb = saturate(vColor.rgb);
+    }
     
     // ±âÁ¸ ·»´õÅ¸°Ù¿¡ Âï±â
     output.RenderTarget = vColor;

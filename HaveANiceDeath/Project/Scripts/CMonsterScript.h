@@ -3,6 +3,17 @@
 class CMonsterScript :
     public CUnitScript
 {
+private:
+    Vec4    m_VarColor;
+    float m_Acc;
+    float m_Duration;
+
+    bool m_IsVariation;
+
+protected:
+    void Variation();
+
+
 public:
     virtual void begin() override;
     virtual void tick() override;

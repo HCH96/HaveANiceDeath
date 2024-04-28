@@ -12,8 +12,8 @@
 CDrownedIdle::CDrownedIdle()
 	:CState(DROWNEDIDLE)
 	, m_Target(nullptr)
-	, m_DetectionRange(500.f)
-	, m_AttRange(300.f)
+	, m_DetectionRange(800.f)
+	, m_AttRange(200.f)
 {
 }
 

@@ -3,8 +3,6 @@
 class CDrownedUTurn :
     public CState
 {
-private:
-    int m_StartDir;
 
 public:
     virtual void finaltick();

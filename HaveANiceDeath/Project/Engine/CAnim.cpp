@@ -32,6 +32,8 @@ CAnim::~CAnim()
 
 void CAnim::finaltick()
 {
+	m_PrevFrmIdx = m_CurFrmIdx;
+
 	m_AccTime += DT;
 
 	if (m_vecFrm[m_CurFrmIdx].Duration < m_AccTime)

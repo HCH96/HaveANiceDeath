@@ -22,12 +22,12 @@ void CDrownedUTurn::finaltick()
 
 void CDrownedUTurn::Enter()
 {
-	m_StartDir = (int)GetOwnerObj()->GetScript<CDrownedScript>()->GetUnitInfo().Dir;
-
 	GetOwnerObj()->Animator2D()->Play(L"DROWNED_UTURN", true);
 }
 
 void CDrownedUTurn::Exit()
 {
-	GetOwnerObj()->GetScript<CDrownedScript>()->GetUnitInfo().Dir = (ANIM_DIR)-m_StartDir;
+	int PrevDir = (int)GetOwnerObj()->GetScript<CDrownedScript>()->GetPrevInfo().Dir;
+
+	GetOwnerObj()->GetScript<CDrownedScript>()->GetUnitInfo().Dir = (ANIM_DIR)-PrevDir;
 }

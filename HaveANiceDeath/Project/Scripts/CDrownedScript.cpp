@@ -1,6 +1,11 @@
 #include "pch.h"
 #include "CDrownedScript.h"
 
+#include <Engine/CState.h>
+
+#include <States/CStateMgr.h>
+
+
 CDrownedScript::CDrownedScript()
 	:CMonsterScript(DROWNEDSCRIPT)
 {
@@ -10,9 +15,29 @@ CDrownedScript::~CDrownedScript()
 {
 }
 
+void CDrownedScript::Hit(float _Damage)
+{
+	Variation();
+
+	const wstring& Curstate = CStateMgr::GetStateName(GetOwner()->StateMachine()->GetDynamicFSM()->GetCurState());
+	
+	if (Curstate == L"CDrownedDeath")
+		return;
+
+	m_CurUnitInfo.HP -= _Damage;
+
+	// Stun 상태일때는 상태 변경 X
+	if (Curstate == L"CDrownedStunStart" || Curstate == L"CDrownedStunLoop" || Curstate == L"CDrownedStunEnd")
+	{
+		return;
+	}
+
+	GetOwner()->StateMachine()->GetDynamicFSM()->ChangeState(L"Hit");
+}
+
 void CDrownedScript::begin()
 {
-	CUnitScript::begin();
+	CMonsterScript::begin();
 
 	// UnitInfo 설정
 	m_CurUnitInfo.HP = 50.f;
@@ -32,16 +57,16 @@ void CDrownedScript::begin()
 
 void CDrownedScript::tick()
 {
-	CUnitScript::tick();
+	CMonsterScript::tick();
 
 	float CurDamage = m_PrevUnitInfo.HP - m_CurUnitInfo.HP;
 
 
-	if (CurDamage > 0)
-	{
-		GetOwner()->StateMachine()->GetDynamicFSM()->ChangeState(L"Hit");
-		GetOwner()->StateMachine()->GetDynamicFSM()->ChangeState(L"StunStart");
-	}
+	//if (CurDamage > 0)
+	//{
+	//	GetOwner()->StateMachine()->GetDynamicFSM()->ChangeState(L"Hit");
+	//	GetOwner()->StateMachine()->GetDynamicFSM()->ChangeState(L"StunStart");
+	//}
 
 	// Death State
 	if (m_CurUnitInfo.HP <= 0)

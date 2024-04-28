@@ -17,6 +17,7 @@ CDrownedAttack01::~CDrownedAttack01()
 void CDrownedAttack01::finaltick()
 {
 	m_CurFrame = GetOwnerObj()->Animator2D()->GetCurAnimInst()->GetCurAnimIdx();
+	m_PrevFrame = GetOwnerObj()->Animator2D()->GetCurAnimInst()->GetPrevAnimIdx();
 
 	if (m_PrevFrame == 14 && m_CurFrame == 15)
 	{
@@ -29,8 +30,6 @@ void CDrownedAttack01::finaltick()
 	{
 		ChangeState(L"Idle");
 	}
-
-	m_PrevFrame = m_CurFrame;
 }
 
 void CDrownedAttack01::Enter()

@@ -6,7 +6,6 @@ class CLDHitBox :
 private:
     float m_Damage;
 
-
     float m_Acc;
     float m_StartTime;
     float m_Duration;

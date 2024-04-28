@@ -43,6 +43,16 @@ bool CAnimator2D::IsCurAnimFinished()
 	return m_CurAnim->IsFinish();
 }
 
+int CAnimator2D::GetCurAnimFrame()
+{
+	return m_CurAnim->GetCurAnimIdx();
+}
+
+int CAnimator2D::GetPrevAnimFrame()
+{
+	return m_CurAnim->GetPrevAnimIdx();
+}
+
 int CAnimator2D::DeleteAnim(const wstring& _AnimationKey)
 {
 	CLevel* CurLevel = CLevelMgr::GetInst()->GetCurrentLevel();

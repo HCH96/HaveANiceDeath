@@ -193,9 +193,7 @@ void CLDHitBox::BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCo
 	if (MonScript == nullptr)
 		return;
 
-
-	tUnitInfo& Info = MonScript->GetUnitInfo();
-	Info.HP -= m_Damage;
+	MonScript->Hit(m_Damage);
 }
 
 void CLDHitBox::Overlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)

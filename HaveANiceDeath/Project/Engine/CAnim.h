@@ -22,6 +22,7 @@ private:
 
     vector<tAnimFrm>    m_vecFrm;
     int                 m_CurFrmIdx;
+    int                 m_PrevFrmIdx;
     bool                m_bFinish;
 
     Ptr<CTexture>       m_AtlasTex;
@@ -31,6 +32,7 @@ private:
 public:
     Ptr<CTexture> GetAtlas() { return m_AtlasTex; }
     int GetCurAnimIdx() { return m_CurFrmIdx; }
+    int GetPrevAnimIdx() { return m_PrevFrmIdx; }
 
 
 public:
@@ -42,6 +44,7 @@ public:
     {
         m_bFinish = false;
         m_CurFrmIdx = 0;
+        m_PrevFrmIdx = 0;
         m_AccTime = 0.f;
     }
 

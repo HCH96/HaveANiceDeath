@@ -20,6 +20,9 @@ public:
     CAnim* GetCurAnimInst() { return m_CurAnim;}
     bool IsCurAnimFinished();
 
+    int GetCurAnimFrame();
+    int GetPrevAnimFrame();
+
 
 public:
     int DeleteAnim(const wstring& _AnimationKey);
