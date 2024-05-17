@@ -29,6 +29,12 @@ void CMonsterScript::Variation()
 	m_Acc = 0.f;
 }
 
+void CMonsterScript::Knockback()
+{
+
+
+}
+
 void CMonsterScript::begin()
 {
 	CUnitScript::begin();

@@ -12,6 +12,7 @@ private:
 
 protected:
     void Variation();
+    void Knockback();
 
 
 public:
